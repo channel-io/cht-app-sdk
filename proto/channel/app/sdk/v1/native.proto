@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package channel.app.sdk.v1;
+
+import "channel/app/sdk/v1/context.proto";
+import "channel/app/sdk/v1/error.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1";
+
+message NativeFunctionRequest {
+  string method = 1;
+  google.protobuf.Value params = 2;
+  FunctionContext context = 3;
+  string system_version = 4;
+}
+
+message NativeFunctionResponse {
+  google.protobuf.Value result = 1;
+  FunctionError error = 2;
+}
+
+message IssueTokenParams {
+  string secret = 1;
+  string channel_id = 2;
+}
+
+message IssueTokenResult {
+  string access_token = 1;
+  string refresh_token = 2;
+  int32 expires_in = 3;
+}
+
+message ExtensionRegistrationParams {
+  string app_id = 1;
+  string extension_name = 2;
+  string system_version = 3;
+}
+
+message ExtensionRegistrationResult {
+  bool success = 1;
+  string error_message = 2;
+  repeated string validation_errors = 3;
+}
+
+message AlfTaskRegistrationResult {
+  bool success = 1;
+  string error_message = 2;
+  int32 total_tasks = 3;
+  int32 created_count = 4;
+  int32 updated_count = 5;
+  int32 deleted_count = 6;
+}
+
+message AlfTaskVersion {
+  string id = 1;
+  string name = 2;
+  string version = 3;
+}
+
+message GetAlfTaskVersionsResult {
+  bool success = 1;
+  string error_message = 2;
+  repeated AlfTaskVersion tasks = 3;
+}
+
+message AppNotebookRegistrationResult {
+  bool success = 1;
+  string error_message = 2;
+  string sync_run_id = 3;
+  string status = 4;
+  int32 total_notebooks = 5;
+  int32 created_count = 6;
+  int32 updated_count = 7;
+  int32 deleted_count = 8;
+}
+
+message AppNotebookVersion {
+  string notebook_key = 1;
+  int32 version = 2;
+  string latest_revision_id = 3;
+  string updated_at = 4;
+}
+
+message GetAppNotebookVersionsResult {
+  bool success = 1;
+  string error_message = 2;
+  repeated AppNotebookVersion notebooks = 3;
+}

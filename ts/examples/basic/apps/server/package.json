@@ -1,0 +1,28 @@
+{
+  "name": "@basic-example/server",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nest build",
+    "dev": "nest start --watch",
+    "start": "node dist/main.js",
+    "lint": "eslint src/"
+  },
+  "dependencies": {
+    "@channel.io/app-sdk-core": "workspace:*",
+    "@channel.io/app-sdk-server": "workspace:*",
+    "@nestjs/common": "11.1.27",
+    "@nestjs/config": "^4.0.4",
+    "@nestjs/core": "11.1.27",
+    "@nestjs/platform-express": "11.1.27",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.23",
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.2"
+  }
+}

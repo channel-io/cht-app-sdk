@@ -1,0 +1,43 @@
+#!/usr/bin/env sh
+set -e
+
+ROOT_DIR="$(git rev-parse --show-toplevel)"
+cd "$ROOT_DIR"
+
+GO_BIN_DIR="$(go env GOBIN 2>/dev/null)"
+if [ -z "$GO_BIN_DIR" ]; then
+  GO_BIN_DIR="$(go env GOPATH 2>/dev/null)/bin"
+fi
+export PATH="$GO_BIN_DIR:$PATH"
+export PATH="$ROOT_DIR/ts/node_modules/.bin:$PATH"
+export GOCACHE="${GOCACHE:-$ROOT_DIR/.cache/go-build}"
+
+cd ts
+pnpm lint-staged
+cd "$ROOT_DIR"
+
+staged_go_files="$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^go/.*\.go$' || true)"
+if [ -n "$staged_go_files" ]; then
+  for file in $staged_go_files; do
+    gofmt -w "$file"
+    git add "$file"
+  done
+  cd go
+  go test ./...
+  cd "$ROOT_DIR"
+fi
+
+staged_root_format_files="$(git diff --cached --name-only --diff-filter=ACMR | grep -E '(^README\.md$|^AGENT\.md$|^docs/.*\.(md|json|ya?ml)$|^examples/.*\.(md|json|ya?ml)$|^.*\.(json|ya?ml)$)' | grep -v '^ts/' || true)"
+if [ -n "$staged_root_format_files" ]; then
+  for file in $staged_root_format_files; do
+    pnpm --dir ts exec prettier --write "$ROOT_DIR/$file"
+    git add "$file"
+  done
+fi
+
+staged_proto_files="$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^proto/.*\.proto$' || true)"
+if [ -n "$staged_proto_files" ]; then
+  buf lint
+  buf generate
+  git diff --exit-code -- go/internal/gen ts/packages/core/src/gen
+fi

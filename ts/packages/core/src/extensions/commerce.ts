@@ -1,0 +1,220 @@
+import { z } from "zod";
+import type {
+  CommerceActionResult as ProtoCommerceActionResult,
+  CommerceAppCapabilities as ProtoCommerceAppCapabilities,
+  CommerceCancelOrderInput as ProtoCommerceCancelOrderInput,
+  CommerceChangeShippingAddressInput as ProtoCommerceChangeShippingAddressInput,
+  CommerceExchangeOrderInput as ProtoCommerceExchangeOrderInput,
+  CommerceGetAppConfigsOutput as ProtoCommerceGetAppConfigsOutput,
+  CommerceGetExchangeableItemsInput as ProtoCommerceGetExchangeableItemsInput,
+  CommerceGetExchangeableItemsOutput as ProtoCommerceGetExchangeableItemsOutput,
+  CommerceGetOrdersInput as ProtoCommerceGetOrdersInput,
+  CommerceGetOrdersOutput as ProtoCommerceGetOrdersOutput,
+  CommerceIdentifier as ProtoCommerceIdentifier,
+  CommerceOrder as ProtoCommerceOrder,
+  CommerceOrderItem as ProtoCommerceOrderItem,
+  CommerceReturnAcceptOrderInput as ProtoCommerceReturnAcceptOrderInput,
+  CommerceReturnOrderInput as ProtoCommerceReturnOrderInput,
+} from "../gen/channel/app/sdk/v1/extension.js";
+import {
+  AddressSchema,
+  BankAccountSchema,
+  BuyerSchema,
+  ClaimReasonSchema,
+  ClaimSchema,
+  ClaimabilitySchema,
+  DefectInfoSchema,
+  FulfillmentSchema,
+  OperationOptionsSchema,
+  OrderClaimItemSchema,
+  OrderExchangeItemSchema,
+  PaymentSchema,
+} from "./order.js";
+
+type ProtoBacked<T, Proto> = T & Proto;
+
+// commerce = order 재설계: buyer 추가, createdAt→orderedAt, 액션 result 래핑.
+// 변경 없는 값 타입(Buyer/Address/Payment/Fulfillment/Claim/Claimability)은 order 스키마 재사용.
+
+export const CommerceOrderItemSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  imageUrl: z.string().optional(),
+  amount: z.number(),
+  quantity: z.number(),
+  option: z.string().optional(),
+  productId: z.string().optional(),
+  variantId: z.string().optional(),
+  state: z.string(),
+  shippedAt: z.number().optional(),
+  deliveredAt: z.number().optional(),
+  estimatedShipDate: z.number().optional(),
+  claimability: ClaimabilitySchema,
+});
+export type CommerceOrderItem = ProtoBacked<
+  z.infer<typeof CommerceOrderItemSchema>,
+  ProtoCommerceOrderItem
+>;
+
+export const CommerceOrderSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  orderedAt: z.number(),
+  buyer: BuyerSchema.optional(),
+  items: z.array(CommerceOrderItemSchema),
+  payment: PaymentSchema,
+  fulfillments: z.array(FulfillmentSchema),
+  shippingAddress: AddressSchema.optional(),
+  claims: z.array(ClaimSchema),
+});
+export type CommerceOrder = ProtoBacked<z.infer<typeof CommerceOrderSchema>, ProtoCommerceOrder>;
+
+// --- I/O 스키마 (identifier + searchFilter + result 래핑) ---
+
+export const CommerceIdentifierSchema = z.object({
+  type: z.enum(["membership", "phone", "email"]),
+  value: z.string(),
+});
+export type CommerceIdentifier = ProtoBacked<
+  z.infer<typeof CommerceIdentifierSchema>,
+  ProtoCommerceIdentifier
+>;
+
+export const CommerceGetOrdersInputSchema = z.object({
+  identifier: CommerceIdentifierSchema.optional(),
+  searchFilter: z.any().optional(),
+  since: z.string().optional(),
+  limit: z.number().int().optional(),
+});
+export type CommerceGetOrdersInput = ProtoBacked<
+  z.infer<typeof CommerceGetOrdersInputSchema>,
+  ProtoCommerceGetOrdersInput
+>;
+
+export const CommerceGetOrdersOutputSchema = z.object({
+  orders: z.array(CommerceOrderSchema).optional(),
+  next: z.string().optional(),
+});
+export type CommerceGetOrdersOutput = ProtoBacked<
+  z.infer<typeof CommerceGetOrdersOutputSchema>,
+  ProtoCommerceGetOrdersOutput
+>;
+
+export const CommerceAppCapabilitiesSchema = z.object({
+  getOrdersOptions: OperationOptionsSchema.optional(),
+  cancelRequestOrderOptions: OperationOptionsSchema.optional(),
+  returnRequestOrderOptions: OperationOptionsSchema.optional(),
+  returnAcceptOrderOptions: OperationOptionsSchema.optional(),
+  exchangeRequestOrderOptions: OperationOptionsSchema.optional(),
+  changeShippingAddressOptions: OperationOptionsSchema.optional(),
+});
+export type CommerceAppCapabilities = ProtoBacked<
+  z.infer<typeof CommerceAppCapabilitiesSchema>,
+  ProtoCommerceAppCapabilities
+>;
+
+export const CommerceGetAppConfigsOutputSchema = z.object({
+  appCapabilities: CommerceAppCapabilitiesSchema.optional(),
+});
+export type CommerceGetAppConfigsOutput = ProtoBacked<
+  z.infer<typeof CommerceGetAppConfigsOutputSchema>,
+  ProtoCommerceGetAppConfigsOutput
+>;
+
+export const CommerceResultSchema = z.object({
+  result: z.object({
+    success: z.boolean(),
+    errorMessage: z.string().optional(),
+  }),
+});
+export type CommerceActionResult = ProtoBacked<
+  z.infer<typeof CommerceResultSchema>,
+  ProtoCommerceActionResult
+>;
+
+export const CommerceCancelOrderInputSchema = z.object({
+  identifier: CommerceIdentifierSchema.optional(),
+  orderId: z.string(),
+  cancelItems: z.array(OrderClaimItemSchema).optional(),
+  reason: ClaimReasonSchema.optional(),
+  refundBankAccount: BankAccountSchema.optional(),
+});
+export type CommerceCancelOrderInput = ProtoBacked<
+  z.infer<typeof CommerceCancelOrderInputSchema>,
+  ProtoCommerceCancelOrderInput
+>;
+
+export const CommerceReturnOrderInputSchema = z.object({
+  identifier: CommerceIdentifierSchema.optional(),
+  orderId: z.string(),
+  returnItems: z.array(OrderClaimItemSchema).optional(),
+  reason: ClaimReasonSchema.optional(),
+  requestPickup: z.boolean().optional(),
+  pickupAddress: AddressSchema.optional(),
+  refundBankAccount: BankAccountSchema.optional(),
+  trackingNumber: z.string().optional(),
+  trackingCompany: z.string().optional(),
+  defectInfo: DefectInfoSchema.optional(),
+});
+export type CommerceReturnOrderInput = ProtoBacked<
+  z.infer<typeof CommerceReturnOrderInputSchema>,
+  ProtoCommerceReturnOrderInput
+>;
+
+export const CommerceReturnAcceptOrderInputSchema = z.object({
+  identifier: CommerceIdentifierSchema.optional(),
+  orderId: z.string(),
+  returnItems: z.array(OrderClaimItemSchema).optional(),
+  reason: ClaimReasonSchema.optional(),
+  refundBankAccount: BankAccountSchema.optional(),
+  pickupCompleted: z.boolean().optional(),
+  requestPickup: z.boolean().optional(),
+});
+export type CommerceReturnAcceptOrderInput = ProtoBacked<
+  z.infer<typeof CommerceReturnAcceptOrderInputSchema>,
+  ProtoCommerceReturnAcceptOrderInput
+>;
+
+export const CommerceExchangeOrderInputSchema = z.object({
+  identifier: CommerceIdentifierSchema.optional(),
+  orderId: z.string(),
+  beforeExchangeItems: z.array(OrderClaimItemSchema).optional(),
+  afterExchangeItems: z.array(OrderExchangeItemSchema).optional(),
+  reason: ClaimReasonSchema.optional(),
+  requestPickup: z.boolean().optional(),
+  pickupAddress: AddressSchema.optional(),
+  refundBankAccount: BankAccountSchema.optional(),
+  defectInfo: DefectInfoSchema.optional(),
+});
+export type CommerceExchangeOrderInput = ProtoBacked<
+  z.infer<typeof CommerceExchangeOrderInputSchema>,
+  ProtoCommerceExchangeOrderInput
+>;
+
+export const CommerceGetExchangeableItemsInputSchema = z.object({
+  identifier: CommerceIdentifierSchema.optional(),
+  orderId: z.string(),
+  items: z.array(OrderClaimItemSchema).optional(),
+});
+export type CommerceGetExchangeableItemsInput = ProtoBacked<
+  z.infer<typeof CommerceGetExchangeableItemsInputSchema>,
+  ProtoCommerceGetExchangeableItemsInput
+>;
+
+export const CommerceGetExchangeableItemsOutputSchema = z.object({
+  items: z.array(CommerceOrderItemSchema).optional(),
+});
+export type CommerceGetExchangeableItemsOutput = ProtoBacked<
+  z.infer<typeof CommerceGetExchangeableItemsOutputSchema>,
+  ProtoCommerceGetExchangeableItemsOutput
+>;
+
+export const CommerceChangeShippingAddressInputSchema = z.object({
+  identifier: CommerceIdentifierSchema.optional(),
+  orderId: z.string(),
+  newAddress: AddressSchema,
+});
+export type CommerceChangeShippingAddressInput = ProtoBacked<
+  z.infer<typeof CommerceChangeShippingAddressInputSchema>,
+  ProtoCommerceChangeShippingAddressInput
+>;

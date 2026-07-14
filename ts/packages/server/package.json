@@ -1,0 +1,97 @@
+{
+  "name": "@channel.io/app-sdk-server",
+  "version": "0.16.1",
+  "description": "NestJS server SDK for Channel.io apps",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./nestjs": {
+      "types": "./dist/nestjs/index.d.ts",
+      "import": "./dist/nestjs/index.js",
+      "default": "./dist/nestjs/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@channel.io/app-sdk-core": "workspace:*",
+    "@grpc/grpc-js": "^1.14.4",
+    "protobufjs": "^8.6.5",
+    "zod": "^3.24.1",
+    "zod-to-json-schema": "^3.24.1"
+  },
+  "peerDependencies": {
+    "@google-cloud/bigquery": "^8.3.1",
+    "@google-cloud/bigquery-storage": "^5.1.2",
+    "@nestjs/common": ">=10.0.0",
+    "@nestjs/core": ">=10.0.0",
+    "apache-arrow": "^21.1.0",
+    "pg": "^8.22.0",
+    "pg-query-stream": "^4.16.0",
+    "reflect-metadata": ">=0.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@google-cloud/bigquery": {
+      "optional": true
+    },
+    "@google-cloud/bigquery-storage": {
+      "optional": true
+    },
+    "@nestjs/common": {
+      "optional": false
+    },
+    "@nestjs/core": {
+      "optional": false
+    },
+    "apache-arrow": {
+      "optional": true
+    },
+    "pg": {
+      "optional": true
+    },
+    "pg-query-stream": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@nestjs/common": "11.1.27",
+    "@nestjs/core": "11.1.27",
+    "@nestjs/platform-express": "11.1.27",
+    "@nestjs/testing": "11.1.27",
+    "@types/express": "^5.0.6",
+    "@types/pg": "^8.20.0",
+    "apache-arrow": "^21.1.0",
+    "pg": "^8.22.0",
+    "pg-query-stream": "^4.16.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "typescript": "^5.7.2",
+    "vitest": "^3.2.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/channel-io/cht-app-sdk.git",
+    "directory": "ts/packages/server"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

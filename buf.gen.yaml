@@ -1,0 +1,26 @@
+version: v2
+plugins:
+  - local: protoc-gen-go
+    out: go/internal/gen
+    opt:
+      - paths=source_relative
+  - local: protoc-gen-go-grpc
+    out: go/internal/gen
+    opt:
+      - paths=source_relative
+  - local: protoc-gen-ts_proto
+    out: ts/packages/core/src/gen
+    opt:
+      - onlyTypes=true
+      - outputEncodeMethods=false
+      - outputJsonMethods=false
+      - outputServices=false
+      - outputClientImpl=false
+      - useOptionals=all
+      - useExactTypes=false
+      - forceLong=string
+      - stringEnums=true
+      - enumsAsLiterals=true
+      - useJsonName=true
+      - importSuffix=.js
+      - esModuleInterop=true

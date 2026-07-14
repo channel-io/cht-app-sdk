@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+package io.channel.datasource.v1;
+
+option go_package = "github.com/channel-io/cht-app-sdk/go/internal/gen/io/channel/datasource/v1;datasourcev1";
+
+service DataSourceService {
+  rpc ListTables(ListTablesRequest) returns (ListTablesResponse);
+  rpc DescribeTable(DescribeTableRequest) returns (TableDefinition);
+  rpc SearchTables(SearchTablesRequest) returns (SearchTablesResponse);
+  rpc ExecuteQuery(ExecuteQueryRequest) returns (stream QueryChunk);
+}
+
+message SessionContext {
+  string account = 1;
+  string channel_id = 2;
+  optional string kernel_token = 3;
+  string team_member_id = 4;
+  optional string datasource_token = 5;
+}
+
+message Table {
+  string name = 1;
+  string description = 2;
+  int64 estimated_row_count = 3;
+  int64 updated_at = 4;
+  TableType table_type = 5;
+}
+
+enum TableType {
+  TABLE_TYPE_UNSPECIFIED = 0;
+  TABLE_TYPE_TABLE = 1;
+  TABLE_TYPE_VIEW = 2;
+  TABLE_TYPE_MATERIALIZED_VIEW = 3;
+  TABLE_TYPE_EXTERNAL = 4;
+}
+
+message Column {
+  string name = 1;
+  string type = 2;
+  bool nullable = 3;
+  string description = 4;
+  bool partition_key = 5;
+  int32 precision = 6;
+  int32 scale = 7;
+}
+
+message TableDefinition {
+  Table table = 1;
+  repeated Column columns = 2;
+  repeated string primary_key = 3;
+}
+
+message ListTablesRequest {
+  SessionContext session = 1;
+  string source_id = 2;
+  optional string table_name_filter_pattern = 3;
+}
+
+message ListTablesResponse {
+  repeated Table tables = 1;
+}
+
+message DescribeTableRequest {
+  SessionContext session = 1;
+  string source_id = 2;
+  string table = 3;
+}
+
+message SearchTablesRequest {
+  SessionContext session = 1;
+  string source_id = 2;
+  repeated string queries = 3;
+  int32 limit = 4;
+}
+
+message SearchTablesResponse {
+  repeated Table tables = 1;
+}
+
+message ExecuteQueryRequest {
+  SessionContext session = 1;
+  string source_id = 2;
+  string query = 3;
+  int64 row_limit = 4;
+  int64 byte_limit = 5;
+  int64 timeout_ms = 6;
+}
+
+message ArrowIpcMessage {
+  bytes data_header = 1;
+  bytes data_body = 2;
+}
+
+message QueryChunk {
+  oneof payload {
+    ArrowIpcMessage arrow = 1;
+    QueryResult result = 2;
+    DataSourceError error = 3;
+  }
+}
+
+message QueryResult {
+  int64 row_count = 1;
+  bool limit_exceeded = 2;
+  int64 execution_ms = 3;
+}
+
+enum DataSourceErrorCode {
+  DATA_SOURCE_ERROR_CODE_UNSPECIFIED = 0;
+  DATA_SOURCE_ERROR_CODE_UNAVAILABLE = 1;
+  DATA_SOURCE_ERROR_CODE_UNAUTHENTICATED = 2;
+  DATA_SOURCE_ERROR_CODE_PERMISSION_DENIED = 3;
+  DATA_SOURCE_ERROR_CODE_SOURCE_NOT_FOUND = 4;
+  DATA_SOURCE_ERROR_CODE_QUERY_INVALID = 5;
+  DATA_SOURCE_ERROR_CODE_QUERY_FAILED = 6;
+  DATA_SOURCE_ERROR_CODE_LIMIT_EXCEEDED = 7;
+  DATA_SOURCE_ERROR_CODE_TIMEOUT = 8;
+  DATA_SOURCE_ERROR_CODE_UPSTREAM_AUTH_FAILED = 9;
+  DATA_SOURCE_ERROR_CODE_INTERNAL = 10;
+  DATA_SOURCE_ERROR_CODE_TABLE_NOT_FOUND = 11;
+  DATA_SOURCE_ERROR_CODE_COLUMN_NOT_FOUND = 12;
+  DATA_SOURCE_ERROR_CODE_CANCELLED = 13;
+  DATA_SOURCE_ERROR_CODE_RESOURCE_EXHAUSTED = 14;
+  DATA_SOURCE_ERROR_CODE_INVALID_ARGUMENT = 15;
+  DATA_SOURCE_ERROR_CODE_EXTERNAL_ERROR = 16;
+}
+
+message DataSourceError {
+  DataSourceErrorCode code = 1;
+  string message = 2;
+  bool retryable = 3;
+  optional UpstreamError upstream = 4;
+}
+
+message UpstreamError {
+  string engine = 1;
+  string code = 2;
+  string message = 3;
+}

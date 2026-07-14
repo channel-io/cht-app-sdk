@@ -1,0 +1,430 @@
+syntax = "proto3";
+
+package channel.app.sdk.v1;
+
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1";
+
+enum AlfMessageType {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  ALF_MESSAGE_TYPE_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  ALF_MESSAGE_TYPE_COMPLETE = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  ALF_MESSAGE_TYPE_RAG = 2;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  ALF_MESSAGE_TYPE_INCOMPLETE = 3;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  ALF_MESSAGE_TYPE_IMPOSSIBLE = 4;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  ALF_MESSAGE_TYPE_COMMAND = 5;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  ALF_MESSAGE_TYPE_FAQ = 6;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  ALF_MESSAGE_TYPE_FAILED = 7;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  ALF_MESSAGE_TYPE_RATE_LIMITED = 8;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  ALF_MESSAGE_TYPE_OPEN_USER_CHAT = 9;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  ALF_MESSAGE_TYPE_SYSTEM = 10;
+}
+
+enum MeetMode {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MEET_MODE_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MEET_MODE_AUDIO = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MEET_MODE_VIDEO = 2;
+}
+
+enum MessageMeetState {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_MEET_STATE_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_MEET_STATE_LIVE = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_MEET_STATE_ENDED = 2;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_MEET_STATE_TRANSCRIBING = 3;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_MEET_STATE_TRANSCRIBED = 4;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_MEET_STATE_TRANSCRIBE_FAILED = 5;
+}
+
+enum MessageState {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_STATE_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_STATE_SENDING = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_STATE_SENT = 2;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_STATE_FAILED = 3;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_STATE_REMOVED = 4;
+}
+
+enum MessageColorVariant {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_COLOR_VARIANT_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_COLOR_VARIANT_COBALT = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_COLOR_VARIANT_GREEN = 2;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_COLOR_VARIANT_ORANGE = 3;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_COLOR_VARIANT_RED = 4;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_COLOR_VARIANT_BLACK = 5;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_COLOR_VARIANT_PINK = 6;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_COLOR_VARIANT_PURPLE = 7;
+}
+
+enum MessageOption {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_OPTION_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_OPTION_ACT_AS_MANAGER = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_OPTION_DISPLAY_AS_CHANNEL = 2;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_OPTION_DO_NOT_POST = 3;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_OPTION_DO_NOT_SEARCH = 4;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_OPTION_DO_NOT_SEND_APP = 5;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_OPTION_DO_NOT_UPDATE_DESK = 6;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_OPTION_IMMUTABLE = 7;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_OPTION_PRIVATE = 8;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_OPTION_SILENT_TO_MANAGER = 9;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_OPTION_SILENT_TO_USER = 10;
+}
+
+enum MessageAlertLevel {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_ALERT_LEVEL_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_ALERT_LEVEL_ALERT = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_ALERT_LEVEL_UNREAD = 2;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MESSAGE_ALERT_LEVEL_NONE = 3;
+}
+
+enum WritingType {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  WRITING_TYPE_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  WRITING_TYPE_STANDARD = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  WRITING_TYPE_CUSTOM = 2;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  WRITING_TYPE_EMAIL = 3;
+}
+
+enum ChannelUserChatState {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_STATE_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_STATE_CLOSED = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_STATE_OPENED = 2;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_STATE_SNOOZED = 3;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_STATE_INITIAL = 4;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_STATE_MISSED = 5;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_STATE_QUEUED = 6;
+}
+
+enum ChannelUserChatGoalState {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_GOAL_STATE_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_GOAL_STATE_ACHIEVED = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_GOAL_STATE_NOT_ACHIEVED = 2;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_GOAL_STATE_WAITING = 3;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_GOAL_STATE_NONE = 4;
+}
+
+enum ChannelUserChatSubtextType {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_SUBTEXT_TYPE_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_SUBTEXT_TYPE_DESCRIPTION = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_CHAT_SUBTEXT_TYPE_INCOMING = 2;
+}
+
+enum MissedReason {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MISSED_REASON_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MISSED_REASON_NOT_IN_OPERATION = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MISSED_REASON_USER_LEFT = 2;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MISSED_REASON_RING_TIME_OVER = 3;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MISSED_REASON_RATE_LIMIT = 4;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MISSED_REASON_NO_OPERATOR = 5;
+}
+
+enum ChannelUserType {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_TYPE_UNSPECIFIED = 0;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_TYPE_MEMBER = 1;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_TYPE_LEAD = 2;
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  USER_TYPE_UNIFIED = 3;
+}
+
+message Alf {
+  AlfMessageType type = 1;
+  string handling_id = 2;
+  repeated google.protobuf.Struct references = 3;
+  bool mention_alf_answered = 4;
+}
+
+message Meet {
+  string id = 1;
+  google.protobuf.Struct call = 2;
+  MeetMode mode = 3;
+  MessageMeetState state = 4;
+  string country = 5;
+  google.protobuf.Struct recording = 6;
+  repeated string manager_ids = 7;
+  string room_started_at = 8;
+  repeated string amassed_persons = 9;
+}
+
+message MessageFile {
+  string url = 1;
+  string mime = 2;
+  string file_name = 3;
+}
+
+message MessageThread {
+  string id = 1;
+  repeated string manager_ids = 2;
+  int32 reply_count = 3;
+  repeated string replied_manager_ids = 4;
+}
+
+message MessageButton {
+  string title = 1;
+  google.protobuf.Struct action = 2;
+  MessageColorVariant color_variant = 3;
+}
+
+message CustomPayload {
+  google.protobuf.Struct data = 1;
+  google.protobuf.Struct param_mapper = 2;
+}
+
+message ChannelMessage {
+  string id = 1;
+  Alf alf = 2;
+  google.protobuf.Struct log = 3;
+  google.protobuf.Struct form = 4;
+  Meet meet = 5;
+  repeated MessageFile files = 6;
+  MessageState state = 7;
+  repeated google.protobuf.Struct blocks = 8;
+  string chat_id = 9;
+  MessageThread thread = 10;
+  repeated MessageButton buttons = 11;
+  repeated MessageOption options = 12;
+  uint64 version = 13;
+  google.protobuf.Struct web_page = 14;
+  string chat_type = 15;
+  string language = 16;
+  string person_id = 17;
+  string channel_id = 18;
+  string created_at = 19;
+  google.protobuf.Struct marketing = 20;
+  string plain_text = 21;
+  repeated google.protobuf.Struct reactions = 22;
+  string request_id = 23;
+  string updated_at = 24;
+  MessageAlertLevel alert_level = 25;
+  string person_type = 26;
+  google.protobuf.Struct support_bot = 27;
+  WritingType writing_type = 28;
+  CustomPayload custom_payload = 29;
+  string inbound_email_id = 30;
+  string error_code = 31;
+}
+
+message PrebuiltMessage {
+  string id = 1;
+  repeated MessageFile files = 2;
+  repeated google.protobuf.Struct blocks = 3;
+  string chat_id = 4;
+  repeated google.protobuf.Struct buttons = 5;
+  uint64 version = 6;
+  string chat_type = 7;
+  string language = 8;
+  string person_id = 9;
+  string channel_id = 10;
+  string created_at = 11;
+  string plain_text = 12;
+  string request_id = 13;
+  string updated_at = 14;
+  string person_type = 15;
+  WritingType writing_type = 16;
+  CustomPayload custom_payload = 17;
+}
+
+message ChannelUserChat {
+  string id = 1;
+  string name = 2;
+  bool sync = 3;
+  repeated string tags = 4;
+  ChannelUserChatState state = 5;
+  string title = 6;
+  string xer_id = 7;
+  google.protobuf.Struct source = 8;
+  string team_id = 9;
+  string user_id = 10;
+  string asked_at = 11;
+  bool managed = 12;
+  bool one_stop = 13;
+  google.protobuf.Struct profile = 14;
+  uint64 version = 15;
+  string closed_at = 16;
+  google.protobuf.Struct handling = 17;
+  string medium_id = 18;
+  string opened_at = 19;
+  string priority = 20;
+  string channel_id = 21;
+  string created_at = 22;
+  string expires_at = 23;
+  ChannelUserChatGoalState goal_state = 24;
+  string medium_key = 25;
+  string snoozed_at = 26;
+  string updated_at = 27;
+  string assignee_id = 28;
+  string live_meet_id = 29;
+  repeated string manager_ids = 30;
+  string medium_type = 31;
+  int32 reply_count = 32;
+  string description = 33;
+  ChannelUserChatSubtextType subtext_type = 34;
+  uint64 waiting_time = 35;
+  uint64 avg_reply_time = 36;
+  string first_asked_at = 37;
+  MissedReason missed_reason = 38;
+  string desk_message_id = 39;
+  string desk_updated_at = 40;
+  string first_opened_at = 41;
+  string goal_checked_at = 42;
+  string goal_event_name = 43;
+  google.protobuf.Struct medium_profile = 44;
+  string front_message_id = 45;
+  string front_updated_at = 46;
+  google.protobuf.Struct goal_event_query = 47;
+  string medium_topic_key = 48;
+  uint64 resolution_time = 49;
+  uint64 total_reply_time = 50;
+  string contact_medium_type = 51;
+  repeated string medium_topic_labels = 52;
+  string user_last_message_id = 53;
+  int32 operation_reply_count = 54;
+  uint64 operation_waiting_time = 55;
+  uint64 operation_avg_reply_time = 56;
+  string first_replied_at_after_open = 57;
+  uint64 operation_resolution_time = 58;
+  uint64 operation_total_reply_time = 59;
+  string first_assignee_id_after_open = 60;
+}
+
+message ChannelUser {
+  string id = 1;
+  google.protobuf.Struct web = 2;
+  string city = 3;
+  string name = 4;
+  repeated string tags = 5;
+  ChannelUserType type = 6;
+  int32 alert = 7;
+  google.protobuf.Struct mobile = 8;
+  int32 unread = 9;
+  string veil_id = 10;
+  bool blocked = 11;
+  string country = 12;
+  bool has_chat = 13;
+  google.protobuf.Struct profile = 14;
+  uint64 version = 15;
+  string language = 16;
+  double latitude = 17;
+  string member_id = 18;
+  string province = 19;
+  string time_zone = 20;
+  string channel_id = 21;
+  string created_at = 22;
+  double longitude = 23;
+  string unified_id = 24;
+  string updated_at = 25;
+  string last_seen_at = 26;
+  string main_chat_id = 27;
+  string pop_up_chat_id = 28;
+  bool has_push_token = 29;
+  int32 sessions_count = 30;
+  bool email_qualified = 31;
+  bool unsubscribe_email = 32;
+  bool unsubscribe_texting = 33;
+  bool mobile_number_qualified = 34;
+}
+
+message WamAttributes {
+  string app_id = 1;
+  string name = 2;
+  google.protobuf.Struct wam_args = 3;
+}
+
+message WamResult {
+  string type = 1;
+  WamAttributes attributes = 2;
+}
+
+message UnavailableReason {
+  string msg = 1;
+  string link = 2;
+  string link_text = 3;
+}
+
+message WritingTypeState {
+  string state = 1;
+  repeated UnavailableReason unavailable_reasons = 2;
+}
+
+message WritingTypeMap {
+  WritingTypeState custom = 1;
+  WritingTypeState standard = 2;
+}
+
+message MediumProfile {
+  string medium_name = 1;
+  string medium_sender_id = 2;
+  string medium_sender_name = 3;
+}

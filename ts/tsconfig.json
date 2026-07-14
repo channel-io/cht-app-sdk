@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@channel.io/app-sdk-core": ["packages/core/src"],
+      "@channel.io/app-sdk-server": ["packages/server/src"],
+      "@channel.io/app-sdk-wam": ["packages/wam/src"],
+      "@channel.io/app-sdk": ["packages/cli/src"],
+      "@channel.io/app-sdk-wam-ui": ["packages/wam-ui/src"]
+    }
+  },
+  "references": [
+    { "path": "packages/core" },
+    { "path": "packages/server" },
+    { "path": "packages/wam" },
+    { "path": "packages/wam-ui" },
+    { "path": "packages/cli" }
+  ],
+  "files": []
+}

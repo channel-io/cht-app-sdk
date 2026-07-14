@@ -1,0 +1,1459 @@
+syntax = "proto3";
+
+package channel.app.sdk.v1;
+
+import "channel/app/sdk/v1/common.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1";
+
+message ExtensionEmptyInput {}
+
+message ExtensionChat {
+  string type = 1;
+  string id = 2;
+}
+
+message ExtensionActionResult {
+  string type = 1;
+  google.protobuf.Struct attributes = 2;
+}
+
+message ApiKeyField {
+  string name = 1;
+  string display_name = 2;
+  string description = 3;
+  bool required = 4;
+  bool sensitive = 5;
+  string mask_type = 6;
+  string placeholder = 7;
+  string validation_regex = 8;
+}
+
+message ApiKeyGetAuthConfigInput {}
+
+message ApiKeyGetAuthConfigOutput {
+  string auth_type = 1;
+  string auth_scope = 2;
+  repeated ApiKeyField fields = 3;
+  string provider_name = 4;
+}
+
+message ApiKeyValidateCredentialsInput {}
+
+message ApiKeyUserInfo {
+  string email = 1;
+  string name = 2;
+  string user_id = 3 [json_name = "user_id"];
+}
+
+message ApiKeyValidateCredentialsOutput {
+  bool valid = 1;
+  string error_message = 2 [json_name = "error_message"];
+  ApiKeyUserInfo user_info = 3 [json_name = "user_info"];
+}
+
+message ConfigCondition {
+  string field_key = 1;
+  string operator = 2;
+  google.protobuf.Value value = 3;
+}
+
+message ConfigChoice {
+  string label = 1;
+  google.protobuf.Value value = 2;
+  string description = 3;
+  string image_url = 4;
+}
+
+message ConfigInlineLink {
+  string key = 1;
+  string label = 2;
+  string url = 3;
+}
+
+message ConfigValidationNotice {
+  string tone = 1;
+  string title = 2;
+  string message = 3;
+  string placement = 4;
+  string block_id = 5;
+}
+
+message ConfigHooks {
+  string draft_resolver_function_name = 1;
+  string validate_function_name = 2;
+}
+
+message ConfigOAuthAdditionalParam {
+  string name = 1;
+  string field_key = 2;
+}
+
+message ConfigOAuth {
+  repeated ConfigOAuthAdditionalParam additional_params = 1;
+}
+
+message ConfigChoicesSource {
+  string type = 1;
+  string function_name = 2;
+  google.protobuf.Struct params = 3;
+  bool trigger_on_load = 4;
+  repeated string trigger_field_keys = 5;
+  string app_id = 6;
+}
+
+message ConfigDraftResolutionParams {
+  string scope = 1;
+  string channel_id = 2;
+  string manager_id = 3;
+  string changed_field_key = 4;
+  google.protobuf.Value changed_value = 5;
+  google.protobuf.Struct values = 6;
+}
+
+message ConfigMediaOptions {
+  string visibility = 1;
+}
+
+message ConfigResolvedValueTarget {
+  string key = 1;
+  string storage_class = 2;
+  bool sensitive = 3;
+  string mask_type = 4;
+}
+
+message ConfigPhoneFieldLabels {
+  string country_code = 1;
+  string number = 2;
+}
+
+message ConfigAddressFieldLabels {
+  string recipient = 1;
+  string country_code = 2;
+  string phone = 3;
+  string postcode = 4;
+  string address1 = 5;
+  string address2 = 6;
+}
+
+message ConfigField {
+  string type = 1;
+  string key = 2;
+  string label = 3;
+  string description = 4;
+  string helper_text = 5;
+  repeated ConfigInlineLink helper_links = 6;
+  bool required = 7;
+  string placeholder = 8;
+  string validation_regex = 9;
+  string storage_class = 10;
+  ConfigMediaOptions media = 11;
+  ConfigResolvedValueTarget resolves_to = 12;
+  repeated ConfigCondition visible_when = 13;
+  repeated ConfigCondition enabled_when = 14;
+  google.protobuf.Value default_value = 15;
+  ConfigChoicesSource choices_source = 16;
+  int32 rows = 17;
+  string mask_type = 18;
+  double min = 19;
+  double max = 20;
+  double step = 21;
+  repeated ConfigChoice choices = 22;
+  int32 min_selections = 23;
+  int32 max_selections = 24;
+  string format = 25;
+  repeated ConfigChoice country_code_choices = 26;
+  reserved 27, 28;
+  string country_code_placeholder = 29;
+  string number_placeholder = 30;
+  bool search_enabled = 31;
+  string postcode_lookup_url = 32;
+  string recipient_placeholder = 33;
+  string phone_placeholder = 34;
+  string postcode_placeholder = 35;
+  string address1_placeholder = 36;
+  string address2_placeholder = 37;
+  repeated string accept = 38;
+  double max_file_size_mb = 39;
+  bool multiple = 40;
+  google.protobuf.Struct field_labels = 41;
+}
+
+message ConfigBlock {
+  string type = 1;
+  string id = 2;
+  string title = 3;
+  string description = 4;
+  repeated ConfigCondition visible_when = 5;
+  string text = 6;
+  repeated ConfigInlineLink helper_links = 7;
+  string tone = 8;
+  string layout = 9;
+  repeated ConfigField fields = 10;
+  string renderer = 11;
+  google.protobuf.Struct props = 12;
+  reserved 13;
+  string key = 14;
+  string label = 15;
+  string helper_text = 16;
+  reserved 17;
+  bool required = 18;
+  string placeholder = 19;
+  string validation_regex = 20;
+  string storage_class = 21;
+  ConfigMediaOptions media = 22;
+  ConfigResolvedValueTarget resolves_to = 23;
+  repeated ConfigCondition enabled_when = 24;
+  google.protobuf.Value default_value = 25;
+  ConfigChoicesSource choices_source = 26;
+  int32 rows = 27;
+  string mask_type = 28;
+  double min = 29;
+  double max = 30;
+  double step = 31;
+  repeated ConfigChoice choices = 32;
+  int32 min_selections = 33;
+  int32 max_selections = 34;
+  string format = 35;
+  repeated ConfigChoice country_code_choices = 36;
+  google.protobuf.Struct field_labels = 37;
+  string country_code_placeholder = 38;
+  string number_placeholder = 39;
+  bool search_enabled = 40;
+  string postcode_lookup_url = 41;
+  string recipient_placeholder = 42;
+  string phone_placeholder = 43;
+  string postcode_placeholder = 44;
+  string address1_placeholder = 45;
+  string address2_placeholder = 46;
+  repeated string accept = 47;
+  double max_file_size_mb = 48;
+  bool multiple = 49;
+}
+
+message ConfigGetConfigSchemaInput {}
+
+message ConfigGetConfigSchemaOutput {
+  string schema_version = 1;
+  string config_scope = 2;
+  string provider_name = 3;
+  string title = 4;
+  string description = 5;
+  string legacy_credential_fallback = 6;
+  ConfigOAuth oauth = 7;
+  ConfigHooks hooks = 8;
+  repeated ConfigBlock blocks = 9;
+}
+
+message ConfigValidationError {
+  string field_key = 1;
+  string reason_code = 2;
+  string message = 3;
+}
+
+message ConfigValidateStoredConfigInput {}
+
+message ConfigValidateStoredConfigOutput {
+  bool valid = 1;
+  string reason_code = 2;
+  string message = 3;
+  repeated string missing_fields = 4;
+  repeated ConfigValidationError errors = 5;
+  repeated ConfigValidationNotice notices = 6;
+}
+
+message ConfigChoiceList {
+  repeated ConfigChoice choices = 1;
+}
+
+message ConfigDraftResolutionOutput {
+  google.protobuf.Struct values_patch = 1;
+  reserved 2;
+  google.protobuf.Struct choices_patch = 3;
+}
+
+message OAuthProvider {
+  string provider = 1;
+  string authorization_url = 2;
+  string token_url = 3;
+  string refresh_token_url = 4;
+  repeated string scopes = 5;
+  string provider_name = 6;
+  string provider_description = 7;
+  string provider_icon_url = 8;
+  bool pkce_required = 9;
+  map<string, string> additional_params = 10;
+  string parameter_case = 11;
+  string token_request_content_type = 12;
+  string authorization_code_param_name = 13;
+  string authorization_open_mode = 14;
+}
+
+message OAuthGetAuthConfigInput {}
+
+message OAuthConfig {
+  string auth_type = 1;
+  string auth_scope = 2;
+  OAuthProvider oauth_provider = 3;
+}
+
+message OAuthCredentialValidationInput {
+  string access_token = 1;
+}
+
+message OAuthCredentialValidationResult {
+  bool valid = 1;
+  string expires_at = 2;
+  string error = 3;
+}
+
+message Calendar {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string timezone = 4;
+  bool is_primary = 5;
+}
+
+message CalendarEventType {
+  string id = 1;
+  string name = 2;
+  double duration = 3;
+  string description = 4;
+  string color = 5;
+}
+
+message CalendarTimeSlot {
+  string start_time = 1;
+  string end_time = 2;
+}
+
+message CalendarAttendee {
+  string name = 1;
+  string email = 2;
+  string phone = 3;
+}
+
+message CalendarBooking {
+  string id = 1;
+  string event_type_id = 2;
+  string start_time = 3;
+  string end_time = 4;
+  CalendarAttendee attendee = 5;
+  string status = 6;
+  string notes = 7;
+  string meeting_url = 8;
+  string calendar_event_id = 9;
+}
+
+message CalendarListCalendarsInput {
+  string page_token = 1;
+}
+
+message CalendarListCalendarsOutput {
+  repeated Calendar calendars = 1;
+  string next_page_token = 2;
+}
+
+message CalendarListEventTypesInput {
+  string calendar_id = 1;
+}
+
+message CalendarListEventTypesOutput {
+  repeated CalendarEventType event_types = 1;
+}
+
+message CalendarGetAvailabilityInput {
+  string event_type_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+  string timezone = 4;
+}
+
+message CalendarGetAvailabilityOutput {
+  repeated CalendarTimeSlot slots = 1;
+}
+
+message CalendarCreateBookingInput {
+  string event_type_id = 1;
+  string start_time = 2;
+  CalendarAttendee attendee = 3;
+  string notes = 4;
+  string timezone = 5;
+}
+
+message CalendarCancelBookingInput {
+  string booking_id = 1;
+  string reason = 2;
+}
+
+message CalendarCancelBookingOutput {
+  bool success = 1;
+  CalendarBooking booking = 2;
+}
+
+message CalendarGetBookingInput {
+  string booking_id = 1;
+}
+
+message CommandNameI18n {
+  string name = 1;
+}
+
+message CommandNameDescI18n {
+  string name = 1;
+  string description = 2;
+}
+
+message CommandParamDefI18n {
+  string name = 1;
+  string description = 2;
+}
+
+message CommandChoice {
+  string name = 1;
+  google.protobuf.Value value = 2;
+  map<string, CommandNameDescI18n> name_desc_i18n_map = 3;
+}
+
+message CommandParamDefinition {
+  string name = 1;
+  string type = 2;
+  bool required = 3;
+  string description = 4;
+  repeated CommandChoice choices = 5;
+  map<string, CommandParamDefI18n> name_desc_i18n_map = 6;
+  bool auto_complete = 7;
+  string alf_description = 8;
+}
+
+message CommandConfig {
+  string name = 1;
+  string scope = 2;
+  string button_name = 3;
+  map<string, CommandNameI18n> button_name_i18n_map = 4;
+  string description = 5;
+  map<string, CommandNameDescI18n> name_desc_i18n_map = 6;
+  string action_function_name = 7;
+  string auto_complete_function_name = 8;
+  string system_version = 9;
+  string alf_mode = 10;
+  string alf_description = 11;
+  repeated CommandParamDefinition param_definitions = 12;
+  bool enabled_by_default = 13;
+}
+
+message CommandGetCommandsInput {}
+
+message CommandGetCommandsOutput {
+  repeated CommandConfig commands = 1;
+}
+
+message CommandTrigger {
+  string type = 1;
+  map<string, string> attributes = 2;
+}
+
+message CommandAutoCompleteArgument {
+  bool focused = 1;
+  string name = 2;
+  google.protobuf.Value value = 3;
+}
+
+message CommandGetSuggestionsInput {
+  ExtensionChat chat = 1;
+  repeated CommandAutoCompleteArgument input = 2;
+  string language = 3;
+}
+
+message CommandGetSuggestionsOutput {
+  repeated CommandChoice choices = 1;
+}
+
+message CommandExecuteInput {
+  ExtensionChat chat = 1;
+  CommandTrigger trigger = 2;
+  google.protobuf.Struct input = 3;
+  string language = 4;
+}
+
+message CommandResult {
+  string type = 1;
+  google.protobuf.Struct attributes = 2;
+}
+
+message WidgetNameDescI18n {
+  string name = 1;
+  string description = 2;
+}
+
+message WidgetConfig {
+  string name = 1;
+  string action_function_name = 2;
+  string system_version = 3;
+  string default_name = 4;
+  string default_description = 5;
+  map<string, WidgetNameDescI18n> default_name_desc_i18n_map = 6;
+  string scope = 7;
+  string widget_type = 8;
+}
+
+message WidgetGetWidgetsInput {}
+
+message WidgetGetWidgetsOutput {
+  repeated WidgetConfig widgets = 1;
+}
+
+message WidgetActionInput {
+  ExtensionChat chat = 1;
+  string language = 2;
+}
+
+message WidgetActionResult {
+  string type = 1;
+  google.protobuf.Struct attributes = 2;
+}
+
+message CustomTabNameI18n {
+  string name = 1;
+}
+
+message CustomTabConfig {
+  string name = 1;
+  string action_function_name = 2;
+  string system_version = 3;
+  map<string, CustomTabNameI18n> name_i18n_map = 4;
+}
+
+message CustomTabGetCustomTabsInput {}
+
+message CustomTabGetCustomTabsOutput {
+  repeated CustomTabConfig custom_tabs = 1;
+}
+
+message CustomTabActionInput {
+  string language = 1;
+  google.protobuf.Value wam_args = 2;
+}
+
+message CustomTabActionResult {
+  string type = 1;
+  google.protobuf.Struct attributes = 2;
+}
+
+message HookConfig {
+  string type = 1;
+  string action_function_name = 2;
+  string system_version = 3;
+  string target_id = 4;
+}
+
+message HookGetHooksInput {}
+
+message HookGetHooksOutput {
+  repeated HookConfig hooks = 1;
+}
+
+message PollingPoller {
+  string function_name = 1;
+  int32 interval_seconds = 2;
+  int32 timeout_seconds = 3;
+  int32 max_concurrency = 4;
+  int32 rps = 5;
+}
+
+message PollingGetPollersInput {}
+
+message PollingGetPollersOutput {
+  repeated PollingPoller pollers = 1;
+}
+
+message PollingGetTargetChannelsInput {
+  string function_name = 1;
+  string cursor = 2;
+  int32 limit = 3;
+}
+
+message PollingGetTargetChannelsOutput {
+  repeated string channel_ids = 1;
+  string next_cursor = 2;
+  bool has_next_page = 3;
+}
+
+message MailRelayHeader {
+  string name = 1;
+  string value = 2;
+}
+
+message MailRelayCommonHeaders {
+  repeated string from = 1;
+  repeated string to = 2;
+  repeated string cc = 3;
+  repeated string bcc = 4;
+  string subject = 5;
+  string message_id = 6;
+  string date = 7;
+}
+
+message MailRelayMail {
+  string source = 1;
+  repeated string destination = 2;
+  string message_id = 3;
+  MailRelayCommonHeaders common_headers = 4;
+  repeated MailRelayHeader headers = 5;
+}
+
+message MailRelayReceipt {
+  string timestamp = 1;
+  string spam_verdict = 2;
+  string virus_verdict = 3;
+  string spf_verdict = 4;
+  string dkim_verdict = 5;
+  string dmarc_verdict = 6;
+}
+
+message MailRelayInboundInput {
+  string slug = 1;
+  string recipient = 2;
+  repeated string recipients = 3;
+  string ses_message_id = 4;
+  string bucket_name = 5;
+  string object_key = 6;
+  MailRelayMail mail = 7;
+  MailRelayReceipt receipt = 8;
+}
+
+message MailRelayInboundOutput {
+  string status = 1;
+  string idempotency_key = 2;
+  string reason = 3;
+}
+
+message StoreProfileImage {
+  string key = 1;
+  string alt = 2;
+}
+
+message StoreProfileIntro {
+  string helps_with = 1;
+  string recommended_for = 2;
+}
+
+message StoreFaq {
+  string question = 1;
+  string answer = 2;
+}
+
+message StoreProfileLocalizedContent {
+  repeated StoreProfileImage images = 1;
+  StoreProfileIntro intro = 2;
+  repeated StoreFaq faqs = 3;
+}
+
+message StoreGetProfileInput {}
+
+message StoreGetProfileOutput {
+  repeated string related_app_ids = 1;
+  map<string, StoreProfileLocalizedContent> i18n_map = 2;
+}
+
+message NotebookCell {
+  string cell_key = 1;
+  string type = 2;
+  string name = 3;
+  google.protobuf.Struct definition = 4;
+  google.protobuf.Struct presentation = 5;
+}
+
+message NotebookLayoutColumn {
+  string cell_key = 1;
+  int32 col_start = 2;
+  int32 col_end = 3;
+}
+
+message NotebookLayoutRow {
+  string row_key = 1;
+  int32 position = 2;
+  repeated NotebookLayoutColumn columns = 3;
+}
+
+message NotebookTab {
+  string tab_key = 1;
+  string label = 2;
+  int32 position = 3;
+  repeated NotebookLayoutRow layout = 4;
+}
+
+message NotebookPayload {
+  repeated NotebookCell cells = 1;
+  repeated NotebookTab tabs = 2;
+}
+
+message AppNotebook {
+  string notebook_key = 1;
+  int32 version = 2;
+  string title = 3;
+  string description = 4;
+  string icon = 5;
+  string initial_visibility = 6;
+  NotebookPayload notebook = 7;
+}
+
+message NotebookGetNotebooksInput {}
+
+message NotebookGetNotebooksOutput {
+  repeated AppNotebook notebooks = 1;
+}
+
+message DataSourceCatalog {
+  string alias = 1;
+  string display_name = 2;
+  string dialect = 3;
+  optional bool active = 4;
+}
+
+message DataSourceTable {
+  string name = 1;
+  string local_catalog_alias = 2;
+  string description = 3;
+  optional double estimated_row_count = 4;
+  optional double updated_at = 5;
+  optional string table_type = 6;
+}
+
+message DataSourceColumn {
+  string name = 1;
+  string type = 2;
+  bool nullable = 3;
+  string description = 4;
+  optional bool partition_key = 5;
+  optional int32 precision = 6;
+  optional int32 scale = 7;
+}
+
+message DataSourceTableDefinition {
+  DataSourceTable table = 1;
+  repeated DataSourceColumn columns = 2;
+  repeated string primary_key = 3;
+}
+
+message DataSourceTableListing {
+  DataSourceTable table = 1;
+  string search_text = 2;
+  repeated string tags = 3;
+}
+
+message DataSourceListCatalogsInput {}
+
+message DataSourceListCatalogsOutput {
+  repeated DataSourceCatalog catalogs = 1;
+}
+
+message DataSourceListTablesInput {
+  string local_catalog_alias = 1;
+  string updated_after = 2;
+  optional int32 limit = 3;
+  string page_token = 4;
+}
+
+message DataSourceListTablesOutput {
+  repeated DataSourceTableListing tables = 1;
+  string next_page_token = 2;
+  string metadata_version = 3;
+}
+
+message DataSourceDescribeTableInput {
+  string local_catalog_alias = 1;
+  string table_name = 2;
+  optional bool include_sample = 3;
+}
+
+message DataSourceDescribeTableOutput {
+  DataSourceTableDefinition definition = 1;
+  repeated google.protobuf.Struct sample = 2;
+  string metadata_version = 3;
+}
+
+// OrderAddress represents a recipient/shipping address.
+// The recipient's display name is `first_name` + `last_name` joined per locale.
+// Providers that do not support name splitting should put the full name in `last_name`.
+message OrderAddress {
+  string first_name = 1;
+  string last_name = 2;
+  string phone_number = 3;
+  string email = 4;
+  string cell_phone_number = 5;
+  string zipcode = 6;
+  string address1 = 7;
+  string address2 = 8;
+  string shipping_message = 9;
+  string country = 10;
+  string city = 11;
+  string province = 12;
+}
+
+message OrderBankAccount {
+  string bank_name = 1;
+  string account_no = 2;
+  string account_holder = 3;
+}
+
+message OrderDefectInfo {
+  string description = 1;
+  repeated string image_urls = 2;
+}
+
+message OrderClaimReason {
+  string type = 1;
+  string description = 2;
+}
+
+message OrderClaimability {
+  bool cancelable = 1;
+  bool returnable = 2;
+  bool exchangeable = 3;
+  bool shipping_address_changeable = 4;
+}
+
+message OrderClaim {
+  string id = 1;
+  string ext_claim_id = 2;
+  string type = 3;
+  string state = 4;
+  repeated string item_ids = 5;
+  double created_at = 6;
+}
+
+message OrderItem {
+  string id = 1;
+  string name = 2;
+  string image_url = 3;
+  double amount = 4;
+  double quantity = 5;
+  string option = 6;
+  string product_id = 7;
+  string variant_id = 8;
+  string state = 9;
+  double shipped_at = 10;
+  double delivered_at = 11;
+  double estimated_ship_date = 12;
+  OrderClaimability claimability = 13;
+}
+
+message OrderPayment {
+  string state = 1;
+  string currency = 2;
+  double total_amount = 3;
+  double items_amount = 4;
+  double shipping_amount = 5;
+  double discount_amount = 6;
+  repeated string methods = 7;
+  bool require_refund_bank_account = 8;
+}
+
+message OrderFulfillment {
+  string id = 1;
+  string state = 2;
+  repeated string item_ids = 3;
+  string tracking_number = 4;
+  string tracking_company = 5;
+  string tracking_url = 6;
+  double estimated_delivery_date = 7;
+}
+
+message Order {
+  string id = 1;
+  string title = 2;
+  double created_at = 3;
+  repeated OrderItem items = 4;
+  OrderPayment payment = 5;
+  repeated OrderFulfillment fulfillments = 6;
+  OrderAddress shipping_address = 7;
+  repeated OrderClaim claims = 8;
+}
+
+message OrderAllowedValue {
+  string value = 1;
+  string label = 2;
+}
+
+message OrderFieldConfig {
+  string type = 1;
+  repeated OrderAllowedValue allowed_values = 2;
+  string description = 3;
+}
+
+message OrderOperationOptions {
+  repeated string required = 1;
+  repeated string optional = 2;
+  map<string, OrderFieldConfig> field_configs = 3;
+}
+
+message OrderAppCapabilities {
+  OrderOperationOptions get_orders_options = 1;
+  OrderOperationOptions cancel_order_options = 2;
+  OrderOperationOptions return_order_options = 3;
+  OrderOperationOptions exchange_order_options = 4;
+  OrderOperationOptions change_address_options = 5;
+}
+
+message OrderGetOrdersInput {
+  string identifier_type = 1;
+  string identifier_value = 2;
+}
+
+message OrderGetOrdersOutput {
+  repeated Order orders = 1;
+}
+
+message OrderGetAppConfigsInput {}
+
+message OrderGetAppConfigsOutput {
+  OrderAppCapabilities app_capabilities = 1;
+}
+
+message OrderClaimItem {
+  string id = 1;
+  int32 quantity = 2;
+}
+
+message OrderCancelOrderInput {
+  string order_id = 1;
+  repeated OrderClaimItem cancel_items = 2;
+  OrderClaimReason reason = 3;
+  OrderBankAccount refund_bank_account = 4;
+}
+
+message OrderReturnOrderInput {
+  string order_id = 1;
+  repeated OrderClaimItem return_items = 2;
+  OrderClaimReason reason = 3;
+  bool request_pickup = 4;
+  OrderAddress pickup_address = 5;
+  OrderBankAccount refund_bank_account = 6;
+  string tracking_number = 7;
+  string tracking_company = 8;
+  OrderDefectInfo defect_info = 9;
+  string shipping_fee_payment_type = 10;
+}
+
+message OrderExchangeItem {
+  string product_id = 1;
+  string variant_id = 2;
+  int32 quantity = 3;
+}
+
+message OrderExchangeOrderInput {
+  string order_id = 1;
+  repeated OrderClaimItem before_exchange_items = 2;
+  repeated OrderExchangeItem after_exchange_items = 3;
+  OrderClaimReason reason = 4;
+  bool request_pickup = 5;
+  OrderAddress pickup_address = 6;
+  OrderBankAccount refund_bank_account = 7;
+  OrderDefectInfo defect_info = 8;
+  string shipping_fee_payment_type = 9;
+}
+
+message OrderGetExchangeableItemsInput {
+  string order_id = 1;
+  repeated OrderClaimItem items = 2;
+}
+
+message OrderGetExchangeableItemsOutput {
+  repeated OrderItem items = 1;
+}
+
+message OrderChangeShippingAddressInput {
+  string order_id = 1;
+  OrderAddress new_address = 2;
+}
+
+message OrderSuccessOutput {
+  bool success = 1;
+}
+
+// ===== commerce extension (order 재설계): identifier+searchFilter, buyer, orderedAt, result 래핑 =====
+// 변경 없는 값 타입(Address/BankAccount/Payment/Fulfillment/Claim 등)은 Order* 재사용.
+
+message CommerceIdentifier {
+  string type = 1;
+  string value = 2;
+}
+
+message CommerceOrderItem {
+  string id = 1;
+  string name = 2;
+  string image_url = 3;
+  double amount = 4;
+  double quantity = 5;
+  string option = 6;
+  string product_id = 7;
+  string variant_id = 8;
+  string state = 9;
+  double shipped_at = 10;
+  double delivered_at = 11;
+  double estimated_ship_date = 12;
+  OrderClaimability claimability = 13;
+}
+
+message CommerceOrder {
+  string id = 1;
+  string title = 2;
+  double ordered_at = 3;
+  Buyer buyer = 4;
+  repeated CommerceOrderItem items = 5;
+  OrderPayment payment = 6;
+  repeated OrderFulfillment fulfillments = 7;
+  OrderAddress shipping_address = 8;
+  repeated OrderClaim claims = 9;
+}
+
+message CommerceGetOrdersInput {
+  CommerceIdentifier identifier = 1;
+  google.protobuf.Value search_filter = 2;
+  string since = 3;
+  int32 limit = 4;
+}
+
+message CommerceGetOrdersOutput {
+  repeated CommerceOrder orders = 1;
+  string next = 2;
+}
+
+message CommerceAppCapabilities {
+  OrderOperationOptions get_orders_options = 1;
+  OrderOperationOptions cancel_request_order_options = 2;
+  OrderOperationOptions return_request_order_options = 3;
+  OrderOperationOptions return_accept_order_options = 4;
+  OrderOperationOptions exchange_request_order_options = 5;
+  OrderOperationOptions change_shipping_address_options = 6;
+}
+
+message CommerceGetAppConfigsInput {}
+
+message CommerceGetAppConfigsOutput {
+  CommerceAppCapabilities app_capabilities = 1;
+}
+
+message CommerceResultBody {
+  bool success = 1;
+  string error_message = 2;
+}
+
+message CommerceActionResult {
+  CommerceResultBody result = 1;
+}
+
+message CommerceCancelOrderInput {
+  CommerceIdentifier identifier = 1;
+  string order_id = 2;
+  repeated OrderClaimItem cancel_items = 3;
+  OrderClaimReason reason = 4;
+  OrderBankAccount refund_bank_account = 5;
+}
+
+message CommerceReturnOrderInput {
+  CommerceIdentifier identifier = 1;
+  string order_id = 2;
+  repeated OrderClaimItem return_items = 3;
+  OrderClaimReason reason = 4;
+  bool request_pickup = 5;
+  OrderAddress pickup_address = 6;
+  OrderBankAccount refund_bank_account = 7;
+  string tracking_number = 8;
+  string tracking_company = 9;
+  OrderDefectInfo defect_info = 10;
+}
+
+message CommerceReturnAcceptOrderInput {
+  CommerceIdentifier identifier = 1;
+  string order_id = 2;
+  repeated OrderClaimItem return_items = 3;
+  OrderClaimReason reason = 4;
+  OrderBankAccount refund_bank_account = 5;
+  bool pickup_completed = 6;
+  bool request_pickup = 7;
+}
+
+message CommerceExchangeOrderInput {
+  CommerceIdentifier identifier = 1;
+  string order_id = 2;
+  repeated OrderClaimItem before_exchange_items = 3;
+  repeated OrderExchangeItem after_exchange_items = 4;
+  OrderClaimReason reason = 5;
+  bool request_pickup = 6;
+  OrderAddress pickup_address = 7;
+  OrderBankAccount refund_bank_account = 8;
+  OrderDefectInfo defect_info = 9;
+}
+
+message CommerceGetExchangeableItemsInput {
+  CommerceIdentifier identifier = 1;
+  string order_id = 2;
+  repeated OrderClaimItem items = 3;
+}
+
+message CommerceGetExchangeableItemsOutput {
+  repeated CommerceOrderItem items = 1;
+}
+
+message CommerceChangeShippingAddressInput {
+  CommerceIdentifier identifier = 1;
+  string order_id = 2;
+  OrderAddress new_address = 3;
+}
+
+message WmsShippingInfo {
+  string name = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string mobile_number = 4;
+  string landline_number = 5;
+  string zipcode = 6;
+  string address1 = 7;
+  string address2 = 8;
+  string country = 9;
+  string province = 10;
+  string message = 11;
+}
+
+message WmsDelivery {
+  string ext_id = 1;
+  repeated string item_ids = 2;
+}
+
+message WmsOrderItem {
+  string ext_id = 1;
+  string ext_commerce_order_item_id = 2;
+  string product_name = 3;
+  double quantity = 4;
+  string state = 5;
+  string package_id = 6;
+  string estimated_ship_date = 7;
+  string invoice_number = 8;
+  string delivery_company = 9;
+  WmsShippingInfo shipping_info = 10;
+}
+
+message WmsOrder {
+  string ext_id = 1;
+  string ext_commerce_order_id = 2;
+  repeated WmsOrderItem items = 3;
+  repeated WmsDelivery deliveries = 4;
+}
+
+message WmsGetOrdersRequest {
+  string commerce_order_ids = 1;
+  string order_ids = 2;
+  string package_ids = 3;
+  string shop_id = 4;
+}
+
+message WmsGetOrdersResult {
+  repeated WmsOrder orders = 1;
+}
+
+message WmsGetOrderRequest {
+  string commerce_order_id = 1;
+  string order_id = 2;
+  string package_id = 3;
+  string shop_id = 4;
+}
+
+message WmsGetOrderResult {
+  WmsOrder order = 1;
+}
+
+message WmsGetShopIDRequest {
+  string commerce_type = 1;
+  string commerce_key = 2;
+}
+
+message WmsGetShopIDResult {
+  reserved 1;
+  string message = 2;
+  google.protobuf.Value shop_id = 3;
+}
+
+message WmsGetSupportedCommercesRequest {}
+
+message WmsGetSupportedCommercesResult {
+  repeated string commerce_types = 1;
+}
+
+message WmsOrderStateRequest {
+  string order_id = 1;
+  string order_ids = 2;
+  string reason = 3;
+  string memo = 4;
+}
+
+message WmsChangeShippingAddressRequest {
+  string order_id = 1;
+  string recipient = 2;
+  string phone = 3;
+  string address1 = 4;
+  string postal_code = 5;
+  string address2 = 6;
+  string message = 7;
+}
+
+message WmsRestoreOrderRequest {
+  string order_id = 1;
+  string memo = 2;
+  string prd_seq = 3;
+  bool restore_pack = 4;
+  bool restock_normal = 5;
+  bool restock_bad = 6;
+}
+
+message WmsSuccessResult {
+  bool success = 1;
+  string message = 2;
+}
+
+// --- order group (전환용): getOrders는 WmsOrderV2, 액션은 result 래핑 ---
+
+message Buyer {
+  string member_id = 1;
+  string email = 2;
+  string phone = 3;
+  string name = 4;
+}
+
+message WmsDeliveryV2 {
+  string id = 1;
+  repeated string item_ids = 2;
+}
+
+message WmsOrderItemV2 {
+  string id = 1;
+  string commerce_order_item_id = 2;
+  string product_name = 3;
+  double quantity = 4;
+  string state = 5;
+  string package_id = 6;
+  string estimated_ship_date = 7;
+  string invoice_number = 8;
+  string delivery_company = 9;
+}
+
+message WmsOrderV2 {
+  string id = 1;
+  string commerce_order_id = 2;
+  Buyer buyer = 3;
+  repeated WmsOrderItemV2 items = 4;
+  repeated WmsDeliveryV2 deliveries = 5;
+}
+
+message WmsIdentifier {
+  string type = 1;
+  string value = 2;
+}
+
+message WmsOrderGetOrdersRequest {
+  WmsIdentifier identifier = 1;
+  google.protobuf.Value search_filter = 2;
+  string shop_id = 3;
+  string since = 4;
+  int32 limit = 5;
+}
+
+message WmsOrderGetOrdersResult {
+  repeated WmsOrderV2 orders = 1;
+  string next = 2;
+}
+
+message WmsOrderActionRequest {
+  WmsIdentifier identifier = 1;
+  repeated string order_ids = 2;
+  string reason = 3;
+  string memo = 4;
+}
+
+message WmsOrderChangeShippingAddressInput {
+  WmsIdentifier identifier = 1;
+  string order_id = 2;
+  OrderAddress new_address = 3;
+  string reason = 4;
+  string memo = 5;
+}
+
+message WmsOrderResultBody {
+  bool success = 1;
+  string error_message = 2;
+}
+
+message WmsOrderActionResult {
+  WmsOrderResultBody result = 1;
+}
+
+message WmsFieldConfig {
+  string type = 1;
+  repeated OrderAllowedValue allowed_values = 2;
+  string description = 3;
+}
+
+message WmsOperationOptions {
+  repeated string required = 1;
+  repeated string optional = 2;
+  map<string, WmsFieldConfig> field_configs = 3;
+}
+
+message WmsAppCapabilities {
+  WmsOperationOptions get_orders_options = 1;
+  WmsOperationOptions cancel_request_order_options = 2;
+  WmsOperationOptions cancel_restore_order_options = 3;
+  WmsOperationOptions return_request_order_options = 4;
+  WmsOperationOptions return_restore_order_options = 5;
+  WmsOperationOptions exchange_request_order_options = 6;
+  WmsOperationOptions exchange_restore_order_options = 7;
+  WmsOperationOptions change_shipping_address_options = 8;
+}
+
+message WmsGetAppConfigsInput {}
+
+message WmsGetAppConfigsOutput {
+  WmsAppCapabilities app_capabilities = 1;
+}
+
+message MessagingOnMediumMessageCreatedInput {
+  ChannelUserChat user_chat = 1;
+  ChannelMessage message = 2;
+}
+
+message MessagingSendResult {
+  string send_state = 1;
+  string message = 2;
+}
+
+message MessagingOnMediumMessageCreatedOutput {
+  MessagingSendResult send_result = 1;
+}
+
+message MessagingInboxOnMediumUserChatClosedInput {
+  ChannelUserChat user_chat = 1;
+}
+
+message MessagingInboxOnMediumUserChatClosedOutput {}
+
+message MessagingInboxGetWritingTypesInput {
+  ChannelUserChat user_chat = 1;
+}
+
+message MessagingInboxGetWritingTypesOutput {
+  WritingTypeMap writing_type_map = 1;
+}
+
+message MessagingInboxGetCustomEditorWamInput {
+  ChannelUser user = 1;
+  ChannelUserChat user_chat = 2;
+  string entity_type = 3;
+  string medium_topic_key = 4;
+  repeated string medium_topic_labels = 5;
+  ChannelMessage message = 6;
+}
+
+message MessagingInboxGetMediumTopicSelectorWamInput {
+  ChannelUser user = 1;
+}
+
+message MessagingInboxGetMediumMessageErrorReasonInput {
+  ChannelUserChat user_chat = 1;
+  ChannelMessage message = 2;
+}
+
+message MessagingInboxGetMediumMessageErrorReasonOutput {
+  string error_message = 1;
+}
+
+message MessagingPrebuiltGetWritingTypesInput {}
+
+message MessagingPrebuiltGetWritingTypesOutput {
+  WritingTypeMap writing_type_map = 1;
+}
+
+message MessagingPrebuiltValidateEntityInput {
+  PrebuiltMessage message = 1;
+  string entity_type = 2;
+  string entity_id = 3;
+  string medium_topic_build_key = 4;
+  repeated string medium_topic_build_labels = 5;
+}
+
+message MessagingPrebuiltValidateEntityOutput {
+  string entity_type = 1;
+  string entity_id = 2;
+  repeated UnavailableReason reasons = 3;
+}
+
+message MessagingPrebuiltGetCustomEditorWamInput {
+  string entity_type = 1;
+  string entity_id = 2;
+  string medium_topic_build_key = 3;
+  repeated string medium_topic_build_labels = 4;
+  PrebuiltMessage message = 5;
+  string trigger_event_name = 6;
+  google.protobuf.Struct trigger_event_name_i18n_map = 7;
+}
+
+message MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput {
+  string entity_type = 1;
+}
+
+message MessagingPrebuiltBuildMediumTopicsInput {
+  ChannelUser user = 1;
+  string entity_type = 2;
+  string medium_topic_builder_key = 3;
+}
+
+message MessagingPrebuiltBuildMediumTopicsOutput {
+  string medium_topic_key = 1;
+  repeated string medium_topic_labels = 2;
+  MediumProfile medium_profile = 3;
+}
+
+message MessagingPrebuiltGetDefaultOptionsInput {}
+
+message MessagingDefaultOptions {
+  google.protobuf.Struct campaign_user_query = 1 [json_name = "campaign.userQuery"];
+  google.protobuf.Struct one_time_msg_user_query = 2 [json_name = "oneTimeMsg.userQuery"];
+  bool campaign_selectable_advertising = 3 [json_name = "campaign.selectableAdvertising"];
+  bool one_time_msg_selectable_advertising = 4 [json_name = "oneTimeMsg.selectableAdvertising"];
+}
+
+message MessagingPrebuiltGetDefaultOptionsOutput {
+  MessagingDefaultOptions default_options = 1;
+}
+
+message AlfTaskMemoryDefinition {
+  string name = 1;
+  string type = 2;
+  string description = 3;
+}
+
+message AlfTaskWorkflowNode {
+  string id = 1;
+  string type = 2;
+  google.protobuf.Struct config = 3;
+  string next = 4;
+}
+
+message AlfTaskPredefinedTask {
+  string version = 1;
+  string name = 2;
+  string trigger = 3;
+  repeated AlfTaskMemoryDefinition memory_schema = 4;
+  repeated AlfTaskWorkflowNode nodes = 5;
+  string start_node_id = 6;
+}
+
+message AlfTaskGetTasksInput {
+  string version = 1;
+}
+
+message AlfTaskGetTasksOutput {
+  repeated AlfTaskPredefinedTask predefined_tasks = 1;
+}

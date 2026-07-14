@@ -1,0 +1,67 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    environment: npm-release
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: "ts/.nvmrc"
+          cache: "pnpm"
+          cache-dependency-path: "ts/pnpm-lock.yaml"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        working-directory: ts
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        working-directory: ts
+        run: pnpm build
+
+      - name: Verify publishable package contents
+        working-directory: ts
+        run: |
+          mkdir -p /tmp/npm-packs
+          pnpm --dir packages/cli pack --pack-destination /tmp/npm-packs
+          pnpm --dir packages/core pack --pack-destination /tmp/npm-packs
+          pnpm --dir packages/server pack --pack-destination /tmp/npm-packs
+          pnpm --dir packages/wam pack --pack-destination /tmp/npm-packs
+          pnpm --dir packages/wam-ui pack --pack-destination /tmp/npm-packs
+
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          cwd: ts
+          publish: pnpm changeset publish
+          version: pnpm changeset version
+          commit: "chore: release packages"
+          title: "chore: release packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

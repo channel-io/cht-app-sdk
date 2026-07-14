@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package channel.app.sdk.v1;
+
+import "channel/app/sdk/v1/context.proto";
+import "channel/app/sdk/v1/error.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1";
+
+message FunctionRequest {
+  string method = 1;
+  google.protobuf.Value params = 2;
+  FunctionContext context = 3;
+  string system_version = 4;
+}
+
+message FunctionResponse {
+  google.protobuf.Value result = 1;
+  FunctionError error = 2;
+}
+
+message FunctionSchema {
+  string name = 1;
+  string description = 2;
+  google.protobuf.Struct input_schema = 3;
+  google.protobuf.Struct output_schema = 4;
+}
+
+message GetFunctionsResult {
+  repeated FunctionSchema functions = 1;
+  bool success = 2;
+  string error_message = 3;
+}

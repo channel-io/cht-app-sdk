@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package channel.app.sdk.v1;
+
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1";
+
+message Caller {
+  string type = 1;
+  string id = 2;
+}
+
+message Channel {
+  string id = 1;
+}
+
+message Chat {
+  string type = 1;
+  string id = 2;
+}
+
+message User {
+  string id = 1;
+  string channel_id = 2;
+  string type = 3;
+  bool member = 4;
+  string member_id = 5;
+  google.protobuf.Struct profile = 6;
+}
+
+message UserChat {
+  string id = 1;
+  google.protobuf.Struct profile = 2;
+  string state = 3;
+}
+
+message FunctionContext {
+  Caller caller = 1;
+  Channel channel = 2;
+  User user = 3;
+  UserChat user_chat = 4;
+  string auth_token = 5;
+  string legacy_auth_token = 6;
+  map<string, string> api_credentials = 7;
+  google.protobuf.Struct config = 8;
+  string language = 9;
+  bool sandbox = 10;
+  string session_id = 11;
+  google.protobuf.Value seed_state = 12;
+}
