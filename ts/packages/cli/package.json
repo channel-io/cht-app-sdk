@@ -32,14 +32,14 @@
     "@channel.io/app-sdk-core": "workspace:*",
     "@channel.io/app-sdk-server": "workspace:*",
     "@channel.io/app-sdk-wam": "workspace:*",
-    "commander": "^12.1.0",
+    "commander": "^15.0.0",
     "picocolors": "^1.1.1",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
     "@types/prompts": "^2.4.9",
-    "typescript": "^5.7.2",
-    "vitest": "^3.2.6"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
   },
   "repository": {
     "type": "git",
