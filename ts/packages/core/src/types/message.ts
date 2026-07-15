@@ -41,13 +41,7 @@ export type MessageBlock = TextBlock | DividerBlock;
 
 /** Color variants for message buttons, matching MessageColorVariant proto enum. */
 export type MessageButtonColorVariant =
-  | "cobalt"
-  | "green"
-  | "orange"
-  | "red"
-  | "black"
-  | "pink"
-  | "purple";
+  "cobalt" | "green" | "orange" | "red" | "black" | "pink" | "purple";
 
 /** Triggers an app command when the button is clicked. */
 export interface CommandAction {
