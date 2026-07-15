@@ -110,6 +110,42 @@ export const NativeGetAppNotebookVersionsResultSchema = z.object({
   notebooks: z.array(NativeAppNotebookVersionSchema),
 });
 
+const NativeMailRelayObjectKeySchema = NativeNonEmptyStringSchema.refine(
+  (value) => value.startsWith("app-mail/") && !value.includes(".."),
+  "objectKey must be under the app-mail/ prefix"
+);
+
+export const NativeMailRelayGetRawMimeParamsSchema = z.object({
+  recipient: NativeNonEmptyStringSchema,
+  sesMessageId: NativeNonEmptyStringSchema,
+  bucketName: NativeNonEmptyStringSchema,
+  objectKey: NativeMailRelayObjectKeySchema,
+});
+
+export const NativeMailRelayRawMimeEncodingSchema = z.enum(["utf8", "base64"]);
+
+export const NativeMailRelayGetRawMimeResultSchema = z.object({
+  sesMessageId: NativeNonEmptyStringSchema,
+  contentType: NativeNonEmptyStringSchema.optional(),
+  encoding: NativeMailRelayRawMimeEncodingSchema,
+  rawMime: NativeNonEmptyStringSchema,
+  size: z.number().int().nonnegative().optional(),
+});
+
+export const NativeMailRelaySendRawEmailParamsSchema = z.object({
+  sender: NativeNonEmptyStringSchema,
+  recipients: z.array(NativeNonEmptyStringSchema).min(1),
+  rawMime: NativeNonEmptyStringSchema,
+  idempotencyKey: NativeNonEmptyStringSchema,
+  metadata: z.record(z.string(), z.string()).optional(),
+});
+
+export const NativeMailRelaySendRawEmailResultSchema = z.object({
+  providerMessageId: NativeNonEmptyStringSchema.optional(),
+  idempotencyStatus: z.enum(["sent", "duplicate"]),
+  sentAt: NativeNonEmptyStringSchema.optional(),
+});
+
 interface NativeFunctionSchemaDefinition {
   name: string;
   description: string;
@@ -153,6 +189,18 @@ export const nativeFunctionSchemaDefinitions = [
     description: "Get the latest synced app notebook versions.",
     input: NativeGetAppNotebookVersionsParamsSchema,
     output: NativeGetAppNotebookVersionsResultSchema,
+  },
+  {
+    name: "mailRelay.getRawMime",
+    description: "Fetch a raw MIME payload for a validated app mail relay event.",
+    input: NativeMailRelayGetRawMimeParamsSchema,
+    output: NativeMailRelayGetRawMimeResultSchema,
+  },
+  {
+    name: "mailRelay.sendRawEmail",
+    description: "Send a raw email reply through a validated app mail relay sender.",
+    input: NativeMailRelaySendRawEmailParamsSchema,
+    output: NativeMailRelaySendRawEmailResultSchema,
   },
 ] satisfies NativeFunctionSchemaDefinition[];
 

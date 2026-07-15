@@ -40,6 +40,8 @@ Initial supported operations:
 - `createAppDataTableSchema`
 - `getAppDataTableSchema`
 - `upsertAppDataTableRows`
+- `mailRelay.getRawMime`
+- `mailRelay.sendRawEmail`
 - app function proxy calls through `/general/v1/apps/{appId}/functions`
 
 AppDataTable functions follow AppStore public native function scopes and should
@@ -54,6 +56,12 @@ App Notebook functions follow the ALF task pattern. Use an app-scoped access
 token, register the `notebook` extension, then call `registerAppNotebooks` to
 ask cht-notebook to sync notebooks from the app server. Use
 `getAppNotebookVersions` to inspect the latest synced versions.
+
+Mail relay functions follow the app mail routing pattern. Use an app-scoped
+access token after registering the `mailRelay` extension. `mailRelay.getRawMime`
+returns a validated raw MIME payload for an app-mail SES object, and
+`mailRelay.sendRawEmail` sends raw email replies through AppStore-owned mail
+permissions after AppStore validates sender, recipient, and idempotency inputs.
 
 The SDK also exports native function schemas:
 
