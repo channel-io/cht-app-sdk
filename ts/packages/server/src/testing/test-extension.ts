@@ -96,8 +96,7 @@ export function createTestExtension<T>(
 
   const functionNames = functionKeys.map((key) => {
     const funcMeta = Reflect.getMetadata(FUNCTION_METADATA, ExtensionClass, key) as
-      | { name?: string }
-      | undefined;
+      { name?: string } | undefined;
     return funcMeta?.name ?? String(key);
   });
 

@@ -7,5 +7,5 @@ import { zodToJsonSchema as zodToJsonSchemaLib } from "zod-to-json-schema";
 export function zodToJsonSchema(schema: z.ZodType): Record<string, unknown> {
   return zodToJsonSchemaLib(schema, {
     $refStrategy: "none",
-  }) as Record<string, unknown>;
+  });
 }

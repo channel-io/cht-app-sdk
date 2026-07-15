@@ -90,8 +90,7 @@ export const GetStoreProfileOutputSchema = StoreProfileMetadataSchema;
 export type GetStoreProfileOutput = StoreProfileMetadata;
 
 export type StoreProfileProvider =
-  | StoreProfileMetadata
-  | ((ctx: Context) => StoreProfileMetadata | Promise<StoreProfileMetadata>);
+  StoreProfileMetadata | ((ctx: Context) => StoreProfileMetadata | Promise<StoreProfileMetadata>);
 
 export function defineStoreProfile(profile: StoreProfileMetadata): StoreProfileMetadata {
   return StoreProfileMetadataSchema.parse(profile);
