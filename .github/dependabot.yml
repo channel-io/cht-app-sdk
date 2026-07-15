@@ -4,6 +4,11 @@ updates:
     directory: "/ts"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@channel.io/bezier-*"
     groups:
       typescript-dependencies:
         patterns:
@@ -13,6 +18,10 @@ updates:
     directory: "/ts/examples/basic"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
     groups:
       basic-example-dependencies:
         patterns:
@@ -22,6 +31,10 @@ updates:
     directory: "/ts/examples/calendar"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
     groups:
       calendar-example-dependencies:
         patterns:
