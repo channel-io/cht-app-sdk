@@ -42,6 +42,9 @@ describe("datasource policy helpers", () => {
     expect(queryWithRowLimit("select * from orders;", 10)).toBe(
       "SELECT * FROM (select * from orders) AS datasource_query LIMIT 10"
     );
+    expect(queryWithRowLimit(`select * from orders${";".repeat(10_000)}`, 10)).toBe(
+      "SELECT * FROM (select * from orders) AS datasource_query LIMIT 10"
+    );
   });
 });
 

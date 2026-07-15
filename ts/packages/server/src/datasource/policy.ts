@@ -128,5 +128,10 @@ export class DataSourceByteLimitTracker {
 }
 
 function trimSql(query: string): string {
-  return query.trim().replace(/;+$/, "").trim();
+  const normalized = query.trim();
+  let end = normalized.length;
+  while (end > 0 && normalized.charCodeAt(end - 1) === 59) {
+    end -= 1;
+  }
+  return normalized.slice(0, end).trim();
 }

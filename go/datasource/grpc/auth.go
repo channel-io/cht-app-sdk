@@ -1,6 +1,7 @@
 package grpcdatasource
 
 import (
+	"bytes"
 	"context"
 	"crypto/hmac"
 	"crypto/sha256"
@@ -161,11 +162,17 @@ func DataSourceSignaturePayload(req *ExecuteQueryRequest, accessToken string) ([
 	if err != nil {
 		return nil, fmt.Errorf("marshal datasource request for signature: %w", err)
 	}
-	payload := make([]byte, 0, len(reqBytes)+1+len(accessToken))
-	payload = append(payload, reqBytes...)
-	payload = append(payload, '\n')
-	payload = append(payload, accessToken...)
-	return payload, nil
+	var payload bytes.Buffer
+	if _, err := payload.Write(reqBytes); err != nil {
+		return nil, fmt.Errorf("write datasource request for signature: %w", err)
+	}
+	if err := payload.WriteByte('\n'); err != nil {
+		return nil, fmt.Errorf("write datasource signature separator: %w", err)
+	}
+	if _, err := payload.WriteString(accessToken); err != nil {
+		return nil, fmt.Errorf("write datasource access token for signature: %w", err)
+	}
+	return payload.Bytes(), nil
 }
 
 func VerifyDataSourceSignature(signature string, signingKey string, req *ExecuteQueryRequest, accessToken string) bool {
