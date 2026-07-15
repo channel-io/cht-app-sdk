@@ -443,7 +443,8 @@ function baseDatabaseTypeName(databaseType: string | undefined): string | undefi
   if (!normalized) {
     return undefined;
   }
-  return normalized.replace(/\s*\(.*/, "");
+  const parametersStart = normalized.indexOf("(");
+  return parametersStart === -1 ? normalized : normalized.slice(0, parametersStart).trimEnd();
 }
 
 function parseDecimalPrecisionScale(
