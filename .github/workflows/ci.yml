@@ -59,6 +59,7 @@ jobs:
         uses: bufbuild/buf-setup-action@v1
         with:
           version: "1.54.0"
+          github_token: ${{ github.token }}
 
       - name: Install TypeScript dependencies
         working-directory: ts
