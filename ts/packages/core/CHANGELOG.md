@@ -1,5 +1,11 @@
 # @channel.io/app-sdk-core
 
+## 0.16.2
+
+### Patch Changes
+
+- 1fe68d4: Support `config.saved` and `config.deleted` hook metadata registrations.
+
 ## 0.16.1
 
 ### Patch Changes

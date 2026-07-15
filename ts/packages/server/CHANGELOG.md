@@ -1,5 +1,13 @@
 # @channel.io/app-sdk-server
 
+## 0.16.2
+
+### Patch Changes
+
+- a863969: Harden datasource parsing and signature payload construction for large public inputs.
+- Updated dependencies [1fe68d4]
+  - @channel.io/app-sdk-core@0.16.2
+
 ## 0.16.1
 
 ### Patch Changes
