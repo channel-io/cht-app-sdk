@@ -7,6 +7,20 @@ import {
 } from "../../extensions/index.js";
 
 describe("config extension schema", () => {
+  it("preserves dynamic multi-config metadata", () => {
+    const parsed = GetConfigSchemaOutputSchema.parse({
+      schemaVersion: "v1",
+      configScope: "channel",
+      providerName: "Example Provider",
+      supportsMultiple: true,
+      keyResolverFunctionName: "config.resolveKey",
+      blocks: [{ type: "text", key: "type", label: "Type" }],
+    });
+
+    expect(parsed.supportsMultiple).toBe(true);
+    expect(parsed.keyResolverFunctionName).toBe("config.resolveKey");
+  });
+
   it("accepts layout-aware grouped config fields", () => {
     const parsed = GetConfigSchemaOutputSchema.parse({
       schemaVersion: "v1",

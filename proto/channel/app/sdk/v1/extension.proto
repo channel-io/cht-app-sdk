@@ -244,6 +244,8 @@ message ConfigGetConfigSchemaOutput {
   ConfigOAuth oauth = 7;
   ConfigHooks hooks = 8;
   repeated ConfigBlock blocks = 9;
+  bool supports_multiple = 10;
+  string key_resolver_function_name = 11;
 }
 
 message ConfigValidationError {

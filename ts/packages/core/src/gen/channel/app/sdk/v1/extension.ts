@@ -255,6 +255,8 @@ export interface ConfigGetConfigSchemaOutput {
   oauth?: ConfigOAuth | undefined;
   hooks?: ConfigHooks | undefined;
   blocks?: ConfigBlock[] | undefined;
+  supportsMultiple?: boolean | undefined;
+  keyResolverFunctionName?: string | undefined;
 }
 
 export interface ConfigValidationError {
