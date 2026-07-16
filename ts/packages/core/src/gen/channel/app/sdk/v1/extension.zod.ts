@@ -263,6 +263,8 @@ export const ConfigGetConfigSchemaOutputProtoSchema = z.object({
   oauth: z.lazy(() => ConfigOAuthProtoSchema).optional(),
   hooks: z.lazy(() => ConfigHooksProtoSchema).optional(),
   blocks: z.array(z.lazy(() => ConfigBlockProtoSchema)).optional(),
+  supportsMultiple: z.boolean().optional(),
+  keyResolverFunctionName: z.string().optional(),
 }) satisfies z.ZodType<pb.ConfigGetConfigSchemaOutput>;
 export type ConfigGetConfigSchemaOutputProto = z.infer<typeof ConfigGetConfigSchemaOutputProtoSchema>;
 

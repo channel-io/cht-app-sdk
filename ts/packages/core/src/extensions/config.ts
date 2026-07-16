@@ -351,6 +351,8 @@ export const GetConfigSchemaOutputSchema = z.object({
   oauth: ConfigOAuthSchema.optional(),
   hooks: ConfigHooksSchema.optional(),
   blocks: z.array(ConfigBlockSchema).min(1),
+  supportsMultiple: z.boolean().optional(),
+  keyResolverFunctionName: z.string().optional(),
 });
 export type GetConfigSchemaOutput = ProtoBacked<
   z.infer<typeof GetConfigSchemaOutputSchema>,

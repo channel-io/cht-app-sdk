@@ -9124,6 +9124,12 @@
             ]
           },
           "minItems": 1
+        },
+        "supportsMultiple": {
+          "type": "boolean"
+        },
+        "keyResolverFunctionName": {
+          "type": "string"
         }
       },
       "required": [

@@ -33,6 +33,12 @@ Legacy apps may still register `apikey`, but API key registration is deprecated 
 - schema `hooks` may reference ordinary app functions such as `draftResolverFunctionName` and `validateFunctionName`
 - these hook targets are ordinary app functions, not additional config extension functions
 
+## Multi Config
+
+Set `supportsMultiple: true` when one scope can store multiple independent config items. Each item has a stable outer `key`. Ordinary app functions receive `{ [key]: values }` in `ctx.config`, even when only one item exists. Stored-config validation receives the selected item's flat `values` object in `ctx.config`.
+
+`keyResolverFunctionName` is optional. If it is omitted and a new item has no requested key, AppStore assigns a key. Apps that already own a stable identifier may pass that identifier to the keyed config native functions without declaring a resolver.
+
 ## Implementation Notes
 
 - use `storageClass: "credential"` for encrypted or masked fields

@@ -2157,6 +2157,8 @@ type ConfigGetConfigSchemaOutput struct {
 	Oauth                    *ConfigOAuth           `protobuf:"bytes,7,opt,name=oauth,proto3" json:"oauth,omitempty"`
 	Hooks                    *ConfigHooks           `protobuf:"bytes,8,opt,name=hooks,proto3" json:"hooks,omitempty"`
 	Blocks                   []*ConfigBlock         `protobuf:"bytes,9,rep,name=blocks,proto3" json:"blocks,omitempty"`
+	SupportsMultiple         bool                   `protobuf:"varint,10,opt,name=supports_multiple,json=supportsMultiple,proto3" json:"supports_multiple,omitempty"`
+	KeyResolverFunctionName  string                 `protobuf:"bytes,11,opt,name=key_resolver_function_name,json=keyResolverFunctionName,proto3" json:"key_resolver_function_name,omitempty"`
 	unknownFields            protoimpl.UnknownFields
 	sizeCache                protoimpl.SizeCache
 }
@@ -2252,6 +2254,20 @@ func (x *ConfigGetConfigSchemaOutput) GetBlocks() []*ConfigBlock {
 		return x.Blocks
 	}
 	return nil
+}
+
+func (x *ConfigGetConfigSchemaOutput) GetSupportsMultiple() bool {
+	if x != nil {
+		return x.SupportsMultiple
+	}
+	return false
+}
+
+func (x *ConfigGetConfigSchemaOutput) GetKeyResolverFunctionName() string {
+	if x != nil {
+		return x.KeyResolverFunctionName
+	}
+	return ""
 }
 
 type ConfigValidationError struct {
@@ -14520,7 +14536,7 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\x06accept\x18/ \x03(\tR\x06accept\x12'\n" +
 	"\x10max_file_size_mb\x180 \x01(\x01R\rmaxFileSizeMb\x12\x1a\n" +
 	"\bmultiple\x181 \x01(\bR\bmultipleJ\x04\b\r\x10\x0eJ\x04\b\x11\x10\x12\"\x1c\n" +
-	"\x1aConfigGetConfigSchemaInput\"\xa9\x03\n" +
+	"\x1aConfigGetConfigSchemaInput\"\x93\x04\n" +
 	"\x1bConfigGetConfigSchemaOutput\x12%\n" +
 	"\x0eschema_version\x18\x01 \x01(\tR\rschemaVersion\x12!\n" +
 	"\fconfig_scope\x18\x02 \x01(\tR\vconfigScope\x12#\n" +
@@ -14530,7 +14546,10 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\x1alegacy_credential_fallback\x18\x06 \x01(\tR\x18legacyCredentialFallback\x125\n" +
 	"\x05oauth\x18\a \x01(\v2\x1f.channel.app.sdk.v1.ConfigOAuthR\x05oauth\x125\n" +
 	"\x05hooks\x18\b \x01(\v2\x1f.channel.app.sdk.v1.ConfigHooksR\x05hooks\x127\n" +
-	"\x06blocks\x18\t \x03(\v2\x1f.channel.app.sdk.v1.ConfigBlockR\x06blocks\"o\n" +
+	"\x06blocks\x18\t \x03(\v2\x1f.channel.app.sdk.v1.ConfigBlockR\x06blocks\x12+\n" +
+	"\x11supports_multiple\x18\n" +
+	" \x01(\bR\x10supportsMultiple\x12;\n" +
+	"\x1akey_resolver_function_name\x18\v \x01(\tR\x17keyResolverFunctionName\"o\n" +
 	"\x15ConfigValidationError\x12\x1b\n" +
 	"\tfield_key\x18\x01 \x01(\tR\bfieldKey\x12\x1f\n" +
 	"\vreason_code\x18\x02 \x01(\tR\n" +
