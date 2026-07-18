@@ -1,5 +1,11 @@
 # @channel.io/app-sdk-core
 
+## 0.16.3
+
+### Patch Changes
+
+- 2b756e6: Add multi-config schema metadata for keyed config collections and optional key resolver functions.
+
 ## 0.16.2
 
 ### Patch Changes
