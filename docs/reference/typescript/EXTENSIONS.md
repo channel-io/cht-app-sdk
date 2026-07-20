@@ -470,16 +470,25 @@ Provides warehouse/order-management capabilities for WMS integrations such as Ez
 `commerceType` plus a canonical `commerceKey`. Treat `commerceKey` as an opaque
 commerce-defined string.
 
-| Commerce         | `commerceType`       | `commerceKey` format                                         |
-| ---------------- | -------------------- | ------------------------------------------------------------ |
-| Cafe24           | `appCafe24`          | `{mallId}-{shopNo}`                                          |
-| Naver SmartStore | `appNaverSmartStore` | `{encode(channelNo)}-{encode(storeName)}-{encode(storeUrl)}` |
+| Commerce         | `commerceType`       | `commerceKey` format                           |
+| ---------------- | -------------------- | ---------------------------------------------- |
+| Cafe24           | `appCafe24`          | `{encode(mallId)}-{shopNo}-{encode(shopName)}` |
+| Naver SmartStore | `appNaverSmartStore` | `{encode(accountId)}-{encode(accountUid)}`     |
 
-When a commerce needs multiple identity parts, each part must be
-percent-encoded before joining with `-`, and WMS apps should split on
-unencoded `-` before decoding each part. This keeps keys reversible even when
-source values contain `-`. SmartStore always keeps the three positions above;
-`storeName` and `storeUrl` can be empty strings.
+When a commerce needs multiple identity parts, percent-encode value parts
+before joining them with `-`. Cafe24 percent-encodes `mallId` and `shopName`
+while keeping `shopNo` unencoded as shown above. A literal `-` inside a value
+must be forced to `%2D` even though it is normally an unreserved URL character.
+WMS apps should split on unencoded `-` before decoding each part. This keeps
+keys reversible even when source values contain `-`.
+
+Cafe24 producers must emit the three-part canonical key. WMS readers should
+continue accepting the legacy `{mallId}-{shopNo}` key; for canonical keys they
+read `mallId` and `shopNo` from the front, while legacy parsing keeps the final
+separator rule.
+
+Naver SmartStore producers must emit exactly two non-empty parts. WMS readers
+decode them as `accountId` and `accountUid`, in that order.
 
 `extension.wms.metadata.getSupportedCommerces` returns `commerceTypes`, for
 example `["appCafe24"]`, so commerce apps can list only compatible WMS apps.
