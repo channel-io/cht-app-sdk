@@ -19,6 +19,7 @@ const allowedTsEnumTypes = new Set([
   "ConfigScope",
   "ConfigStorageClass",
   "DataSourceDialect",
+  "DataSourceManagerAccess",
   "DataSourceTableType",
   "HookType",
   "MessagingPrebuiltEntityType",

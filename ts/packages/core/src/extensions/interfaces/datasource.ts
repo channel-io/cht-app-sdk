@@ -12,6 +12,7 @@ export type {
   DataSourceCatalog,
   DataSourceColumn,
   DataSourceDialect,
+  DataSourceManagerAccess,
   DataSourceTable,
   DataSourceTableDefinition,
   DataSourceTableListing,

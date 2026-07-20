@@ -724,6 +724,7 @@ message DataSourceTable {
   optional double estimated_row_count = 4;
   optional double updated_at = 5;
   optional string table_type = 6;
+  string manager_access = 7;
 }
 
 message DataSourceColumn {

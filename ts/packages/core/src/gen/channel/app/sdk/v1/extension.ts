@@ -788,6 +788,7 @@ export interface DataSourceTable {
   estimatedRowCount?: number | undefined;
   updatedAt?: number | undefined;
   tableType?: string | undefined;
+  managerAccess?: string | undefined;
 }
 
 export interface DataSourceColumn {

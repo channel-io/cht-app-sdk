@@ -823,6 +823,7 @@ export const DataSourceTableProtoSchema = z.object({
   estimatedRowCount: z.number().optional(),
   updatedAt: z.number().optional(),
   tableType: z.string().optional(),
+  managerAccess: z.string().optional(),
 }) satisfies z.ZodType<pb.DataSourceTable>;
 export type DataSourceTableProto = z.infer<typeof DataSourceTableProtoSchema>;
 

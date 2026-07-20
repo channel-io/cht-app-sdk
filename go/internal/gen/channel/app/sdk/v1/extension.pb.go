@@ -7054,6 +7054,7 @@ type DataSourceTable struct {
 	EstimatedRowCount *float64               `protobuf:"fixed64,4,opt,name=estimated_row_count,json=estimatedRowCount,proto3,oneof" json:"estimated_row_count,omitempty"`
 	UpdatedAt         *float64               `protobuf:"fixed64,5,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at,omitempty"`
 	TableType         *string                `protobuf:"bytes,6,opt,name=table_type,json=tableType,proto3,oneof" json:"table_type,omitempty"`
+	ManagerAccess     string                 `protobuf:"bytes,7,opt,name=manager_access,json=managerAccess,proto3" json:"manager_access,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -7126,6 +7127,13 @@ func (x *DataSourceTable) GetUpdatedAt() float64 {
 func (x *DataSourceTable) GetTableType() string {
 	if x != nil && x.TableType != nil {
 		return *x.TableType
+	}
+	return ""
+}
+
+func (x *DataSourceTable) GetManagerAccess() string {
+	if x != nil {
+		return x.ManagerAccess
 	}
 	return ""
 }
@@ -15071,7 +15079,7 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12\x18\n" +
 	"\adialect\x18\x03 \x01(\tR\adialect\x12\x1b\n" +
 	"\x06active\x18\x04 \x01(\bH\x00R\x06active\x88\x01\x01B\t\n" +
-	"\a_active\"\xaa\x02\n" +
+	"\a_active\"\xd1\x02\n" +
 	"\x0fDataSourceTable\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12.\n" +
 	"\x13local_catalog_alias\x18\x02 \x01(\tR\x11localCatalogAlias\x12 \n" +
@@ -15080,7 +15088,8 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x05 \x01(\x01H\x01R\tupdatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"table_type\x18\x06 \x01(\tH\x02R\ttableType\x88\x01\x01B\x16\n" +
+	"table_type\x18\x06 \x01(\tH\x02R\ttableType\x88\x01\x01\x12%\n" +
+	"\x0emanager_access\x18\a \x01(\tR\rmanagerAccessB\x16\n" +
 	"\x14_estimated_row_countB\r\n" +
 	"\v_updated_atB\r\n" +
 	"\v_table_type\"\x8a\x02\n" +

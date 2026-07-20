@@ -14,6 +14,11 @@ const (
 	TableTypeExternal         = "external"
 )
 
+const (
+	ManagerAccessAll   = "all"
+	ManagerAccessOwner = "owner"
+)
+
 type Catalog = sdkv1.DataSourceCatalog
 type Table = sdkv1.DataSourceTable
 type Column = sdkv1.DataSourceColumn

@@ -218,6 +218,7 @@ export {
 export {
   DataSourceDialectSchema,
   DataSourceTableTypeSchema,
+  DataSourceManagerAccessSchema,
   DataSourceCatalogSchema,
   DataSourceTableSchema,
   DataSourceColumnSchema,
@@ -238,6 +239,7 @@ export {
   createStaticDataSourceExtension,
   type DataSourceDialect,
   type DataSourceTableType,
+  type DataSourceManagerAccess,
   type DataSourceCatalog,
   type DataSourceTable,
   type DataSourceColumn,
