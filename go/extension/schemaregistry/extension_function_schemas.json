@@ -9386,6 +9386,13 @@
                     "materialized_view",
                     "external"
                   ]
+                },
+                "managerAccess": {
+                  "type": "string",
+                  "enum": [
+                    "all",
+                    "owner"
+                  ]
                 }
               },
               "required": [
@@ -9571,6 +9578,13 @@
                       "view",
                       "materialized_view",
                       "external"
+                    ]
+                  },
+                  "managerAccess": {
+                    "type": "string",
+                    "enum": [
+                      "all",
+                      "owner"
                     ]
                   }
                 },

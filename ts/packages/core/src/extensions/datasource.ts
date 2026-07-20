@@ -25,6 +25,9 @@ export type DataSourceDialect = z.infer<typeof DataSourceDialectSchema>;
 export const DataSourceTableTypeSchema = z.enum(["table", "view", "materialized_view", "external"]);
 export type DataSourceTableType = z.infer<typeof DataSourceTableTypeSchema>;
 
+export const DataSourceManagerAccessSchema = z.enum(["all", "owner"]);
+export type DataSourceManagerAccess = z.infer<typeof DataSourceManagerAccessSchema>;
+
 export const DataSourceCatalogSchema = z.object({
   alias: DataSourceNonEmptyStringSchema,
   displayName: z.string().optional(),
@@ -43,6 +46,7 @@ export const DataSourceTableSchema = z.object({
   estimatedRowCount: z.number().int().nonnegative().optional(),
   updatedAt: z.number().int().nonnegative().optional(),
   tableType: DataSourceTableTypeSchema.optional(),
+  managerAccess: DataSourceManagerAccessSchema.optional(),
 });
 export type DataSourceTable = ProtoBacked<
   z.infer<typeof DataSourceTableSchema>,

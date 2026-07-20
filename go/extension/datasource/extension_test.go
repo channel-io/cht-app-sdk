@@ -75,7 +75,7 @@ func TestStaticMetadataListsAndDescribesTables(t *testing.T) {
 	err := app.Use(datasource.StaticMetadata(datasource.Metadata{
 		Catalogs: []*datasource.Catalog{{Alias: "bigquery", Dialect: datasource.DialectBigQuery}},
 		Tables: []*datasource.TableListing{
-			{Table: &datasource.Table{Name: "orders", LocalCatalogAlias: "bigquery", TableType: &tt}},
+			{Table: &datasource.Table{Name: "orders", LocalCatalogAlias: "bigquery", TableType: &tt, ManagerAccess: datasource.ManagerAccessOwner}},
 			{Table: &datasource.Table{Name: "products", LocalCatalogAlias: "bigquery", TableType: &tt}},
 		},
 		Definitions: []*datasource.TableDefinition{
@@ -107,6 +107,9 @@ func TestStaticMetadataListsAndDescribesTables(t *testing.T) {
 	}
 	if len(listOut.Tables) != 1 || listOut.Tables[0].GetTable().GetName() != "orders" || listOut.GetNextPageToken() == "" {
 		t.Fatalf("unexpected list output: tables=%d nextPageToken=%q", len(listOut.GetTables()), listOut.GetNextPageToken())
+	}
+	if listOut.Tables[0].GetTable().GetManagerAccess() != datasource.ManagerAccessOwner {
+		t.Fatalf("unexpected manager access: %q", listOut.Tables[0].GetTable().GetManagerAccess())
 	}
 
 	includeSample := true

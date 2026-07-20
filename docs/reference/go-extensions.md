@@ -197,7 +197,13 @@ app.Use(datasource.StaticMetadata(datasource.Metadata{
     {Alias: "bigquery", Dialect: datasource.DialectBigQuery},
   },
   Tables: []datasource.TableListing{
-    {Table: datasource.Table{Name: "orders", LocalCatalogAlias: "bigquery"}},
+    {
+      Table: datasource.Table{
+        Name: "orders",
+        LocalCatalogAlias: "bigquery",
+        ManagerAccess: datasource.ManagerAccessOwner,
+      },
+    },
   },
   Definitions: []datasource.TableDefinition{
     {
@@ -211,6 +217,11 @@ app.Use(datasource.StaticMetadata(datasource.Metadata{
   },
 }))
 ```
+
+Set `ManagerAccess` to `datasource.ManagerAccessOwner` when only channel
+Owner-role managers may discover, describe, or query a table. Use
+`datasource.ManagerAccessAll`, or leave it empty, to allow all channel managers.
+AppStore remains the authorization authority.
 
 For production BigQuery sources, use the Storage API executor. It creates a
 query job, waits for the destination result table, and relays BigQuery Storage

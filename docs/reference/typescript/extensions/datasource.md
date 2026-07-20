@@ -24,7 +24,15 @@ import { createStaticDataSourceExtension } from "@channel.io/app-sdk-core";
 
 export const datasourceExtension = createStaticDataSourceExtension({
   catalogs: [{ alias: "bigquery", dialect: "bigquery" }],
-  tables: [{ table: { name: "orders", localCatalogAlias: "bigquery" } }],
+  tables: [
+    {
+      table: {
+        name: "orders",
+        localCatalogAlias: "bigquery",
+        managerAccess: "owner",
+      },
+    },
+  ],
   definitions: [
     {
       table: { name: "orders", localCatalogAlias: "bigquery" },
@@ -42,6 +50,11 @@ export const datasourceExtension = createStaticDataSourceExtension({
   ],
 });
 ```
+
+Set `managerAccess` to `"owner"` when only channel Owner-role managers may
+discover, describe, or query a table. Use `"all"`, or omit the field, to allow
+all channel managers. AppStore is the authorization authority; this metadata
+does not change the datasource gRPC runner's local table allowlist.
 
 Samples are optional and must be bounded: at most 10 rows and 64 KiB, with keys
 that match the declared columns.

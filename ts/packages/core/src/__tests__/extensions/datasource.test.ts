@@ -9,6 +9,7 @@ import {
   createDataSourceIngestionEventRow,
   createStaticDataSourceExtension,
   DataSourceFunctionNames,
+  DataSourceTableSchema,
   DescribeTableOutputSchema,
   ListCatalogsOutputSchema,
   validateDataSourceSample,
@@ -21,6 +22,7 @@ const tableDefinition = {
     localCatalogAlias: "bigquery",
     description: "Cafe24 orders synced to BigQuery.",
     tableType: "table" as const,
+    managerAccess: "owner" as const,
   },
   columns: [
     { name: "channel_id", type: "STRING", nullable: false, partitionKey: true },
@@ -43,6 +45,22 @@ describe("datasource extension schemas", () => {
 
     expect(protoCatalogs.catalogs?.[0]?.dialect).toBe("bigquery");
     expect(protoDescribed.definition?.primaryKey).toEqual(["channel_id", "order_id"]);
+    expect(protoDescribed.definition?.table?.managerAccess).toBe("owner");
+  });
+
+  it("accepts all and owner manager access while keeping it optional", () => {
+    expect(
+      DataSourceTableSchema.parse({ name: "public_orders", managerAccess: "all" })
+    ).toMatchObject({ managerAccess: "all" });
+    expect(
+      DataSourceTableSchema.parse({ name: "private_orders", managerAccess: "owner" })
+    ).toMatchObject({ managerAccess: "owner" });
+    expect(DataSourceTableSchema.parse({ name: "legacy_orders" })).toEqual({
+      name: "legacy_orders",
+    });
+    expect(() =>
+      DataSourceTableSchema.parse({ name: "invalid_orders", managerAccess: "managers" })
+    ).toThrow();
   });
 
   it("creates required metadata functions", async () => {
@@ -69,7 +87,13 @@ describe("datasource extension schemas", () => {
     const extension = createStaticDataSourceExtension({
       catalogs: [{ alias: "bigquery", dialect: "bigquery" }],
       tables: [
-        { table: { name: "orders", localCatalogAlias: "bigquery" } },
+        {
+          table: {
+            name: "orders",
+            localCatalogAlias: "bigquery",
+            managerAccess: "owner",
+          },
+        },
         { table: { name: "products", localCatalogAlias: "bigquery" } },
       ],
       definitions: [tableDefinition],
@@ -90,7 +114,10 @@ describe("datasource extension schemas", () => {
       { tableName: "orders", localCatalogAlias: "bigquery", includeSample: true }
     );
 
-    expect(listResult).toMatchObject({ nextPageToken: "1" });
+    expect(listResult).toMatchObject({
+      tables: [{ table: { name: "orders", managerAccess: "owner" } }],
+      nextPageToken: "1",
+    });
     expect(describeResult).toMatchObject({
       sample: [{ channel_id: "channel-1", order_id: "o-1" }],
     });
