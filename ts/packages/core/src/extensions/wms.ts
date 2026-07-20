@@ -140,7 +140,9 @@ export type GetWmsOrderOutput = ProtoBacked<
  * Commerce-scoped WMS shop lookup.
  *
  * Current commerce key shapes:
- * - Cafe24: `commerceType` is `appCafe24`, `commerceKey` is `{mallId}-{shopNo}`.
+ * - Cafe24: `commerceType` is `appCafe24`, `commerceKey` is
+ *   `{encode(mallId)}-{shopNo}-{encode(shopName)}`.
+ *   Producers emit this shape; WMS readers may retain legacy `{mallId}-{shopNo}` parsing.
  * - Naver SmartStore: `commerceType` is `appNaverSmartStore`, `commerceKey` is
  *   `{encode(channelNo)}-{encode(storeName)}-{encode(storeUrl)}`.
  *

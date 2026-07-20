@@ -138,11 +138,11 @@ describe("WMS extension helpers", () => {
     expect(
       GetWmsShopIdInputSchema.parse({
         commerceType: "appCafe24",
-        commerceKey: "mallId-shopNo",
+        commerceKey: "mallId-shopNo-shopName",
       })
     ).toEqual({
       commerceType: "appCafe24",
-      commerceKey: "mallId-shopNo",
+      commerceKey: "mallId-shopNo-shopName",
     });
     expect(GetWmsShopIdOutputSchema.parse({ shopId: null, message: "not found" })).toEqual({
       shopId: null,
@@ -157,7 +157,9 @@ describe("WMS extension helpers", () => {
       commerceTypes: ["appCafe24"],
     });
     expect(() => GetWmsShopIdInputSchema.parse({ commerceType: "appCafe24" })).toThrow();
-    expect(() => GetWmsShopIdInputSchema.parse({ commerceKey: "mallId-shopNo" })).toThrow();
+    expect(() =>
+      GetWmsShopIdInputSchema.parse({ commerceKey: "mallId-shopNo-shopName" })
+    ).toThrow();
     expect(CancelWmsOrderInputSchema.parse({ orderId: "order-1" })).toEqual({
       orderId: "order-1",
     });
