@@ -473,13 +473,14 @@ commerce-defined string.
 | Commerce         | `commerceType`       | `commerceKey` format                           |
 | ---------------- | -------------------- | ---------------------------------------------- |
 | Cafe24           | `appCafe24`          | `{encode(mallId)}-{shopNo}-{encode(shopName)}` |
-| Naver SmartStore | `appNaverSmartStore` | `{encode(accountId)}-{encode(accountUid)}`      |
+| Naver SmartStore | `appNaverSmartStore` | `{encode(accountId)}-{encode(accountUid)}`     |
 
-When a commerce needs multiple identity parts, each part must be
-percent-encoded before joining with `-`. A literal `-` inside a value must be
-forced to `%2D` even though it is normally an unreserved URL character. WMS
-apps should split on unencoded `-` before decoding each part. This keeps keys
-reversible even when source values contain `-`.
+When a commerce needs multiple identity parts, percent-encode value parts
+before joining them with `-`. Cafe24 percent-encodes `mallId` and `shopName`
+while keeping `shopNo` unencoded as shown above. A literal `-` inside a value
+must be forced to `%2D` even though it is normally an unreserved URL character.
+WMS apps should split on unencoded `-` before decoding each part. This keeps
+keys reversible even when source values contain `-`.
 
 Cafe24 producers must emit the three-part canonical key. WMS readers should
 continue accepting the legacy `{mallId}-{shopNo}` key; for canonical keys they
