@@ -314,6 +314,8 @@ export const OAuthProviderProtoSchema = z.object({
   tokenRequestContentType: z.string().optional(),
   authorizationCodeParamName: z.string().optional(),
   authorizationOpenMode: z.string().optional(),
+  tokenRequest: z.lazy(() => OAuthTokenRequestMappingProtoSchema).optional(),
+  tokenResponse: z.lazy(() => OAuthTokenResponseMappingProtoSchema).optional(),
 }) satisfies z.ZodType<pb.OAuthProvider>;
 export type OAuthProviderProto = z.infer<typeof OAuthProviderProtoSchema>;
 
@@ -1662,3 +1664,17 @@ export const AlfTaskGetTasksOutputProtoSchema = z.object({
   predefinedTasks: z.array(z.lazy(() => AlfTaskPredefinedTaskProtoSchema)).optional(),
 }) satisfies z.ZodType<pb.AlfTaskGetTasksOutput>;
 export type AlfTaskGetTasksOutputProto = z.infer<typeof AlfTaskGetTasksOutputProtoSchema>;
+
+export const OAuthTokenRequestMappingProtoSchema = z.object({
+  authorizationCodeParamName: z.string().optional(),
+}) satisfies z.ZodType<pb.OAuthTokenRequestMapping>;
+export type OAuthTokenRequestMappingProto = z.infer<typeof OAuthTokenRequestMappingProtoSchema>;
+
+export const OAuthTokenResponseMappingProtoSchema = z.object({
+  accessTokenPath: z.string().optional(),
+  refreshTokenPath: z.string().optional(),
+  expiresInPath: z.string().optional(),
+  tokenTypePath: z.string().optional(),
+  refreshTokenExpiresInPath: z.string().optional(),
+}) satisfies z.ZodType<pb.OAuthTokenResponseMapping>;
+export type OAuthTokenResponseMappingProto = z.infer<typeof OAuthTokenResponseMappingProtoSchema>;

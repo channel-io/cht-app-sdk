@@ -112,6 +112,8 @@ import {
   NameDescI18nSchema,
   OAuthConfigSchema,
   OAuthProviderSchema,
+  OAuthTokenRequestMappingSchema,
+  OAuthTokenResponseMappingSchema,
   OnMediumMessageCreatedInputSchema,
   OnMediumMessageCreatedOutputSchema,
   OperationOptionsSchema,
@@ -276,6 +278,18 @@ const contracts: Contract[] = [
   ),
 
   contract("OAuthProvider", OAuthProviderSchema, "extension", "OAuthProvider"),
+  contract(
+    "OAuthTokenRequestMapping",
+    OAuthTokenRequestMappingSchema,
+    "extension",
+    "OAuthTokenRequestMapping"
+  ),
+  contract(
+    "OAuthTokenResponseMapping",
+    OAuthTokenResponseMappingSchema,
+    "extension",
+    "OAuthTokenResponseMapping"
+  ),
   contract("OAuthConfig", OAuthConfigSchema, "extension", "OAuthConfig"),
   contract(
     "CredentialValidationInput",

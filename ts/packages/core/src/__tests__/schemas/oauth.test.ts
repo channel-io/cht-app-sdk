@@ -23,6 +23,16 @@ describe("oauth extension schema", () => {
         tokenRequestContentType: "json",
         authorizationCodeParamName: "spapi_oauth_code",
         authorizationOpenMode: "currentTab",
+        tokenRequest: {
+          authorizationCodeParamName: "auth_code",
+        },
+        tokenResponse: {
+          accessTokenPath: "data.access_token",
+          refreshTokenPath: "data.refresh_token",
+          expiresInPath: "data.expires_in",
+          tokenTypePath: "data.token_type",
+          refreshTokenExpiresInPath: "data.refresh_token_expires_in",
+        },
       },
     });
 
@@ -35,6 +45,21 @@ describe("oauth extension schema", () => {
     expect(parsed.oauthProvider.tokenRequestContentType).toBe("json");
     expect(parsed.oauthProvider.authorizationCodeParamName).toBe("spapi_oauth_code");
     expect(parsed.oauthProvider.authorizationOpenMode).toBe("currentTab");
+    expect(parsed.oauthProvider.tokenRequest?.authorizationCodeParamName).toBe("auth_code");
+    expect(parsed.oauthProvider.tokenResponse?.accessTokenPath).toBe("data.access_token");
+  });
+
+  it("rejects invalid token response object paths", () => {
+    expect(() =>
+      OAuthProviderSchema.parse({
+        provider: "provider",
+        authorizationUrl: "https://provider.example/login",
+        tokenUrl: "https://provider.example/token",
+        scopes: ["read"],
+        providerName: "Provider",
+        tokenResponse: { accessTokenPath: "data..access_token" },
+      })
+    ).toThrow();
   });
 
   it("rejects empty scopes because AppStore requires provider scopes", () => {

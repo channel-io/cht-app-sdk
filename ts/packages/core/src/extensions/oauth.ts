@@ -4,6 +4,8 @@ import type {
   OAuthCredentialValidationInput as ProtoCredentialValidationInput,
   OAuthCredentialValidationResult as ProtoCredentialValidationResult,
   OAuthProvider as ProtoOAuthProvider,
+  OAuthTokenRequestMapping as ProtoTokenRequestMapping,
+  OAuthTokenResponseMapping as ProtoTokenResponseMapping,
 } from "../gen/channel/app/sdk/v1/extension.js";
 
 type ProtoBacked<T, Proto> = T & Proto;
@@ -27,6 +29,37 @@ export type AuthorizationOpenMode = z.infer<typeof AuthorizationOpenModeSchema>;
 
 export const OAuthAuthScopeSchema = z.enum(["channel", "manager"]);
 export type OAuthAuthScope = z.infer<typeof OAuthAuthScopeSchema>;
+
+const OAuthParamNameSchema = z.string().regex(/^[A-Za-z0-9_.-]+$/);
+const OAuthJSONPathSchema = z.string().regex(/^[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*$/);
+
+/** Provider-specific field names used by the outbound token request. */
+export const OAuthTokenRequestMappingSchema = z.object({
+  /** Defaults to `"code"` when omitted. */
+  authorizationCodeParamName: OAuthParamNameSchema.optional(),
+});
+export type OAuthTokenRequestMapping = ProtoBacked<
+  z.infer<typeof OAuthTokenRequestMappingSchema>,
+  ProtoTokenRequestMapping
+>;
+
+/** JSON object paths used to read a provider token response. */
+export const OAuthTokenResponseMappingSchema = z.object({
+  /** Defaults to `"access_token"` when omitted. */
+  accessTokenPath: OAuthJSONPathSchema.optional(),
+  /** Defaults to `"refresh_token"` when omitted. */
+  refreshTokenPath: OAuthJSONPathSchema.optional(),
+  /** Defaults to `"expires_in"` when omitted. */
+  expiresInPath: OAuthJSONPathSchema.optional(),
+  /** Defaults to `"token_type"` when omitted. */
+  tokenTypePath: OAuthJSONPathSchema.optional(),
+  /** Opt-in path for providers that return a refresh-token lifetime. */
+  refreshTokenExpiresInPath: OAuthJSONPathSchema.optional(),
+});
+export type OAuthTokenResponseMapping = ProtoBacked<
+  z.infer<typeof OAuthTokenResponseMappingSchema>,
+  ProtoTokenResponseMapping
+>;
 
 /**
  * OAuth 2.0 provider metadata returned from metadata.getAuthConfig.
@@ -61,16 +94,20 @@ export const OAuthProviderSchema = z.object({
    * Defaults to `"code"`. Some providers, such as Amazon SP-API, use a
    * provider-specific name.
    */
-  authorizationCodeParamName: z
-    .string()
-    .regex(/^[A-Za-z0-9_.-]+$/)
-    .optional(),
+  authorizationCodeParamName: OAuthParamNameSchema.optional(),
   /**
    * Browser surface used to open the provider authorization URL. Defaults to
    * `"popup"`. Declare `"currentTab"` when the provider redirects to a full
    * Desk/AppStore URL and cannot complete the popup close contract reliably.
    */
   authorizationOpenMode: AuthorizationOpenModeSchema.optional(),
+  /**
+   * Outbound token request mapping. This is intentionally separate from
+   * authorizationCodeParamName, which controls callback query parsing.
+   */
+  tokenRequest: OAuthTokenRequestMappingSchema.optional(),
+  /** Token endpoint response JSON object paths. */
+  tokenResponse: OAuthTokenResponseMappingSchema.optional(),
 });
 export type OAuthProvider = ProtoBacked<z.infer<typeof OAuthProviderSchema>, ProtoOAuthProvider>;
 

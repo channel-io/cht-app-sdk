@@ -31,7 +31,8 @@ const config = {
   authScope: "channel",
   oauthProvider: {
     provider: "yahoo-shopping",
-    authorizationUrl: "https://auth.login.yahoo.co.jp/yconnect/v2/authorization",
+    authorizationUrl:
+      "https://auth.login.yahoo.co.jp/yconnect/v2/authorization",
     tokenUrl: "https://auth.login.yahoo.co.jp/yconnect/v2/token",
     scopes: ["openid", "profile"],
     providerName: "Yahoo! Shopping",
@@ -52,6 +53,37 @@ parameters.
 `oauthProvider.authorizationOpenMode` defaults to `popup`. Set it to
 `currentTab` only when the provider redirects to a full Desk/AppStore URL and
 cannot reliably complete the popup close flow.
+
+`oauthProvider.authorizationCodeParamName` controls the callback query field
+that AppStore reads. `oauthProvider.tokenRequest.authorizationCodeParamName`
+controls the outbound field sent to the provider token endpoint. They are
+separate because some providers use a custom callback field but still expect
+the standard `code` token request field.
+
+Use `oauthProvider.tokenResponse` only when the provider nests or renames token
+response fields. Paths use dot-separated JSON object keys such as
+`data.access_token`; arrays are not supported. Every mapping field is optional.
+When omitted, AppStore keeps the existing top-level defaults: `code`,
+`access_token`, `refresh_token`, `expires_in`, and `token_type`.
+
+For example, a provider that expects `auth_code` and nests its response under
+`data` can declare only the non-standard token contract:
+
+```ts
+import type { OAuthProvider } from "@channel.io/app-sdk-core";
+
+const tokenMapping = {
+  tokenRequest: {
+    authorizationCodeParamName: "auth_code",
+  },
+  tokenResponse: {
+    accessTokenPath: "data.access_token",
+    refreshTokenPath: "data.refresh_token",
+    expiresInPath: "data.expires_in",
+    tokenTypePath: "data.token_type",
+  },
+} satisfies Pick<OAuthProvider, "tokenRequest" | "tokenResponse">;
+```
 
 Do not return provider `clientId` or `clientSecret` from `getAuthConfig`.
 AppStore stores client credentials separately through Desk OAuth credential

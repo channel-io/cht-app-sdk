@@ -9,6 +9,8 @@ export {
   ParameterCaseSchema,
   TokenRequestContentTypeSchema,
   AuthorizationOpenModeSchema,
+  OAuthTokenRequestMappingSchema,
+  OAuthTokenResponseMappingSchema,
   type OAuthConfig,
   type OAuthProvider,
   type OAuthAuthScope,
@@ -17,6 +19,8 @@ export {
   type ParameterCase,
   type TokenRequestContentType,
   type AuthorizationOpenMode,
+  type OAuthTokenRequestMapping,
+  type OAuthTokenResponseMapping,
 } from "./oauth.js";
 
 // API Key Extension Schemas (v1)

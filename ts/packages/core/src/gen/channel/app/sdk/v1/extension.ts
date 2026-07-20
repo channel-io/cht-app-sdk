@@ -301,6 +301,8 @@ export interface OAuthProvider {
   tokenRequestContentType?: string | undefined;
   authorizationCodeParamName?: string | undefined;
   authorizationOpenMode?: string | undefined;
+  tokenRequest?: OAuthTokenRequestMapping | undefined;
+  tokenResponse?: OAuthTokenResponseMapping | undefined;
 }
 
 export interface OAuthProvider_AdditionalParamsEntry {
@@ -1536,4 +1538,16 @@ export interface AlfTaskGetTasksInput {
 
 export interface AlfTaskGetTasksOutput {
   predefinedTasks?: AlfTaskPredefinedTask[] | undefined;
+}
+
+export interface OAuthTokenRequestMapping {
+  authorizationCodeParamName?: string | undefined;
+}
+
+export interface OAuthTokenResponseMapping {
+  accessTokenPath?: string | undefined;
+  refreshTokenPath?: string | undefined;
+  expiresInPath?: string | undefined;
+  tokenTypePath?: string | undefined;
+  refreshTokenExpiresInPath?: string | undefined;
 }
