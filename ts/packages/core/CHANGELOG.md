@@ -1,5 +1,12 @@
 # @channel.io/app-sdk-core
 
+## 0.16.4
+
+### Patch Changes
+
+- 180d31e: Add optional datasource table manager access metadata with `all` and `owner` values.
+- eb004ca: Add optional OAuth token request field and nested token response path mappings while preserving the existing OAuth defaults.
+
 ## 0.16.3
 
 ### Patch Changes
