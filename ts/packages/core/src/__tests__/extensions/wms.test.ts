@@ -144,6 +144,15 @@ describe("WMS extension helpers", () => {
       commerceType: "appCafe24",
       commerceKey: "mallId-shopNo-shopName",
     });
+    expect(
+      GetWmsShopIdInputSchema.parse({
+        commerceType: "appNaverSmartStore",
+        commerceKey: "account%2Did-account%2Duid",
+      })
+    ).toEqual({
+      commerceType: "appNaverSmartStore",
+      commerceKey: "account%2Did-account%2Duid",
+    });
     expect(GetWmsShopIdOutputSchema.parse({ shopId: null, message: "not found" })).toEqual({
       shopId: null,
       message: "not found",

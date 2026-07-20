@@ -144,7 +144,7 @@ export type GetWmsOrderOutput = ProtoBacked<
  *   `{encode(mallId)}-{shopNo}-{encode(shopName)}`.
  *   Producers emit this shape; WMS readers may retain legacy `{mallId}-{shopNo}` parsing.
  * - Naver SmartStore: `commerceType` is `appNaverSmartStore`, `commerceKey` is
- *   `{encode(channelNo)}-{encode(storeName)}-{encode(storeUrl)}`.
+ *   `{encode(accountId)}-{encode(accountUid)}`. Both parts are required.
  *
  * Treat `commerceKey` as a commerce-owned opaque string. If a commerce key has
  * multiple parts, split on unencoded `-` first, then decode each part. Source
