@@ -1,5 +1,11 @@
 # @channel.io/app-sdk-core
 
+## 0.16.5
+
+### Patch Changes
+
+- 5e26385: Document the canonical Cafe24 and Naver Smart Store commerce-key contracts used by WMS extensions.
+
 ## 0.16.4
 
 ### Patch Changes
