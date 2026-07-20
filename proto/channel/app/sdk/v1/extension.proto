@@ -290,6 +290,8 @@ message OAuthProvider {
   string token_request_content_type = 12;
   string authorization_code_param_name = 13;
   string authorization_open_mode = 14;
+  OAuthTokenRequestMapping token_request = 15;
+  OAuthTokenResponseMapping token_response = 16;
 }
 
 message OAuthGetAuthConfigInput {}
@@ -1458,4 +1460,16 @@ message AlfTaskGetTasksInput {
 
 message AlfTaskGetTasksOutput {
   repeated AlfTaskPredefinedTask predefined_tasks = 1;
+}
+
+message OAuthTokenRequestMapping {
+  string authorization_code_param_name = 1;
+}
+
+message OAuthTokenResponseMapping {
+  string access_token_path = 1;
+  string refresh_token_path = 2;
+  string expires_in_path = 3;
+  string token_type_path = 4;
+  string refresh_token_expires_in_path = 5;
 }

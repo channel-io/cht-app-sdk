@@ -13835,6 +13835,42 @@
                 "popup",
                 "currentTab"
               ]
+            },
+            "tokenRequest": {
+              "type": "object",
+              "properties": {
+                "authorizationCodeParamName": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.-]+$"
+                }
+              },
+              "additionalProperties": false
+            },
+            "tokenResponse": {
+              "type": "object",
+              "properties": {
+                "accessTokenPath": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+(?:\\.[A-Za-z0-9_-]+)*$"
+                },
+                "refreshTokenPath": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+(?:\\.[A-Za-z0-9_-]+)*$"
+                },
+                "expiresInPath": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+(?:\\.[A-Za-z0-9_-]+)*$"
+                },
+                "tokenTypePath": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+(?:\\.[A-Za-z0-9_-]+)*$"
+                },
+                "refreshTokenExpiresInPath": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+(?:\\.[A-Za-z0-9_-]+)*$"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "required": [
