@@ -187,7 +187,14 @@ throw new FunctionCallError(
 
 詳細な診断情報は server で sanitize して記録します。Upstream response body、URL、credential、token を Function error に含めないでください。
 
-SDK route は `PUT /functions/:version` です。App 設定には `/functions` root URL を入力し、AppStore が登録済み system version を選択します。
+SDK route は `PUT /functions/:version` です。Versioned discovery が登録済み system version
+を追加できるよう、app setting には `/functions` root URL を入力します。現在の一部 caller
+は、`systemVersion` を持たない command action のように、設定された root をそのまま呼びます。
+Managed runtime は通常 bare `PUT /functions` を default `/functions/v1` handler に map します。
+Standalone deployment も exact request body を保持し、SDK signature guard と handler を再利用する
+限定的な ingress mapping を用意してください。Portal に `/functions/v1` を入力したり、検証を
+迂回する別 dispatch を実装したりしないでください。TypeScript tutorial に完全な mapping と
+regression test があります。
 
 ## 4. Go server
 
@@ -220,7 +227,10 @@ if err := server.Run(app,
 ); err != nil { log.Fatal(err) }
 ```
 
-Go の default route も `PUT /functions/:version` です。既存 Gin engine には `server/gin.NewRoute` を mount してください。
+Go の default route も `PUT /functions/:version` です。既存 Gin engine には
+`server/gin.NewRoute` を mount してください。Managed ingress がない場合は bare
+`PUT /functions` も versioned route と同じ `server.Handler().Handle` に接続します。Go tutorial
+は signature verification を迂回しない compatibility route を示します。
 
 Function と schema、server route、authentication と token、Extension、native Function、WAM integration の詳細は [Go SDK reference](../../reference/go/README.md) を参照してください。
 
@@ -286,7 +296,10 @@ Host が `https://example.ngrok.app` の場合:
 | Function Endpoint        | `https://example.ngrok.app/functions`    |
 | WAM Endpoint             | `https://example.ngrok.app/resource/wam` |
 
-実際の call は通常 `/functions/v1` と `/resource/wam/tutorial` です。対象環境が別の値を明示しない限り、SDK default AppStore URL `https://app-store.channel.io` を使ってください。
+Versioned call は `/functions/v1` を使います。`systemVersion` を持たない caller は
+`/functions` を呼ぶことがあり、deployment ingress は同じ default-version SDK handler に
+接続する必要があります。WAM は `/resource/wam/tutorial` で提供します。対象環境が別の値を
+明示しない限り、SDK default AppStore URL `https://app-store.channel.io` を使ってください。
 
 ## 8. Test と release
 

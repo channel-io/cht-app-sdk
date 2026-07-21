@@ -6,7 +6,7 @@
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `issueToken`을 직접 호출하고 access/refresh token과 TTL을 저장 | TypeScript/Go `TokenManager`가 cache, 사전 refresh, 동시 요청 deduplication을 처리                                        |
 | 시작할 때 app token으로 `registerCommands` 1회 호출            | `command` extension과 `extension.command.metadata.getCommands`를 선언하고 `registerExtension`으로 자동 등록               |
-| Version이 없는 `PUT /functions` 하나 구현                      | SDK server의 `PUT /functions/:version` 사용, 포털에는 `/functions` root 등록                                              |
+| 별도 unversioned `PUT /functions` dispatcher 구현              | SDK의 `PUT /functions/:version`을 사용하고 포털에는 `/functions` root 등록; bare root 호출은 ingress에서 기본 SDK handler로 연결 |
 | 요청을 직접 parse하고 `method` switch로 dispatch               | Decorator/builder로 typed function 등록, SDK가 dispatch와 schema discovery 처리                                           |
 | 각 튜토리얼에서 HMAC 비교 직접 구현                            | SDK signature guard/server option 사용, 정확한 raw request bytes 보존                                                     |
 | `window.ChannelIOWam` 자체 wrapper 작성                        | `WamProvider`, `useWamData`, `useCallFunction`, `useNativeFunction`, `useWamSize`, `useWamClose` 사용                     |

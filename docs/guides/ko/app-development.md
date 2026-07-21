@@ -187,7 +187,13 @@ throw new FunctionCallError(
 
 상세 진단은 server에서 민감 정보를 제거한 뒤 기록합니다. Upstream response body, URL, credential, token을 Function 오류에 넣지 마세요.
 
-SDK route는 `PUT /functions/:version`입니다. 앱 설정에는 `/functions` root URL을 입력하고 AppStore가 등록된 system version을 선택하게 합니다.
+SDK route는 `PUT /functions/:version`입니다. Version이 있는 discovery가 등록된 system
+version을 붙일 수 있도록 앱 설정에는 `/functions` root URL을 입력합니다. 현재 일부 caller는
+`systemVersion`이 없는 command action처럼 설정된 root를 그대로 호출합니다. 관리형 runtime은
+보통 bare `PUT /functions`를 기본 `/functions/v1` handler로 연결합니다. 독립 배포도 정확한
+request body를 보존하고 SDK signature guard와 handler를 그대로 재사용하는 좁은 ingress mapping을
+제공해야 합니다. 포털에 `/functions/v1`을 넣거나 검증을 우회하는 별도 dispatch를 만들지 마세요.
+TypeScript 튜토리얼에 전체 mapping과 회귀 테스트가 있습니다.
 
 ## 4. Go 서버
 
@@ -222,7 +228,10 @@ if err := server.Run(app,
 ); err != nil { log.Fatal(err) }
 ```
 
-Go의 기본 route도 `PUT /functions/:version`입니다. 이미 Gin engine이 있으면 `server/gin.NewRoute`만 mount하세요.
+Go의 기본 route도 `PUT /functions/:version`입니다. 이미 Gin engine이 있으면
+`server/gin.NewRoute`를 mount하세요. 관리형 ingress가 없다면 bare `PUT /functions`도 versioned
+route와 같은 `server.Handler().Handle`에 연결합니다. Go 튜토리얼은 signature 검증을 우회하지
+않는 이 compatibility route를 보여줍니다.
 
 Function과 schema, 서버 route, 인증과 token, Extension, native Function, WAM 연동의 자세한 내용은 [Go SDK 레퍼런스](../../reference/go/README.md)를 참고하세요.
 
@@ -288,7 +297,10 @@ const { call: callNative } = useNativeFunction({
 | Function Endpoint | `https://example.ngrok.app/functions`    |
 | WAM Endpoint      | `https://example.ngrok.app/resource/wam` |
 
-실제 호출은 보통 `/functions/v1`, `/resource/wam/tutorial`이 됩니다. 환경에서 별도 값을 제공하지 않으면 SDK 기본 AppStore base URL인 `https://app-store.channel.io`를 사용하세요.
+Version이 있는 호출은 `/functions/v1`을 사용합니다. `systemVersion`이 없는 caller는
+`/functions`를 호출할 수 있으며, deployment ingress가 이를 같은 기본-version SDK handler에
+연결해야 합니다. WAM은 `/resource/wam/tutorial`에서 제공됩니다. 환경에서 별도 값을 제공하지
+않으면 SDK 기본 AppStore base URL인 `https://app-store.channel.io`를 사용하세요.
 
 ## 8. 테스트와 배포
 

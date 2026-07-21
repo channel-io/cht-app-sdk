@@ -25,7 +25,12 @@ Channel client
   -> Channel client
 ```
 
-The default controller route is `PUT /functions/:version`. The developer portal stores the `/functions` root.
+The default controller route is `PUT /functions/:version`. The developer portal stores the
+`/functions` root. Versioned discovery appends the system version. Callers without a system version
+can invoke the bare root, so a standalone ingress must rewrite only bare `PUT /functions` to the
+default `/functions/v1` route while preserving the raw body. Reuse the same SDK controller and
+signature guard; do not add an unsigned second dispatcher. Managed runtimes normally own this
+mapping.
 
 ## Extension discovery
 

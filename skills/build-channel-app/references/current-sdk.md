@@ -23,6 +23,8 @@ Check registries before pinning versions. Values verified on 2026-07-22:
 - AppStore base URL: `https://app-store.channel.io`
 - Function route: `PUT /functions/:version`
 - Function Endpoint setting: the `/functions` root
+- Ingress compatibility: map bare `PUT /functions` calls to the default `v1` SDK handler without
+  changing the raw body or bypassing signature verification
 - WAM Endpoint setting: the root below which each WAM name is served
 - Registration: `registerExtension` plus metadata functions
 - TypeScript function context type: `Context`
@@ -47,7 +49,8 @@ Check registries before pinning versions. Values verified on 2026-07-22:
 ## Managed builder contract
 
 - Generated TypeScript apps should use `ChannelAppModule` and lock the resolved SDK version before release.
-- The generated runtime path is `/functions/v1`; the AppStore Function Endpoint remains the `/functions` root.
+- The generated runtime path is `/functions/v1`; the AppStore Function Endpoint remains the
+  `/functions` root, and the managed gateway maps bare root calls to that default runtime path.
 - A managed platform can own deploy-time endpoint synchronization and extension registration, so respect its provided `APP_STORE_URL` and registration settings.
 - Do not copy builder-only preview calls into a WAM that runs in the Channel client; use the public WAM SDK hooks.
 

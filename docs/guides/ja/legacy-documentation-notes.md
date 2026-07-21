@@ -6,7 +6,7 @@
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | `issueToken` を直接呼び、access/refresh token と TTL を保存       | TypeScript/Go `TokenManager` が cache、早期 refresh、concurrent request deduplication を処理                                          |
 | Startup 時に app token で `registerCommands` を 1 回呼ぶ          | `command` extension と `extension.command.metadata.getCommands` を宣言し、`registerExtension` で auto-register                        |
-| Version なしの `PUT /functions` を実装                            | SDK server の `PUT /functions/:version` を使用し、portal には `/functions` root を登録                                                |
+| 別の unversioned `PUT /functions` dispatcher を実装               | SDK の `PUT /functions/:version` を使い、portal には `/functions` root を登録し、bare root call は ingress で default SDK handler に接続 |
 | Request を parse し `method` switch で dispatch                   | Decorator/builder で typed function を登録し、SDK が dispatch と schema discovery を担当                                              |
 | Tutorial ごとに HMAC 比較を直接実装                               | SDK signature guard/server option を使い、正確な raw request bytes を保持                                                             |
 | 独自 `window.ChannelIOWam` wrapper を作成                         | `WamProvider` と WAM hooks を使用                                                                                                     |

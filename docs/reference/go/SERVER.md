@@ -20,7 +20,16 @@ if err := server.Run(
 }
 ```
 
-The default Function route is `PUT /functions/:version`. Register the `/functions` root in the developer portal; AppStore appends the registered system version.
+The default Function route is `PUT /functions/:version`. Register the `/functions` root in the
+developer portal. Versioned discovery appends the registered system version, while callers without a
+system version can invoke the bare root. If no managed ingress maps that root to `/functions/v1`,
+mount it to the same verified SDK handler:
+
+```go
+server.Engine().PUT("/functions", server.Handler().Handle)
+```
+
+Do not create a second dispatcher or bypass the SDK signature option.
 
 ## Existing Gin Server
 

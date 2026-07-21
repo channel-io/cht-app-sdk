@@ -195,7 +195,14 @@ throw new FunctionCallError(
 Log only sanitized diagnostic context on the server. Do not put upstream response bodies, URLs,
 credentials, or tokens in Function errors.
 
-The SDK route is `PUT /functions/:version`. Enter the root `/functions` URL in app settings; AppStore selects the registered system version.
+The SDK route is `PUT /functions/:version`. Enter the root `/functions` URL in app settings so
+versioned discovery can append the registered system version. Some current callers, including
+command action calls without a `systemVersion`, invoke that configured root directly. A managed
+runtime normally maps bare `PUT /functions` to its default `/functions/v1` handler. A standalone
+deployment must provide the same narrow ingress mapping while preserving the exact request body and
+reusing the SDK signature guard and handler. Do not put `/functions/v1` in the portal, and do not
+create a second unverified dispatch implementation. The TypeScript tutorial contains a complete
+mapping and regression test.
 
 ## 4. Go server
 
@@ -232,7 +239,10 @@ if err := server.Run(app,
 ); err != nil { log.Fatal(err) }
 ```
 
-The default Go route is also `PUT /functions/:version`. Mount `server/gin.NewRoute` when the app already owns a Gin engine.
+The default Go route is also `PUT /functions/:version`. Mount `server/gin.NewRoute` when the app
+already owns a Gin engine. If the deployment has no managed ingress, mount bare `PUT /functions` to
+the same `server.Handler().Handle` function used by the versioned route; the Go tutorial shows this
+compatibility route without bypassing signature verification.
 
 Continue with the [Go SDK reference](../../reference/go/README.md) for Functions and schemas, server routing, authentication and tokens, Extensions, native Functions, and WAM integration.
 
@@ -299,7 +309,10 @@ For a host such as `https://example.ngrok.app`:
 | Function Endpoint        | `https://example.ngrok.app/functions`    |
 | WAM Endpoint             | `https://example.ngrok.app/resource/wam` |
 
-The resulting calls are typically `/functions/v1` and `/resource/wam/tutorial`. Use `https://app-store.channel.io` as the default AppStore base URL unless the target environment explicitly provides another value.
+Versioned calls use `/functions/v1`; a caller without `systemVersion` can call `/functions` and must
+reach the same default-version SDK handler through the deployment ingress. WAM content is served at
+`/resource/wam/tutorial`. Use `https://app-store.channel.io` as the default AppStore base URL unless
+the target environment explicitly provides another value.
 
 ## 8. Test and release
 
