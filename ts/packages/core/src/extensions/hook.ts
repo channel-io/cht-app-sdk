@@ -2,6 +2,7 @@ import { z } from "zod";
 import type {
   HookConfig as ProtoHookConfig,
   HookGetHooksOutput as ProtoGetHooksOutput,
+  HookWebhookConfig as ProtoWebhookConfig,
 } from "../gen/channel/app/sdk/v1/extension.js";
 
 type ProtoBacked<T, Proto> = T & Proto;
@@ -17,6 +18,7 @@ export const HookTypeSchema = z.enum([
   "config.deleted",
   "widget.installed",
   "widget.uninstalled",
+  "webhook.received",
 ]);
 
 export type HookType = z.infer<typeof HookTypeSchema>;
@@ -35,6 +37,24 @@ const HookActionFunctionNameSchema = z
 
 const HookTargetIdSchema = z.string().min(1).max(255);
 
+const WebhookTargetIdSchema = z
+  .string()
+  .min(1)
+  .max(64)
+  .regex(/^[A-Za-z0-9][A-Za-z0-9._-]*$/);
+
+export const WebhookConfigSchema = z
+  .object({
+    endpointToken: z
+      .string()
+      .min(32)
+      .max(128)
+      .regex(/^[A-Za-z0-9_-]+$/),
+  })
+  .strict();
+
+export type WebhookConfig = ProtoBacked<z.infer<typeof WebhookConfigSchema>, ProtoWebhookConfig>;
+
 const BaseHookConfigSchema = z.object({
   actionFunctionName: HookActionFunctionNameSchema,
   systemVersion: HookSystemVersionSchema.optional(),
@@ -45,6 +65,7 @@ const BaseHookConfigSchema = z.object({
  *
  * App, command, and config hooks do not require a target identifier.
  * Widget hooks must include a targetId that matches the widget name.
+ * Public webhook hooks require a targetId and high-entropy endpoint token.
  */
 export const HookConfigSchema = z.discriminatedUnion("type", [
   BaseHookConfigSchema.extend({
@@ -69,6 +90,11 @@ export const HookConfigSchema = z.discriminatedUnion("type", [
   BaseHookConfigSchema.extend({
     type: z.literal("widget.uninstalled"),
     targetId: HookTargetIdSchema,
+  }).strict(),
+  BaseHookConfigSchema.extend({
+    type: z.literal("webhook.received"),
+    targetId: WebhookTargetIdSchema,
+    webhook: WebhookConfigSchema,
   }).strict(),
 ]);
 

@@ -288,6 +288,13 @@ export const hookExtension = createExtension({
               targetId: "my_widget",
               actionFunctionName: "extension.hook.lifecycle.onWidgetInstalled",
             },
+            // Public webhook example (use a stable 32-128 character CSPRNG token):
+            // {
+            //   type: "webhook.received",
+            //   targetId: "provider.events",
+            //   actionFunctionName: "extension.hook.webhook.onReceived",
+            //   webhook: { endpointToken: process.env.WEBHOOK_ENDPOINT_TOKEN! },
+            // },
           ],
         }),
       }),

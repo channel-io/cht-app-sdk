@@ -647,11 +647,16 @@ message CustomTabActionResult {
   google.protobuf.Struct attributes = 2;
 }
 
+message HookWebhookConfig {
+  string endpoint_token = 1;
+}
+
 message HookConfig {
   string type = 1;
   string action_function_name = 2;
   string system_version = 3;
   string target_id = 4;
+  HookWebhookConfig webhook = 5;
 }
 
 message HookGetHooksInput {}

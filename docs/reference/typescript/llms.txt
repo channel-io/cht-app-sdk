@@ -33,7 +33,7 @@ Extensions are predefined function collections with version-specific APIs. Avail
 - `command` - Chat slash commands via `extension.command.metadata.getCommands`
 - `widget` - Widgets via `extension.widget.metadata.getWidgets`
 - `customtab` - Custom desk tabs via `extension.customtab.metadata.getCustomTabs`
-- `hook` - Lifecycle hooks via `extension.hook.metadata.getHooks`
+- `hook` - Lifecycle and app-level public webhook hooks via `extension.hook.metadata.getHooks`
 - `createAlfTaskExtensionV1` - ALF AI agent automation tasks
 - `createNotebookExtensionV1` - App-managed notebook definitions
 
@@ -142,10 +142,11 @@ Hook metadata uses flat items shaped like:
 
 ```typescript
 {
-  type: "app.installed" | "app.uninstalled" | "command.toggle" | "config.saved" | "config.deleted" | "widget.installed" | "widget.uninstalled";
-  targetId?: string; // required for widget.* hooks
+  type: "app.installed" | "app.uninstalled" | "command.toggle" | "config.saved" | "config.deleted" | "widget.installed" | "widget.uninstalled" | "webhook.received";
+  targetId?: string; // required for widget.* and webhook.received hooks
   actionFunctionName: string;
   systemVersion?: string;
+  webhook?: { endpointToken: string }; // required for webhook.received
 }
 ```
 

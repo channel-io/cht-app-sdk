@@ -22,6 +22,7 @@ const (
 	TypeConfigDeleted     = "config.deleted"
 	TypeWidgetInstalled   = "widget.installed"
 	TypeWidgetUninstalled = "widget.uninstalled"
+	TypeWebhookReceived   = "webhook.received"
 )
 
 type ExtensionBuilder struct {
@@ -60,3 +61,4 @@ func StaticHooks(hooks ...*Config) appsdk.TypedHandlerFunc[GetHooksRequest, GetH
 type GetHooksRequest = sdkv1.HookGetHooksInput
 type GetHooksResponse = sdkv1.HookGetHooksOutput
 type Config = sdkv1.HookConfig
+type WebhookConfig = sdkv1.HookWebhookConfig
