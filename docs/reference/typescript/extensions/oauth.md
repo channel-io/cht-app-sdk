@@ -128,4 +128,4 @@ These are manager-level operations, not app-level registration calls.
 
 ## Reference
 
-- [examples/calendar](../../examples/calendar/README.md)
+- [examples/calendar](../../../../ts/examples/calendar/README.md)

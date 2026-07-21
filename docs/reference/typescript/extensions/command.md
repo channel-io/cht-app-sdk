@@ -40,4 +40,4 @@ Your action function can return:
 
 ## Reference
 
-- [examples/basic](../../examples/basic/README.md)
+- [examples/basic](../../../../ts/examples/basic/README.md)

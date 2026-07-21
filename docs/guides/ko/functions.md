@@ -1,13 +1,15 @@
 # 함수 등록
 
+Function 요청의 `method`가 Function의 전체 이름입니다. 앱 고유 Function은 `orders.get`처럼 standalone으로 등록하고, 표준 Extension 안에서는 `@Extension({ name: "order" })`와 relative name을 조합해 `extension.order.{relativeName}`을 만듭니다. 자세한 구분은 [핵심 개념](concepts.md)을 참고하세요.
+
 ## TypeScript
 
-TypeScript는 decorator API와 simple API를 모두 제공합니다.
+신규 TypeScript 앱은 decorator API를 사용하세요. Legacy simple API도 export되지만 그 service는 deprecated 상태이며 제거될 예정입니다.
 
 ```ts
-@Func("extension.order.get")
+@Func("orders.get")
 @InputSchema(z.object({ orderId: z.string() }))
-async getOrder(@Ctx() ctx: FunctionContext, @Input() input: { orderId: string }) {
+async getOrder(@Ctx() ctx: Context, @Input() input: { orderId: string }) {
   return this.service.getOrder(ctx.channel.id, input.orderId);
 }
 ```
@@ -27,7 +29,7 @@ type GetOrderOutput struct {
 
 appsdk.MustRegister(
   app,
-  "extension.order.get",
+  "orders.get",
   func(ctx context.Context, fnCtx appsdk.Context, in *GetOrderInput) (*GetOrderOutput, error) {
     return &GetOrderOutput{ID: in.OrderID}, nil
   },

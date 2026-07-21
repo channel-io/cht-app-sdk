@@ -6,12 +6,19 @@ If you are building or reviewing a Channel.io app, start from the files below in
 ## Start Here
 
 1. [README.md](./README.md)
-2. [docs/reference/typescript/AUTH-AND-TOKENS.md](./docs/reference/typescript/AUTH-AND-TOKENS.md)
-3. [docs/reference/typescript/extensions/README.md](./docs/reference/typescript/extensions/README.md)
-4. [docs/reference/typescript/WAM.md](./docs/reference/typescript/WAM.md)
-5. Examples:
+2. [docs/guides/en/concepts.md](./docs/guides/en/concepts.md)
+3. [docs/guides/en/app-development.md](./docs/guides/en/app-development.md)
+4. Language reference:
+   - TypeScript: [docs/reference/typescript/ARCHITECTURE.md](./docs/reference/typescript/ARCHITECTURE.md)
+   - Go: [docs/reference/go/README.md](./docs/reference/go/README.md)
+5. [docs/reference/typescript/AUTH-AND-TOKENS.md](./docs/reference/typescript/AUTH-AND-TOKENS.md)
+6. [docs/reference/typescript/extensions/README.md](./docs/reference/typescript/extensions/README.md)
+7. [docs/reference/typescript/WAM.md](./docs/reference/typescript/WAM.md)
+8. Examples:
    - [ts/examples/basic/README.md](./ts/examples/basic/README.md)
    - [ts/examples/calendar/README.md](./ts/examples/calendar/README.md)
+   - [TypeScript app tutorial](https://github.com/channel-io/app-tutorial-ts)
+   - [Go app tutorial](https://github.com/channel-io/app-tutorial)
 
 ## Source Of Truth
 
@@ -35,11 +42,11 @@ When documentation and examples disagree, trust the code in this order:
 ## Recommended Build Path
 
 - Server extensions:
-  Use `createExtension()` and `defineFunction()` from `@channel.io/app-sdk-server`, or decorators from the same package.
+  Use `@Extension`, `@Func`, and schema decorators from `@channel.io/app-sdk-server`.
 - Auto-registration:
-  Use `ChannelAppModule.forRoot({ autoRegister: true, extensions: [...] })` for NestJS apps.
+  Use `ChannelAppModule.forRoot({ autoRegister: true })` and list decorated extension classes in the NestJS module's `providers`.
 - Token lifecycle:
-  Use `TokenManager` or `ChannelAppService`'s built-in cache. Do not call `issueToken()` on every request.
+  Use `TokenManager`; NestJS auto-registration uses that shared manager. Do not call `issueToken()` on every request.
 - WAM:
   Use `@channel.io/app-sdk-wam` and return WAM action payloads from command, widget, or custom tab handlers.
 
@@ -64,3 +71,7 @@ When documentation and examples disagree, trust the code in this order:
 - Messaging family: [docs/reference/typescript/extensions/messaging.md](./docs/reference/typescript/extensions/messaging.md)
 - ALF task: [docs/reference/typescript/extensions/alf-task.md](./docs/reference/typescript/extensions/alf-task.md)
 - WAM: [docs/reference/typescript/WAM.md](./docs/reference/typescript/WAM.md)
+- Go overview: [docs/reference/go/README.md](./docs/reference/go/README.md)
+- Go auth and token flow: [docs/reference/go/AUTH-AND-TOKENS.md](./docs/reference/go/AUTH-AND-TOKENS.md)
+- Go server and routing: [docs/reference/go/SERVER.md](./docs/reference/go/SERVER.md)
+- Go native functions: [docs/reference/go/NATIVE.md](./docs/reference/go/NATIVE.md)

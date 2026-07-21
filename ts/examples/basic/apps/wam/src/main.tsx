@@ -3,7 +3,10 @@ import ReactDOM from "react-dom/client";
 import { WamProvider } from "@channel.io/app-sdk-wam";
 import App from "./App";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+const root = document.getElementById("root");
+if (!root) throw new Error("Root element not found");
+
+ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <WamProvider>
       <App />

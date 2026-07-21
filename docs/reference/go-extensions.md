@@ -1,5 +1,7 @@
 # Go Extensions
 
+For the overall Go app model, Function lifecycle, server, authentication, and native calls, start with the [Go SDK Reference](go/README.md). This document focuses on advanced Extension examples.
+
 Go extension helpers use fluent builders instead of TypeScript decorators.
 Each builder declares the extension for auto-registration and registers selected
 functions with generated schemas.
@@ -72,7 +74,7 @@ appsdk.MustRegisterProtoInput(
   func(ctx context.Context, fnCtx appsdk.Context, input *wms.GetOrdersRequest) (any, error) {
     return appsdk.WithExtraFields(
       &wms.GetOrdersResponse{Orders: []*wms.Order{}},
-      appsdk.ExtraFields{"shopId": "ezadmin-shop-id"},
+      appsdk.ExtraFields{"shopId": "provider-shop-id"},
     ), nil
   },
   appsdk.ExtensibleOutput[wms.GetOrdersResponse](
@@ -229,14 +231,14 @@ Arrow schema/record batches without materializing rows as JSON.
 
 ```go
 executor, err := bigquery.NewExecutor(ctx, bigquery.Config{
-  ProjectID: "appstudio-project",
+  ProjectID: "example-project",
   CredentialsEnvVars: []string{
     "BIGQUERY_CREDENTIALS_JSON",
   },
   Sources: []bigquery.SourceConfig{
     {
       SourceID:  "bigquery",
-      DatasetID: "app_cafe24",
+      DatasetID: "example_dataset",
       Tables: []datasource.TableConfig{
         {Name: "orders", TenantColumn: "channel_id"},
       },
@@ -269,10 +271,10 @@ access token's app scope and route by `identity.AppID`.
 ```go
 func signingKeyResolver(_ context.Context, identity grpcdatasource.AccessTokenIdentity) (string, error) {
   switch identity.AppID {
-  case os.Getenv("CAFE24_APP_ID"):
-    return os.Getenv("CAFE24_SIGNING_KEY"), nil
-  case os.Getenv("SHOPIFY_APP_ID"):
-    return os.Getenv("SHOPIFY_SIGNING_KEY"), nil
+  case os.Getenv("APP_A_ID"):
+    return os.Getenv("APP_A_SIGNING_KEY"), nil
+  case os.Getenv("APP_B_ID"):
+    return os.Getenv("APP_B_SIGNING_KEY"), nil
   default:
     return "", fmt.Errorf("unsupported datasource app id: %s", identity.AppID)
   }

@@ -1,271 +1,132 @@
-# Channel.io App SDK Architecture
+# TypeScript SDK Architecture
 
-> TypeScript SDK for rapidly building Channel.io apps using the extension system
+## Packages
 
-## Overview
+| Package                      | Responsibility                                                                                  |
+| ---------------------------- | ----------------------------------------------------------------------------------------------- |
+| `@channel.io/app-sdk-core`   | Context types, extension contracts, Zod schemas, generated protocol types                       |
+| `@channel.io/app-sdk-server` | NestJS integration, decorators, discovery, routing, tokens, native clients, signatures, testing |
+| `@channel.io/app-sdk-wam`    | React provider and hooks for the WAM runtime                                                    |
+| `@channel.io/app-sdk-wam-ui` | Optional Channel-consistent WAM UI components                                                   |
+| `@channel.io/app-sdk`        | CLI entry point                                                                                 |
 
-This SDK enables developers to quickly build Channel.io apps by providing:
+## Request lifecycle
 
-- Decorator-based extension implementation
-- NestJS framework integration
-- WAM (Web App Module) React utilities
-- CLI tools for project scaffolding
-- AI-friendly documentation (llms.txt)
-
-## Repository Location
-
-The TypeScript SDK lives under `ts/` in the `cht-app-sdk` monorepo. Published
-npm package names and imports are unchanged.
-
-## Package Structure
-
-```
-cht-app-sdk/
-├── proto/                       # Shared SDK contracts
-├── go/                          # Go SDK module
-├── ts/
-│   ├── packages/
-│   │   ├── core/                # Core types, schemas, utilities
-│   │   ├── server/              # NestJS and simple server SDK
-│   │   ├── wam/                 # WAM React SDK
-│   │   └── cli/                 # Project CLI
-│   └── examples/                # TypeScript example apps
-└── docs/
-    ├── guides/                  # App developer guides
-    └── reference/typescript/    # TypeScript SDK reference
+```text
+Channel client
+  -> AppStore
+  -> PUT {Function Endpoint}/{systemVersion}
+  -> signature guard
+  -> ChannelAppController
+  -> ExtensionDiscoveryService
+  -> decorated handler
+  -> result/error
+  -> AppStore
+  -> Channel client
 ```
 
-## Supported Extensions
+The default controller route is `PUT /functions/:version`. The developer portal stores the `/functions` root.
 
-| Extension     | Function Groups                                         | Description                                    |
-| ------------- | ------------------------------------------------------- | ---------------------------------------------- |
-| **command**   | -                                                       | Chat slash commands                            |
-| **oauth**     | metadata, validation                                    | OAuth 2.0 authentication                       |
-| **apikey**    | metadata, validation                                    | API key authentication                         |
-| **customtab** | -                                                       | Custom tab UI                                  |
-| **widget**    | -                                                       | Widget UI                                      |
-| **calendar**  | calendar, booking, bookingQuery                         | Calendar/booking system                        |
-| **messenger** | inboxMessaging, prebuiltMessaging, followUp, mediumLink | Messenger integration (Kakao, NaverTalk, etc.) |
-| **commerce**  | -                                                       | Commerce integration                           |
-| **alfTask**   | -                                                       | ALF task                                       |
-| **notebook**  | core                                                    | App-managed notebooks                          |
+## Extension discovery
 
-## Core Concepts
+Place decorated classes in a NestJS module's `providers`:
 
-### Extension System
-
-Extensions are predefined function collections with standardized interfaces. Each extension consists of:
-
-- **Function Groups**: Logical grouping of related functions
-- **Functions**: Individual callable methods with defined input/output schemas
-
-### Naming Convention
-
-Functions follow this naming pattern:
-
-```
-{groupName}.{functionName}
-```
-
-When registered in the app store, the full path becomes:
-
-```
-extension.{extensionName}.{groupName}.{functionName}
-```
-
-### System Version Management
-
-Extensions support versioning for backward compatibility:
-
-- Complete separation between versions (v1, v2)
-- Easy migration path when upgrading system versions
-
-## API Design
-
-### 1. Extension Definition (Decorator-based)
-
-```typescript
-import { Extension, FunctionGroup, Func } from '@channel.io/app-sdk/server';
-import { z } from 'zod';
-
-@Extension({
-  name: 'calendar',
-  systemVersion: 1,
-  exclusive: false,
-})
+```ts
+@Extension({ name: "calendar", systemVersion: "v1" })
 export class CalendarExtension {
-
-  @FunctionGroup('calendar')
-  calendar = {
-    @Func({
-      description: 'List available calendars',
-      inputSchema: z.object({
-        userId: z.string().optional(),
-      }),
-      outputSchema: z.object({
-        calendars: z.array(CalendarSchema),
-      }),
-    })
-    listCalendars: async (ctx: Context, params: ListCalendarsInput) => {
-      // Implementation
-    },
-
-    @Func({ ... })
-    getAvailability: async (ctx: Context, params: GetAvailabilityInput) => {
-      // Implementation
-    },
-  };
-
-  @FunctionGroup('booking', { required: true })
-  booking = {
-    @Func({ ... })
-    createBooking: async (ctx: Context, params: CreateBookingInput) => {
-      // Implementation
-    },
-  };
+  @Func("calendar.listCalendars")
+  @InputSchema(ListCalendarsInputSchema)
+  @OutputSchema(ListCalendarsOutputSchema)
+  listCalendars(@Ctx() ctx: Context, @Input() input: ListCalendarsInput) {
+    return this.calendarService.list(ctx.channel.id, input);
+  }
 }
 ```
 
-### 2. Simplified Functional API
+`ExtensionDiscoveryService` reads decorator metadata, creates full names, generates the function catalog, and dispatches incoming calls. Extension classes remain normal NestJS providers and can use dependency injection.
 
-```typescript
-import { createExtension, defineFunction } from '@channel.io/app-sdk/server';
-import { z } from 'zod';
+## Bootstrap and registration
 
-export const calendarExtension = createExtension({
-  name: 'calendar',
-  systemVersion: 1,
-  groups: {
-    calendar: {
-      listCalendars: defineFunction({
-        input: z.object({ userId: z.string().optional() }),
-        output: z.object({ calendars: z.array(CalendarSchema) }),
-        handler: async (ctx, params) => {
-          return { calendars: [...] };
-        },
-      }),
-    },
-    booking: {
-      createBooking: defineFunction({ ... }),
-    },
-  },
-});
-```
-
-### 3. NestJS Module Integration
-
-```typescript
-// app.module.ts
-import { Module } from "@nestjs/common";
-import { ChannelAppModule } from "@channel.io/app-sdk/server/nestjs";
-import { CalendarExtension } from "./extensions/calendar.extension";
-import { OAuthExtension } from "./extensions/oauth.extension";
+```ts
+const options = {
+  appId: process.env.APP_ID!,
+  appSecret: process.env.APP_SECRET!,
+  signingKey: process.env.SIGNING_KEY!,
+  autoRegister: true,
+};
 
 @Module({
-  imports: [
-    ChannelAppModule.forRoot({
-      appId: process.env.APP_ID,
-      appSecret: process.env.APP_SECRET,
-      extensions: [CalendarExtension, OAuthExtension],
-    }),
+  imports: [ChannelAppModule.forRoot(options)],
+  providers: [CalendarExtension],
+})
+export class AppModule {}
+```
+
+After the HTTP server starts listening, auto-registration:
+
+1. Gets a cached app token from `TokenManager`.
+2. Calls `registerExtension` for each discovered extension name/system version.
+3. Retries transient failures with exponential backoff.
+4. Lets AppStore call the versioned endpoint to read function/metadata schemas.
+
+When no extension decorator exists, auto-registration uses the `core` extension fallback for standalone functions.
+
+## Authentication boundaries
+
+- `App Secret` is used only for token exchange.
+- `TokenManager` owns app/channel token caching, refresh, and concurrent request deduplication.
+- `NativeFunctionClient` transports native and app-function calls with an access token supplied by the caller.
+- `SignatureGuard` verifies incoming `x-signature` against the raw request body and hex Signing Key.
+- WAM manager/user authorization belongs to the Channel runtime, not the server token manager.
+
+For multiple server replicas, provide a shared `TokenCacheStorage`.
+
+## Signature setup
+
+```ts
+const app = await NestFactory.create(AppModule, { rawBody: true });
+```
+
+```ts
+@Module({
+  providers: [
+    { provide: APP_GUARD, useFactory: () => new SignatureGuard(options) },
   ],
 })
 export class AppModule {}
 ```
 
-### 4. WAM SDK
+Never verify a re-serialized object; whitespace and property order change the signed bytes.
 
-```typescript
-import {
-  useWamData,
-  useCallFunction,
-  useNativeFunction,
-  useWamSize
-} from '@channel.io/app-sdk/wam';
+## WAM boundary
 
-function BookingWidget() {
-  const channelId = useWamData('channelId');
-  const appId = useWamData('appId');
+The server returns an action like:
 
-  const { call: createBooking, loading } = useCallFunction<CreateBookingResponse>({
-    appId,
-    name: 'calendar.booking.createBooking',
-  });
-
-  const { setSize } = useWamSize();
-
-  useEffect(() => {
-    setSize({ height: 400 });
-  }, []);
-
-  const handleBook = async () => {
-    const result = await createBooking({
-      eventTypeId: '...',
-      startTime: '...',
-    });
-  };
-
-  return <button onClick={handleBook}>Book</button>;
-}
-```
-
-## System Version Management
-
-```typescript
-// Version-separated extension definitions
-@Extension({
-  name: 'calendar',
-  systemVersion: 1,
-})
-export class CalendarExtensionV1 { ... }
-
-@Extension({
-  name: 'calendar',
-  systemVersion: 2,
-})
-export class CalendarExtensionV2 extends CalendarExtensionV1 {
-  // Override or add new functions
-}
-
-// Automatic routing
-ChannelAppModule.forRoot({
-  extensions: {
-    v1: [CalendarExtensionV1],
-    v2: [CalendarExtensionV2],
+```ts
+{
+  type: "wam",
+  attributes: {
+    appId: process.env.APP_ID,
+    name: "booking",
+    wamArgs: { bookingId: "..." },
   },
-});
+}
 ```
 
-## Generated App Structure
+AppStore/Channel loads `${WAM_ENDPOINT}/booking`. The React app uses `WamProvider`, `useWamData`, `useCallFunction`, `useNativeFunction`, `useWamSize`, and `useWamClose`.
 
-```
-my-channel-app/
-├── apps/
-│   ├── server/                  # NestJS backend
-│   │   ├── src/
-│   │   │   ├── extensions/      # Extension implementations
-│   │   │   ├── app.module.ts
-│   │   │   └── main.ts
-│   │   └── package.json
-│   │
-│   └── wam/                     # React frontend
-│       ├── src/
-│       │   ├── widgets/         # WAM widgets
-│       │   └── App.tsx
-│       └── package.json
-│
-├── packages/
-│   └── shared/                  # Shared types/schemas
-│
-├── llms.txt                     # AI documentation
-└── package.json                 # Monorepo root
-```
+Keep secrets out of `wamArgs`; the WAM is client-side code.
 
-## Key Differentiators
+## DataSource boundary
 
-1. **Decorator-based**: Familiar NestJS-style patterns
-2. **Zod Schemas**: Runtime validation + automatic TypeScript type inference
-3. **WAM Integration**: Server/frontend development with same SDK
-4. **llms.txt**: Optimized for AI code generation
-5. **Version Management**: Easy system version upgrades
-6. **CLI Tools**: Quick project scaffolding and code generation
+DataSource metadata is exposed through extension functions. Query execution is a separate gRPC service under `datasource/grpc`. Do not route query streams through the JSON Function Endpoint.
+
+## Source of truth
+
+Use this order when examples disagree:
+
+1. Public package exports.
+2. Core extension schemas and interfaces.
+3. Server discovery/router/token source.
+4. Reference documents and current examples.
+5. Legacy web articles.

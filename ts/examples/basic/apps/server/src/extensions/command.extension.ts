@@ -11,7 +11,7 @@ import {
   GetCommandsOutputSchema,
   CommandResultSchema,
 } from "@channel.io/app-sdk-server";
-import type { FunctionContext } from "@channel.io/app-sdk-server";
+import type { Context } from "@channel.io/app-sdk-server";
 
 const GetCommandsInput = z.object({});
 
@@ -68,7 +68,7 @@ export class CommandExtension {
   @InputSchema(CommandActionInput)
   @OutputSchema(CommandResultSchema)
   async execute(
-    @Ctx() ctx: FunctionContext,
+    @Ctx() ctx: Context,
     @Input() params: z.infer<typeof CommandActionInput>
   ): Promise<z.infer<typeof CommandResultSchema>> {
     const target =

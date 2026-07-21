@@ -16,7 +16,7 @@ export function EventTypeList({ appId, onSelect }: Props) {
   });
 
   useEffect(() => {
-    loadEventTypes();
+    void loadEventTypes();
   }, []);
 
   const loadEventTypes = async () => {
@@ -36,7 +36,12 @@ export function EventTypeList({ appId, onSelect }: Props) {
     return (
       <div style={styles.error}>
         <p>Failed to load event types</p>
-        <button onClick={loadEventTypes} style={styles.retryButton}>
+        <button
+          onClick={() => {
+            void loadEventTypes();
+          }}
+          style={styles.retryButton}
+        >
           Retry
         </button>
       </div>

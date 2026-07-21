@@ -21,7 +21,7 @@ export function AvailabilityPicker({ appId, eventType, onSelect }: Props) {
   });
 
   useEffect(() => {
-    loadAvailability();
+    void loadAvailability();
   }, [selectedDate]);
 
   const loadAvailability = async () => {
@@ -59,14 +59,11 @@ export function AvailabilityPicker({ appId, eventType, onSelect }: Props) {
   };
 
   // Group slots by date
-  const slotsByDate = slots.reduce<Record<string, TimeSlot[]>>((acc, slot) => {
-    const date = slot.startTime.split("T")[0]!;
-    if (!acc[date]) {
-      acc[date] = [];
-    }
-    acc[date].push(slot);
-    return acc;
-  }, {});
+  const slotsByDate = new Map<string, TimeSlot[]>();
+  for (const slot of slots) {
+    const date = slot.startTime.split("T")[0];
+    slotsByDate.set(date, [...(slotsByDate.get(date) ?? []), slot]);
+  }
 
   return (
     <div style={styles.container}>
@@ -88,12 +85,12 @@ export function AvailabilityPicker({ appId, eventType, onSelect }: Props) {
         <div style={styles.loading}>Loading available times...</div>
       ) : (
         <div style={styles.slotsContainer}>
-          {Object.entries(slotsByDate).length === 0 ? (
+          {slotsByDate.size === 0 ? (
             <div style={styles.noSlots}>No available times for this period</div>
           ) : (
-            Object.entries(slotsByDate).map(([date, dateSlots]) => (
+            [...slotsByDate].map(([date, dateSlots]) => (
               <div key={date} style={styles.dateGroup}>
-                <div style={styles.dateHeader}>{formatDate(dateSlots[0]!.startTime)}</div>
+                <div style={styles.dateHeader}>{formatDate(date)}</div>
                 <div style={styles.timeSlots}>
                   {dateSlots.map((slot) => (
                     <button

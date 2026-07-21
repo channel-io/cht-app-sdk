@@ -21,7 +21,10 @@
 ## Getting Started
 
 ```tsx
-import { WamThemeProvider, HeightSynchronizer } from "@channel.io/app-sdk-wam-ui";
+import {
+  WamThemeProvider,
+  HeightSynchronizer,
+} from "@channel.io/app-sdk-wam-ui";
 import { WamProvider } from "@channel.io/app-sdk-wam";
 
 function App() {
@@ -37,4 +40,4 @@ function App() {
 }
 ```
 
-See the [package README](../packages/wam-ui/README.md) for full API documentation.
+See the [package README](../../../ts/packages/wam-ui/README.md) for full API documentation.

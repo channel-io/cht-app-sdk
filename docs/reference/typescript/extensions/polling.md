@@ -1,122 +1,75 @@
 # Polling Extension
 
-Use the polling extension when AppStore should schedule repeated channel-scoped app functions for you.
+Use polling when AppStore should schedule repeated channel-scoped app functions. AppStore owns scheduling and queueing; the app owns target discovery and poller logic.
 
-This is intended for new polling apps that would otherwise create their own cron or poller. AppStore owns the shared scheduling and queueing pipeline, while the app owns the polling function logic.
-
-## Required Functions
+Required functions:
 
 - `extension.polling.metadata.getPollers`
 - `extension.polling.target.getChannels`
 
-The metadata function returns the polling functions AppStore should schedule.
-
-```typescript
-import { createExtension, defineFunction, GetPollersOutputSchema } from "@channel.io/app-sdk";
+```ts
 import { z } from "zod";
-
-export const pollingExtension = createExtension({
-  name: "polling",
-  systemVersion: "v1",
-  groups: {
-    metadata: {
-      getPollers: defineFunction({
-        input: z.object({}),
-        output: GetPollersOutputSchema,
-        handler: async () => ({
-          pollers: [
-            {
-              functionName: "extension.polling.poller.pollQnAs",
-              intervalSeconds: 900,
-              timeoutSeconds: 30,
-              maxConcurrency: 5,
-              rps: 1,
-            },
-          ],
-        }),
-      }),
-    },
-  },
-});
-```
-
-## Poller Fields
-
-| Field             | Required | Description                                                 |
-| ----------------- | -------- | ----------------------------------------------------------- |
-| `functionName`    | Yes      | Full app function name AppStore calls with channel context. |
-| `intervalSeconds` | Yes      | How often AppStore creates a run for this polling function. |
-| `timeoutSeconds`  | No       | Per-call timeout in seconds. AppStore defaults to `30`.     |
-| `maxConcurrency`  | No       | Per-handler in-flight call limit. AppStore defaults to `5`. |
-| `rps`             | No       | Per-handler request rate limit. AppStore defaults to `1`.   |
-
-Polling functions receive `{}` as params and a normal channel context.
-
-```typescript
-poller: {
-  pollQnAs: defineFunction({
-    input: z.object({}),
-    output: z.object({}).passthrough(),
-    handler: async (ctx) => {
-      await pollExternalBoard(ctx.channel.id);
-      return {};
-    },
-  }),
-}
-```
-
-## Target Resolver
-
-Implement `extension.polling.target.getChannels` to return the channel page for the polling function AppStore is currently enqueueing.
-
-AppStore does not infer targets from installed channels. If a channel should be polled, return it from this function.
-
-```typescript
 import {
+  Context,
+  Ctx,
+  Extension,
+  Func,
+  GetPollersOutputSchema,
   GetPollingTargetChannelsInputSchema,
   GetPollingTargetChannelsOutputSchema,
-} from "@channel.io/app-sdk";
+  Input,
+  InputSchema,
+  OutputSchema,
+} from "@channel.io/app-sdk-server";
 
-target: {
-  getChannels: defineFunction({
-    input: GetPollingTargetChannelsInputSchema,
-    output: GetPollingTargetChannelsOutputSchema,
-    handler: async (_ctx, params) => {
-      const page = await listBoardEnabledChannels({
-        cursor: params.cursor,
-        limit: params.limit,
-      });
+@Extension({ name: "polling", systemVersion: "v1" })
+export class PollingExtension {
+  @Func("metadata.getPollers")
+  @InputSchema(z.object({}))
+  @OutputSchema(GetPollersOutputSchema)
+  getPollers() {
+    return {
+      pollers: [
+        {
+          functionName: "extension.polling.poller.pollQnAs",
+          intervalSeconds: 900,
+          timeoutSeconds: 30,
+          maxConcurrency: 5,
+          rps: 1,
+        },
+      ],
+    };
+  }
 
-      return {
-        channelIds: page.channelIds,
-        nextCursor: page.nextCursor,
-        hasNextPage: page.hasNextPage,
-      };
-    },
-  }),
+  @Func("target.getChannels")
+  @InputSchema(GetPollingTargetChannelsInputSchema)
+  @OutputSchema(GetPollingTargetChannelsOutputSchema)
+  async getChannels(
+    @Input() input: z.infer<typeof GetPollingTargetChannelsInputSchema>,
+  ) {
+    return listBoardEnabledChannels(input);
+  }
+
+  @Func("poller.pollQnAs")
+  @InputSchema(z.object({}))
+  @OutputSchema(z.object({}))
+  async pollQnAs(@Ctx() ctx: Context) {
+    await pollExternalBoard(ctx.channel.id);
+    return {};
+  }
 }
 ```
 
-Target resolver input:
+## Poller fields
 
-| Field          | Description                                       |
-| -------------- | ------------------------------------------------- |
-| `functionName` | Polling function name currently being enqueued.   |
-| `cursor`       | Previous `nextCursor`, omitted on the first page. |
-| `limit`        | Maximum page size. AppStore sends at most `500`.  |
+| Field             | Required | Description                                    |
+| ----------------- | -------- | ---------------------------------------------- |
+| `functionName`    | Yes      | Full function name called with channel context |
+| `intervalSeconds` | Yes      | Run creation interval                          |
+| `timeoutSeconds`  | No       | Per-call timeout; default `30`                 |
+| `maxConcurrency`  | No       | Per-worker in-flight limit; default `5`        |
+| `rps`             | No       | Per-worker rate limit; default `1`             |
 
-Target resolver output:
+The target resolver receives `functionName`, optional `cursor`, and `limit` (maximum 500). Return `channelIds`, optional `nextCursor`, and optional `hasNextPage`. If `hasNextPage` is true, `nextCursor` is required.
 
-| Field         | Description                                             |
-| ------------- | ------------------------------------------------------- |
-| `channelIds`  | Channel IDs to enqueue for this page.                   |
-| `nextCursor`  | Cursor for the next page. Omit when paging is complete. |
-| `hasNextPage` | Optional boolean hint. If true, also return a cursor.   |
-
-## Registration
-
-Register the extension through:
-
-- `registerExtension("polling", "v1")`
-
-AppStore reads `getPollers` during extension registration and updates the scheduler registration from that metadata. The target resolver must also be implemented for the polling extension registration to succeed.
+Enable `autoRegister` for the decorated class. AppStore reads poller metadata during `registerExtension("polling", "v1")` and requires the target resolver.

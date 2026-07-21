@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { useEffect, useState, type CSSProperties } from "react";
 import { useWamData, useWamSize, useCallFunction, useWamClose } from "@channel.io/app-sdk-wam";
 
@@ -99,7 +98,7 @@ export default function App() {
           <strong>Channel ID:</strong> {channelId ?? "N/A"}
         </p>
         <p>
-          <strong>App ID:</strong> {appId || "N/A"}
+          <strong>App ID:</strong> {appId.length > 0 ? appId : "N/A"}
         </p>
       </div>
 
@@ -129,7 +128,9 @@ export default function App() {
         </div>
 
         <button
-          onClick={handleExecute}
+          onClick={() => {
+            void handleExecute();
+          }}
           disabled={executing || !commandInput}
           style={{
             ...styles.button,
@@ -167,7 +168,13 @@ export default function App() {
       <div style={styles.section}>
         <h2 style={styles.sectionTitle}>
           Available Commands
-          <button onClick={loadCommands} disabled={listing} style={styles.refreshButton}>
+          <button
+            onClick={() => {
+              void loadCommands();
+            }}
+            disabled={listing}
+            style={styles.refreshButton}
+          >
             {listing ? "..." : "↻"}
           </button>
         </h2>

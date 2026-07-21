@@ -15,7 +15,7 @@ async function bootstrap() {
   await app.listen(port);
 
   console.log(`🚀 Server running on http://localhost:${port}`);
-  console.log(`📡 Functions endpoint: POST http://localhost:${port}/functions`);
+  console.log(`📡 Functions endpoint: PUT http://localhost:${port}/functions/:version`);
 }
 
-bootstrap();
+void bootstrap();

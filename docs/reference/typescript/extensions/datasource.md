@@ -1,7 +1,7 @@
 # DataSource Extension
 
 Use DataSource when an app exposes catalog and table metadata to AppStore for
-CoS data source discovery. Metadata is JSON-RPC. Query execution is separate:
+Channel data source discovery. Metadata is JSON-RPC. Query execution is separate:
 the app server exposes datasource gRPC `ExecuteQuery`.
 
 The metadata DTOs are also defined in the SDK common proto at
@@ -20,36 +20,73 @@ JSON shape and keep app code on camelCase fields.
 | `catalog.describeTable` | Returns detailed table columns and keys; may include bounded samples      | Yes      |
 
 ```typescript
-import { createStaticDataSourceExtension } from "@channel.io/app-sdk-core";
+import { z } from "zod";
+import {
+  DataSourceFunctionNames,
+  DescribeTableInputSchema,
+  DescribeTableOutputSchema,
+  Extension,
+  Func,
+  Input,
+  InputSchema,
+  ListCatalogsInputSchema,
+  ListCatalogsOutputSchema,
+  ListTablesInputSchema,
+  ListTablesOutputSchema,
+  OutputSchema,
+} from "@channel.io/app-sdk-server";
 
-export const datasourceExtension = createStaticDataSourceExtension({
-  catalogs: [{ alias: "bigquery", dialect: "bigquery" }],
-  tables: [
-    {
-      table: {
-        name: "orders",
-        localCatalogAlias: "bigquery",
-        managerAccess: "owner",
-      },
-    },
-  ],
-  definitions: [
-    {
-      table: { name: "orders", localCatalogAlias: "bigquery" },
-      columns: [
+@Extension({ name: "datasource", systemVersion: "v1" })
+export class DataSourceExtension {
+  @Func(DataSourceFunctionNames.listCatalogs)
+  @InputSchema(ListCatalogsInputSchema)
+  @OutputSchema(ListCatalogsOutputSchema)
+  listCatalogs() {
+    return { catalogs: [{ alias: "warehouse", dialect: "bigquery" }] };
+  }
+
+  @Func(DataSourceFunctionNames.listTables)
+  @InputSchema(ListTablesInputSchema)
+  @OutputSchema(ListTablesOutputSchema)
+  listTables() {
+    return {
+      tables: [
         {
-          name: "channel_id",
-          type: "STRING",
-          nullable: false,
-          partitionKey: true,
+          table: {
+            name: "orders",
+            localCatalogAlias: "warehouse",
+            managerAccess: "owner",
+          },
         },
-        { name: "order_id", type: "STRING", nullable: false },
       ],
-      primaryKey: ["channel_id", "order_id"],
-    },
-  ],
-});
+    };
+  }
+
+  @Func(DataSourceFunctionNames.describeTable)
+  @InputSchema(DescribeTableInputSchema)
+  @OutputSchema(DescribeTableOutputSchema)
+  describeTable(@Input() input: z.infer<typeof DescribeTableInputSchema>) {
+    if (input.tableName !== "orders") throw new Error("table not found");
+    return {
+      definition: {
+        table: { name: "orders", localCatalogAlias: "warehouse" },
+        columns: [
+          {
+            name: "channel_id",
+            type: "STRING",
+            nullable: false,
+            partitionKey: true,
+          },
+          { name: "order_id", type: "STRING", nullable: false },
+        ],
+        primaryKey: ["channel_id", "order_id"],
+      },
+    };
+  }
+}
 ```
+
+List `DataSourceExtension` in the NestJS module's `providers`. The lower-level `createStaticDataSourceExtension()` export builds an `ExtensionDefinition`; `ChannelAppModule` does not consume that definition directly.
 
 Set `managerAccess` to `"owner"` when only channel Owner-role managers may
 discover, describe, or query a table. Use `"all"`, or omit the field, to allow
@@ -68,12 +105,12 @@ import {
 } from "@channel.io/app-sdk-server";
 
 const executor = createBigQueryDataSourceExecutor({
-  projectId: "appstudio-project",
+  projectId: "example-project",
   credentialsJsonEnv: "BIGQUERY_CREDENTIALS_JSON",
   sources: [
     {
       sourceId: "bigquery",
-      datasetId: "app_cafe24",
+      datasetId: "example_dataset",
       tables: [{ name: "orders" }, { name: "products" }, { name: "carts" }],
       maxStreamCount: 1,
     },
@@ -101,18 +138,16 @@ resolve the signing key from `identity.appId`, then dispatch by
 `context.accessTokenIdentity?.appId`.
 
 ```typescript
-import {
-  createDataSourceGrpcServer,
-} from "@channel.io/app-sdk-server";
+import { createDataSourceGrpcServer } from "@channel.io/app-sdk-server";
 
 createDataSourceGrpcServer(
   {
     executeQuery: (request, sink, context) => {
       switch (context?.accessTokenIdentity?.appId) {
-        case process.env.CAFE24_APP_ID:
-          return cafe24Executor.executeQuery(request, sink, context);
-        case process.env.SHOPIFY_APP_ID:
-          return shopifyExecutor.executeQuery(request, sink, context);
+        case process.env.APP_A_ID:
+          return appAExecutor.executeQuery(request, sink, context);
+        case process.env.APP_B_ID:
+          return appBExecutor.executeQuery(request, sink, context);
         default:
           throw new Error("unsupported datasource app id");
       }
@@ -121,10 +156,10 @@ createDataSourceGrpcServer(
   {
     signingKeyResolver: (identity) => {
       switch (identity.appId) {
-        case process.env.CAFE24_APP_ID:
-          return process.env.CAFE24_SIGNING_KEY ?? "";
-        case process.env.SHOPIFY_APP_ID:
-          return process.env.SHOPIFY_SIGNING_KEY ?? "";
+        case process.env.APP_A_ID:
+          return process.env.APP_A_SIGNING_KEY ?? "";
+        case process.env.APP_B_ID:
+          return process.env.APP_B_SIGNING_KEY ?? "";
         default:
           throw new Error("unsupported datasource app id");
       }
@@ -185,11 +220,10 @@ Arrow packages unless the corresponding runner is executed.
 
 ## Policy Boundary
 
-AppStore is still responsible for the authoritative policy: app alias
-resolution, AST rewrite, `channel_id` predicate injection, audit logging, and
-global row/byte/timeout limits. SDK runners only provide defensive checks:
-single read-only SQL validation, optional table allowlist validation, local
-row/byte/timeout limits, and consistent datasource error mapping.
+AppStore remains the authority for app identity, permissions, tenant isolation,
+auditing, and global limits. SDK runners add local defensive checks such as
+read-only query validation, optional table allowlists, local resource limits,
+and consistent datasource error mapping.
 
 For small or custom engines, `createRowQueryHandler(...)`,
 `createPostgresQueryHandler(...)`, and `createBigQueryQueryHandler(...)` remain

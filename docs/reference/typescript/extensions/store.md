@@ -40,38 +40,9 @@ type StoreProfileLocalizedContent = {
 - Intro and FAQ answers support the limited Markdown syntax validated by App Store.
 - Use empty arrays or empty strings when App Store Developer GUI should provide a fallback value.
 
-## Helper API
+## TypeScript Implementation
 
-For static metadata, use `createStoreExtension()`.
-
-```typescript
-import { createStoreExtension } from "@channel.io/app-sdk-server";
-
-const localizedContent = {
-  images: [],
-  intro: {
-    helpsWith: "Connect order and shipping data to customer support.",
-    recommendedFor: "Teams that automate repeated commerce questions.",
-  },
-  faqs: [
-    {
-      question: "Do I need a commerce app?",
-      answer: "A commerce app is optional but recommended.",
-    },
-  ],
-};
-
-export const storeExtension = createStoreExtension({
-  relatedAppIds: ["appCafe24"],
-  i18nMap: {
-    ko: localizedContent,
-    ja: localizedContent,
-    en: localizedContent,
-  },
-});
-```
-
-For decorator-based apps, implement the metadata function directly.
+Current NestJS apps should implement the metadata Function with decorators. The lower-level `createStoreExtension()` export builds an `ExtensionDefinition`, but `ChannelAppModule` does not consume that definition directly.
 
 ```typescript
 import {

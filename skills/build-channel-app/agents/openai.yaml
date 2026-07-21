@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Channel App"
+  short_description: "Build and verify Channel App Store apps"
+  default_prompt: "Use $build-channel-app to build a Channel App Store app with the official SDK."
