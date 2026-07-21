@@ -1,6 +1,6 @@
 {
   "name": "@channel.io/app-sdk-wam-ui",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "UI components for Channel.io WAM — desk-consistent design patterns",
   "type": "module",
   "main": "./dist/index.js",
