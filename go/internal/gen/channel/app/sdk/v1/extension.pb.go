@@ -1063,11 +1063,12 @@ func (x *ConfigValidationNotice) GetLinks() []*ConfigInlineLink {
 }
 
 type ConfigHooks struct {
-	state                     protoimpl.MessageState `protogen:"open.v1"`
-	DraftResolverFunctionName string                 `protobuf:"bytes,1,opt,name=draft_resolver_function_name,json=draftResolverFunctionName,proto3" json:"draft_resolver_function_name,omitempty"`
-	ValidateFunctionName      string                 `protobuf:"bytes,2,opt,name=validate_function_name,json=validateFunctionName,proto3" json:"validate_function_name,omitempty"`
-	unknownFields             protoimpl.UnknownFields
-	sizeCache                 protoimpl.SizeCache
+	state                        protoimpl.MessageState `protogen:"open.v1"`
+	DraftResolverFunctionName    string                 `protobuf:"bytes,1,opt,name=draft_resolver_function_name,json=draftResolverFunctionName,proto3" json:"draft_resolver_function_name,omitempty"`
+	ValidateFunctionName         string                 `protobuf:"bytes,2,opt,name=validate_function_name,json=validateFunctionName,proto3" json:"validate_function_name,omitempty"`
+	DraftResolverOnLoadFieldKeys []string               `protobuf:"bytes,3,rep,name=draft_resolver_on_load_field_keys,json=draftResolverOnLoadFieldKeys,proto3" json:"draft_resolver_on_load_field_keys,omitempty"`
+	unknownFields                protoimpl.UnknownFields
+	sizeCache                    protoimpl.SizeCache
 }
 
 func (x *ConfigHooks) Reset() {
@@ -1112,6 +1113,13 @@ func (x *ConfigHooks) GetValidateFunctionName() string {
 		return x.ValidateFunctionName
 	}
 	return ""
+}
+
+func (x *ConfigHooks) GetDraftResolverOnLoadFieldKeys() []string {
+	if x != nil {
+		return x.DraftResolverOnLoadFieldKeys
+	}
+	return nil
 }
 
 type ConfigOAuthAdditionalParam struct {
@@ -15450,10 +15458,11 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\x05links\x18\a \x03(\v2$.channel.app.sdk.v1.ConfigInlineLinkR\x05links\x1ac\n" +
 	"\fI18nMapEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
-	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01\"\x84\x01\n" +
+	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01\"\xcd\x01\n" +
 	"\vConfigHooks\x12?\n" +
 	"\x1cdraft_resolver_function_name\x18\x01 \x01(\tR\x19draftResolverFunctionName\x124\n" +
-	"\x16validate_function_name\x18\x02 \x01(\tR\x14validateFunctionName\"M\n" +
+	"\x16validate_function_name\x18\x02 \x01(\tR\x14validateFunctionName\x12G\n" +
+	"!draft_resolver_on_load_field_keys\x18\x03 \x03(\tR\x1cdraftResolverOnLoadFieldKeys\"M\n" +
 	"\x1aConfigOAuthAdditionalParam\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1b\n" +
 	"\tfield_key\x18\x02 \x01(\tR\bfieldKey\"j\n" +

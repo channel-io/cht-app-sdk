@@ -2878,6 +2878,12 @@
             },
             "validateFunctionName": {
               "type": "string"
+            },
+            "draftResolverOnLoadFieldKeys": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
           },
           "additionalProperties": false

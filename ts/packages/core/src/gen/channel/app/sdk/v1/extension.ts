@@ -149,6 +149,7 @@ export interface ConfigValidationNotice_I18nMapEntry {
 export interface ConfigHooks {
   draftResolverFunctionName?: string | undefined;
   validateFunctionName?: string | undefined;
+  draftResolverOnLoadFieldKeys?: string[] | undefined;
 }
 
 export interface ConfigOAuthAdditionalParam {

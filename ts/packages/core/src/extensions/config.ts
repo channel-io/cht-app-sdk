@@ -145,6 +145,7 @@ export type ConfigValidationNotice = ProtoBacked<
 export const ConfigHooksSchema = z.object({
   draftResolverFunctionName: z.string().optional(),
   validateFunctionName: z.string().optional(),
+  draftResolverOnLoadFieldKeys: z.array(z.string()).optional(),
 });
 export type ConfigHooks = ProtoBacked<z.infer<typeof ConfigHooksSchema>, ProtoConfigHooks>;
 

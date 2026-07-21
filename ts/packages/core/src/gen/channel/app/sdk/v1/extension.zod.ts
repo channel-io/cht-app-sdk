@@ -127,6 +127,7 @@ export type ConfigValidationNoticeProto = z.infer<typeof ConfigValidationNoticeP
 export const ConfigHooksProtoSchema = z.object({
   draftResolverFunctionName: z.string().optional(),
   validateFunctionName: z.string().optional(),
+  draftResolverOnLoadFieldKeys: z.array(z.string()).optional(),
 }) satisfies z.ZodType<pb.ConfigHooks>;
 export type ConfigHooksProto = z.infer<typeof ConfigHooksProtoSchema>;
 
