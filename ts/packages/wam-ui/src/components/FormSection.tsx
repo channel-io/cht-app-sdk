@@ -35,7 +35,7 @@ export function FormSection({ title, description, headerRight, children }: FormS
               {title}
             </Text>
             {description && (
-              <Text typo="13" color="txt-black-dark">
+              <Text typo="13" color="text-neutral-light">
                 {description}
               </Text>
             )}

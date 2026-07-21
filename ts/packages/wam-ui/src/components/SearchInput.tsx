@@ -73,7 +73,7 @@ export function SearchInput({
       placeholder={placeholder}
       variant="secondary"
       size="m"
-      leftContent={<Icon source={SearchIcon} size="s" color="txt-black-darker" />}
+      leftContent={<Icon source={SearchIcon} size="s" color="icon-neutral-heavy" />}
       allowClear={allowClear}
       autoFocus={autoFocus}
     />

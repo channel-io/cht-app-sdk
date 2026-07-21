@@ -11,9 +11,9 @@ export function LoadingPage({ message, height = 200 }: LoadingPageProps) {
   return (
     <Center height={height} width="100%">
       <VStack spacing={12} align="center">
-        <Spinner color="txt-black-darker" />
+        <Spinner color="icon-neutral-heavy" />
         {message && (
-          <Text typo="14" color="txt-black-darker">
+          <Text typo="14" color="text-neutral-light">
             {message}
           </Text>
         )}

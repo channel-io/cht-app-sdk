@@ -9,8 +9,12 @@ Build desk-consistent WAM interfaces without reinventing common patterns.
 ```bash
 npm install @channel.io/app-sdk-wam-ui
 # peer dependencies
-npm install react @channel.io/bezier-react styled-components
+npm install react @channel.io/bezier-react@4.0.0-next.13 @channel.io/bezier-icons@0.60.0 styled-components@^6
 ```
+
+The package is currently verified against Bezier React `4.0.0-next.13` and Bezier Icons
+`0.60.0`. Bezier React 4 is still a prerelease, so pin the `next` version in application
+lockfiles and review its release notes before upgrading.
 
 ## Quick Start
 
@@ -164,13 +168,17 @@ import { InboxIcon } from "@channel.io/bezier-icons";
 
 ## Peer Dependencies
 
-| Package                    | Version                     |
-| -------------------------- | --------------------------- |
-| `react`                    | >=17.0.0                    |
-| `@channel.io/bezier-react` | >=3.0.0 \|\| >=4.0.0-next.0 |
-| `styled-components`        | >=6.0.0                     |
+| Package                    | Version                |
+| -------------------------- | ---------------------- |
+| `react`                    | >=17.0.0               |
+| `@channel.io/bezier-react` | >=4.0.0-next.13 <5.0.0 |
+| `@channel.io/bezier-icons` | >=0.60.0 <1.0.0        |
+| `styled-components`        | >=6.0.0                |
 
 Optional: `@ebay/nice-modal-react` >=1.0.0 (for `ConfirmDialog` NiceModal integration)
+
+Apps still using Bezier 3 should stay on `@channel.io/app-sdk-wam-ui` 0.2.x until they are
+ready to migrate the design-system tokens and styled-components peer dependency together.
 
 ## License
 

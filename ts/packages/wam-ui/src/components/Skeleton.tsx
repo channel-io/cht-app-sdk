@@ -22,7 +22,7 @@ interface StyledSkeletonBoxProps {
 }
 
 const StyledSkeletonBox = styled.div<StyledSkeletonBoxProps>`
-  background: var(--bg-black-lighter);
+  background: var(--color-fill-neutral-lighter);
   overflow: hidden;
   position: relative;
   width: ${({ $width }) =>

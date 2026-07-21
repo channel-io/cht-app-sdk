@@ -45,7 +45,7 @@ export function InputRow({
 
   const labelAddon =
     showLength && maxLength != null ? (
-      <Text typo="12" color="txt-black-darker">
+      <Text typo="12" color="text-neutral-lighter">
         {currentLength}/{maxLength}
       </Text>
     ) : undefined;

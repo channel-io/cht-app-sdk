@@ -18,6 +18,10 @@
 
 `wam-ui` builds **on top of** bezier-react, providing higher-level patterns specific to WAM development.
 
+The current SDK verification baseline is Bezier React `4.0.0-next.13` with Bezier Icons
+`0.60.0`. Bezier React 4 is published under the `next` tag rather than the stable `latest`
+tag, so applications should keep the selected prerelease version visible in their lockfile.
+
 ## Getting Started
 
 ```tsx

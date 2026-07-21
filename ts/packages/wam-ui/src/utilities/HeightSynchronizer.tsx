@@ -64,7 +64,7 @@ export function HeightSynchronizer({
   );
 
   return (
-    <Box ref={setRef} backgroundColor="bg-white-normal">
+    <Box ref={setRef} backgroundColor="surface-high">
       {children}
     </Box>
   );

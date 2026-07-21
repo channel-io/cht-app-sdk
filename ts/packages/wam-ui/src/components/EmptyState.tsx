@@ -25,13 +25,13 @@ const Container = styled.div`
 export function EmptyState({ icon, title, description, action }: EmptyStateProps) {
   return (
     <Container>
-      {icon && <Icon source={icon} size="xl" color="txt-black-dark" />}
+      {icon && <Icon source={icon} size="xl" color="icon-neutral-heavy" />}
       <VStack spacing={4} align="center">
         <Text typo="16" bold>
           {title}
         </Text>
         {description && (
-          <Text typo="14" color="txt-black-dark" align="center">
+          <Text typo="14" color="text-neutral-light" align="center">
             {description}
           </Text>
         )}

@@ -27,7 +27,7 @@ const VARIANT_CONFIG = {
  * Inline feedback banner for success/error/info messages.
  *
  * Wraps bezier `Banner` with preset icon + color combinations
- * matching the Channel App platform and app-kakao patterns.
+ * matching Channel.io app surfaces.
  *
  * @example
  * ```tsx
