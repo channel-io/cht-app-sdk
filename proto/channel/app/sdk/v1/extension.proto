@@ -59,17 +59,48 @@ message ConfigCondition {
   google.protobuf.Value value = 3;
 }
 
+message ConfigLocalizedText {
+  string label = 1;
+  string title = 2;
+  string description = 3;
+  string text = 4;
+  string helper_text = 5;
+  string placeholder = 6;
+  string message = 7;
+  string url = 8;
+  map<string, string> field_labels = 9;
+  string country_code_placeholder = 10;
+  string number_placeholder = 11;
+  string recipient_placeholder = 12;
+  string phone_placeholder = 13;
+  string postcode_placeholder = 14;
+  string address1_placeholder = 15;
+  string address2_placeholder = 16;
+  string provider_name = 17;
+  string menu_label = 18;
+  string success_message = 19;
+  string overview_label = 20;
+  string overview_description = 21;
+  string name_label = 22;
+  string add_label = 23;
+  string status_label = 24;
+  string none_label = 25;
+  string on_change_success_message = 26;
+}
+
 message ConfigChoice {
   string label = 1;
   google.protobuf.Value value = 2;
   string description = 3;
   string image_url = 4;
+  map<string, ConfigLocalizedText> i18n_map = 5;
 }
 
 message ConfigInlineLink {
   string key = 1;
   string label = 2;
   string url = 3;
+  map<string, ConfigLocalizedText> i18n_map = 4;
 }
 
 message ConfigValidationNotice {
@@ -78,6 +109,8 @@ message ConfigValidationNotice {
   string message = 3;
   string placement = 4;
   string block_id = 5;
+  map<string, ConfigLocalizedText> i18n_map = 6;
+  repeated ConfigInlineLink links = 7;
 }
 
 message ConfigHooks {
@@ -101,6 +134,41 @@ message ConfigChoicesSource {
   bool trigger_on_load = 4;
   repeated string trigger_field_keys = 5;
   string app_id = 6;
+}
+
+message ConfigOverview {
+  string title = 1;
+  string description = 2;
+  string name_label = 3;
+  string add_label = 4;
+  string status_label = 5;
+  string connected_at_metadata_key = 6;
+  string connected_by_metadata_key = 7;
+  string feature_section_id = 8;
+  bool show_add_icon = 9;
+  map<string, ConfigLocalizedText> i18n_map = 10;
+}
+
+message ConfigDefaultSelector {
+  string key = 1;
+  string label = 2;
+  string description = 3;
+  string description_display = 4;
+  string placeholder = 5;
+  string none_label = 6;
+  string on_change_function_name = 7;
+  string on_change_app_id = 8;
+  google.protobuf.Struct on_change_params = 9;
+  string on_change_success_message = 10;
+  string default_value_metadata_key = 11;
+  map<string, ConfigLocalizedText> i18n_map = 12;
+}
+
+message ConfigSettings {
+  string title = 1;
+  string description = 2;
+  repeated ConfigDefaultSelector default_selectors = 3;
+  map<string, ConfigLocalizedText> i18n_map = 4;
 }
 
 message ConfigDraftResolutionParams {
@@ -178,6 +246,11 @@ message ConfigField {
   double max_file_size_mb = 39;
   bool multiple = 40;
   google.protobuf.Struct field_labels = 41;
+  map<string, ConfigLocalizedText> i18n_map = 42;
+  bool overview_summary = 43;
+  bool overview_feature = 44;
+  string overview_label = 45;
+  string overview_description = 46;
 }
 
 message ConfigBlock {
@@ -230,6 +303,23 @@ message ConfigBlock {
   repeated string accept = 47;
   double max_file_size_mb = 48;
   bool multiple = 49;
+  map<string, ConfigLocalizedText> i18n_map = 50;
+  bool overview_summary = 51;
+  bool overview_feature = 52;
+  string overview_label = 53;
+  string overview_description = 54;
+  string menu_label = 55;
+  string menu_icon = 56;
+  string function_name = 57;
+  string app_id = 58;
+  google.protobuf.Struct params = 59;
+  string button_style = 60;
+  bool validate_before_run = 61;
+  repeated string validation_field_keys = 62;
+  bool save_before_run = 63;
+  repeated string after_success = 64;
+  string success_message = 65;
+  bool show_in_overview_menu = 66;
 }
 
 message ConfigGetConfigSchemaInput {}
@@ -246,12 +336,16 @@ message ConfigGetConfigSchemaOutput {
   repeated ConfigBlock blocks = 9;
   bool supports_multiple = 10;
   string key_resolver_function_name = 11;
+  map<string, ConfigLocalizedText> i18n_map = 12;
+  ConfigOverview overview = 13;
+  ConfigSettings settings = 14;
 }
 
 message ConfigValidationError {
   string field_key = 1;
   string reason_code = 2;
   string message = 3;
+  map<string, ConfigLocalizedText> i18n_map = 4;
 }
 
 message ConfigValidateStoredConfigInput {}
@@ -275,6 +369,11 @@ message ConfigDraftResolutionOutput {
   google.protobuf.Struct choices_patch = 3;
 }
 
+message OAuthProviderLocalizedText {
+  string provider_name = 1;
+  string provider_description = 2;
+}
+
 message OAuthProvider {
   string provider = 1;
   string authorization_url = 2;
@@ -292,6 +391,7 @@ message OAuthProvider {
   string authorization_open_mode = 14;
   OAuthTokenRequestMapping token_request = 15;
   OAuthTokenResponseMapping token_response = 16;
+  map<string, OAuthProviderLocalizedText> i18n_map = 17;
 }
 
 message OAuthGetAuthConfigInput {}

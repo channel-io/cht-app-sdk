@@ -18,6 +18,18 @@ describe("oauth extension schema", () => {
         scopes: ["openid", "profile"],
         providerName: "Yahoo! Shopping",
         providerDescription: "Connect a Yahoo! Shopping store account.",
+        i18nMap: {
+          ko: {
+            providerName: "야후 쇼핑",
+            providerDescription: "Yahoo! Shopping 스토어 계정을 연결합니다.",
+          },
+          ja: {
+            providerName: "Yahoo!ショッピング",
+          },
+          en: {
+            providerDescription: "Connect a Yahoo! Shopping store account.",
+          },
+        },
         providerIconUrl: "https://provider.example/icon.png",
         parameterCase: "snake",
         tokenRequestContentType: "json",
@@ -45,8 +57,25 @@ describe("oauth extension schema", () => {
     expect(parsed.oauthProvider.tokenRequestContentType).toBe("json");
     expect(parsed.oauthProvider.authorizationCodeParamName).toBe("spapi_oauth_code");
     expect(parsed.oauthProvider.authorizationOpenMode).toBe("currentTab");
+    expect(parsed.oauthProvider.i18nMap?.ko?.providerName).toBe("야후 쇼핑");
+    expect(parsed.oauthProvider.i18nMap?.ja?.providerName).toBe("Yahoo!ショッピング");
     expect(parsed.oauthProvider.tokenRequest?.authorizationCodeParamName).toBe("auth_code");
     expect(parsed.oauthProvider.tokenResponse?.accessTokenPath).toBe("data.access_token");
+  });
+
+  it("rejects unsupported OAuth provider i18n locales", () => {
+    expect(() =>
+      OAuthProviderSchema.parse({
+        provider: "provider",
+        authorizationUrl: "https://provider.example/login",
+        tokenUrl: "https://provider.example/token",
+        scopes: ["read"],
+        providerName: "Provider",
+        i18nMap: {
+          jp: { providerName: "プロバイダー" },
+        },
+      })
+    ).toThrow(/Unsupported OAuth provider i18n locale/);
   });
 
   it("rejects invalid token response object paths", () => {

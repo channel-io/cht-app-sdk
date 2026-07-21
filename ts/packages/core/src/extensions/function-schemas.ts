@@ -281,7 +281,7 @@ interface FunctionSchemaDefinition {
   output: z.ZodType;
 }
 
-export const extensionFunctionSchemaDefinitions = [
+export const extensionFunctionSchemaDefinitions: FunctionSchemaDefinition[] = [
   {
     name: "extension.alfTask.alftask.getTasks",
     input: AlfTaskGetTasksInputSchema,

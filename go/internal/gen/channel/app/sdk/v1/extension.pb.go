@@ -582,19 +582,264 @@ func (x *ConfigCondition) GetValue() *structpb.Value {
 	return nil
 }
 
+type ConfigLocalizedText struct {
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	Label                  string                 `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
+	Title                  string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Description            string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Text                   string                 `protobuf:"bytes,4,opt,name=text,proto3" json:"text,omitempty"`
+	HelperText             string                 `protobuf:"bytes,5,opt,name=helper_text,json=helperText,proto3" json:"helper_text,omitempty"`
+	Placeholder            string                 `protobuf:"bytes,6,opt,name=placeholder,proto3" json:"placeholder,omitempty"`
+	Message                string                 `protobuf:"bytes,7,opt,name=message,proto3" json:"message,omitempty"`
+	Url                    string                 `protobuf:"bytes,8,opt,name=url,proto3" json:"url,omitempty"`
+	FieldLabels            map[string]string      `protobuf:"bytes,9,rep,name=field_labels,json=fieldLabels,proto3" json:"field_labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	CountryCodePlaceholder string                 `protobuf:"bytes,10,opt,name=country_code_placeholder,json=countryCodePlaceholder,proto3" json:"country_code_placeholder,omitempty"`
+	NumberPlaceholder      string                 `protobuf:"bytes,11,opt,name=number_placeholder,json=numberPlaceholder,proto3" json:"number_placeholder,omitempty"`
+	RecipientPlaceholder   string                 `protobuf:"bytes,12,opt,name=recipient_placeholder,json=recipientPlaceholder,proto3" json:"recipient_placeholder,omitempty"`
+	PhonePlaceholder       string                 `protobuf:"bytes,13,opt,name=phone_placeholder,json=phonePlaceholder,proto3" json:"phone_placeholder,omitempty"`
+	PostcodePlaceholder    string                 `protobuf:"bytes,14,opt,name=postcode_placeholder,json=postcodePlaceholder,proto3" json:"postcode_placeholder,omitempty"`
+	Address1Placeholder    string                 `protobuf:"bytes,15,opt,name=address1_placeholder,json=address1Placeholder,proto3" json:"address1_placeholder,omitempty"`
+	Address2Placeholder    string                 `protobuf:"bytes,16,opt,name=address2_placeholder,json=address2Placeholder,proto3" json:"address2_placeholder,omitempty"`
+	ProviderName           string                 `protobuf:"bytes,17,opt,name=provider_name,json=providerName,proto3" json:"provider_name,omitempty"`
+	MenuLabel              string                 `protobuf:"bytes,18,opt,name=menu_label,json=menuLabel,proto3" json:"menu_label,omitempty"`
+	SuccessMessage         string                 `protobuf:"bytes,19,opt,name=success_message,json=successMessage,proto3" json:"success_message,omitempty"`
+	OverviewLabel          string                 `protobuf:"bytes,20,opt,name=overview_label,json=overviewLabel,proto3" json:"overview_label,omitempty"`
+	OverviewDescription    string                 `protobuf:"bytes,21,opt,name=overview_description,json=overviewDescription,proto3" json:"overview_description,omitempty"`
+	NameLabel              string                 `protobuf:"bytes,22,opt,name=name_label,json=nameLabel,proto3" json:"name_label,omitempty"`
+	AddLabel               string                 `protobuf:"bytes,23,opt,name=add_label,json=addLabel,proto3" json:"add_label,omitempty"`
+	StatusLabel            string                 `protobuf:"bytes,24,opt,name=status_label,json=statusLabel,proto3" json:"status_label,omitempty"`
+	NoneLabel              string                 `protobuf:"bytes,25,opt,name=none_label,json=noneLabel,proto3" json:"none_label,omitempty"`
+	OnChangeSuccessMessage string                 `protobuf:"bytes,26,opt,name=on_change_success_message,json=onChangeSuccessMessage,proto3" json:"on_change_success_message,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *ConfigLocalizedText) Reset() {
+	*x = ConfigLocalizedText{}
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfigLocalizedText) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigLocalizedText) ProtoMessage() {}
+
+func (x *ConfigLocalizedText) ProtoReflect() protoreflect.Message {
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigLocalizedText.ProtoReflect.Descriptor instead.
+func (*ConfigLocalizedText) Descriptor() ([]byte, []int) {
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ConfigLocalizedText) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetHelperText() string {
+	if x != nil {
+		return x.HelperText
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetPlaceholder() string {
+	if x != nil {
+		return x.Placeholder
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetFieldLabels() map[string]string {
+	if x != nil {
+		return x.FieldLabels
+	}
+	return nil
+}
+
+func (x *ConfigLocalizedText) GetCountryCodePlaceholder() string {
+	if x != nil {
+		return x.CountryCodePlaceholder
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetNumberPlaceholder() string {
+	if x != nil {
+		return x.NumberPlaceholder
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetRecipientPlaceholder() string {
+	if x != nil {
+		return x.RecipientPlaceholder
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetPhonePlaceholder() string {
+	if x != nil {
+		return x.PhonePlaceholder
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetPostcodePlaceholder() string {
+	if x != nil {
+		return x.PostcodePlaceholder
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetAddress1Placeholder() string {
+	if x != nil {
+		return x.Address1Placeholder
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetAddress2Placeholder() string {
+	if x != nil {
+		return x.Address2Placeholder
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetProviderName() string {
+	if x != nil {
+		return x.ProviderName
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetMenuLabel() string {
+	if x != nil {
+		return x.MenuLabel
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetSuccessMessage() string {
+	if x != nil {
+		return x.SuccessMessage
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetOverviewLabel() string {
+	if x != nil {
+		return x.OverviewLabel
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetOverviewDescription() string {
+	if x != nil {
+		return x.OverviewDescription
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetNameLabel() string {
+	if x != nil {
+		return x.NameLabel
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetAddLabel() string {
+	if x != nil {
+		return x.AddLabel
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetStatusLabel() string {
+	if x != nil {
+		return x.StatusLabel
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetNoneLabel() string {
+	if x != nil {
+		return x.NoneLabel
+	}
+	return ""
+}
+
+func (x *ConfigLocalizedText) GetOnChangeSuccessMessage() string {
+	if x != nil {
+		return x.OnChangeSuccessMessage
+	}
+	return ""
+}
+
 type ConfigChoice struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Label         string                 `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
-	Value         *structpb.Value        `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
-	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	ImageUrl      string                 `protobuf:"bytes,4,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
+	state         protoimpl.MessageState          `protogen:"open.v1"`
+	Label         string                          `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
+	Value         *structpb.Value                 `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	Description   string                          `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	ImageUrl      string                          `protobuf:"bytes,4,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
+	I18NMap       map[string]*ConfigLocalizedText `protobuf:"bytes,5,rep,name=i18n_map,json=i18nMap,proto3" json:"i18n_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ConfigChoice) Reset() {
 	*x = ConfigChoice{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[10]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -606,7 +851,7 @@ func (x *ConfigChoice) String() string {
 func (*ConfigChoice) ProtoMessage() {}
 
 func (x *ConfigChoice) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[10]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -619,7 +864,7 @@ func (x *ConfigChoice) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigChoice.ProtoReflect.Descriptor instead.
 func (*ConfigChoice) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{10}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ConfigChoice) GetLabel() string {
@@ -650,18 +895,26 @@ func (x *ConfigChoice) GetImageUrl() string {
 	return ""
 }
 
+func (x *ConfigChoice) GetI18NMap() map[string]*ConfigLocalizedText {
+	if x != nil {
+		return x.I18NMap
+	}
+	return nil
+}
+
 type ConfigInlineLink struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Label         string                 `protobuf:"bytes,2,opt,name=label,proto3" json:"label,omitempty"`
-	Url           string                 `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
+	state         protoimpl.MessageState          `protogen:"open.v1"`
+	Key           string                          `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Label         string                          `protobuf:"bytes,2,opt,name=label,proto3" json:"label,omitempty"`
+	Url           string                          `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
+	I18NMap       map[string]*ConfigLocalizedText `protobuf:"bytes,4,rep,name=i18n_map,json=i18nMap,proto3" json:"i18n_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ConfigInlineLink) Reset() {
 	*x = ConfigInlineLink{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[11]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -673,7 +926,7 @@ func (x *ConfigInlineLink) String() string {
 func (*ConfigInlineLink) ProtoMessage() {}
 
 func (x *ConfigInlineLink) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[11]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -686,7 +939,7 @@ func (x *ConfigInlineLink) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigInlineLink.ProtoReflect.Descriptor instead.
 func (*ConfigInlineLink) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{11}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ConfigInlineLink) GetKey() string {
@@ -710,20 +963,29 @@ func (x *ConfigInlineLink) GetUrl() string {
 	return ""
 }
 
+func (x *ConfigInlineLink) GetI18NMap() map[string]*ConfigLocalizedText {
+	if x != nil {
+		return x.I18NMap
+	}
+	return nil
+}
+
 type ConfigValidationNotice struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Tone          string                 `protobuf:"bytes,1,opt,name=tone,proto3" json:"tone,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Message       string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
-	Placement     string                 `protobuf:"bytes,4,opt,name=placement,proto3" json:"placement,omitempty"`
-	BlockId       string                 `protobuf:"bytes,5,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
+	state         protoimpl.MessageState          `protogen:"open.v1"`
+	Tone          string                          `protobuf:"bytes,1,opt,name=tone,proto3" json:"tone,omitempty"`
+	Title         string                          `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Message       string                          `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	Placement     string                          `protobuf:"bytes,4,opt,name=placement,proto3" json:"placement,omitempty"`
+	BlockId       string                          `protobuf:"bytes,5,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
+	I18NMap       map[string]*ConfigLocalizedText `protobuf:"bytes,6,rep,name=i18n_map,json=i18nMap,proto3" json:"i18n_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Links         []*ConfigInlineLink             `protobuf:"bytes,7,rep,name=links,proto3" json:"links,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ConfigValidationNotice) Reset() {
 	*x = ConfigValidationNotice{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[12]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -735,7 +997,7 @@ func (x *ConfigValidationNotice) String() string {
 func (*ConfigValidationNotice) ProtoMessage() {}
 
 func (x *ConfigValidationNotice) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[12]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -748,7 +1010,7 @@ func (x *ConfigValidationNotice) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigValidationNotice.ProtoReflect.Descriptor instead.
 func (*ConfigValidationNotice) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{12}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ConfigValidationNotice) GetTone() string {
@@ -786,6 +1048,20 @@ func (x *ConfigValidationNotice) GetBlockId() string {
 	return ""
 }
 
+func (x *ConfigValidationNotice) GetI18NMap() map[string]*ConfigLocalizedText {
+	if x != nil {
+		return x.I18NMap
+	}
+	return nil
+}
+
+func (x *ConfigValidationNotice) GetLinks() []*ConfigInlineLink {
+	if x != nil {
+		return x.Links
+	}
+	return nil
+}
+
 type ConfigHooks struct {
 	state                     protoimpl.MessageState `protogen:"open.v1"`
 	DraftResolverFunctionName string                 `protobuf:"bytes,1,opt,name=draft_resolver_function_name,json=draftResolverFunctionName,proto3" json:"draft_resolver_function_name,omitempty"`
@@ -796,7 +1072,7 @@ type ConfigHooks struct {
 
 func (x *ConfigHooks) Reset() {
 	*x = ConfigHooks{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[13]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -808,7 +1084,7 @@ func (x *ConfigHooks) String() string {
 func (*ConfigHooks) ProtoMessage() {}
 
 func (x *ConfigHooks) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[13]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -821,7 +1097,7 @@ func (x *ConfigHooks) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigHooks.ProtoReflect.Descriptor instead.
 func (*ConfigHooks) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{13}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ConfigHooks) GetDraftResolverFunctionName() string {
@@ -848,7 +1124,7 @@ type ConfigOAuthAdditionalParam struct {
 
 func (x *ConfigOAuthAdditionalParam) Reset() {
 	*x = ConfigOAuthAdditionalParam{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[14]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -860,7 +1136,7 @@ func (x *ConfigOAuthAdditionalParam) String() string {
 func (*ConfigOAuthAdditionalParam) ProtoMessage() {}
 
 func (x *ConfigOAuthAdditionalParam) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[14]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -873,7 +1149,7 @@ func (x *ConfigOAuthAdditionalParam) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigOAuthAdditionalParam.ProtoReflect.Descriptor instead.
 func (*ConfigOAuthAdditionalParam) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{14}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ConfigOAuthAdditionalParam) GetName() string {
@@ -899,7 +1175,7 @@ type ConfigOAuth struct {
 
 func (x *ConfigOAuth) Reset() {
 	*x = ConfigOAuth{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[15]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -911,7 +1187,7 @@ func (x *ConfigOAuth) String() string {
 func (*ConfigOAuth) ProtoMessage() {}
 
 func (x *ConfigOAuth) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[15]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -924,7 +1200,7 @@ func (x *ConfigOAuth) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigOAuth.ProtoReflect.Descriptor instead.
 func (*ConfigOAuth) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{15}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ConfigOAuth) GetAdditionalParams() []*ConfigOAuthAdditionalParam {
@@ -948,7 +1224,7 @@ type ConfigChoicesSource struct {
 
 func (x *ConfigChoicesSource) Reset() {
 	*x = ConfigChoicesSource{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[16]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -960,7 +1236,7 @@ func (x *ConfigChoicesSource) String() string {
 func (*ConfigChoicesSource) ProtoMessage() {}
 
 func (x *ConfigChoicesSource) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[16]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -973,7 +1249,7 @@ func (x *ConfigChoicesSource) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigChoicesSource.ProtoReflect.Descriptor instead.
 func (*ConfigChoicesSource) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{16}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ConfigChoicesSource) GetType() string {
@@ -1018,6 +1294,322 @@ func (x *ConfigChoicesSource) GetAppId() string {
 	return ""
 }
 
+type ConfigOverview struct {
+	state                  protoimpl.MessageState          `protogen:"open.v1"`
+	Title                  string                          `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Description            string                          `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	NameLabel              string                          `protobuf:"bytes,3,opt,name=name_label,json=nameLabel,proto3" json:"name_label,omitempty"`
+	AddLabel               string                          `protobuf:"bytes,4,opt,name=add_label,json=addLabel,proto3" json:"add_label,omitempty"`
+	StatusLabel            string                          `protobuf:"bytes,5,opt,name=status_label,json=statusLabel,proto3" json:"status_label,omitempty"`
+	ConnectedAtMetadataKey string                          `protobuf:"bytes,6,opt,name=connected_at_metadata_key,json=connectedAtMetadataKey,proto3" json:"connected_at_metadata_key,omitempty"`
+	ConnectedByMetadataKey string                          `protobuf:"bytes,7,opt,name=connected_by_metadata_key,json=connectedByMetadataKey,proto3" json:"connected_by_metadata_key,omitempty"`
+	FeatureSectionId       string                          `protobuf:"bytes,8,opt,name=feature_section_id,json=featureSectionId,proto3" json:"feature_section_id,omitempty"`
+	ShowAddIcon            bool                            `protobuf:"varint,9,opt,name=show_add_icon,json=showAddIcon,proto3" json:"show_add_icon,omitempty"`
+	I18NMap                map[string]*ConfigLocalizedText `protobuf:"bytes,10,rep,name=i18n_map,json=i18nMap,proto3" json:"i18n_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *ConfigOverview) Reset() {
+	*x = ConfigOverview{}
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfigOverview) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigOverview) ProtoMessage() {}
+
+func (x *ConfigOverview) ProtoReflect() protoreflect.Message {
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigOverview.ProtoReflect.Descriptor instead.
+func (*ConfigOverview) Descriptor() ([]byte, []int) {
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *ConfigOverview) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *ConfigOverview) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *ConfigOverview) GetNameLabel() string {
+	if x != nil {
+		return x.NameLabel
+	}
+	return ""
+}
+
+func (x *ConfigOverview) GetAddLabel() string {
+	if x != nil {
+		return x.AddLabel
+	}
+	return ""
+}
+
+func (x *ConfigOverview) GetStatusLabel() string {
+	if x != nil {
+		return x.StatusLabel
+	}
+	return ""
+}
+
+func (x *ConfigOverview) GetConnectedAtMetadataKey() string {
+	if x != nil {
+		return x.ConnectedAtMetadataKey
+	}
+	return ""
+}
+
+func (x *ConfigOverview) GetConnectedByMetadataKey() string {
+	if x != nil {
+		return x.ConnectedByMetadataKey
+	}
+	return ""
+}
+
+func (x *ConfigOverview) GetFeatureSectionId() string {
+	if x != nil {
+		return x.FeatureSectionId
+	}
+	return ""
+}
+
+func (x *ConfigOverview) GetShowAddIcon() bool {
+	if x != nil {
+		return x.ShowAddIcon
+	}
+	return false
+}
+
+func (x *ConfigOverview) GetI18NMap() map[string]*ConfigLocalizedText {
+	if x != nil {
+		return x.I18NMap
+	}
+	return nil
+}
+
+type ConfigDefaultSelector struct {
+	state                   protoimpl.MessageState          `protogen:"open.v1"`
+	Key                     string                          `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Label                   string                          `protobuf:"bytes,2,opt,name=label,proto3" json:"label,omitempty"`
+	Description             string                          `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	DescriptionDisplay      string                          `protobuf:"bytes,4,opt,name=description_display,json=descriptionDisplay,proto3" json:"description_display,omitempty"`
+	Placeholder             string                          `protobuf:"bytes,5,opt,name=placeholder,proto3" json:"placeholder,omitempty"`
+	NoneLabel               string                          `protobuf:"bytes,6,opt,name=none_label,json=noneLabel,proto3" json:"none_label,omitempty"`
+	OnChangeFunctionName    string                          `protobuf:"bytes,7,opt,name=on_change_function_name,json=onChangeFunctionName,proto3" json:"on_change_function_name,omitempty"`
+	OnChangeAppId           string                          `protobuf:"bytes,8,opt,name=on_change_app_id,json=onChangeAppId,proto3" json:"on_change_app_id,omitempty"`
+	OnChangeParams          *structpb.Struct                `protobuf:"bytes,9,opt,name=on_change_params,json=onChangeParams,proto3" json:"on_change_params,omitempty"`
+	OnChangeSuccessMessage  string                          `protobuf:"bytes,10,opt,name=on_change_success_message,json=onChangeSuccessMessage,proto3" json:"on_change_success_message,omitempty"`
+	DefaultValueMetadataKey string                          `protobuf:"bytes,11,opt,name=default_value_metadata_key,json=defaultValueMetadataKey,proto3" json:"default_value_metadata_key,omitempty"`
+	I18NMap                 map[string]*ConfigLocalizedText `protobuf:"bytes,12,rep,name=i18n_map,json=i18nMap,proto3" json:"i18n_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
+}
+
+func (x *ConfigDefaultSelector) Reset() {
+	*x = ConfigDefaultSelector{}
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfigDefaultSelector) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigDefaultSelector) ProtoMessage() {}
+
+func (x *ConfigDefaultSelector) ProtoReflect() protoreflect.Message {
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigDefaultSelector.ProtoReflect.Descriptor instead.
+func (*ConfigDefaultSelector) Descriptor() ([]byte, []int) {
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *ConfigDefaultSelector) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *ConfigDefaultSelector) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+func (x *ConfigDefaultSelector) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *ConfigDefaultSelector) GetDescriptionDisplay() string {
+	if x != nil {
+		return x.DescriptionDisplay
+	}
+	return ""
+}
+
+func (x *ConfigDefaultSelector) GetPlaceholder() string {
+	if x != nil {
+		return x.Placeholder
+	}
+	return ""
+}
+
+func (x *ConfigDefaultSelector) GetNoneLabel() string {
+	if x != nil {
+		return x.NoneLabel
+	}
+	return ""
+}
+
+func (x *ConfigDefaultSelector) GetOnChangeFunctionName() string {
+	if x != nil {
+		return x.OnChangeFunctionName
+	}
+	return ""
+}
+
+func (x *ConfigDefaultSelector) GetOnChangeAppId() string {
+	if x != nil {
+		return x.OnChangeAppId
+	}
+	return ""
+}
+
+func (x *ConfigDefaultSelector) GetOnChangeParams() *structpb.Struct {
+	if x != nil {
+		return x.OnChangeParams
+	}
+	return nil
+}
+
+func (x *ConfigDefaultSelector) GetOnChangeSuccessMessage() string {
+	if x != nil {
+		return x.OnChangeSuccessMessage
+	}
+	return ""
+}
+
+func (x *ConfigDefaultSelector) GetDefaultValueMetadataKey() string {
+	if x != nil {
+		return x.DefaultValueMetadataKey
+	}
+	return ""
+}
+
+func (x *ConfigDefaultSelector) GetI18NMap() map[string]*ConfigLocalizedText {
+	if x != nil {
+		return x.I18NMap
+	}
+	return nil
+}
+
+type ConfigSettings struct {
+	state            protoimpl.MessageState          `protogen:"open.v1"`
+	Title            string                          `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Description      string                          `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	DefaultSelectors []*ConfigDefaultSelector        `protobuf:"bytes,3,rep,name=default_selectors,json=defaultSelectors,proto3" json:"default_selectors,omitempty"`
+	I18NMap          map[string]*ConfigLocalizedText `protobuf:"bytes,4,rep,name=i18n_map,json=i18nMap,proto3" json:"i18n_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *ConfigSettings) Reset() {
+	*x = ConfigSettings{}
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfigSettings) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigSettings) ProtoMessage() {}
+
+func (x *ConfigSettings) ProtoReflect() protoreflect.Message {
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigSettings.ProtoReflect.Descriptor instead.
+func (*ConfigSettings) Descriptor() ([]byte, []int) {
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *ConfigSettings) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *ConfigSettings) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *ConfigSettings) GetDefaultSelectors() []*ConfigDefaultSelector {
+	if x != nil {
+		return x.DefaultSelectors
+	}
+	return nil
+}
+
+func (x *ConfigSettings) GetI18NMap() map[string]*ConfigLocalizedText {
+	if x != nil {
+		return x.I18NMap
+	}
+	return nil
+}
+
 type ConfigDraftResolutionParams struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	Scope           string                 `protobuf:"bytes,1,opt,name=scope,proto3" json:"scope,omitempty"`
@@ -1032,7 +1624,7 @@ type ConfigDraftResolutionParams struct {
 
 func (x *ConfigDraftResolutionParams) Reset() {
 	*x = ConfigDraftResolutionParams{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[17]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1044,7 +1636,7 @@ func (x *ConfigDraftResolutionParams) String() string {
 func (*ConfigDraftResolutionParams) ProtoMessage() {}
 
 func (x *ConfigDraftResolutionParams) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[17]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1057,7 +1649,7 @@ func (x *ConfigDraftResolutionParams) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigDraftResolutionParams.ProtoReflect.Descriptor instead.
 func (*ConfigDraftResolutionParams) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{17}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ConfigDraftResolutionParams) GetScope() string {
@@ -1111,7 +1703,7 @@ type ConfigMediaOptions struct {
 
 func (x *ConfigMediaOptions) Reset() {
 	*x = ConfigMediaOptions{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[18]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1123,7 +1715,7 @@ func (x *ConfigMediaOptions) String() string {
 func (*ConfigMediaOptions) ProtoMessage() {}
 
 func (x *ConfigMediaOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[18]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1136,7 +1728,7 @@ func (x *ConfigMediaOptions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigMediaOptions.ProtoReflect.Descriptor instead.
 func (*ConfigMediaOptions) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{18}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ConfigMediaOptions) GetVisibility() string {
@@ -1158,7 +1750,7 @@ type ConfigResolvedValueTarget struct {
 
 func (x *ConfigResolvedValueTarget) Reset() {
 	*x = ConfigResolvedValueTarget{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[19]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1170,7 +1762,7 @@ func (x *ConfigResolvedValueTarget) String() string {
 func (*ConfigResolvedValueTarget) ProtoMessage() {}
 
 func (x *ConfigResolvedValueTarget) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[19]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1183,7 +1775,7 @@ func (x *ConfigResolvedValueTarget) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigResolvedValueTarget.ProtoReflect.Descriptor instead.
 func (*ConfigResolvedValueTarget) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{19}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ConfigResolvedValueTarget) GetKey() string {
@@ -1224,7 +1816,7 @@ type ConfigPhoneFieldLabels struct {
 
 func (x *ConfigPhoneFieldLabels) Reset() {
 	*x = ConfigPhoneFieldLabels{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[20]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1236,7 +1828,7 @@ func (x *ConfigPhoneFieldLabels) String() string {
 func (*ConfigPhoneFieldLabels) ProtoMessage() {}
 
 func (x *ConfigPhoneFieldLabels) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[20]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1249,7 +1841,7 @@ func (x *ConfigPhoneFieldLabels) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigPhoneFieldLabels.ProtoReflect.Descriptor instead.
 func (*ConfigPhoneFieldLabels) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{20}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ConfigPhoneFieldLabels) GetCountryCode() string {
@@ -1280,7 +1872,7 @@ type ConfigAddressFieldLabels struct {
 
 func (x *ConfigAddressFieldLabels) Reset() {
 	*x = ConfigAddressFieldLabels{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[21]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1292,7 +1884,7 @@ func (x *ConfigAddressFieldLabels) String() string {
 func (*ConfigAddressFieldLabels) ProtoMessage() {}
 
 func (x *ConfigAddressFieldLabels) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[21]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1305,7 +1897,7 @@ func (x *ConfigAddressFieldLabels) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigAddressFieldLabels.ProtoReflect.Descriptor instead.
 func (*ConfigAddressFieldLabels) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{21}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ConfigAddressFieldLabels) GetRecipient() string {
@@ -1351,53 +1943,58 @@ func (x *ConfigAddressFieldLabels) GetAddress2() string {
 }
 
 type ConfigField struct {
-	state                  protoimpl.MessageState     `protogen:"open.v1"`
-	Type                   string                     `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
-	Key                    string                     `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
-	Label                  string                     `protobuf:"bytes,3,opt,name=label,proto3" json:"label,omitempty"`
-	Description            string                     `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	HelperText             string                     `protobuf:"bytes,5,opt,name=helper_text,json=helperText,proto3" json:"helper_text,omitempty"`
-	HelperLinks            []*ConfigInlineLink        `protobuf:"bytes,6,rep,name=helper_links,json=helperLinks,proto3" json:"helper_links,omitempty"`
-	Required               bool                       `protobuf:"varint,7,opt,name=required,proto3" json:"required,omitempty"`
-	Placeholder            string                     `protobuf:"bytes,8,opt,name=placeholder,proto3" json:"placeholder,omitempty"`
-	ValidationRegex        string                     `protobuf:"bytes,9,opt,name=validation_regex,json=validationRegex,proto3" json:"validation_regex,omitempty"`
-	StorageClass           string                     `protobuf:"bytes,10,opt,name=storage_class,json=storageClass,proto3" json:"storage_class,omitempty"`
-	Media                  *ConfigMediaOptions        `protobuf:"bytes,11,opt,name=media,proto3" json:"media,omitempty"`
-	ResolvesTo             *ConfigResolvedValueTarget `protobuf:"bytes,12,opt,name=resolves_to,json=resolvesTo,proto3" json:"resolves_to,omitempty"`
-	VisibleWhen            []*ConfigCondition         `protobuf:"bytes,13,rep,name=visible_when,json=visibleWhen,proto3" json:"visible_when,omitempty"`
-	EnabledWhen            []*ConfigCondition         `protobuf:"bytes,14,rep,name=enabled_when,json=enabledWhen,proto3" json:"enabled_when,omitempty"`
-	DefaultValue           *structpb.Value            `protobuf:"bytes,15,opt,name=default_value,json=defaultValue,proto3" json:"default_value,omitempty"`
-	ChoicesSource          *ConfigChoicesSource       `protobuf:"bytes,16,opt,name=choices_source,json=choicesSource,proto3" json:"choices_source,omitempty"`
-	Rows                   int32                      `protobuf:"varint,17,opt,name=rows,proto3" json:"rows,omitempty"`
-	MaskType               string                     `protobuf:"bytes,18,opt,name=mask_type,json=maskType,proto3" json:"mask_type,omitempty"`
-	Min                    float64                    `protobuf:"fixed64,19,opt,name=min,proto3" json:"min,omitempty"`
-	Max                    float64                    `protobuf:"fixed64,20,opt,name=max,proto3" json:"max,omitempty"`
-	Step                   float64                    `protobuf:"fixed64,21,opt,name=step,proto3" json:"step,omitempty"`
-	Choices                []*ConfigChoice            `protobuf:"bytes,22,rep,name=choices,proto3" json:"choices,omitempty"`
-	MinSelections          int32                      `protobuf:"varint,23,opt,name=min_selections,json=minSelections,proto3" json:"min_selections,omitempty"`
-	MaxSelections          int32                      `protobuf:"varint,24,opt,name=max_selections,json=maxSelections,proto3" json:"max_selections,omitempty"`
-	Format                 string                     `protobuf:"bytes,25,opt,name=format,proto3" json:"format,omitempty"`
-	CountryCodeChoices     []*ConfigChoice            `protobuf:"bytes,26,rep,name=country_code_choices,json=countryCodeChoices,proto3" json:"country_code_choices,omitempty"`
-	CountryCodePlaceholder string                     `protobuf:"bytes,29,opt,name=country_code_placeholder,json=countryCodePlaceholder,proto3" json:"country_code_placeholder,omitempty"`
-	NumberPlaceholder      string                     `protobuf:"bytes,30,opt,name=number_placeholder,json=numberPlaceholder,proto3" json:"number_placeholder,omitempty"`
-	SearchEnabled          bool                       `protobuf:"varint,31,opt,name=search_enabled,json=searchEnabled,proto3" json:"search_enabled,omitempty"`
-	PostcodeLookupUrl      string                     `protobuf:"bytes,32,opt,name=postcode_lookup_url,json=postcodeLookupUrl,proto3" json:"postcode_lookup_url,omitempty"`
-	RecipientPlaceholder   string                     `protobuf:"bytes,33,opt,name=recipient_placeholder,json=recipientPlaceholder,proto3" json:"recipient_placeholder,omitempty"`
-	PhonePlaceholder       string                     `protobuf:"bytes,34,opt,name=phone_placeholder,json=phonePlaceholder,proto3" json:"phone_placeholder,omitempty"`
-	PostcodePlaceholder    string                     `protobuf:"bytes,35,opt,name=postcode_placeholder,json=postcodePlaceholder,proto3" json:"postcode_placeholder,omitempty"`
-	Address1Placeholder    string                     `protobuf:"bytes,36,opt,name=address1_placeholder,json=address1Placeholder,proto3" json:"address1_placeholder,omitempty"`
-	Address2Placeholder    string                     `protobuf:"bytes,37,opt,name=address2_placeholder,json=address2Placeholder,proto3" json:"address2_placeholder,omitempty"`
-	Accept                 []string                   `protobuf:"bytes,38,rep,name=accept,proto3" json:"accept,omitempty"`
-	MaxFileSizeMb          float64                    `protobuf:"fixed64,39,opt,name=max_file_size_mb,json=maxFileSizeMb,proto3" json:"max_file_size_mb,omitempty"`
-	Multiple               bool                       `protobuf:"varint,40,opt,name=multiple,proto3" json:"multiple,omitempty"`
-	FieldLabels            *structpb.Struct           `protobuf:"bytes,41,opt,name=field_labels,json=fieldLabels,proto3" json:"field_labels,omitempty"`
+	state                  protoimpl.MessageState          `protogen:"open.v1"`
+	Type                   string                          `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	Key                    string                          `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Label                  string                          `protobuf:"bytes,3,opt,name=label,proto3" json:"label,omitempty"`
+	Description            string                          `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	HelperText             string                          `protobuf:"bytes,5,opt,name=helper_text,json=helperText,proto3" json:"helper_text,omitempty"`
+	HelperLinks            []*ConfigInlineLink             `protobuf:"bytes,6,rep,name=helper_links,json=helperLinks,proto3" json:"helper_links,omitempty"`
+	Required               bool                            `protobuf:"varint,7,opt,name=required,proto3" json:"required,omitempty"`
+	Placeholder            string                          `protobuf:"bytes,8,opt,name=placeholder,proto3" json:"placeholder,omitempty"`
+	ValidationRegex        string                          `protobuf:"bytes,9,opt,name=validation_regex,json=validationRegex,proto3" json:"validation_regex,omitempty"`
+	StorageClass           string                          `protobuf:"bytes,10,opt,name=storage_class,json=storageClass,proto3" json:"storage_class,omitempty"`
+	Media                  *ConfigMediaOptions             `protobuf:"bytes,11,opt,name=media,proto3" json:"media,omitempty"`
+	ResolvesTo             *ConfigResolvedValueTarget      `protobuf:"bytes,12,opt,name=resolves_to,json=resolvesTo,proto3" json:"resolves_to,omitempty"`
+	VisibleWhen            []*ConfigCondition              `protobuf:"bytes,13,rep,name=visible_when,json=visibleWhen,proto3" json:"visible_when,omitempty"`
+	EnabledWhen            []*ConfigCondition              `protobuf:"bytes,14,rep,name=enabled_when,json=enabledWhen,proto3" json:"enabled_when,omitempty"`
+	DefaultValue           *structpb.Value                 `protobuf:"bytes,15,opt,name=default_value,json=defaultValue,proto3" json:"default_value,omitempty"`
+	ChoicesSource          *ConfigChoicesSource            `protobuf:"bytes,16,opt,name=choices_source,json=choicesSource,proto3" json:"choices_source,omitempty"`
+	Rows                   int32                           `protobuf:"varint,17,opt,name=rows,proto3" json:"rows,omitempty"`
+	MaskType               string                          `protobuf:"bytes,18,opt,name=mask_type,json=maskType,proto3" json:"mask_type,omitempty"`
+	Min                    float64                         `protobuf:"fixed64,19,opt,name=min,proto3" json:"min,omitempty"`
+	Max                    float64                         `protobuf:"fixed64,20,opt,name=max,proto3" json:"max,omitempty"`
+	Step                   float64                         `protobuf:"fixed64,21,opt,name=step,proto3" json:"step,omitempty"`
+	Choices                []*ConfigChoice                 `protobuf:"bytes,22,rep,name=choices,proto3" json:"choices,omitempty"`
+	MinSelections          int32                           `protobuf:"varint,23,opt,name=min_selections,json=minSelections,proto3" json:"min_selections,omitempty"`
+	MaxSelections          int32                           `protobuf:"varint,24,opt,name=max_selections,json=maxSelections,proto3" json:"max_selections,omitempty"`
+	Format                 string                          `protobuf:"bytes,25,opt,name=format,proto3" json:"format,omitempty"`
+	CountryCodeChoices     []*ConfigChoice                 `protobuf:"bytes,26,rep,name=country_code_choices,json=countryCodeChoices,proto3" json:"country_code_choices,omitempty"`
+	CountryCodePlaceholder string                          `protobuf:"bytes,29,opt,name=country_code_placeholder,json=countryCodePlaceholder,proto3" json:"country_code_placeholder,omitempty"`
+	NumberPlaceholder      string                          `protobuf:"bytes,30,opt,name=number_placeholder,json=numberPlaceholder,proto3" json:"number_placeholder,omitempty"`
+	SearchEnabled          bool                            `protobuf:"varint,31,opt,name=search_enabled,json=searchEnabled,proto3" json:"search_enabled,omitempty"`
+	PostcodeLookupUrl      string                          `protobuf:"bytes,32,opt,name=postcode_lookup_url,json=postcodeLookupUrl,proto3" json:"postcode_lookup_url,omitempty"`
+	RecipientPlaceholder   string                          `protobuf:"bytes,33,opt,name=recipient_placeholder,json=recipientPlaceholder,proto3" json:"recipient_placeholder,omitempty"`
+	PhonePlaceholder       string                          `protobuf:"bytes,34,opt,name=phone_placeholder,json=phonePlaceholder,proto3" json:"phone_placeholder,omitempty"`
+	PostcodePlaceholder    string                          `protobuf:"bytes,35,opt,name=postcode_placeholder,json=postcodePlaceholder,proto3" json:"postcode_placeholder,omitempty"`
+	Address1Placeholder    string                          `protobuf:"bytes,36,opt,name=address1_placeholder,json=address1Placeholder,proto3" json:"address1_placeholder,omitempty"`
+	Address2Placeholder    string                          `protobuf:"bytes,37,opt,name=address2_placeholder,json=address2Placeholder,proto3" json:"address2_placeholder,omitempty"`
+	Accept                 []string                        `protobuf:"bytes,38,rep,name=accept,proto3" json:"accept,omitempty"`
+	MaxFileSizeMb          float64                         `protobuf:"fixed64,39,opt,name=max_file_size_mb,json=maxFileSizeMb,proto3" json:"max_file_size_mb,omitempty"`
+	Multiple               bool                            `protobuf:"varint,40,opt,name=multiple,proto3" json:"multiple,omitempty"`
+	FieldLabels            *structpb.Struct                `protobuf:"bytes,41,opt,name=field_labels,json=fieldLabels,proto3" json:"field_labels,omitempty"`
+	I18NMap                map[string]*ConfigLocalizedText `protobuf:"bytes,42,rep,name=i18n_map,json=i18nMap,proto3" json:"i18n_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	OverviewSummary        bool                            `protobuf:"varint,43,opt,name=overview_summary,json=overviewSummary,proto3" json:"overview_summary,omitempty"`
+	OverviewFeature        bool                            `protobuf:"varint,44,opt,name=overview_feature,json=overviewFeature,proto3" json:"overview_feature,omitempty"`
+	OverviewLabel          string                          `protobuf:"bytes,45,opt,name=overview_label,json=overviewLabel,proto3" json:"overview_label,omitempty"`
+	OverviewDescription    string                          `protobuf:"bytes,46,opt,name=overview_description,json=overviewDescription,proto3" json:"overview_description,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
 
 func (x *ConfigField) Reset() {
 	*x = ConfigField{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[22]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1409,7 +2006,7 @@ func (x *ConfigField) String() string {
 func (*ConfigField) ProtoMessage() {}
 
 func (x *ConfigField) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[22]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1422,7 +2019,7 @@ func (x *ConfigField) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigField.ProtoReflect.Descriptor instead.
 func (*ConfigField) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{22}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ConfigField) GetType() string {
@@ -1698,62 +2295,114 @@ func (x *ConfigField) GetFieldLabels() *structpb.Struct {
 	return nil
 }
 
+func (x *ConfigField) GetI18NMap() map[string]*ConfigLocalizedText {
+	if x != nil {
+		return x.I18NMap
+	}
+	return nil
+}
+
+func (x *ConfigField) GetOverviewSummary() bool {
+	if x != nil {
+		return x.OverviewSummary
+	}
+	return false
+}
+
+func (x *ConfigField) GetOverviewFeature() bool {
+	if x != nil {
+		return x.OverviewFeature
+	}
+	return false
+}
+
+func (x *ConfigField) GetOverviewLabel() string {
+	if x != nil {
+		return x.OverviewLabel
+	}
+	return ""
+}
+
+func (x *ConfigField) GetOverviewDescription() string {
+	if x != nil {
+		return x.OverviewDescription
+	}
+	return ""
+}
+
 type ConfigBlock struct {
-	state                  protoimpl.MessageState     `protogen:"open.v1"`
-	Type                   string                     `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
-	Id                     string                     `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
-	Title                  string                     `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	Description            string                     `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	VisibleWhen            []*ConfigCondition         `protobuf:"bytes,5,rep,name=visible_when,json=visibleWhen,proto3" json:"visible_when,omitempty"`
-	Text                   string                     `protobuf:"bytes,6,opt,name=text,proto3" json:"text,omitempty"`
-	HelperLinks            []*ConfigInlineLink        `protobuf:"bytes,7,rep,name=helper_links,json=helperLinks,proto3" json:"helper_links,omitempty"`
-	Tone                   string                     `protobuf:"bytes,8,opt,name=tone,proto3" json:"tone,omitempty"`
-	Layout                 string                     `protobuf:"bytes,9,opt,name=layout,proto3" json:"layout,omitempty"`
-	Fields                 []*ConfigField             `protobuf:"bytes,10,rep,name=fields,proto3" json:"fields,omitempty"`
-	Renderer               string                     `protobuf:"bytes,11,opt,name=renderer,proto3" json:"renderer,omitempty"`
-	Props                  *structpb.Struct           `protobuf:"bytes,12,opt,name=props,proto3" json:"props,omitempty"`
-	Key                    string                     `protobuf:"bytes,14,opt,name=key,proto3" json:"key,omitempty"`
-	Label                  string                     `protobuf:"bytes,15,opt,name=label,proto3" json:"label,omitempty"`
-	HelperText             string                     `protobuf:"bytes,16,opt,name=helper_text,json=helperText,proto3" json:"helper_text,omitempty"`
-	Required               bool                       `protobuf:"varint,18,opt,name=required,proto3" json:"required,omitempty"`
-	Placeholder            string                     `protobuf:"bytes,19,opt,name=placeholder,proto3" json:"placeholder,omitempty"`
-	ValidationRegex        string                     `protobuf:"bytes,20,opt,name=validation_regex,json=validationRegex,proto3" json:"validation_regex,omitempty"`
-	StorageClass           string                     `protobuf:"bytes,21,opt,name=storage_class,json=storageClass,proto3" json:"storage_class,omitempty"`
-	Media                  *ConfigMediaOptions        `protobuf:"bytes,22,opt,name=media,proto3" json:"media,omitempty"`
-	ResolvesTo             *ConfigResolvedValueTarget `protobuf:"bytes,23,opt,name=resolves_to,json=resolvesTo,proto3" json:"resolves_to,omitempty"`
-	EnabledWhen            []*ConfigCondition         `protobuf:"bytes,24,rep,name=enabled_when,json=enabledWhen,proto3" json:"enabled_when,omitempty"`
-	DefaultValue           *structpb.Value            `protobuf:"bytes,25,opt,name=default_value,json=defaultValue,proto3" json:"default_value,omitempty"`
-	ChoicesSource          *ConfigChoicesSource       `protobuf:"bytes,26,opt,name=choices_source,json=choicesSource,proto3" json:"choices_source,omitempty"`
-	Rows                   int32                      `protobuf:"varint,27,opt,name=rows,proto3" json:"rows,omitempty"`
-	MaskType               string                     `protobuf:"bytes,28,opt,name=mask_type,json=maskType,proto3" json:"mask_type,omitempty"`
-	Min                    float64                    `protobuf:"fixed64,29,opt,name=min,proto3" json:"min,omitempty"`
-	Max                    float64                    `protobuf:"fixed64,30,opt,name=max,proto3" json:"max,omitempty"`
-	Step                   float64                    `protobuf:"fixed64,31,opt,name=step,proto3" json:"step,omitempty"`
-	Choices                []*ConfigChoice            `protobuf:"bytes,32,rep,name=choices,proto3" json:"choices,omitempty"`
-	MinSelections          int32                      `protobuf:"varint,33,opt,name=min_selections,json=minSelections,proto3" json:"min_selections,omitempty"`
-	MaxSelections          int32                      `protobuf:"varint,34,opt,name=max_selections,json=maxSelections,proto3" json:"max_selections,omitempty"`
-	Format                 string                     `protobuf:"bytes,35,opt,name=format,proto3" json:"format,omitempty"`
-	CountryCodeChoices     []*ConfigChoice            `protobuf:"bytes,36,rep,name=country_code_choices,json=countryCodeChoices,proto3" json:"country_code_choices,omitempty"`
-	FieldLabels            *structpb.Struct           `protobuf:"bytes,37,opt,name=field_labels,json=fieldLabels,proto3" json:"field_labels,omitempty"`
-	CountryCodePlaceholder string                     `protobuf:"bytes,38,opt,name=country_code_placeholder,json=countryCodePlaceholder,proto3" json:"country_code_placeholder,omitempty"`
-	NumberPlaceholder      string                     `protobuf:"bytes,39,opt,name=number_placeholder,json=numberPlaceholder,proto3" json:"number_placeholder,omitempty"`
-	SearchEnabled          bool                       `protobuf:"varint,40,opt,name=search_enabled,json=searchEnabled,proto3" json:"search_enabled,omitempty"`
-	PostcodeLookupUrl      string                     `protobuf:"bytes,41,opt,name=postcode_lookup_url,json=postcodeLookupUrl,proto3" json:"postcode_lookup_url,omitempty"`
-	RecipientPlaceholder   string                     `protobuf:"bytes,42,opt,name=recipient_placeholder,json=recipientPlaceholder,proto3" json:"recipient_placeholder,omitempty"`
-	PhonePlaceholder       string                     `protobuf:"bytes,43,opt,name=phone_placeholder,json=phonePlaceholder,proto3" json:"phone_placeholder,omitempty"`
-	PostcodePlaceholder    string                     `protobuf:"bytes,44,opt,name=postcode_placeholder,json=postcodePlaceholder,proto3" json:"postcode_placeholder,omitempty"`
-	Address1Placeholder    string                     `protobuf:"bytes,45,opt,name=address1_placeholder,json=address1Placeholder,proto3" json:"address1_placeholder,omitempty"`
-	Address2Placeholder    string                     `protobuf:"bytes,46,opt,name=address2_placeholder,json=address2Placeholder,proto3" json:"address2_placeholder,omitempty"`
-	Accept                 []string                   `protobuf:"bytes,47,rep,name=accept,proto3" json:"accept,omitempty"`
-	MaxFileSizeMb          float64                    `protobuf:"fixed64,48,opt,name=max_file_size_mb,json=maxFileSizeMb,proto3" json:"max_file_size_mb,omitempty"`
-	Multiple               bool                       `protobuf:"varint,49,opt,name=multiple,proto3" json:"multiple,omitempty"`
+	state                  protoimpl.MessageState          `protogen:"open.v1"`
+	Type                   string                          `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	Id                     string                          `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Title                  string                          `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
+	Description            string                          `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	VisibleWhen            []*ConfigCondition              `protobuf:"bytes,5,rep,name=visible_when,json=visibleWhen,proto3" json:"visible_when,omitempty"`
+	Text                   string                          `protobuf:"bytes,6,opt,name=text,proto3" json:"text,omitempty"`
+	HelperLinks            []*ConfigInlineLink             `protobuf:"bytes,7,rep,name=helper_links,json=helperLinks,proto3" json:"helper_links,omitempty"`
+	Tone                   string                          `protobuf:"bytes,8,opt,name=tone,proto3" json:"tone,omitempty"`
+	Layout                 string                          `protobuf:"bytes,9,opt,name=layout,proto3" json:"layout,omitempty"`
+	Fields                 []*ConfigField                  `protobuf:"bytes,10,rep,name=fields,proto3" json:"fields,omitempty"`
+	Renderer               string                          `protobuf:"bytes,11,opt,name=renderer,proto3" json:"renderer,omitempty"`
+	Props                  *structpb.Struct                `protobuf:"bytes,12,opt,name=props,proto3" json:"props,omitempty"`
+	Key                    string                          `protobuf:"bytes,14,opt,name=key,proto3" json:"key,omitempty"`
+	Label                  string                          `protobuf:"bytes,15,opt,name=label,proto3" json:"label,omitempty"`
+	HelperText             string                          `protobuf:"bytes,16,opt,name=helper_text,json=helperText,proto3" json:"helper_text,omitempty"`
+	Required               bool                            `protobuf:"varint,18,opt,name=required,proto3" json:"required,omitempty"`
+	Placeholder            string                          `protobuf:"bytes,19,opt,name=placeholder,proto3" json:"placeholder,omitempty"`
+	ValidationRegex        string                          `protobuf:"bytes,20,opt,name=validation_regex,json=validationRegex,proto3" json:"validation_regex,omitempty"`
+	StorageClass           string                          `protobuf:"bytes,21,opt,name=storage_class,json=storageClass,proto3" json:"storage_class,omitempty"`
+	Media                  *ConfigMediaOptions             `protobuf:"bytes,22,opt,name=media,proto3" json:"media,omitempty"`
+	ResolvesTo             *ConfigResolvedValueTarget      `protobuf:"bytes,23,opt,name=resolves_to,json=resolvesTo,proto3" json:"resolves_to,omitempty"`
+	EnabledWhen            []*ConfigCondition              `protobuf:"bytes,24,rep,name=enabled_when,json=enabledWhen,proto3" json:"enabled_when,omitempty"`
+	DefaultValue           *structpb.Value                 `protobuf:"bytes,25,opt,name=default_value,json=defaultValue,proto3" json:"default_value,omitempty"`
+	ChoicesSource          *ConfigChoicesSource            `protobuf:"bytes,26,opt,name=choices_source,json=choicesSource,proto3" json:"choices_source,omitempty"`
+	Rows                   int32                           `protobuf:"varint,27,opt,name=rows,proto3" json:"rows,omitempty"`
+	MaskType               string                          `protobuf:"bytes,28,opt,name=mask_type,json=maskType,proto3" json:"mask_type,omitempty"`
+	Min                    float64                         `protobuf:"fixed64,29,opt,name=min,proto3" json:"min,omitempty"`
+	Max                    float64                         `protobuf:"fixed64,30,opt,name=max,proto3" json:"max,omitempty"`
+	Step                   float64                         `protobuf:"fixed64,31,opt,name=step,proto3" json:"step,omitempty"`
+	Choices                []*ConfigChoice                 `protobuf:"bytes,32,rep,name=choices,proto3" json:"choices,omitempty"`
+	MinSelections          int32                           `protobuf:"varint,33,opt,name=min_selections,json=minSelections,proto3" json:"min_selections,omitempty"`
+	MaxSelections          int32                           `protobuf:"varint,34,opt,name=max_selections,json=maxSelections,proto3" json:"max_selections,omitempty"`
+	Format                 string                          `protobuf:"bytes,35,opt,name=format,proto3" json:"format,omitempty"`
+	CountryCodeChoices     []*ConfigChoice                 `protobuf:"bytes,36,rep,name=country_code_choices,json=countryCodeChoices,proto3" json:"country_code_choices,omitempty"`
+	FieldLabels            *structpb.Struct                `protobuf:"bytes,37,opt,name=field_labels,json=fieldLabels,proto3" json:"field_labels,omitempty"`
+	CountryCodePlaceholder string                          `protobuf:"bytes,38,opt,name=country_code_placeholder,json=countryCodePlaceholder,proto3" json:"country_code_placeholder,omitempty"`
+	NumberPlaceholder      string                          `protobuf:"bytes,39,opt,name=number_placeholder,json=numberPlaceholder,proto3" json:"number_placeholder,omitempty"`
+	SearchEnabled          bool                            `protobuf:"varint,40,opt,name=search_enabled,json=searchEnabled,proto3" json:"search_enabled,omitempty"`
+	PostcodeLookupUrl      string                          `protobuf:"bytes,41,opt,name=postcode_lookup_url,json=postcodeLookupUrl,proto3" json:"postcode_lookup_url,omitempty"`
+	RecipientPlaceholder   string                          `protobuf:"bytes,42,opt,name=recipient_placeholder,json=recipientPlaceholder,proto3" json:"recipient_placeholder,omitempty"`
+	PhonePlaceholder       string                          `protobuf:"bytes,43,opt,name=phone_placeholder,json=phonePlaceholder,proto3" json:"phone_placeholder,omitempty"`
+	PostcodePlaceholder    string                          `protobuf:"bytes,44,opt,name=postcode_placeholder,json=postcodePlaceholder,proto3" json:"postcode_placeholder,omitempty"`
+	Address1Placeholder    string                          `protobuf:"bytes,45,opt,name=address1_placeholder,json=address1Placeholder,proto3" json:"address1_placeholder,omitempty"`
+	Address2Placeholder    string                          `protobuf:"bytes,46,opt,name=address2_placeholder,json=address2Placeholder,proto3" json:"address2_placeholder,omitempty"`
+	Accept                 []string                        `protobuf:"bytes,47,rep,name=accept,proto3" json:"accept,omitempty"`
+	MaxFileSizeMb          float64                         `protobuf:"fixed64,48,opt,name=max_file_size_mb,json=maxFileSizeMb,proto3" json:"max_file_size_mb,omitempty"`
+	Multiple               bool                            `protobuf:"varint,49,opt,name=multiple,proto3" json:"multiple,omitempty"`
+	I18NMap                map[string]*ConfigLocalizedText `protobuf:"bytes,50,rep,name=i18n_map,json=i18nMap,proto3" json:"i18n_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	OverviewSummary        bool                            `protobuf:"varint,51,opt,name=overview_summary,json=overviewSummary,proto3" json:"overview_summary,omitempty"`
+	OverviewFeature        bool                            `protobuf:"varint,52,opt,name=overview_feature,json=overviewFeature,proto3" json:"overview_feature,omitempty"`
+	OverviewLabel          string                          `protobuf:"bytes,53,opt,name=overview_label,json=overviewLabel,proto3" json:"overview_label,omitempty"`
+	OverviewDescription    string                          `protobuf:"bytes,54,opt,name=overview_description,json=overviewDescription,proto3" json:"overview_description,omitempty"`
+	MenuLabel              string                          `protobuf:"bytes,55,opt,name=menu_label,json=menuLabel,proto3" json:"menu_label,omitempty"`
+	MenuIcon               string                          `protobuf:"bytes,56,opt,name=menu_icon,json=menuIcon,proto3" json:"menu_icon,omitempty"`
+	FunctionName           string                          `protobuf:"bytes,57,opt,name=function_name,json=functionName,proto3" json:"function_name,omitempty"`
+	AppId                  string                          `protobuf:"bytes,58,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	Params                 *structpb.Struct                `protobuf:"bytes,59,opt,name=params,proto3" json:"params,omitempty"`
+	ButtonStyle            string                          `protobuf:"bytes,60,opt,name=button_style,json=buttonStyle,proto3" json:"button_style,omitempty"`
+	ValidateBeforeRun      bool                            `protobuf:"varint,61,opt,name=validate_before_run,json=validateBeforeRun,proto3" json:"validate_before_run,omitempty"`
+	ValidationFieldKeys    []string                        `protobuf:"bytes,62,rep,name=validation_field_keys,json=validationFieldKeys,proto3" json:"validation_field_keys,omitempty"`
+	SaveBeforeRun          bool                            `protobuf:"varint,63,opt,name=save_before_run,json=saveBeforeRun,proto3" json:"save_before_run,omitempty"`
+	AfterSuccess           []string                        `protobuf:"bytes,64,rep,name=after_success,json=afterSuccess,proto3" json:"after_success,omitempty"`
+	SuccessMessage         string                          `protobuf:"bytes,65,opt,name=success_message,json=successMessage,proto3" json:"success_message,omitempty"`
+	ShowInOverviewMenu     bool                            `protobuf:"varint,66,opt,name=show_in_overview_menu,json=showInOverviewMenu,proto3" json:"show_in_overview_menu,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
 
 func (x *ConfigBlock) Reset() {
 	*x = ConfigBlock{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[23]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1765,7 +2414,7 @@ func (x *ConfigBlock) String() string {
 func (*ConfigBlock) ProtoMessage() {}
 
 func (x *ConfigBlock) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[23]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1778,7 +2427,7 @@ func (x *ConfigBlock) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigBlock.ProtoReflect.Descriptor instead.
 func (*ConfigBlock) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{23}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ConfigBlock) GetType() string {
@@ -2110,6 +2759,125 @@ func (x *ConfigBlock) GetMultiple() bool {
 	return false
 }
 
+func (x *ConfigBlock) GetI18NMap() map[string]*ConfigLocalizedText {
+	if x != nil {
+		return x.I18NMap
+	}
+	return nil
+}
+
+func (x *ConfigBlock) GetOverviewSummary() bool {
+	if x != nil {
+		return x.OverviewSummary
+	}
+	return false
+}
+
+func (x *ConfigBlock) GetOverviewFeature() bool {
+	if x != nil {
+		return x.OverviewFeature
+	}
+	return false
+}
+
+func (x *ConfigBlock) GetOverviewLabel() string {
+	if x != nil {
+		return x.OverviewLabel
+	}
+	return ""
+}
+
+func (x *ConfigBlock) GetOverviewDescription() string {
+	if x != nil {
+		return x.OverviewDescription
+	}
+	return ""
+}
+
+func (x *ConfigBlock) GetMenuLabel() string {
+	if x != nil {
+		return x.MenuLabel
+	}
+	return ""
+}
+
+func (x *ConfigBlock) GetMenuIcon() string {
+	if x != nil {
+		return x.MenuIcon
+	}
+	return ""
+}
+
+func (x *ConfigBlock) GetFunctionName() string {
+	if x != nil {
+		return x.FunctionName
+	}
+	return ""
+}
+
+func (x *ConfigBlock) GetAppId() string {
+	if x != nil {
+		return x.AppId
+	}
+	return ""
+}
+
+func (x *ConfigBlock) GetParams() *structpb.Struct {
+	if x != nil {
+		return x.Params
+	}
+	return nil
+}
+
+func (x *ConfigBlock) GetButtonStyle() string {
+	if x != nil {
+		return x.ButtonStyle
+	}
+	return ""
+}
+
+func (x *ConfigBlock) GetValidateBeforeRun() bool {
+	if x != nil {
+		return x.ValidateBeforeRun
+	}
+	return false
+}
+
+func (x *ConfigBlock) GetValidationFieldKeys() []string {
+	if x != nil {
+		return x.ValidationFieldKeys
+	}
+	return nil
+}
+
+func (x *ConfigBlock) GetSaveBeforeRun() bool {
+	if x != nil {
+		return x.SaveBeforeRun
+	}
+	return false
+}
+
+func (x *ConfigBlock) GetAfterSuccess() []string {
+	if x != nil {
+		return x.AfterSuccess
+	}
+	return nil
+}
+
+func (x *ConfigBlock) GetSuccessMessage() string {
+	if x != nil {
+		return x.SuccessMessage
+	}
+	return ""
+}
+
+func (x *ConfigBlock) GetShowInOverviewMenu() bool {
+	if x != nil {
+		return x.ShowInOverviewMenu
+	}
+	return false
+}
+
 type ConfigGetConfigSchemaInput struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -2118,7 +2886,7 @@ type ConfigGetConfigSchemaInput struct {
 
 func (x *ConfigGetConfigSchemaInput) Reset() {
 	*x = ConfigGetConfigSchemaInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[24]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2130,7 +2898,7 @@ func (x *ConfigGetConfigSchemaInput) String() string {
 func (*ConfigGetConfigSchemaInput) ProtoMessage() {}
 
 func (x *ConfigGetConfigSchemaInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[24]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2143,29 +2911,32 @@ func (x *ConfigGetConfigSchemaInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigGetConfigSchemaInput.ProtoReflect.Descriptor instead.
 func (*ConfigGetConfigSchemaInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{24}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{28}
 }
 
 type ConfigGetConfigSchemaOutput struct {
-	state                    protoimpl.MessageState `protogen:"open.v1"`
-	SchemaVersion            string                 `protobuf:"bytes,1,opt,name=schema_version,json=schemaVersion,proto3" json:"schema_version,omitempty"`
-	ConfigScope              string                 `protobuf:"bytes,2,opt,name=config_scope,json=configScope,proto3" json:"config_scope,omitempty"`
-	ProviderName             string                 `protobuf:"bytes,3,opt,name=provider_name,json=providerName,proto3" json:"provider_name,omitempty"`
-	Title                    string                 `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
-	Description              string                 `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
-	LegacyCredentialFallback string                 `protobuf:"bytes,6,opt,name=legacy_credential_fallback,json=legacyCredentialFallback,proto3" json:"legacy_credential_fallback,omitempty"`
-	Oauth                    *ConfigOAuth           `protobuf:"bytes,7,opt,name=oauth,proto3" json:"oauth,omitempty"`
-	Hooks                    *ConfigHooks           `protobuf:"bytes,8,opt,name=hooks,proto3" json:"hooks,omitempty"`
-	Blocks                   []*ConfigBlock         `protobuf:"bytes,9,rep,name=blocks,proto3" json:"blocks,omitempty"`
-	SupportsMultiple         bool                   `protobuf:"varint,10,opt,name=supports_multiple,json=supportsMultiple,proto3" json:"supports_multiple,omitempty"`
-	KeyResolverFunctionName  string                 `protobuf:"bytes,11,opt,name=key_resolver_function_name,json=keyResolverFunctionName,proto3" json:"key_resolver_function_name,omitempty"`
+	state                    protoimpl.MessageState          `protogen:"open.v1"`
+	SchemaVersion            string                          `protobuf:"bytes,1,opt,name=schema_version,json=schemaVersion,proto3" json:"schema_version,omitempty"`
+	ConfigScope              string                          `protobuf:"bytes,2,opt,name=config_scope,json=configScope,proto3" json:"config_scope,omitempty"`
+	ProviderName             string                          `protobuf:"bytes,3,opt,name=provider_name,json=providerName,proto3" json:"provider_name,omitempty"`
+	Title                    string                          `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
+	Description              string                          `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
+	LegacyCredentialFallback string                          `protobuf:"bytes,6,opt,name=legacy_credential_fallback,json=legacyCredentialFallback,proto3" json:"legacy_credential_fallback,omitempty"`
+	Oauth                    *ConfigOAuth                    `protobuf:"bytes,7,opt,name=oauth,proto3" json:"oauth,omitempty"`
+	Hooks                    *ConfigHooks                    `protobuf:"bytes,8,opt,name=hooks,proto3" json:"hooks,omitempty"`
+	Blocks                   []*ConfigBlock                  `protobuf:"bytes,9,rep,name=blocks,proto3" json:"blocks,omitempty"`
+	SupportsMultiple         bool                            `protobuf:"varint,10,opt,name=supports_multiple,json=supportsMultiple,proto3" json:"supports_multiple,omitempty"`
+	KeyResolverFunctionName  string                          `protobuf:"bytes,11,opt,name=key_resolver_function_name,json=keyResolverFunctionName,proto3" json:"key_resolver_function_name,omitempty"`
+	I18NMap                  map[string]*ConfigLocalizedText `protobuf:"bytes,12,rep,name=i18n_map,json=i18nMap,proto3" json:"i18n_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Overview                 *ConfigOverview                 `protobuf:"bytes,13,opt,name=overview,proto3" json:"overview,omitempty"`
+	Settings                 *ConfigSettings                 `protobuf:"bytes,14,opt,name=settings,proto3" json:"settings,omitempty"`
 	unknownFields            protoimpl.UnknownFields
 	sizeCache                protoimpl.SizeCache
 }
 
 func (x *ConfigGetConfigSchemaOutput) Reset() {
 	*x = ConfigGetConfigSchemaOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[25]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2177,7 +2948,7 @@ func (x *ConfigGetConfigSchemaOutput) String() string {
 func (*ConfigGetConfigSchemaOutput) ProtoMessage() {}
 
 func (x *ConfigGetConfigSchemaOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[25]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2190,7 +2961,7 @@ func (x *ConfigGetConfigSchemaOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigGetConfigSchemaOutput.ProtoReflect.Descriptor instead.
 func (*ConfigGetConfigSchemaOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{25}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *ConfigGetConfigSchemaOutput) GetSchemaVersion() string {
@@ -2270,18 +3041,40 @@ func (x *ConfigGetConfigSchemaOutput) GetKeyResolverFunctionName() string {
 	return ""
 }
 
+func (x *ConfigGetConfigSchemaOutput) GetI18NMap() map[string]*ConfigLocalizedText {
+	if x != nil {
+		return x.I18NMap
+	}
+	return nil
+}
+
+func (x *ConfigGetConfigSchemaOutput) GetOverview() *ConfigOverview {
+	if x != nil {
+		return x.Overview
+	}
+	return nil
+}
+
+func (x *ConfigGetConfigSchemaOutput) GetSettings() *ConfigSettings {
+	if x != nil {
+		return x.Settings
+	}
+	return nil
+}
+
 type ConfigValidationError struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	FieldKey      string                 `protobuf:"bytes,1,opt,name=field_key,json=fieldKey,proto3" json:"field_key,omitempty"`
-	ReasonCode    string                 `protobuf:"bytes,2,opt,name=reason_code,json=reasonCode,proto3" json:"reason_code,omitempty"`
-	Message       string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	state         protoimpl.MessageState          `protogen:"open.v1"`
+	FieldKey      string                          `protobuf:"bytes,1,opt,name=field_key,json=fieldKey,proto3" json:"field_key,omitempty"`
+	ReasonCode    string                          `protobuf:"bytes,2,opt,name=reason_code,json=reasonCode,proto3" json:"reason_code,omitempty"`
+	Message       string                          `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	I18NMap       map[string]*ConfigLocalizedText `protobuf:"bytes,4,rep,name=i18n_map,json=i18nMap,proto3" json:"i18n_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ConfigValidationError) Reset() {
 	*x = ConfigValidationError{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[26]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2293,7 +3086,7 @@ func (x *ConfigValidationError) String() string {
 func (*ConfigValidationError) ProtoMessage() {}
 
 func (x *ConfigValidationError) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[26]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2306,7 +3099,7 @@ func (x *ConfigValidationError) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigValidationError.ProtoReflect.Descriptor instead.
 func (*ConfigValidationError) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{26}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *ConfigValidationError) GetFieldKey() string {
@@ -2330,6 +3123,13 @@ func (x *ConfigValidationError) GetMessage() string {
 	return ""
 }
 
+func (x *ConfigValidationError) GetI18NMap() map[string]*ConfigLocalizedText {
+	if x != nil {
+		return x.I18NMap
+	}
+	return nil
+}
+
 type ConfigValidateStoredConfigInput struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -2338,7 +3138,7 @@ type ConfigValidateStoredConfigInput struct {
 
 func (x *ConfigValidateStoredConfigInput) Reset() {
 	*x = ConfigValidateStoredConfigInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[27]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2350,7 +3150,7 @@ func (x *ConfigValidateStoredConfigInput) String() string {
 func (*ConfigValidateStoredConfigInput) ProtoMessage() {}
 
 func (x *ConfigValidateStoredConfigInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[27]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2363,7 +3163,7 @@ func (x *ConfigValidateStoredConfigInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigValidateStoredConfigInput.ProtoReflect.Descriptor instead.
 func (*ConfigValidateStoredConfigInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{27}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{31}
 }
 
 type ConfigValidateStoredConfigOutput struct {
@@ -2380,7 +3180,7 @@ type ConfigValidateStoredConfigOutput struct {
 
 func (x *ConfigValidateStoredConfigOutput) Reset() {
 	*x = ConfigValidateStoredConfigOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[28]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2392,7 +3192,7 @@ func (x *ConfigValidateStoredConfigOutput) String() string {
 func (*ConfigValidateStoredConfigOutput) ProtoMessage() {}
 
 func (x *ConfigValidateStoredConfigOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[28]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2405,7 +3205,7 @@ func (x *ConfigValidateStoredConfigOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigValidateStoredConfigOutput.ProtoReflect.Descriptor instead.
 func (*ConfigValidateStoredConfigOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{28}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *ConfigValidateStoredConfigOutput) GetValid() bool {
@@ -2459,7 +3259,7 @@ type ConfigChoiceList struct {
 
 func (x *ConfigChoiceList) Reset() {
 	*x = ConfigChoiceList{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[29]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2471,7 +3271,7 @@ func (x *ConfigChoiceList) String() string {
 func (*ConfigChoiceList) ProtoMessage() {}
 
 func (x *ConfigChoiceList) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[29]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2484,7 +3284,7 @@ func (x *ConfigChoiceList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigChoiceList.ProtoReflect.Descriptor instead.
 func (*ConfigChoiceList) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{29}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *ConfigChoiceList) GetChoices() []*ConfigChoice {
@@ -2504,7 +3304,7 @@ type ConfigDraftResolutionOutput struct {
 
 func (x *ConfigDraftResolutionOutput) Reset() {
 	*x = ConfigDraftResolutionOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[30]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2516,7 +3316,7 @@ func (x *ConfigDraftResolutionOutput) String() string {
 func (*ConfigDraftResolutionOutput) ProtoMessage() {}
 
 func (x *ConfigDraftResolutionOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[30]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2529,7 +3329,7 @@ func (x *ConfigDraftResolutionOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigDraftResolutionOutput.ProtoReflect.Descriptor instead.
 func (*ConfigDraftResolutionOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{30}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *ConfigDraftResolutionOutput) GetValuesPatch() *structpb.Struct {
@@ -2546,31 +3346,84 @@ func (x *ConfigDraftResolutionOutput) GetChoicesPatch() *structpb.Struct {
 	return nil
 }
 
+type OAuthProviderLocalizedText struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	ProviderName        string                 `protobuf:"bytes,1,opt,name=provider_name,json=providerName,proto3" json:"provider_name,omitempty"`
+	ProviderDescription string                 `protobuf:"bytes,2,opt,name=provider_description,json=providerDescription,proto3" json:"provider_description,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *OAuthProviderLocalizedText) Reset() {
+	*x = OAuthProviderLocalizedText{}
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OAuthProviderLocalizedText) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OAuthProviderLocalizedText) ProtoMessage() {}
+
+func (x *OAuthProviderLocalizedText) ProtoReflect() protoreflect.Message {
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OAuthProviderLocalizedText.ProtoReflect.Descriptor instead.
+func (*OAuthProviderLocalizedText) Descriptor() ([]byte, []int) {
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *OAuthProviderLocalizedText) GetProviderName() string {
+	if x != nil {
+		return x.ProviderName
+	}
+	return ""
+}
+
+func (x *OAuthProviderLocalizedText) GetProviderDescription() string {
+	if x != nil {
+		return x.ProviderDescription
+	}
+	return ""
+}
+
 type OAuthProvider struct {
-	state                      protoimpl.MessageState     `protogen:"open.v1"`
-	Provider                   string                     `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
-	AuthorizationUrl           string                     `protobuf:"bytes,2,opt,name=authorization_url,json=authorizationUrl,proto3" json:"authorization_url,omitempty"`
-	TokenUrl                   string                     `protobuf:"bytes,3,opt,name=token_url,json=tokenUrl,proto3" json:"token_url,omitempty"`
-	RefreshTokenUrl            string                     `protobuf:"bytes,4,opt,name=refresh_token_url,json=refreshTokenUrl,proto3" json:"refresh_token_url,omitempty"`
-	Scopes                     []string                   `protobuf:"bytes,5,rep,name=scopes,proto3" json:"scopes,omitempty"`
-	ProviderName               string                     `protobuf:"bytes,6,opt,name=provider_name,json=providerName,proto3" json:"provider_name,omitempty"`
-	ProviderDescription        string                     `protobuf:"bytes,7,opt,name=provider_description,json=providerDescription,proto3" json:"provider_description,omitempty"`
-	ProviderIconUrl            string                     `protobuf:"bytes,8,opt,name=provider_icon_url,json=providerIconUrl,proto3" json:"provider_icon_url,omitempty"`
-	PkceRequired               bool                       `protobuf:"varint,9,opt,name=pkce_required,json=pkceRequired,proto3" json:"pkce_required,omitempty"`
-	AdditionalParams           map[string]string          `protobuf:"bytes,10,rep,name=additional_params,json=additionalParams,proto3" json:"additional_params,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	ParameterCase              string                     `protobuf:"bytes,11,opt,name=parameter_case,json=parameterCase,proto3" json:"parameter_case,omitempty"`
-	TokenRequestContentType    string                     `protobuf:"bytes,12,opt,name=token_request_content_type,json=tokenRequestContentType,proto3" json:"token_request_content_type,omitempty"`
-	AuthorizationCodeParamName string                     `protobuf:"bytes,13,opt,name=authorization_code_param_name,json=authorizationCodeParamName,proto3" json:"authorization_code_param_name,omitempty"`
-	AuthorizationOpenMode      string                     `protobuf:"bytes,14,opt,name=authorization_open_mode,json=authorizationOpenMode,proto3" json:"authorization_open_mode,omitempty"`
-	TokenRequest               *OAuthTokenRequestMapping  `protobuf:"bytes,15,opt,name=token_request,json=tokenRequest,proto3" json:"token_request,omitempty"`
-	TokenResponse              *OAuthTokenResponseMapping `protobuf:"bytes,16,opt,name=token_response,json=tokenResponse,proto3" json:"token_response,omitempty"`
+	state                      protoimpl.MessageState                 `protogen:"open.v1"`
+	Provider                   string                                 `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
+	AuthorizationUrl           string                                 `protobuf:"bytes,2,opt,name=authorization_url,json=authorizationUrl,proto3" json:"authorization_url,omitempty"`
+	TokenUrl                   string                                 `protobuf:"bytes,3,opt,name=token_url,json=tokenUrl,proto3" json:"token_url,omitempty"`
+	RefreshTokenUrl            string                                 `protobuf:"bytes,4,opt,name=refresh_token_url,json=refreshTokenUrl,proto3" json:"refresh_token_url,omitempty"`
+	Scopes                     []string                               `protobuf:"bytes,5,rep,name=scopes,proto3" json:"scopes,omitempty"`
+	ProviderName               string                                 `protobuf:"bytes,6,opt,name=provider_name,json=providerName,proto3" json:"provider_name,omitempty"`
+	ProviderDescription        string                                 `protobuf:"bytes,7,opt,name=provider_description,json=providerDescription,proto3" json:"provider_description,omitempty"`
+	ProviderIconUrl            string                                 `protobuf:"bytes,8,opt,name=provider_icon_url,json=providerIconUrl,proto3" json:"provider_icon_url,omitempty"`
+	PkceRequired               bool                                   `protobuf:"varint,9,opt,name=pkce_required,json=pkceRequired,proto3" json:"pkce_required,omitempty"`
+	AdditionalParams           map[string]string                      `protobuf:"bytes,10,rep,name=additional_params,json=additionalParams,proto3" json:"additional_params,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	ParameterCase              string                                 `protobuf:"bytes,11,opt,name=parameter_case,json=parameterCase,proto3" json:"parameter_case,omitempty"`
+	TokenRequestContentType    string                                 `protobuf:"bytes,12,opt,name=token_request_content_type,json=tokenRequestContentType,proto3" json:"token_request_content_type,omitempty"`
+	AuthorizationCodeParamName string                                 `protobuf:"bytes,13,opt,name=authorization_code_param_name,json=authorizationCodeParamName,proto3" json:"authorization_code_param_name,omitempty"`
+	AuthorizationOpenMode      string                                 `protobuf:"bytes,14,opt,name=authorization_open_mode,json=authorizationOpenMode,proto3" json:"authorization_open_mode,omitempty"`
+	TokenRequest               *OAuthTokenRequestMapping              `protobuf:"bytes,15,opt,name=token_request,json=tokenRequest,proto3" json:"token_request,omitempty"`
+	TokenResponse              *OAuthTokenResponseMapping             `protobuf:"bytes,16,opt,name=token_response,json=tokenResponse,proto3" json:"token_response,omitempty"`
+	I18NMap                    map[string]*OAuthProviderLocalizedText `protobuf:"bytes,17,rep,name=i18n_map,json=i18nMap,proto3" json:"i18n_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields              protoimpl.UnknownFields
 	sizeCache                  protoimpl.SizeCache
 }
 
 func (x *OAuthProvider) Reset() {
 	*x = OAuthProvider{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[31]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2582,7 +3435,7 @@ func (x *OAuthProvider) String() string {
 func (*OAuthProvider) ProtoMessage() {}
 
 func (x *OAuthProvider) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[31]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2595,7 +3448,7 @@ func (x *OAuthProvider) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OAuthProvider.ProtoReflect.Descriptor instead.
 func (*OAuthProvider) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{31}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *OAuthProvider) GetProvider() string {
@@ -2710,6 +3563,13 @@ func (x *OAuthProvider) GetTokenResponse() *OAuthTokenResponseMapping {
 	return nil
 }
 
+func (x *OAuthProvider) GetI18NMap() map[string]*OAuthProviderLocalizedText {
+	if x != nil {
+		return x.I18NMap
+	}
+	return nil
+}
+
 type OAuthGetAuthConfigInput struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -2718,7 +3578,7 @@ type OAuthGetAuthConfigInput struct {
 
 func (x *OAuthGetAuthConfigInput) Reset() {
 	*x = OAuthGetAuthConfigInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[32]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2730,7 +3590,7 @@ func (x *OAuthGetAuthConfigInput) String() string {
 func (*OAuthGetAuthConfigInput) ProtoMessage() {}
 
 func (x *OAuthGetAuthConfigInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[32]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2743,7 +3603,7 @@ func (x *OAuthGetAuthConfigInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OAuthGetAuthConfigInput.ProtoReflect.Descriptor instead.
 func (*OAuthGetAuthConfigInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{32}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{37}
 }
 
 type OAuthConfig struct {
@@ -2757,7 +3617,7 @@ type OAuthConfig struct {
 
 func (x *OAuthConfig) Reset() {
 	*x = OAuthConfig{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[33]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2769,7 +3629,7 @@ func (x *OAuthConfig) String() string {
 func (*OAuthConfig) ProtoMessage() {}
 
 func (x *OAuthConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[33]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2782,7 +3642,7 @@ func (x *OAuthConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OAuthConfig.ProtoReflect.Descriptor instead.
 func (*OAuthConfig) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{33}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *OAuthConfig) GetAuthType() string {
@@ -2815,7 +3675,7 @@ type OAuthCredentialValidationInput struct {
 
 func (x *OAuthCredentialValidationInput) Reset() {
 	*x = OAuthCredentialValidationInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[34]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2827,7 +3687,7 @@ func (x *OAuthCredentialValidationInput) String() string {
 func (*OAuthCredentialValidationInput) ProtoMessage() {}
 
 func (x *OAuthCredentialValidationInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[34]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2840,7 +3700,7 @@ func (x *OAuthCredentialValidationInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OAuthCredentialValidationInput.ProtoReflect.Descriptor instead.
 func (*OAuthCredentialValidationInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{34}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *OAuthCredentialValidationInput) GetAccessToken() string {
@@ -2861,7 +3721,7 @@ type OAuthCredentialValidationResult struct {
 
 func (x *OAuthCredentialValidationResult) Reset() {
 	*x = OAuthCredentialValidationResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[35]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2873,7 +3733,7 @@ func (x *OAuthCredentialValidationResult) String() string {
 func (*OAuthCredentialValidationResult) ProtoMessage() {}
 
 func (x *OAuthCredentialValidationResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[35]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2886,7 +3746,7 @@ func (x *OAuthCredentialValidationResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OAuthCredentialValidationResult.ProtoReflect.Descriptor instead.
 func (*OAuthCredentialValidationResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{35}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *OAuthCredentialValidationResult) GetValid() bool {
@@ -2923,7 +3783,7 @@ type Calendar struct {
 
 func (x *Calendar) Reset() {
 	*x = Calendar{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[36]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2935,7 +3795,7 @@ func (x *Calendar) String() string {
 func (*Calendar) ProtoMessage() {}
 
 func (x *Calendar) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[36]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2948,7 +3808,7 @@ func (x *Calendar) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Calendar.ProtoReflect.Descriptor instead.
 func (*Calendar) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{36}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *Calendar) GetId() string {
@@ -2999,7 +3859,7 @@ type CalendarEventType struct {
 
 func (x *CalendarEventType) Reset() {
 	*x = CalendarEventType{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[37]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3011,7 +3871,7 @@ func (x *CalendarEventType) String() string {
 func (*CalendarEventType) ProtoMessage() {}
 
 func (x *CalendarEventType) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[37]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3024,7 +3884,7 @@ func (x *CalendarEventType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarEventType.ProtoReflect.Descriptor instead.
 func (*CalendarEventType) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{37}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *CalendarEventType) GetId() string {
@@ -3072,7 +3932,7 @@ type CalendarTimeSlot struct {
 
 func (x *CalendarTimeSlot) Reset() {
 	*x = CalendarTimeSlot{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[38]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3084,7 +3944,7 @@ func (x *CalendarTimeSlot) String() string {
 func (*CalendarTimeSlot) ProtoMessage() {}
 
 func (x *CalendarTimeSlot) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[38]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3097,7 +3957,7 @@ func (x *CalendarTimeSlot) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarTimeSlot.ProtoReflect.Descriptor instead.
 func (*CalendarTimeSlot) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{38}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *CalendarTimeSlot) GetStartTime() string {
@@ -3125,7 +3985,7 @@ type CalendarAttendee struct {
 
 func (x *CalendarAttendee) Reset() {
 	*x = CalendarAttendee{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[39]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3137,7 +3997,7 @@ func (x *CalendarAttendee) String() string {
 func (*CalendarAttendee) ProtoMessage() {}
 
 func (x *CalendarAttendee) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[39]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3150,7 +4010,7 @@ func (x *CalendarAttendee) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarAttendee.ProtoReflect.Descriptor instead.
 func (*CalendarAttendee) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{39}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *CalendarAttendee) GetName() string {
@@ -3191,7 +4051,7 @@ type CalendarBooking struct {
 
 func (x *CalendarBooking) Reset() {
 	*x = CalendarBooking{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[40]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3203,7 +4063,7 @@ func (x *CalendarBooking) String() string {
 func (*CalendarBooking) ProtoMessage() {}
 
 func (x *CalendarBooking) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[40]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3216,7 +4076,7 @@ func (x *CalendarBooking) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarBooking.ProtoReflect.Descriptor instead.
 func (*CalendarBooking) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{40}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *CalendarBooking) GetId() string {
@@ -3291,7 +4151,7 @@ type CalendarListCalendarsInput struct {
 
 func (x *CalendarListCalendarsInput) Reset() {
 	*x = CalendarListCalendarsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[41]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3303,7 +4163,7 @@ func (x *CalendarListCalendarsInput) String() string {
 func (*CalendarListCalendarsInput) ProtoMessage() {}
 
 func (x *CalendarListCalendarsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[41]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3316,7 +4176,7 @@ func (x *CalendarListCalendarsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarListCalendarsInput.ProtoReflect.Descriptor instead.
 func (*CalendarListCalendarsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{41}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *CalendarListCalendarsInput) GetPageToken() string {
@@ -3336,7 +4196,7 @@ type CalendarListCalendarsOutput struct {
 
 func (x *CalendarListCalendarsOutput) Reset() {
 	*x = CalendarListCalendarsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[42]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3348,7 +4208,7 @@ func (x *CalendarListCalendarsOutput) String() string {
 func (*CalendarListCalendarsOutput) ProtoMessage() {}
 
 func (x *CalendarListCalendarsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[42]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3361,7 +4221,7 @@ func (x *CalendarListCalendarsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarListCalendarsOutput.ProtoReflect.Descriptor instead.
 func (*CalendarListCalendarsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{42}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *CalendarListCalendarsOutput) GetCalendars() []*Calendar {
@@ -3387,7 +4247,7 @@ type CalendarListEventTypesInput struct {
 
 func (x *CalendarListEventTypesInput) Reset() {
 	*x = CalendarListEventTypesInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[43]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3399,7 +4259,7 @@ func (x *CalendarListEventTypesInput) String() string {
 func (*CalendarListEventTypesInput) ProtoMessage() {}
 
 func (x *CalendarListEventTypesInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[43]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3412,7 +4272,7 @@ func (x *CalendarListEventTypesInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarListEventTypesInput.ProtoReflect.Descriptor instead.
 func (*CalendarListEventTypesInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{43}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *CalendarListEventTypesInput) GetCalendarId() string {
@@ -3431,7 +4291,7 @@ type CalendarListEventTypesOutput struct {
 
 func (x *CalendarListEventTypesOutput) Reset() {
 	*x = CalendarListEventTypesOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[44]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3443,7 +4303,7 @@ func (x *CalendarListEventTypesOutput) String() string {
 func (*CalendarListEventTypesOutput) ProtoMessage() {}
 
 func (x *CalendarListEventTypesOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[44]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3456,7 +4316,7 @@ func (x *CalendarListEventTypesOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarListEventTypesOutput.ProtoReflect.Descriptor instead.
 func (*CalendarListEventTypesOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{44}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *CalendarListEventTypesOutput) GetEventTypes() []*CalendarEventType {
@@ -3478,7 +4338,7 @@ type CalendarGetAvailabilityInput struct {
 
 func (x *CalendarGetAvailabilityInput) Reset() {
 	*x = CalendarGetAvailabilityInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[45]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3490,7 +4350,7 @@ func (x *CalendarGetAvailabilityInput) String() string {
 func (*CalendarGetAvailabilityInput) ProtoMessage() {}
 
 func (x *CalendarGetAvailabilityInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[45]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3503,7 +4363,7 @@ func (x *CalendarGetAvailabilityInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarGetAvailabilityInput.ProtoReflect.Descriptor instead.
 func (*CalendarGetAvailabilityInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{45}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *CalendarGetAvailabilityInput) GetEventTypeId() string {
@@ -3543,7 +4403,7 @@ type CalendarGetAvailabilityOutput struct {
 
 func (x *CalendarGetAvailabilityOutput) Reset() {
 	*x = CalendarGetAvailabilityOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[46]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3555,7 +4415,7 @@ func (x *CalendarGetAvailabilityOutput) String() string {
 func (*CalendarGetAvailabilityOutput) ProtoMessage() {}
 
 func (x *CalendarGetAvailabilityOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[46]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3568,7 +4428,7 @@ func (x *CalendarGetAvailabilityOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarGetAvailabilityOutput.ProtoReflect.Descriptor instead.
 func (*CalendarGetAvailabilityOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{46}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *CalendarGetAvailabilityOutput) GetSlots() []*CalendarTimeSlot {
@@ -3591,7 +4451,7 @@ type CalendarCreateBookingInput struct {
 
 func (x *CalendarCreateBookingInput) Reset() {
 	*x = CalendarCreateBookingInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[47]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3603,7 +4463,7 @@ func (x *CalendarCreateBookingInput) String() string {
 func (*CalendarCreateBookingInput) ProtoMessage() {}
 
 func (x *CalendarCreateBookingInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[47]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3616,7 +4476,7 @@ func (x *CalendarCreateBookingInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarCreateBookingInput.ProtoReflect.Descriptor instead.
 func (*CalendarCreateBookingInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{47}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *CalendarCreateBookingInput) GetEventTypeId() string {
@@ -3664,7 +4524,7 @@ type CalendarCancelBookingInput struct {
 
 func (x *CalendarCancelBookingInput) Reset() {
 	*x = CalendarCancelBookingInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[48]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3676,7 +4536,7 @@ func (x *CalendarCancelBookingInput) String() string {
 func (*CalendarCancelBookingInput) ProtoMessage() {}
 
 func (x *CalendarCancelBookingInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[48]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3689,7 +4549,7 @@ func (x *CalendarCancelBookingInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarCancelBookingInput.ProtoReflect.Descriptor instead.
 func (*CalendarCancelBookingInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{48}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *CalendarCancelBookingInput) GetBookingId() string {
@@ -3716,7 +4576,7 @@ type CalendarCancelBookingOutput struct {
 
 func (x *CalendarCancelBookingOutput) Reset() {
 	*x = CalendarCancelBookingOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[49]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3728,7 +4588,7 @@ func (x *CalendarCancelBookingOutput) String() string {
 func (*CalendarCancelBookingOutput) ProtoMessage() {}
 
 func (x *CalendarCancelBookingOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[49]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3741,7 +4601,7 @@ func (x *CalendarCancelBookingOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarCancelBookingOutput.ProtoReflect.Descriptor instead.
 func (*CalendarCancelBookingOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{49}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *CalendarCancelBookingOutput) GetSuccess() bool {
@@ -3767,7 +4627,7 @@ type CalendarGetBookingInput struct {
 
 func (x *CalendarGetBookingInput) Reset() {
 	*x = CalendarGetBookingInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[50]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3779,7 +4639,7 @@ func (x *CalendarGetBookingInput) String() string {
 func (*CalendarGetBookingInput) ProtoMessage() {}
 
 func (x *CalendarGetBookingInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[50]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3792,7 +4652,7 @@ func (x *CalendarGetBookingInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CalendarGetBookingInput.ProtoReflect.Descriptor instead.
 func (*CalendarGetBookingInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{50}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *CalendarGetBookingInput) GetBookingId() string {
@@ -3811,7 +4671,7 @@ type CommandNameI18N struct {
 
 func (x *CommandNameI18N) Reset() {
 	*x = CommandNameI18N{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[51]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3823,7 +4683,7 @@ func (x *CommandNameI18N) String() string {
 func (*CommandNameI18N) ProtoMessage() {}
 
 func (x *CommandNameI18N) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[51]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3836,7 +4696,7 @@ func (x *CommandNameI18N) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandNameI18N.ProtoReflect.Descriptor instead.
 func (*CommandNameI18N) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{51}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *CommandNameI18N) GetName() string {
@@ -3856,7 +4716,7 @@ type CommandNameDescI18N struct {
 
 func (x *CommandNameDescI18N) Reset() {
 	*x = CommandNameDescI18N{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[52]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3868,7 +4728,7 @@ func (x *CommandNameDescI18N) String() string {
 func (*CommandNameDescI18N) ProtoMessage() {}
 
 func (x *CommandNameDescI18N) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[52]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3881,7 +4741,7 @@ func (x *CommandNameDescI18N) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandNameDescI18N.ProtoReflect.Descriptor instead.
 func (*CommandNameDescI18N) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{52}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *CommandNameDescI18N) GetName() string {
@@ -3908,7 +4768,7 @@ type CommandParamDefI18N struct {
 
 func (x *CommandParamDefI18N) Reset() {
 	*x = CommandParamDefI18N{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[53]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3920,7 +4780,7 @@ func (x *CommandParamDefI18N) String() string {
 func (*CommandParamDefI18N) ProtoMessage() {}
 
 func (x *CommandParamDefI18N) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[53]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3933,7 +4793,7 @@ func (x *CommandParamDefI18N) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandParamDefI18N.ProtoReflect.Descriptor instead.
 func (*CommandParamDefI18N) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{53}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *CommandParamDefI18N) GetName() string {
@@ -3961,7 +4821,7 @@ type CommandChoice struct {
 
 func (x *CommandChoice) Reset() {
 	*x = CommandChoice{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[54]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3973,7 +4833,7 @@ func (x *CommandChoice) String() string {
 func (*CommandChoice) ProtoMessage() {}
 
 func (x *CommandChoice) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[54]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3986,7 +4846,7 @@ func (x *CommandChoice) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandChoice.ProtoReflect.Descriptor instead.
 func (*CommandChoice) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{54}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *CommandChoice) GetName() string {
@@ -4026,7 +4886,7 @@ type CommandParamDefinition struct {
 
 func (x *CommandParamDefinition) Reset() {
 	*x = CommandParamDefinition{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[55]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4038,7 +4898,7 @@ func (x *CommandParamDefinition) String() string {
 func (*CommandParamDefinition) ProtoMessage() {}
 
 func (x *CommandParamDefinition) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[55]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4051,7 +4911,7 @@ func (x *CommandParamDefinition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandParamDefinition.ProtoReflect.Descriptor instead.
 func (*CommandParamDefinition) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{55}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *CommandParamDefinition) GetName() string {
@@ -4131,7 +4991,7 @@ type CommandConfig struct {
 
 func (x *CommandConfig) Reset() {
 	*x = CommandConfig{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[56]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4143,7 +5003,7 @@ func (x *CommandConfig) String() string {
 func (*CommandConfig) ProtoMessage() {}
 
 func (x *CommandConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[56]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4156,7 +5016,7 @@ func (x *CommandConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandConfig.ProtoReflect.Descriptor instead.
 func (*CommandConfig) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{56}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *CommandConfig) GetName() string {
@@ -4258,7 +5118,7 @@ type CommandGetCommandsInput struct {
 
 func (x *CommandGetCommandsInput) Reset() {
 	*x = CommandGetCommandsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[57]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4270,7 +5130,7 @@ func (x *CommandGetCommandsInput) String() string {
 func (*CommandGetCommandsInput) ProtoMessage() {}
 
 func (x *CommandGetCommandsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[57]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4283,7 +5143,7 @@ func (x *CommandGetCommandsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandGetCommandsInput.ProtoReflect.Descriptor instead.
 func (*CommandGetCommandsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{57}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{62}
 }
 
 type CommandGetCommandsOutput struct {
@@ -4295,7 +5155,7 @@ type CommandGetCommandsOutput struct {
 
 func (x *CommandGetCommandsOutput) Reset() {
 	*x = CommandGetCommandsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[58]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4307,7 +5167,7 @@ func (x *CommandGetCommandsOutput) String() string {
 func (*CommandGetCommandsOutput) ProtoMessage() {}
 
 func (x *CommandGetCommandsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[58]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4320,7 +5180,7 @@ func (x *CommandGetCommandsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandGetCommandsOutput.ProtoReflect.Descriptor instead.
 func (*CommandGetCommandsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{58}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *CommandGetCommandsOutput) GetCommands() []*CommandConfig {
@@ -4340,7 +5200,7 @@ type CommandTrigger struct {
 
 func (x *CommandTrigger) Reset() {
 	*x = CommandTrigger{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[59]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4352,7 +5212,7 @@ func (x *CommandTrigger) String() string {
 func (*CommandTrigger) ProtoMessage() {}
 
 func (x *CommandTrigger) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[59]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4365,7 +5225,7 @@ func (x *CommandTrigger) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandTrigger.ProtoReflect.Descriptor instead.
 func (*CommandTrigger) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{59}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *CommandTrigger) GetType() string {
@@ -4393,7 +5253,7 @@ type CommandAutoCompleteArgument struct {
 
 func (x *CommandAutoCompleteArgument) Reset() {
 	*x = CommandAutoCompleteArgument{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[60]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4405,7 +5265,7 @@ func (x *CommandAutoCompleteArgument) String() string {
 func (*CommandAutoCompleteArgument) ProtoMessage() {}
 
 func (x *CommandAutoCompleteArgument) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[60]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4418,7 +5278,7 @@ func (x *CommandAutoCompleteArgument) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandAutoCompleteArgument.ProtoReflect.Descriptor instead.
 func (*CommandAutoCompleteArgument) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{60}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *CommandAutoCompleteArgument) GetFocused() bool {
@@ -4453,7 +5313,7 @@ type CommandGetSuggestionsInput struct {
 
 func (x *CommandGetSuggestionsInput) Reset() {
 	*x = CommandGetSuggestionsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[61]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4465,7 +5325,7 @@ func (x *CommandGetSuggestionsInput) String() string {
 func (*CommandGetSuggestionsInput) ProtoMessage() {}
 
 func (x *CommandGetSuggestionsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[61]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4478,7 +5338,7 @@ func (x *CommandGetSuggestionsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandGetSuggestionsInput.ProtoReflect.Descriptor instead.
 func (*CommandGetSuggestionsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{61}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *CommandGetSuggestionsInput) GetChat() *ExtensionChat {
@@ -4511,7 +5371,7 @@ type CommandGetSuggestionsOutput struct {
 
 func (x *CommandGetSuggestionsOutput) Reset() {
 	*x = CommandGetSuggestionsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[62]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4523,7 +5383,7 @@ func (x *CommandGetSuggestionsOutput) String() string {
 func (*CommandGetSuggestionsOutput) ProtoMessage() {}
 
 func (x *CommandGetSuggestionsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[62]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4536,7 +5396,7 @@ func (x *CommandGetSuggestionsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandGetSuggestionsOutput.ProtoReflect.Descriptor instead.
 func (*CommandGetSuggestionsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{62}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *CommandGetSuggestionsOutput) GetChoices() []*CommandChoice {
@@ -4558,7 +5418,7 @@ type CommandExecuteInput struct {
 
 func (x *CommandExecuteInput) Reset() {
 	*x = CommandExecuteInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[63]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4570,7 +5430,7 @@ func (x *CommandExecuteInput) String() string {
 func (*CommandExecuteInput) ProtoMessage() {}
 
 func (x *CommandExecuteInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[63]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4583,7 +5443,7 @@ func (x *CommandExecuteInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandExecuteInput.ProtoReflect.Descriptor instead.
 func (*CommandExecuteInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{63}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *CommandExecuteInput) GetChat() *ExtensionChat {
@@ -4624,7 +5484,7 @@ type CommandResult struct {
 
 func (x *CommandResult) Reset() {
 	*x = CommandResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[64]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4636,7 +5496,7 @@ func (x *CommandResult) String() string {
 func (*CommandResult) ProtoMessage() {}
 
 func (x *CommandResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[64]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4649,7 +5509,7 @@ func (x *CommandResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandResult.ProtoReflect.Descriptor instead.
 func (*CommandResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{64}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *CommandResult) GetType() string {
@@ -4676,7 +5536,7 @@ type WidgetNameDescI18N struct {
 
 func (x *WidgetNameDescI18N) Reset() {
 	*x = WidgetNameDescI18N{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[65]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4688,7 +5548,7 @@ func (x *WidgetNameDescI18N) String() string {
 func (*WidgetNameDescI18N) ProtoMessage() {}
 
 func (x *WidgetNameDescI18N) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[65]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4701,7 +5561,7 @@ func (x *WidgetNameDescI18N) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WidgetNameDescI18N.ProtoReflect.Descriptor instead.
 func (*WidgetNameDescI18N) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{65}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *WidgetNameDescI18N) GetName() string {
@@ -4734,7 +5594,7 @@ type WidgetConfig struct {
 
 func (x *WidgetConfig) Reset() {
 	*x = WidgetConfig{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[66]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[71]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4746,7 +5606,7 @@ func (x *WidgetConfig) String() string {
 func (*WidgetConfig) ProtoMessage() {}
 
 func (x *WidgetConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[66]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[71]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4759,7 +5619,7 @@ func (x *WidgetConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WidgetConfig.ProtoReflect.Descriptor instead.
 func (*WidgetConfig) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{66}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *WidgetConfig) GetName() string {
@@ -4826,7 +5686,7 @@ type WidgetGetWidgetsInput struct {
 
 func (x *WidgetGetWidgetsInput) Reset() {
 	*x = WidgetGetWidgetsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[67]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[72]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4838,7 +5698,7 @@ func (x *WidgetGetWidgetsInput) String() string {
 func (*WidgetGetWidgetsInput) ProtoMessage() {}
 
 func (x *WidgetGetWidgetsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[67]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[72]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4851,7 +5711,7 @@ func (x *WidgetGetWidgetsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WidgetGetWidgetsInput.ProtoReflect.Descriptor instead.
 func (*WidgetGetWidgetsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{67}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{72}
 }
 
 type WidgetGetWidgetsOutput struct {
@@ -4863,7 +5723,7 @@ type WidgetGetWidgetsOutput struct {
 
 func (x *WidgetGetWidgetsOutput) Reset() {
 	*x = WidgetGetWidgetsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[68]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[73]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4875,7 +5735,7 @@ func (x *WidgetGetWidgetsOutput) String() string {
 func (*WidgetGetWidgetsOutput) ProtoMessage() {}
 
 func (x *WidgetGetWidgetsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[68]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[73]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4888,7 +5748,7 @@ func (x *WidgetGetWidgetsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WidgetGetWidgetsOutput.ProtoReflect.Descriptor instead.
 func (*WidgetGetWidgetsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{68}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{73}
 }
 
 func (x *WidgetGetWidgetsOutput) GetWidgets() []*WidgetConfig {
@@ -4908,7 +5768,7 @@ type WidgetActionInput struct {
 
 func (x *WidgetActionInput) Reset() {
 	*x = WidgetActionInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[69]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4920,7 +5780,7 @@ func (x *WidgetActionInput) String() string {
 func (*WidgetActionInput) ProtoMessage() {}
 
 func (x *WidgetActionInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[69]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4933,7 +5793,7 @@ func (x *WidgetActionInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WidgetActionInput.ProtoReflect.Descriptor instead.
 func (*WidgetActionInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{69}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{74}
 }
 
 func (x *WidgetActionInput) GetChat() *ExtensionChat {
@@ -4960,7 +5820,7 @@ type WidgetActionResult struct {
 
 func (x *WidgetActionResult) Reset() {
 	*x = WidgetActionResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[70]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[75]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4972,7 +5832,7 @@ func (x *WidgetActionResult) String() string {
 func (*WidgetActionResult) ProtoMessage() {}
 
 func (x *WidgetActionResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[70]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[75]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4985,7 +5845,7 @@ func (x *WidgetActionResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WidgetActionResult.ProtoReflect.Descriptor instead.
 func (*WidgetActionResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{70}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{75}
 }
 
 func (x *WidgetActionResult) GetType() string {
@@ -5011,7 +5871,7 @@ type CustomTabNameI18N struct {
 
 func (x *CustomTabNameI18N) Reset() {
 	*x = CustomTabNameI18N{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[71]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[76]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5023,7 +5883,7 @@ func (x *CustomTabNameI18N) String() string {
 func (*CustomTabNameI18N) ProtoMessage() {}
 
 func (x *CustomTabNameI18N) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[71]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[76]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5036,7 +5896,7 @@ func (x *CustomTabNameI18N) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomTabNameI18N.ProtoReflect.Descriptor instead.
 func (*CustomTabNameI18N) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{71}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{76}
 }
 
 func (x *CustomTabNameI18N) GetName() string {
@@ -5058,7 +5918,7 @@ type CustomTabConfig struct {
 
 func (x *CustomTabConfig) Reset() {
 	*x = CustomTabConfig{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[72]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[77]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5070,7 +5930,7 @@ func (x *CustomTabConfig) String() string {
 func (*CustomTabConfig) ProtoMessage() {}
 
 func (x *CustomTabConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[72]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[77]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5083,7 +5943,7 @@ func (x *CustomTabConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomTabConfig.ProtoReflect.Descriptor instead.
 func (*CustomTabConfig) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{72}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{77}
 }
 
 func (x *CustomTabConfig) GetName() string {
@@ -5122,7 +5982,7 @@ type CustomTabGetCustomTabsInput struct {
 
 func (x *CustomTabGetCustomTabsInput) Reset() {
 	*x = CustomTabGetCustomTabsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[73]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[78]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5134,7 +5994,7 @@ func (x *CustomTabGetCustomTabsInput) String() string {
 func (*CustomTabGetCustomTabsInput) ProtoMessage() {}
 
 func (x *CustomTabGetCustomTabsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[73]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[78]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5147,7 +6007,7 @@ func (x *CustomTabGetCustomTabsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomTabGetCustomTabsInput.ProtoReflect.Descriptor instead.
 func (*CustomTabGetCustomTabsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{73}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{78}
 }
 
 type CustomTabGetCustomTabsOutput struct {
@@ -5159,7 +6019,7 @@ type CustomTabGetCustomTabsOutput struct {
 
 func (x *CustomTabGetCustomTabsOutput) Reset() {
 	*x = CustomTabGetCustomTabsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[74]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[79]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5171,7 +6031,7 @@ func (x *CustomTabGetCustomTabsOutput) String() string {
 func (*CustomTabGetCustomTabsOutput) ProtoMessage() {}
 
 func (x *CustomTabGetCustomTabsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[74]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[79]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5184,7 +6044,7 @@ func (x *CustomTabGetCustomTabsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomTabGetCustomTabsOutput.ProtoReflect.Descriptor instead.
 func (*CustomTabGetCustomTabsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{74}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{79}
 }
 
 func (x *CustomTabGetCustomTabsOutput) GetCustomTabs() []*CustomTabConfig {
@@ -5204,7 +6064,7 @@ type CustomTabActionInput struct {
 
 func (x *CustomTabActionInput) Reset() {
 	*x = CustomTabActionInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[75]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[80]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5216,7 +6076,7 @@ func (x *CustomTabActionInput) String() string {
 func (*CustomTabActionInput) ProtoMessage() {}
 
 func (x *CustomTabActionInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[75]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[80]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5229,7 +6089,7 @@ func (x *CustomTabActionInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomTabActionInput.ProtoReflect.Descriptor instead.
 func (*CustomTabActionInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{75}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{80}
 }
 
 func (x *CustomTabActionInput) GetLanguage() string {
@@ -5256,7 +6116,7 @@ type CustomTabActionResult struct {
 
 func (x *CustomTabActionResult) Reset() {
 	*x = CustomTabActionResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[76]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[81]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5268,7 +6128,7 @@ func (x *CustomTabActionResult) String() string {
 func (*CustomTabActionResult) ProtoMessage() {}
 
 func (x *CustomTabActionResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[76]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[81]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5281,7 +6141,7 @@ func (x *CustomTabActionResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomTabActionResult.ProtoReflect.Descriptor instead.
 func (*CustomTabActionResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{76}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{81}
 }
 
 func (x *CustomTabActionResult) GetType() string {
@@ -5310,7 +6170,7 @@ type HookConfig struct {
 
 func (x *HookConfig) Reset() {
 	*x = HookConfig{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[77]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[82]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5322,7 +6182,7 @@ func (x *HookConfig) String() string {
 func (*HookConfig) ProtoMessage() {}
 
 func (x *HookConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[77]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[82]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5335,7 +6195,7 @@ func (x *HookConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HookConfig.ProtoReflect.Descriptor instead.
 func (*HookConfig) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{77}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{82}
 }
 
 func (x *HookConfig) GetType() string {
@@ -5374,7 +6234,7 @@ type HookGetHooksInput struct {
 
 func (x *HookGetHooksInput) Reset() {
 	*x = HookGetHooksInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[78]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[83]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5386,7 +6246,7 @@ func (x *HookGetHooksInput) String() string {
 func (*HookGetHooksInput) ProtoMessage() {}
 
 func (x *HookGetHooksInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[78]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[83]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5399,7 +6259,7 @@ func (x *HookGetHooksInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HookGetHooksInput.ProtoReflect.Descriptor instead.
 func (*HookGetHooksInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{78}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{83}
 }
 
 type HookGetHooksOutput struct {
@@ -5411,7 +6271,7 @@ type HookGetHooksOutput struct {
 
 func (x *HookGetHooksOutput) Reset() {
 	*x = HookGetHooksOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[79]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[84]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5423,7 +6283,7 @@ func (x *HookGetHooksOutput) String() string {
 func (*HookGetHooksOutput) ProtoMessage() {}
 
 func (x *HookGetHooksOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[79]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[84]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5436,7 +6296,7 @@ func (x *HookGetHooksOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HookGetHooksOutput.ProtoReflect.Descriptor instead.
 func (*HookGetHooksOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{79}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{84}
 }
 
 func (x *HookGetHooksOutput) GetHooks() []*HookConfig {
@@ -5459,7 +6319,7 @@ type PollingPoller struct {
 
 func (x *PollingPoller) Reset() {
 	*x = PollingPoller{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[80]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[85]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5471,7 +6331,7 @@ func (x *PollingPoller) String() string {
 func (*PollingPoller) ProtoMessage() {}
 
 func (x *PollingPoller) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[80]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[85]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5484,7 +6344,7 @@ func (x *PollingPoller) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PollingPoller.ProtoReflect.Descriptor instead.
 func (*PollingPoller) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{80}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{85}
 }
 
 func (x *PollingPoller) GetFunctionName() string {
@@ -5530,7 +6390,7 @@ type PollingGetPollersInput struct {
 
 func (x *PollingGetPollersInput) Reset() {
 	*x = PollingGetPollersInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[81]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[86]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5542,7 +6402,7 @@ func (x *PollingGetPollersInput) String() string {
 func (*PollingGetPollersInput) ProtoMessage() {}
 
 func (x *PollingGetPollersInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[81]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[86]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5555,7 +6415,7 @@ func (x *PollingGetPollersInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PollingGetPollersInput.ProtoReflect.Descriptor instead.
 func (*PollingGetPollersInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{81}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{86}
 }
 
 type PollingGetPollersOutput struct {
@@ -5567,7 +6427,7 @@ type PollingGetPollersOutput struct {
 
 func (x *PollingGetPollersOutput) Reset() {
 	*x = PollingGetPollersOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[82]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[87]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5579,7 +6439,7 @@ func (x *PollingGetPollersOutput) String() string {
 func (*PollingGetPollersOutput) ProtoMessage() {}
 
 func (x *PollingGetPollersOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[82]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[87]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5592,7 +6452,7 @@ func (x *PollingGetPollersOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PollingGetPollersOutput.ProtoReflect.Descriptor instead.
 func (*PollingGetPollersOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{82}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{87}
 }
 
 func (x *PollingGetPollersOutput) GetPollers() []*PollingPoller {
@@ -5613,7 +6473,7 @@ type PollingGetTargetChannelsInput struct {
 
 func (x *PollingGetTargetChannelsInput) Reset() {
 	*x = PollingGetTargetChannelsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[83]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[88]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5625,7 +6485,7 @@ func (x *PollingGetTargetChannelsInput) String() string {
 func (*PollingGetTargetChannelsInput) ProtoMessage() {}
 
 func (x *PollingGetTargetChannelsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[83]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[88]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5638,7 +6498,7 @@ func (x *PollingGetTargetChannelsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PollingGetTargetChannelsInput.ProtoReflect.Descriptor instead.
 func (*PollingGetTargetChannelsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{83}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{88}
 }
 
 func (x *PollingGetTargetChannelsInput) GetFunctionName() string {
@@ -5673,7 +6533,7 @@ type PollingGetTargetChannelsOutput struct {
 
 func (x *PollingGetTargetChannelsOutput) Reset() {
 	*x = PollingGetTargetChannelsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[84]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[89]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5685,7 +6545,7 @@ func (x *PollingGetTargetChannelsOutput) String() string {
 func (*PollingGetTargetChannelsOutput) ProtoMessage() {}
 
 func (x *PollingGetTargetChannelsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[84]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[89]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5698,7 +6558,7 @@ func (x *PollingGetTargetChannelsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PollingGetTargetChannelsOutput.ProtoReflect.Descriptor instead.
 func (*PollingGetTargetChannelsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{84}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{89}
 }
 
 func (x *PollingGetTargetChannelsOutput) GetChannelIds() []string {
@@ -5732,7 +6592,7 @@ type MailRelayHeader struct {
 
 func (x *MailRelayHeader) Reset() {
 	*x = MailRelayHeader{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[85]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[90]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5744,7 +6604,7 @@ func (x *MailRelayHeader) String() string {
 func (*MailRelayHeader) ProtoMessage() {}
 
 func (x *MailRelayHeader) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[85]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[90]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5757,7 +6617,7 @@ func (x *MailRelayHeader) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MailRelayHeader.ProtoReflect.Descriptor instead.
 func (*MailRelayHeader) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{85}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{90}
 }
 
 func (x *MailRelayHeader) GetName() string {
@@ -5789,7 +6649,7 @@ type MailRelayCommonHeaders struct {
 
 func (x *MailRelayCommonHeaders) Reset() {
 	*x = MailRelayCommonHeaders{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[86]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[91]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5801,7 +6661,7 @@ func (x *MailRelayCommonHeaders) String() string {
 func (*MailRelayCommonHeaders) ProtoMessage() {}
 
 func (x *MailRelayCommonHeaders) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[86]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[91]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5814,7 +6674,7 @@ func (x *MailRelayCommonHeaders) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MailRelayCommonHeaders.ProtoReflect.Descriptor instead.
 func (*MailRelayCommonHeaders) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{86}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{91}
 }
 
 func (x *MailRelayCommonHeaders) GetFrom() []string {
@@ -5879,7 +6739,7 @@ type MailRelayMail struct {
 
 func (x *MailRelayMail) Reset() {
 	*x = MailRelayMail{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[87]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[92]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5891,7 +6751,7 @@ func (x *MailRelayMail) String() string {
 func (*MailRelayMail) ProtoMessage() {}
 
 func (x *MailRelayMail) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[87]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[92]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5904,7 +6764,7 @@ func (x *MailRelayMail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MailRelayMail.ProtoReflect.Descriptor instead.
 func (*MailRelayMail) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{87}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{92}
 }
 
 func (x *MailRelayMail) GetSource() string {
@@ -5956,7 +6816,7 @@ type MailRelayReceipt struct {
 
 func (x *MailRelayReceipt) Reset() {
 	*x = MailRelayReceipt{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[88]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[93]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5968,7 +6828,7 @@ func (x *MailRelayReceipt) String() string {
 func (*MailRelayReceipt) ProtoMessage() {}
 
 func (x *MailRelayReceipt) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[88]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[93]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5981,7 +6841,7 @@ func (x *MailRelayReceipt) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MailRelayReceipt.ProtoReflect.Descriptor instead.
 func (*MailRelayReceipt) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{88}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{93}
 }
 
 func (x *MailRelayReceipt) GetTimestamp() string {
@@ -6042,7 +6902,7 @@ type MailRelayInboundInput struct {
 
 func (x *MailRelayInboundInput) Reset() {
 	*x = MailRelayInboundInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[89]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[94]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6054,7 +6914,7 @@ func (x *MailRelayInboundInput) String() string {
 func (*MailRelayInboundInput) ProtoMessage() {}
 
 func (x *MailRelayInboundInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[89]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[94]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6067,7 +6927,7 @@ func (x *MailRelayInboundInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MailRelayInboundInput.ProtoReflect.Descriptor instead.
 func (*MailRelayInboundInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{89}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{94}
 }
 
 func (x *MailRelayInboundInput) GetSlug() string {
@@ -6137,7 +6997,7 @@ type MailRelayInboundOutput struct {
 
 func (x *MailRelayInboundOutput) Reset() {
 	*x = MailRelayInboundOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[90]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[95]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6149,7 +7009,7 @@ func (x *MailRelayInboundOutput) String() string {
 func (*MailRelayInboundOutput) ProtoMessage() {}
 
 func (x *MailRelayInboundOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[90]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[95]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6162,7 +7022,7 @@ func (x *MailRelayInboundOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MailRelayInboundOutput.ProtoReflect.Descriptor instead.
 func (*MailRelayInboundOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{90}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{95}
 }
 
 func (x *MailRelayInboundOutput) GetStatus() string {
@@ -6196,7 +7056,7 @@ type StoreProfileImage struct {
 
 func (x *StoreProfileImage) Reset() {
 	*x = StoreProfileImage{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[91]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[96]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6208,7 +7068,7 @@ func (x *StoreProfileImage) String() string {
 func (*StoreProfileImage) ProtoMessage() {}
 
 func (x *StoreProfileImage) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[91]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[96]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6221,7 +7081,7 @@ func (x *StoreProfileImage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoreProfileImage.ProtoReflect.Descriptor instead.
 func (*StoreProfileImage) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{91}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{96}
 }
 
 func (x *StoreProfileImage) GetKey() string {
@@ -6248,7 +7108,7 @@ type StoreProfileIntro struct {
 
 func (x *StoreProfileIntro) Reset() {
 	*x = StoreProfileIntro{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[92]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[97]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6260,7 +7120,7 @@ func (x *StoreProfileIntro) String() string {
 func (*StoreProfileIntro) ProtoMessage() {}
 
 func (x *StoreProfileIntro) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[92]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[97]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6273,7 +7133,7 @@ func (x *StoreProfileIntro) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoreProfileIntro.ProtoReflect.Descriptor instead.
 func (*StoreProfileIntro) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{92}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{97}
 }
 
 func (x *StoreProfileIntro) GetHelpsWith() string {
@@ -6300,7 +7160,7 @@ type StoreFaq struct {
 
 func (x *StoreFaq) Reset() {
 	*x = StoreFaq{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[93]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[98]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6312,7 +7172,7 @@ func (x *StoreFaq) String() string {
 func (*StoreFaq) ProtoMessage() {}
 
 func (x *StoreFaq) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[93]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[98]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6325,7 +7185,7 @@ func (x *StoreFaq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoreFaq.ProtoReflect.Descriptor instead.
 func (*StoreFaq) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{93}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{98}
 }
 
 func (x *StoreFaq) GetQuestion() string {
@@ -6353,7 +7213,7 @@ type StoreProfileLocalizedContent struct {
 
 func (x *StoreProfileLocalizedContent) Reset() {
 	*x = StoreProfileLocalizedContent{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[94]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[99]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6365,7 +7225,7 @@ func (x *StoreProfileLocalizedContent) String() string {
 func (*StoreProfileLocalizedContent) ProtoMessage() {}
 
 func (x *StoreProfileLocalizedContent) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[94]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[99]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6378,7 +7238,7 @@ func (x *StoreProfileLocalizedContent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoreProfileLocalizedContent.ProtoReflect.Descriptor instead.
 func (*StoreProfileLocalizedContent) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{94}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{99}
 }
 
 func (x *StoreProfileLocalizedContent) GetImages() []*StoreProfileImage {
@@ -6410,7 +7270,7 @@ type StoreGetProfileInput struct {
 
 func (x *StoreGetProfileInput) Reset() {
 	*x = StoreGetProfileInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[95]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[100]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6422,7 +7282,7 @@ func (x *StoreGetProfileInput) String() string {
 func (*StoreGetProfileInput) ProtoMessage() {}
 
 func (x *StoreGetProfileInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[95]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[100]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6435,7 +7295,7 @@ func (x *StoreGetProfileInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoreGetProfileInput.ProtoReflect.Descriptor instead.
 func (*StoreGetProfileInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{95}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{100}
 }
 
 type StoreGetProfileOutput struct {
@@ -6448,7 +7308,7 @@ type StoreGetProfileOutput struct {
 
 func (x *StoreGetProfileOutput) Reset() {
 	*x = StoreGetProfileOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[96]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[101]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6460,7 +7320,7 @@ func (x *StoreGetProfileOutput) String() string {
 func (*StoreGetProfileOutput) ProtoMessage() {}
 
 func (x *StoreGetProfileOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[96]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[101]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6473,7 +7333,7 @@ func (x *StoreGetProfileOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoreGetProfileOutput.ProtoReflect.Descriptor instead.
 func (*StoreGetProfileOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{96}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{101}
 }
 
 func (x *StoreGetProfileOutput) GetRelatedAppIds() []string {
@@ -6503,7 +7363,7 @@ type NotebookCell struct {
 
 func (x *NotebookCell) Reset() {
 	*x = NotebookCell{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[97]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[102]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6515,7 +7375,7 @@ func (x *NotebookCell) String() string {
 func (*NotebookCell) ProtoMessage() {}
 
 func (x *NotebookCell) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[97]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[102]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6528,7 +7388,7 @@ func (x *NotebookCell) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotebookCell.ProtoReflect.Descriptor instead.
 func (*NotebookCell) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{97}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{102}
 }
 
 func (x *NotebookCell) GetCellKey() string {
@@ -6577,7 +7437,7 @@ type NotebookLayoutColumn struct {
 
 func (x *NotebookLayoutColumn) Reset() {
 	*x = NotebookLayoutColumn{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[98]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[103]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6589,7 +7449,7 @@ func (x *NotebookLayoutColumn) String() string {
 func (*NotebookLayoutColumn) ProtoMessage() {}
 
 func (x *NotebookLayoutColumn) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[98]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[103]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6602,7 +7462,7 @@ func (x *NotebookLayoutColumn) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotebookLayoutColumn.ProtoReflect.Descriptor instead.
 func (*NotebookLayoutColumn) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{98}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{103}
 }
 
 func (x *NotebookLayoutColumn) GetCellKey() string {
@@ -6637,7 +7497,7 @@ type NotebookLayoutRow struct {
 
 func (x *NotebookLayoutRow) Reset() {
 	*x = NotebookLayoutRow{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[99]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[104]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6649,7 +7509,7 @@ func (x *NotebookLayoutRow) String() string {
 func (*NotebookLayoutRow) ProtoMessage() {}
 
 func (x *NotebookLayoutRow) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[99]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[104]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6662,7 +7522,7 @@ func (x *NotebookLayoutRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotebookLayoutRow.ProtoReflect.Descriptor instead.
 func (*NotebookLayoutRow) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{99}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{104}
 }
 
 func (x *NotebookLayoutRow) GetRowKey() string {
@@ -6698,7 +7558,7 @@ type NotebookTab struct {
 
 func (x *NotebookTab) Reset() {
 	*x = NotebookTab{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[100]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[105]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6710,7 +7570,7 @@ func (x *NotebookTab) String() string {
 func (*NotebookTab) ProtoMessage() {}
 
 func (x *NotebookTab) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[100]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[105]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6723,7 +7583,7 @@ func (x *NotebookTab) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotebookTab.ProtoReflect.Descriptor instead.
 func (*NotebookTab) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{100}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{105}
 }
 
 func (x *NotebookTab) GetTabKey() string {
@@ -6764,7 +7624,7 @@ type NotebookPayload struct {
 
 func (x *NotebookPayload) Reset() {
 	*x = NotebookPayload{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[101]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[106]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6776,7 +7636,7 @@ func (x *NotebookPayload) String() string {
 func (*NotebookPayload) ProtoMessage() {}
 
 func (x *NotebookPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[101]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[106]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6789,7 +7649,7 @@ func (x *NotebookPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotebookPayload.ProtoReflect.Descriptor instead.
 func (*NotebookPayload) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{101}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{106}
 }
 
 func (x *NotebookPayload) GetCells() []*NotebookCell {
@@ -6821,7 +7681,7 @@ type AppNotebook struct {
 
 func (x *AppNotebook) Reset() {
 	*x = AppNotebook{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[102]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[107]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6833,7 +7693,7 @@ func (x *AppNotebook) String() string {
 func (*AppNotebook) ProtoMessage() {}
 
 func (x *AppNotebook) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[102]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[107]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6846,7 +7706,7 @@ func (x *AppNotebook) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AppNotebook.ProtoReflect.Descriptor instead.
 func (*AppNotebook) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{102}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{107}
 }
 
 func (x *AppNotebook) GetNotebookKey() string {
@@ -6906,7 +7766,7 @@ type NotebookGetNotebooksInput struct {
 
 func (x *NotebookGetNotebooksInput) Reset() {
 	*x = NotebookGetNotebooksInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[103]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[108]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6918,7 +7778,7 @@ func (x *NotebookGetNotebooksInput) String() string {
 func (*NotebookGetNotebooksInput) ProtoMessage() {}
 
 func (x *NotebookGetNotebooksInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[103]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[108]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6931,7 +7791,7 @@ func (x *NotebookGetNotebooksInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotebookGetNotebooksInput.ProtoReflect.Descriptor instead.
 func (*NotebookGetNotebooksInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{103}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{108}
 }
 
 type NotebookGetNotebooksOutput struct {
@@ -6943,7 +7803,7 @@ type NotebookGetNotebooksOutput struct {
 
 func (x *NotebookGetNotebooksOutput) Reset() {
 	*x = NotebookGetNotebooksOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[104]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[109]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6955,7 +7815,7 @@ func (x *NotebookGetNotebooksOutput) String() string {
 func (*NotebookGetNotebooksOutput) ProtoMessage() {}
 
 func (x *NotebookGetNotebooksOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[104]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[109]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6968,7 +7828,7 @@ func (x *NotebookGetNotebooksOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotebookGetNotebooksOutput.ProtoReflect.Descriptor instead.
 func (*NotebookGetNotebooksOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{104}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{109}
 }
 
 func (x *NotebookGetNotebooksOutput) GetNotebooks() []*AppNotebook {
@@ -6990,7 +7850,7 @@ type DataSourceCatalog struct {
 
 func (x *DataSourceCatalog) Reset() {
 	*x = DataSourceCatalog{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[105]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[110]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7002,7 +7862,7 @@ func (x *DataSourceCatalog) String() string {
 func (*DataSourceCatalog) ProtoMessage() {}
 
 func (x *DataSourceCatalog) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[105]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[110]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7015,7 +7875,7 @@ func (x *DataSourceCatalog) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataSourceCatalog.ProtoReflect.Descriptor instead.
 func (*DataSourceCatalog) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{105}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{110}
 }
 
 func (x *DataSourceCatalog) GetAlias() string {
@@ -7061,7 +7921,7 @@ type DataSourceTable struct {
 
 func (x *DataSourceTable) Reset() {
 	*x = DataSourceTable{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[106]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[111]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7073,7 +7933,7 @@ func (x *DataSourceTable) String() string {
 func (*DataSourceTable) ProtoMessage() {}
 
 func (x *DataSourceTable) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[106]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[111]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7086,7 +7946,7 @@ func (x *DataSourceTable) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataSourceTable.ProtoReflect.Descriptor instead.
 func (*DataSourceTable) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{106}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{111}
 }
 
 func (x *DataSourceTable) GetName() string {
@@ -7153,7 +8013,7 @@ type DataSourceColumn struct {
 
 func (x *DataSourceColumn) Reset() {
 	*x = DataSourceColumn{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[107]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[112]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7165,7 +8025,7 @@ func (x *DataSourceColumn) String() string {
 func (*DataSourceColumn) ProtoMessage() {}
 
 func (x *DataSourceColumn) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[107]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[112]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7178,7 +8038,7 @@ func (x *DataSourceColumn) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataSourceColumn.ProtoReflect.Descriptor instead.
 func (*DataSourceColumn) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{107}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{112}
 }
 
 func (x *DataSourceColumn) GetName() string {
@@ -7241,7 +8101,7 @@ type DataSourceTableDefinition struct {
 
 func (x *DataSourceTableDefinition) Reset() {
 	*x = DataSourceTableDefinition{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[108]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[113]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7253,7 +8113,7 @@ func (x *DataSourceTableDefinition) String() string {
 func (*DataSourceTableDefinition) ProtoMessage() {}
 
 func (x *DataSourceTableDefinition) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[108]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[113]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7266,7 +8126,7 @@ func (x *DataSourceTableDefinition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataSourceTableDefinition.ProtoReflect.Descriptor instead.
 func (*DataSourceTableDefinition) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{108}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{113}
 }
 
 func (x *DataSourceTableDefinition) GetTable() *DataSourceTable {
@@ -7301,7 +8161,7 @@ type DataSourceTableListing struct {
 
 func (x *DataSourceTableListing) Reset() {
 	*x = DataSourceTableListing{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[109]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[114]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7313,7 +8173,7 @@ func (x *DataSourceTableListing) String() string {
 func (*DataSourceTableListing) ProtoMessage() {}
 
 func (x *DataSourceTableListing) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[109]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[114]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7326,7 +8186,7 @@ func (x *DataSourceTableListing) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataSourceTableListing.ProtoReflect.Descriptor instead.
 func (*DataSourceTableListing) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{109}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{114}
 }
 
 func (x *DataSourceTableListing) GetTable() *DataSourceTable {
@@ -7358,7 +8218,7 @@ type DataSourceListCatalogsInput struct {
 
 func (x *DataSourceListCatalogsInput) Reset() {
 	*x = DataSourceListCatalogsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[110]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[115]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7370,7 +8230,7 @@ func (x *DataSourceListCatalogsInput) String() string {
 func (*DataSourceListCatalogsInput) ProtoMessage() {}
 
 func (x *DataSourceListCatalogsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[110]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[115]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7383,7 +8243,7 @@ func (x *DataSourceListCatalogsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataSourceListCatalogsInput.ProtoReflect.Descriptor instead.
 func (*DataSourceListCatalogsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{110}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{115}
 }
 
 type DataSourceListCatalogsOutput struct {
@@ -7395,7 +8255,7 @@ type DataSourceListCatalogsOutput struct {
 
 func (x *DataSourceListCatalogsOutput) Reset() {
 	*x = DataSourceListCatalogsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[111]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[116]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7407,7 +8267,7 @@ func (x *DataSourceListCatalogsOutput) String() string {
 func (*DataSourceListCatalogsOutput) ProtoMessage() {}
 
 func (x *DataSourceListCatalogsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[111]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[116]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7420,7 +8280,7 @@ func (x *DataSourceListCatalogsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataSourceListCatalogsOutput.ProtoReflect.Descriptor instead.
 func (*DataSourceListCatalogsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{111}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{116}
 }
 
 func (x *DataSourceListCatalogsOutput) GetCatalogs() []*DataSourceCatalog {
@@ -7442,7 +8302,7 @@ type DataSourceListTablesInput struct {
 
 func (x *DataSourceListTablesInput) Reset() {
 	*x = DataSourceListTablesInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[112]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[117]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7454,7 +8314,7 @@ func (x *DataSourceListTablesInput) String() string {
 func (*DataSourceListTablesInput) ProtoMessage() {}
 
 func (x *DataSourceListTablesInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[112]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[117]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7467,7 +8327,7 @@ func (x *DataSourceListTablesInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataSourceListTablesInput.ProtoReflect.Descriptor instead.
 func (*DataSourceListTablesInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{112}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{117}
 }
 
 func (x *DataSourceListTablesInput) GetLocalCatalogAlias() string {
@@ -7509,7 +8369,7 @@ type DataSourceListTablesOutput struct {
 
 func (x *DataSourceListTablesOutput) Reset() {
 	*x = DataSourceListTablesOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[113]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[118]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7521,7 +8381,7 @@ func (x *DataSourceListTablesOutput) String() string {
 func (*DataSourceListTablesOutput) ProtoMessage() {}
 
 func (x *DataSourceListTablesOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[113]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[118]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7534,7 +8394,7 @@ func (x *DataSourceListTablesOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataSourceListTablesOutput.ProtoReflect.Descriptor instead.
 func (*DataSourceListTablesOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{113}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{118}
 }
 
 func (x *DataSourceListTablesOutput) GetTables() []*DataSourceTableListing {
@@ -7569,7 +8429,7 @@ type DataSourceDescribeTableInput struct {
 
 func (x *DataSourceDescribeTableInput) Reset() {
 	*x = DataSourceDescribeTableInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[114]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[119]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7581,7 +8441,7 @@ func (x *DataSourceDescribeTableInput) String() string {
 func (*DataSourceDescribeTableInput) ProtoMessage() {}
 
 func (x *DataSourceDescribeTableInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[114]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[119]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7594,7 +8454,7 @@ func (x *DataSourceDescribeTableInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataSourceDescribeTableInput.ProtoReflect.Descriptor instead.
 func (*DataSourceDescribeTableInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{114}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{119}
 }
 
 func (x *DataSourceDescribeTableInput) GetLocalCatalogAlias() string {
@@ -7629,7 +8489,7 @@ type DataSourceDescribeTableOutput struct {
 
 func (x *DataSourceDescribeTableOutput) Reset() {
 	*x = DataSourceDescribeTableOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[115]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[120]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7641,7 +8501,7 @@ func (x *DataSourceDescribeTableOutput) String() string {
 func (*DataSourceDescribeTableOutput) ProtoMessage() {}
 
 func (x *DataSourceDescribeTableOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[115]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[120]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7654,7 +8514,7 @@ func (x *DataSourceDescribeTableOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataSourceDescribeTableOutput.ProtoReflect.Descriptor instead.
 func (*DataSourceDescribeTableOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{115}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{120}
 }
 
 func (x *DataSourceDescribeTableOutput) GetDefinition() *DataSourceTableDefinition {
@@ -7701,7 +8561,7 @@ type OrderAddress struct {
 
 func (x *OrderAddress) Reset() {
 	*x = OrderAddress{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[116]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[121]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7713,7 +8573,7 @@ func (x *OrderAddress) String() string {
 func (*OrderAddress) ProtoMessage() {}
 
 func (x *OrderAddress) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[116]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[121]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7726,7 +8586,7 @@ func (x *OrderAddress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderAddress.ProtoReflect.Descriptor instead.
 func (*OrderAddress) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{116}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{121}
 }
 
 func (x *OrderAddress) GetFirstName() string {
@@ -7824,7 +8684,7 @@ type OrderBankAccount struct {
 
 func (x *OrderBankAccount) Reset() {
 	*x = OrderBankAccount{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[117]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[122]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7836,7 +8696,7 @@ func (x *OrderBankAccount) String() string {
 func (*OrderBankAccount) ProtoMessage() {}
 
 func (x *OrderBankAccount) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[117]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[122]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7849,7 +8709,7 @@ func (x *OrderBankAccount) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderBankAccount.ProtoReflect.Descriptor instead.
 func (*OrderBankAccount) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{117}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{122}
 }
 
 func (x *OrderBankAccount) GetBankName() string {
@@ -7883,7 +8743,7 @@ type OrderDefectInfo struct {
 
 func (x *OrderDefectInfo) Reset() {
 	*x = OrderDefectInfo{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[118]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[123]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7895,7 +8755,7 @@ func (x *OrderDefectInfo) String() string {
 func (*OrderDefectInfo) ProtoMessage() {}
 
 func (x *OrderDefectInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[118]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[123]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7908,7 +8768,7 @@ func (x *OrderDefectInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderDefectInfo.ProtoReflect.Descriptor instead.
 func (*OrderDefectInfo) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{118}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{123}
 }
 
 func (x *OrderDefectInfo) GetDescription() string {
@@ -7935,7 +8795,7 @@ type OrderClaimReason struct {
 
 func (x *OrderClaimReason) Reset() {
 	*x = OrderClaimReason{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[119]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[124]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7947,7 +8807,7 @@ func (x *OrderClaimReason) String() string {
 func (*OrderClaimReason) ProtoMessage() {}
 
 func (x *OrderClaimReason) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[119]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[124]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7960,7 +8820,7 @@ func (x *OrderClaimReason) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderClaimReason.ProtoReflect.Descriptor instead.
 func (*OrderClaimReason) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{119}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{124}
 }
 
 func (x *OrderClaimReason) GetType() string {
@@ -7989,7 +8849,7 @@ type OrderClaimability struct {
 
 func (x *OrderClaimability) Reset() {
 	*x = OrderClaimability{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[120]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[125]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8001,7 +8861,7 @@ func (x *OrderClaimability) String() string {
 func (*OrderClaimability) ProtoMessage() {}
 
 func (x *OrderClaimability) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[120]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[125]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8014,7 +8874,7 @@ func (x *OrderClaimability) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderClaimability.ProtoReflect.Descriptor instead.
 func (*OrderClaimability) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{120}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{125}
 }
 
 func (x *OrderClaimability) GetCancelable() bool {
@@ -8059,7 +8919,7 @@ type OrderClaim struct {
 
 func (x *OrderClaim) Reset() {
 	*x = OrderClaim{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[121]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[126]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8071,7 +8931,7 @@ func (x *OrderClaim) String() string {
 func (*OrderClaim) ProtoMessage() {}
 
 func (x *OrderClaim) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[121]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[126]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8084,7 +8944,7 @@ func (x *OrderClaim) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderClaim.ProtoReflect.Descriptor instead.
 func (*OrderClaim) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{121}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{126}
 }
 
 func (x *OrderClaim) GetId() string {
@@ -8150,7 +9010,7 @@ type OrderItem struct {
 
 func (x *OrderItem) Reset() {
 	*x = OrderItem{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[122]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[127]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8162,7 +9022,7 @@ func (x *OrderItem) String() string {
 func (*OrderItem) ProtoMessage() {}
 
 func (x *OrderItem) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[122]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[127]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8175,7 +9035,7 @@ func (x *OrderItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderItem.ProtoReflect.Descriptor instead.
 func (*OrderItem) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{122}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{127}
 }
 
 func (x *OrderItem) GetId() string {
@@ -8285,7 +9145,7 @@ type OrderPayment struct {
 
 func (x *OrderPayment) Reset() {
 	*x = OrderPayment{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[123]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[128]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8297,7 +9157,7 @@ func (x *OrderPayment) String() string {
 func (*OrderPayment) ProtoMessage() {}
 
 func (x *OrderPayment) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[123]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[128]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8310,7 +9170,7 @@ func (x *OrderPayment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderPayment.ProtoReflect.Descriptor instead.
 func (*OrderPayment) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{123}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{128}
 }
 
 func (x *OrderPayment) GetState() string {
@@ -8384,7 +9244,7 @@ type OrderFulfillment struct {
 
 func (x *OrderFulfillment) Reset() {
 	*x = OrderFulfillment{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[124]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[129]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8396,7 +9256,7 @@ func (x *OrderFulfillment) String() string {
 func (*OrderFulfillment) ProtoMessage() {}
 
 func (x *OrderFulfillment) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[124]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[129]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8409,7 +9269,7 @@ func (x *OrderFulfillment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderFulfillment.ProtoReflect.Descriptor instead.
 func (*OrderFulfillment) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{124}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{129}
 }
 
 func (x *OrderFulfillment) GetId() string {
@@ -8477,7 +9337,7 @@ type Order struct {
 
 func (x *Order) Reset() {
 	*x = Order{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[125]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[130]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8489,7 +9349,7 @@ func (x *Order) String() string {
 func (*Order) ProtoMessage() {}
 
 func (x *Order) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[125]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[130]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8502,7 +9362,7 @@ func (x *Order) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Order.ProtoReflect.Descriptor instead.
 func (*Order) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{125}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{130}
 }
 
 func (x *Order) GetId() string {
@@ -8571,7 +9431,7 @@ type OrderAllowedValue struct {
 
 func (x *OrderAllowedValue) Reset() {
 	*x = OrderAllowedValue{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[126]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[131]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8583,7 +9443,7 @@ func (x *OrderAllowedValue) String() string {
 func (*OrderAllowedValue) ProtoMessage() {}
 
 func (x *OrderAllowedValue) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[126]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[131]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8596,7 +9456,7 @@ func (x *OrderAllowedValue) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderAllowedValue.ProtoReflect.Descriptor instead.
 func (*OrderAllowedValue) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{126}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{131}
 }
 
 func (x *OrderAllowedValue) GetValue() string {
@@ -8624,7 +9484,7 @@ type OrderFieldConfig struct {
 
 func (x *OrderFieldConfig) Reset() {
 	*x = OrderFieldConfig{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[127]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[132]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8636,7 +9496,7 @@ func (x *OrderFieldConfig) String() string {
 func (*OrderFieldConfig) ProtoMessage() {}
 
 func (x *OrderFieldConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[127]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[132]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8649,7 +9509,7 @@ func (x *OrderFieldConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderFieldConfig.ProtoReflect.Descriptor instead.
 func (*OrderFieldConfig) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{127}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{132}
 }
 
 func (x *OrderFieldConfig) GetType() string {
@@ -8684,7 +9544,7 @@ type OrderOperationOptions struct {
 
 func (x *OrderOperationOptions) Reset() {
 	*x = OrderOperationOptions{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[128]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[133]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8696,7 +9556,7 @@ func (x *OrderOperationOptions) String() string {
 func (*OrderOperationOptions) ProtoMessage() {}
 
 func (x *OrderOperationOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[128]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[133]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8709,7 +9569,7 @@ func (x *OrderOperationOptions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderOperationOptions.ProtoReflect.Descriptor instead.
 func (*OrderOperationOptions) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{128}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{133}
 }
 
 func (x *OrderOperationOptions) GetRequired() []string {
@@ -8746,7 +9606,7 @@ type OrderAppCapabilities struct {
 
 func (x *OrderAppCapabilities) Reset() {
 	*x = OrderAppCapabilities{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[129]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[134]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8758,7 +9618,7 @@ func (x *OrderAppCapabilities) String() string {
 func (*OrderAppCapabilities) ProtoMessage() {}
 
 func (x *OrderAppCapabilities) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[129]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[134]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8771,7 +9631,7 @@ func (x *OrderAppCapabilities) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderAppCapabilities.ProtoReflect.Descriptor instead.
 func (*OrderAppCapabilities) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{129}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{134}
 }
 
 func (x *OrderAppCapabilities) GetGetOrdersOptions() *OrderOperationOptions {
@@ -8819,7 +9679,7 @@ type OrderGetOrdersInput struct {
 
 func (x *OrderGetOrdersInput) Reset() {
 	*x = OrderGetOrdersInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[130]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[135]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8831,7 +9691,7 @@ func (x *OrderGetOrdersInput) String() string {
 func (*OrderGetOrdersInput) ProtoMessage() {}
 
 func (x *OrderGetOrdersInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[130]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[135]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8844,7 +9704,7 @@ func (x *OrderGetOrdersInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderGetOrdersInput.ProtoReflect.Descriptor instead.
 func (*OrderGetOrdersInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{130}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{135}
 }
 
 func (x *OrderGetOrdersInput) GetIdentifierType() string {
@@ -8870,7 +9730,7 @@ type OrderGetOrdersOutput struct {
 
 func (x *OrderGetOrdersOutput) Reset() {
 	*x = OrderGetOrdersOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[131]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[136]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8882,7 +9742,7 @@ func (x *OrderGetOrdersOutput) String() string {
 func (*OrderGetOrdersOutput) ProtoMessage() {}
 
 func (x *OrderGetOrdersOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[131]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[136]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8895,7 +9755,7 @@ func (x *OrderGetOrdersOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderGetOrdersOutput.ProtoReflect.Descriptor instead.
 func (*OrderGetOrdersOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{131}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{136}
 }
 
 func (x *OrderGetOrdersOutput) GetOrders() []*Order {
@@ -8913,7 +9773,7 @@ type OrderGetAppConfigsInput struct {
 
 func (x *OrderGetAppConfigsInput) Reset() {
 	*x = OrderGetAppConfigsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[132]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[137]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8925,7 +9785,7 @@ func (x *OrderGetAppConfigsInput) String() string {
 func (*OrderGetAppConfigsInput) ProtoMessage() {}
 
 func (x *OrderGetAppConfigsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[132]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[137]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8938,7 +9798,7 @@ func (x *OrderGetAppConfigsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderGetAppConfigsInput.ProtoReflect.Descriptor instead.
 func (*OrderGetAppConfigsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{132}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{137}
 }
 
 type OrderGetAppConfigsOutput struct {
@@ -8950,7 +9810,7 @@ type OrderGetAppConfigsOutput struct {
 
 func (x *OrderGetAppConfigsOutput) Reset() {
 	*x = OrderGetAppConfigsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[133]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[138]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8962,7 +9822,7 @@ func (x *OrderGetAppConfigsOutput) String() string {
 func (*OrderGetAppConfigsOutput) ProtoMessage() {}
 
 func (x *OrderGetAppConfigsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[133]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[138]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8975,7 +9835,7 @@ func (x *OrderGetAppConfigsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderGetAppConfigsOutput.ProtoReflect.Descriptor instead.
 func (*OrderGetAppConfigsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{133}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{138}
 }
 
 func (x *OrderGetAppConfigsOutput) GetAppCapabilities() *OrderAppCapabilities {
@@ -8995,7 +9855,7 @@ type OrderClaimItem struct {
 
 func (x *OrderClaimItem) Reset() {
 	*x = OrderClaimItem{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[134]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[139]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9007,7 +9867,7 @@ func (x *OrderClaimItem) String() string {
 func (*OrderClaimItem) ProtoMessage() {}
 
 func (x *OrderClaimItem) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[134]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[139]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9020,7 +9880,7 @@ func (x *OrderClaimItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderClaimItem.ProtoReflect.Descriptor instead.
 func (*OrderClaimItem) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{134}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{139}
 }
 
 func (x *OrderClaimItem) GetId() string {
@@ -9049,7 +9909,7 @@ type OrderCancelOrderInput struct {
 
 func (x *OrderCancelOrderInput) Reset() {
 	*x = OrderCancelOrderInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[135]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[140]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9061,7 +9921,7 @@ func (x *OrderCancelOrderInput) String() string {
 func (*OrderCancelOrderInput) ProtoMessage() {}
 
 func (x *OrderCancelOrderInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[135]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[140]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9074,7 +9934,7 @@ func (x *OrderCancelOrderInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderCancelOrderInput.ProtoReflect.Descriptor instead.
 func (*OrderCancelOrderInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{135}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{140}
 }
 
 func (x *OrderCancelOrderInput) GetOrderId() string {
@@ -9123,7 +9983,7 @@ type OrderReturnOrderInput struct {
 
 func (x *OrderReturnOrderInput) Reset() {
 	*x = OrderReturnOrderInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[136]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[141]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9135,7 +9995,7 @@ func (x *OrderReturnOrderInput) String() string {
 func (*OrderReturnOrderInput) ProtoMessage() {}
 
 func (x *OrderReturnOrderInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[136]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[141]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9148,7 +10008,7 @@ func (x *OrderReturnOrderInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderReturnOrderInput.ProtoReflect.Descriptor instead.
 func (*OrderReturnOrderInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{136}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{141}
 }
 
 func (x *OrderReturnOrderInput) GetOrderId() string {
@@ -9232,7 +10092,7 @@ type OrderExchangeItem struct {
 
 func (x *OrderExchangeItem) Reset() {
 	*x = OrderExchangeItem{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[137]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[142]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9244,7 +10104,7 @@ func (x *OrderExchangeItem) String() string {
 func (*OrderExchangeItem) ProtoMessage() {}
 
 func (x *OrderExchangeItem) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[137]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[142]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9257,7 +10117,7 @@ func (x *OrderExchangeItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderExchangeItem.ProtoReflect.Descriptor instead.
 func (*OrderExchangeItem) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{137}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{142}
 }
 
 func (x *OrderExchangeItem) GetProductId() string {
@@ -9298,7 +10158,7 @@ type OrderExchangeOrderInput struct {
 
 func (x *OrderExchangeOrderInput) Reset() {
 	*x = OrderExchangeOrderInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[138]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[143]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9310,7 +10170,7 @@ func (x *OrderExchangeOrderInput) String() string {
 func (*OrderExchangeOrderInput) ProtoMessage() {}
 
 func (x *OrderExchangeOrderInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[138]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[143]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9323,7 +10183,7 @@ func (x *OrderExchangeOrderInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderExchangeOrderInput.ProtoReflect.Descriptor instead.
 func (*OrderExchangeOrderInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{138}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{143}
 }
 
 func (x *OrderExchangeOrderInput) GetOrderId() string {
@@ -9399,7 +10259,7 @@ type OrderGetExchangeableItemsInput struct {
 
 func (x *OrderGetExchangeableItemsInput) Reset() {
 	*x = OrderGetExchangeableItemsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[139]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[144]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9411,7 +10271,7 @@ func (x *OrderGetExchangeableItemsInput) String() string {
 func (*OrderGetExchangeableItemsInput) ProtoMessage() {}
 
 func (x *OrderGetExchangeableItemsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[139]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[144]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9424,7 +10284,7 @@ func (x *OrderGetExchangeableItemsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderGetExchangeableItemsInput.ProtoReflect.Descriptor instead.
 func (*OrderGetExchangeableItemsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{139}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{144}
 }
 
 func (x *OrderGetExchangeableItemsInput) GetOrderId() string {
@@ -9450,7 +10310,7 @@ type OrderGetExchangeableItemsOutput struct {
 
 func (x *OrderGetExchangeableItemsOutput) Reset() {
 	*x = OrderGetExchangeableItemsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[140]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[145]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9462,7 +10322,7 @@ func (x *OrderGetExchangeableItemsOutput) String() string {
 func (*OrderGetExchangeableItemsOutput) ProtoMessage() {}
 
 func (x *OrderGetExchangeableItemsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[140]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[145]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9475,7 +10335,7 @@ func (x *OrderGetExchangeableItemsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderGetExchangeableItemsOutput.ProtoReflect.Descriptor instead.
 func (*OrderGetExchangeableItemsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{140}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{145}
 }
 
 func (x *OrderGetExchangeableItemsOutput) GetItems() []*OrderItem {
@@ -9495,7 +10355,7 @@ type OrderChangeShippingAddressInput struct {
 
 func (x *OrderChangeShippingAddressInput) Reset() {
 	*x = OrderChangeShippingAddressInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[141]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[146]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9507,7 +10367,7 @@ func (x *OrderChangeShippingAddressInput) String() string {
 func (*OrderChangeShippingAddressInput) ProtoMessage() {}
 
 func (x *OrderChangeShippingAddressInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[141]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[146]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9520,7 +10380,7 @@ func (x *OrderChangeShippingAddressInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderChangeShippingAddressInput.ProtoReflect.Descriptor instead.
 func (*OrderChangeShippingAddressInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{141}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{146}
 }
 
 func (x *OrderChangeShippingAddressInput) GetOrderId() string {
@@ -9546,7 +10406,7 @@ type OrderSuccessOutput struct {
 
 func (x *OrderSuccessOutput) Reset() {
 	*x = OrderSuccessOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[142]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[147]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9558,7 +10418,7 @@ func (x *OrderSuccessOutput) String() string {
 func (*OrderSuccessOutput) ProtoMessage() {}
 
 func (x *OrderSuccessOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[142]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[147]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9571,7 +10431,7 @@ func (x *OrderSuccessOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderSuccessOutput.ProtoReflect.Descriptor instead.
 func (*OrderSuccessOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{142}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{147}
 }
 
 func (x *OrderSuccessOutput) GetSuccess() bool {
@@ -9591,7 +10451,7 @@ type CommerceIdentifier struct {
 
 func (x *CommerceIdentifier) Reset() {
 	*x = CommerceIdentifier{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[143]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[148]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9603,7 +10463,7 @@ func (x *CommerceIdentifier) String() string {
 func (*CommerceIdentifier) ProtoMessage() {}
 
 func (x *CommerceIdentifier) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[143]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[148]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9616,7 +10476,7 @@ func (x *CommerceIdentifier) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceIdentifier.ProtoReflect.Descriptor instead.
 func (*CommerceIdentifier) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{143}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{148}
 }
 
 func (x *CommerceIdentifier) GetType() string {
@@ -9654,7 +10514,7 @@ type CommerceOrderItem struct {
 
 func (x *CommerceOrderItem) Reset() {
 	*x = CommerceOrderItem{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[144]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[149]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9666,7 +10526,7 @@ func (x *CommerceOrderItem) String() string {
 func (*CommerceOrderItem) ProtoMessage() {}
 
 func (x *CommerceOrderItem) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[144]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[149]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9679,7 +10539,7 @@ func (x *CommerceOrderItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceOrderItem.ProtoReflect.Descriptor instead.
 func (*CommerceOrderItem) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{144}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{149}
 }
 
 func (x *CommerceOrderItem) GetId() string {
@@ -9790,7 +10650,7 @@ type CommerceOrder struct {
 
 func (x *CommerceOrder) Reset() {
 	*x = CommerceOrder{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[145]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[150]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9802,7 +10662,7 @@ func (x *CommerceOrder) String() string {
 func (*CommerceOrder) ProtoMessage() {}
 
 func (x *CommerceOrder) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[145]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[150]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9815,7 +10675,7 @@ func (x *CommerceOrder) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceOrder.ProtoReflect.Descriptor instead.
 func (*CommerceOrder) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{145}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{150}
 }
 
 func (x *CommerceOrder) GetId() string {
@@ -9893,7 +10753,7 @@ type CommerceGetOrdersInput struct {
 
 func (x *CommerceGetOrdersInput) Reset() {
 	*x = CommerceGetOrdersInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[146]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[151]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9905,7 +10765,7 @@ func (x *CommerceGetOrdersInput) String() string {
 func (*CommerceGetOrdersInput) ProtoMessage() {}
 
 func (x *CommerceGetOrdersInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[146]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[151]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9918,7 +10778,7 @@ func (x *CommerceGetOrdersInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceGetOrdersInput.ProtoReflect.Descriptor instead.
 func (*CommerceGetOrdersInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{146}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{151}
 }
 
 func (x *CommerceGetOrdersInput) GetIdentifier() *CommerceIdentifier {
@@ -9959,7 +10819,7 @@ type CommerceGetOrdersOutput struct {
 
 func (x *CommerceGetOrdersOutput) Reset() {
 	*x = CommerceGetOrdersOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[147]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[152]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9971,7 +10831,7 @@ func (x *CommerceGetOrdersOutput) String() string {
 func (*CommerceGetOrdersOutput) ProtoMessage() {}
 
 func (x *CommerceGetOrdersOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[147]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[152]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9984,7 +10844,7 @@ func (x *CommerceGetOrdersOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceGetOrdersOutput.ProtoReflect.Descriptor instead.
 func (*CommerceGetOrdersOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{147}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{152}
 }
 
 func (x *CommerceGetOrdersOutput) GetOrders() []*CommerceOrder {
@@ -10015,7 +10875,7 @@ type CommerceAppCapabilities struct {
 
 func (x *CommerceAppCapabilities) Reset() {
 	*x = CommerceAppCapabilities{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[148]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[153]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10027,7 +10887,7 @@ func (x *CommerceAppCapabilities) String() string {
 func (*CommerceAppCapabilities) ProtoMessage() {}
 
 func (x *CommerceAppCapabilities) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[148]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[153]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10040,7 +10900,7 @@ func (x *CommerceAppCapabilities) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceAppCapabilities.ProtoReflect.Descriptor instead.
 func (*CommerceAppCapabilities) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{148}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{153}
 }
 
 func (x *CommerceAppCapabilities) GetGetOrdersOptions() *OrderOperationOptions {
@@ -10093,7 +10953,7 @@ type CommerceGetAppConfigsInput struct {
 
 func (x *CommerceGetAppConfigsInput) Reset() {
 	*x = CommerceGetAppConfigsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[149]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[154]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10105,7 +10965,7 @@ func (x *CommerceGetAppConfigsInput) String() string {
 func (*CommerceGetAppConfigsInput) ProtoMessage() {}
 
 func (x *CommerceGetAppConfigsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[149]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[154]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10118,7 +10978,7 @@ func (x *CommerceGetAppConfigsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceGetAppConfigsInput.ProtoReflect.Descriptor instead.
 func (*CommerceGetAppConfigsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{149}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{154}
 }
 
 type CommerceGetAppConfigsOutput struct {
@@ -10130,7 +10990,7 @@ type CommerceGetAppConfigsOutput struct {
 
 func (x *CommerceGetAppConfigsOutput) Reset() {
 	*x = CommerceGetAppConfigsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[150]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[155]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10142,7 +11002,7 @@ func (x *CommerceGetAppConfigsOutput) String() string {
 func (*CommerceGetAppConfigsOutput) ProtoMessage() {}
 
 func (x *CommerceGetAppConfigsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[150]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[155]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10155,7 +11015,7 @@ func (x *CommerceGetAppConfigsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceGetAppConfigsOutput.ProtoReflect.Descriptor instead.
 func (*CommerceGetAppConfigsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{150}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{155}
 }
 
 func (x *CommerceGetAppConfigsOutput) GetAppCapabilities() *CommerceAppCapabilities {
@@ -10175,7 +11035,7 @@ type CommerceResultBody struct {
 
 func (x *CommerceResultBody) Reset() {
 	*x = CommerceResultBody{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[151]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[156]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10187,7 +11047,7 @@ func (x *CommerceResultBody) String() string {
 func (*CommerceResultBody) ProtoMessage() {}
 
 func (x *CommerceResultBody) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[151]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[156]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10200,7 +11060,7 @@ func (x *CommerceResultBody) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceResultBody.ProtoReflect.Descriptor instead.
 func (*CommerceResultBody) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{151}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{156}
 }
 
 func (x *CommerceResultBody) GetSuccess() bool {
@@ -10226,7 +11086,7 @@ type CommerceActionResult struct {
 
 func (x *CommerceActionResult) Reset() {
 	*x = CommerceActionResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[152]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[157]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10238,7 +11098,7 @@ func (x *CommerceActionResult) String() string {
 func (*CommerceActionResult) ProtoMessage() {}
 
 func (x *CommerceActionResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[152]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[157]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10251,7 +11111,7 @@ func (x *CommerceActionResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceActionResult.ProtoReflect.Descriptor instead.
 func (*CommerceActionResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{152}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{157}
 }
 
 func (x *CommerceActionResult) GetResult() *CommerceResultBody {
@@ -10274,7 +11134,7 @@ type CommerceCancelOrderInput struct {
 
 func (x *CommerceCancelOrderInput) Reset() {
 	*x = CommerceCancelOrderInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[153]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[158]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10286,7 +11146,7 @@ func (x *CommerceCancelOrderInput) String() string {
 func (*CommerceCancelOrderInput) ProtoMessage() {}
 
 func (x *CommerceCancelOrderInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[153]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[158]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10299,7 +11159,7 @@ func (x *CommerceCancelOrderInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceCancelOrderInput.ProtoReflect.Descriptor instead.
 func (*CommerceCancelOrderInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{153}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{158}
 }
 
 func (x *CommerceCancelOrderInput) GetIdentifier() *CommerceIdentifier {
@@ -10355,7 +11215,7 @@ type CommerceReturnOrderInput struct {
 
 func (x *CommerceReturnOrderInput) Reset() {
 	*x = CommerceReturnOrderInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[154]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[159]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10367,7 +11227,7 @@ func (x *CommerceReturnOrderInput) String() string {
 func (*CommerceReturnOrderInput) ProtoMessage() {}
 
 func (x *CommerceReturnOrderInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[154]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[159]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10380,7 +11240,7 @@ func (x *CommerceReturnOrderInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceReturnOrderInput.ProtoReflect.Descriptor instead.
 func (*CommerceReturnOrderInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{154}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{159}
 }
 
 func (x *CommerceReturnOrderInput) GetIdentifier() *CommerceIdentifier {
@@ -10468,7 +11328,7 @@ type CommerceReturnAcceptOrderInput struct {
 
 func (x *CommerceReturnAcceptOrderInput) Reset() {
 	*x = CommerceReturnAcceptOrderInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[155]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[160]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10480,7 +11340,7 @@ func (x *CommerceReturnAcceptOrderInput) String() string {
 func (*CommerceReturnAcceptOrderInput) ProtoMessage() {}
 
 func (x *CommerceReturnAcceptOrderInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[155]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[160]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10493,7 +11353,7 @@ func (x *CommerceReturnAcceptOrderInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceReturnAcceptOrderInput.ProtoReflect.Descriptor instead.
 func (*CommerceReturnAcceptOrderInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{155}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{160}
 }
 
 func (x *CommerceReturnAcceptOrderInput) GetIdentifier() *CommerceIdentifier {
@@ -10562,7 +11422,7 @@ type CommerceExchangeOrderInput struct {
 
 func (x *CommerceExchangeOrderInput) Reset() {
 	*x = CommerceExchangeOrderInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[156]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[161]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10574,7 +11434,7 @@ func (x *CommerceExchangeOrderInput) String() string {
 func (*CommerceExchangeOrderInput) ProtoMessage() {}
 
 func (x *CommerceExchangeOrderInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[156]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[161]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10587,7 +11447,7 @@ func (x *CommerceExchangeOrderInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommerceExchangeOrderInput.ProtoReflect.Descriptor instead.
 func (*CommerceExchangeOrderInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{156}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{161}
 }
 
 func (x *CommerceExchangeOrderInput) GetIdentifier() *CommerceIdentifier {
@@ -10664,7 +11524,7 @@ type CommerceGetExchangeableItemsInput struct {
 
 func (x *CommerceGetExchangeableItemsInput) Reset() {
 	*x = CommerceGetExchangeableItemsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[157]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[162]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10676,7 +11536,7 @@ func (x *CommerceGetExchangeableItemsInput) String() string {
 func (*CommerceGetExchangeableItemsInput) ProtoMessage() {}
 
 func (x *CommerceGetExchangeableItemsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[157]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[162]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10689,7 +11549,7 @@ func (x *CommerceGetExchangeableItemsInput) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use CommerceGetExchangeableItemsInput.ProtoReflect.Descriptor instead.
 func (*CommerceGetExchangeableItemsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{157}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{162}
 }
 
 func (x *CommerceGetExchangeableItemsInput) GetIdentifier() *CommerceIdentifier {
@@ -10722,7 +11582,7 @@ type CommerceGetExchangeableItemsOutput struct {
 
 func (x *CommerceGetExchangeableItemsOutput) Reset() {
 	*x = CommerceGetExchangeableItemsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[158]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[163]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10734,7 +11594,7 @@ func (x *CommerceGetExchangeableItemsOutput) String() string {
 func (*CommerceGetExchangeableItemsOutput) ProtoMessage() {}
 
 func (x *CommerceGetExchangeableItemsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[158]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[163]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10747,7 +11607,7 @@ func (x *CommerceGetExchangeableItemsOutput) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use CommerceGetExchangeableItemsOutput.ProtoReflect.Descriptor instead.
 func (*CommerceGetExchangeableItemsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{158}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{163}
 }
 
 func (x *CommerceGetExchangeableItemsOutput) GetItems() []*CommerceOrderItem {
@@ -10768,7 +11628,7 @@ type CommerceChangeShippingAddressInput struct {
 
 func (x *CommerceChangeShippingAddressInput) Reset() {
 	*x = CommerceChangeShippingAddressInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[159]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[164]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10780,7 +11640,7 @@ func (x *CommerceChangeShippingAddressInput) String() string {
 func (*CommerceChangeShippingAddressInput) ProtoMessage() {}
 
 func (x *CommerceChangeShippingAddressInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[159]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[164]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10793,7 +11653,7 @@ func (x *CommerceChangeShippingAddressInput) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use CommerceChangeShippingAddressInput.ProtoReflect.Descriptor instead.
 func (*CommerceChangeShippingAddressInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{159}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{164}
 }
 
 func (x *CommerceChangeShippingAddressInput) GetIdentifier() *CommerceIdentifier {
@@ -10836,7 +11696,7 @@ type WmsShippingInfo struct {
 
 func (x *WmsShippingInfo) Reset() {
 	*x = WmsShippingInfo{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[160]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[165]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10848,7 +11708,7 @@ func (x *WmsShippingInfo) String() string {
 func (*WmsShippingInfo) ProtoMessage() {}
 
 func (x *WmsShippingInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[160]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[165]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10861,7 +11721,7 @@ func (x *WmsShippingInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsShippingInfo.ProtoReflect.Descriptor instead.
 func (*WmsShippingInfo) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{160}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{165}
 }
 
 func (x *WmsShippingInfo) GetName() string {
@@ -10951,7 +11811,7 @@ type WmsDelivery struct {
 
 func (x *WmsDelivery) Reset() {
 	*x = WmsDelivery{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[161]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[166]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10963,7 +11823,7 @@ func (x *WmsDelivery) String() string {
 func (*WmsDelivery) ProtoMessage() {}
 
 func (x *WmsDelivery) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[161]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[166]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10976,7 +11836,7 @@ func (x *WmsDelivery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsDelivery.ProtoReflect.Descriptor instead.
 func (*WmsDelivery) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{161}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{166}
 }
 
 func (x *WmsDelivery) GetExtId() string {
@@ -11011,7 +11871,7 @@ type WmsOrderItem struct {
 
 func (x *WmsOrderItem) Reset() {
 	*x = WmsOrderItem{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[162]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[167]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11023,7 +11883,7 @@ func (x *WmsOrderItem) String() string {
 func (*WmsOrderItem) ProtoMessage() {}
 
 func (x *WmsOrderItem) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[162]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[167]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11036,7 +11896,7 @@ func (x *WmsOrderItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsOrderItem.ProtoReflect.Descriptor instead.
 func (*WmsOrderItem) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{162}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{167}
 }
 
 func (x *WmsOrderItem) GetExtId() string {
@@ -11121,7 +11981,7 @@ type WmsOrder struct {
 
 func (x *WmsOrder) Reset() {
 	*x = WmsOrder{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[163]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[168]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11133,7 +11993,7 @@ func (x *WmsOrder) String() string {
 func (*WmsOrder) ProtoMessage() {}
 
 func (x *WmsOrder) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[163]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[168]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11146,7 +12006,7 @@ func (x *WmsOrder) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsOrder.ProtoReflect.Descriptor instead.
 func (*WmsOrder) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{163}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{168}
 }
 
 func (x *WmsOrder) GetExtId() string {
@@ -11189,7 +12049,7 @@ type WmsGetOrdersRequest struct {
 
 func (x *WmsGetOrdersRequest) Reset() {
 	*x = WmsGetOrdersRequest{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[164]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[169]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11201,7 +12061,7 @@ func (x *WmsGetOrdersRequest) String() string {
 func (*WmsGetOrdersRequest) ProtoMessage() {}
 
 func (x *WmsGetOrdersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[164]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[169]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11214,7 +12074,7 @@ func (x *WmsGetOrdersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsGetOrdersRequest.ProtoReflect.Descriptor instead.
 func (*WmsGetOrdersRequest) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{164}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{169}
 }
 
 func (x *WmsGetOrdersRequest) GetCommerceOrderIds() string {
@@ -11254,7 +12114,7 @@ type WmsGetOrdersResult struct {
 
 func (x *WmsGetOrdersResult) Reset() {
 	*x = WmsGetOrdersResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[165]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[170]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11266,7 +12126,7 @@ func (x *WmsGetOrdersResult) String() string {
 func (*WmsGetOrdersResult) ProtoMessage() {}
 
 func (x *WmsGetOrdersResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[165]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[170]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11279,7 +12139,7 @@ func (x *WmsGetOrdersResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsGetOrdersResult.ProtoReflect.Descriptor instead.
 func (*WmsGetOrdersResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{165}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{170}
 }
 
 func (x *WmsGetOrdersResult) GetOrders() []*WmsOrder {
@@ -11301,7 +12161,7 @@ type WmsGetOrderRequest struct {
 
 func (x *WmsGetOrderRequest) Reset() {
 	*x = WmsGetOrderRequest{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[166]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[171]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11313,7 +12173,7 @@ func (x *WmsGetOrderRequest) String() string {
 func (*WmsGetOrderRequest) ProtoMessage() {}
 
 func (x *WmsGetOrderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[166]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[171]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11326,7 +12186,7 @@ func (x *WmsGetOrderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsGetOrderRequest.ProtoReflect.Descriptor instead.
 func (*WmsGetOrderRequest) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{166}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{171}
 }
 
 func (x *WmsGetOrderRequest) GetCommerceOrderId() string {
@@ -11366,7 +12226,7 @@ type WmsGetOrderResult struct {
 
 func (x *WmsGetOrderResult) Reset() {
 	*x = WmsGetOrderResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[167]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[172]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11378,7 +12238,7 @@ func (x *WmsGetOrderResult) String() string {
 func (*WmsGetOrderResult) ProtoMessage() {}
 
 func (x *WmsGetOrderResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[167]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[172]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11391,7 +12251,7 @@ func (x *WmsGetOrderResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsGetOrderResult.ProtoReflect.Descriptor instead.
 func (*WmsGetOrderResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{167}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{172}
 }
 
 func (x *WmsGetOrderResult) GetOrder() *WmsOrder {
@@ -11411,7 +12271,7 @@ type WmsGetShopIDRequest struct {
 
 func (x *WmsGetShopIDRequest) Reset() {
 	*x = WmsGetShopIDRequest{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[168]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[173]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11423,7 +12283,7 @@ func (x *WmsGetShopIDRequest) String() string {
 func (*WmsGetShopIDRequest) ProtoMessage() {}
 
 func (x *WmsGetShopIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[168]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[173]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11436,7 +12296,7 @@ func (x *WmsGetShopIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsGetShopIDRequest.ProtoReflect.Descriptor instead.
 func (*WmsGetShopIDRequest) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{168}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{173}
 }
 
 func (x *WmsGetShopIDRequest) GetCommerceType() string {
@@ -11463,7 +12323,7 @@ type WmsGetShopIDResult struct {
 
 func (x *WmsGetShopIDResult) Reset() {
 	*x = WmsGetShopIDResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[169]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[174]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11475,7 +12335,7 @@ func (x *WmsGetShopIDResult) String() string {
 func (*WmsGetShopIDResult) ProtoMessage() {}
 
 func (x *WmsGetShopIDResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[169]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[174]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11488,7 +12348,7 @@ func (x *WmsGetShopIDResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsGetShopIDResult.ProtoReflect.Descriptor instead.
 func (*WmsGetShopIDResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{169}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{174}
 }
 
 func (x *WmsGetShopIDResult) GetMessage() string {
@@ -11513,7 +12373,7 @@ type WmsGetSupportedCommercesRequest struct {
 
 func (x *WmsGetSupportedCommercesRequest) Reset() {
 	*x = WmsGetSupportedCommercesRequest{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[170]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[175]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11525,7 +12385,7 @@ func (x *WmsGetSupportedCommercesRequest) String() string {
 func (*WmsGetSupportedCommercesRequest) ProtoMessage() {}
 
 func (x *WmsGetSupportedCommercesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[170]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[175]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11538,7 +12398,7 @@ func (x *WmsGetSupportedCommercesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsGetSupportedCommercesRequest.ProtoReflect.Descriptor instead.
 func (*WmsGetSupportedCommercesRequest) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{170}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{175}
 }
 
 type WmsGetSupportedCommercesResult struct {
@@ -11550,7 +12410,7 @@ type WmsGetSupportedCommercesResult struct {
 
 func (x *WmsGetSupportedCommercesResult) Reset() {
 	*x = WmsGetSupportedCommercesResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[171]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[176]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11562,7 +12422,7 @@ func (x *WmsGetSupportedCommercesResult) String() string {
 func (*WmsGetSupportedCommercesResult) ProtoMessage() {}
 
 func (x *WmsGetSupportedCommercesResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[171]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[176]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11575,7 +12435,7 @@ func (x *WmsGetSupportedCommercesResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsGetSupportedCommercesResult.ProtoReflect.Descriptor instead.
 func (*WmsGetSupportedCommercesResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{171}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{176}
 }
 
 func (x *WmsGetSupportedCommercesResult) GetCommerceTypes() []string {
@@ -11597,7 +12457,7 @@ type WmsOrderStateRequest struct {
 
 func (x *WmsOrderStateRequest) Reset() {
 	*x = WmsOrderStateRequest{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[172]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[177]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11609,7 +12469,7 @@ func (x *WmsOrderStateRequest) String() string {
 func (*WmsOrderStateRequest) ProtoMessage() {}
 
 func (x *WmsOrderStateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[172]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[177]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11622,7 +12482,7 @@ func (x *WmsOrderStateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsOrderStateRequest.ProtoReflect.Descriptor instead.
 func (*WmsOrderStateRequest) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{172}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{177}
 }
 
 func (x *WmsOrderStateRequest) GetOrderId() string {
@@ -11668,7 +12528,7 @@ type WmsChangeShippingAddressRequest struct {
 
 func (x *WmsChangeShippingAddressRequest) Reset() {
 	*x = WmsChangeShippingAddressRequest{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[173]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[178]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11680,7 +12540,7 @@ func (x *WmsChangeShippingAddressRequest) String() string {
 func (*WmsChangeShippingAddressRequest) ProtoMessage() {}
 
 func (x *WmsChangeShippingAddressRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[173]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[178]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11693,7 +12553,7 @@ func (x *WmsChangeShippingAddressRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsChangeShippingAddressRequest.ProtoReflect.Descriptor instead.
 func (*WmsChangeShippingAddressRequest) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{173}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{178}
 }
 
 func (x *WmsChangeShippingAddressRequest) GetOrderId() string {
@@ -11759,7 +12619,7 @@ type WmsRestoreOrderRequest struct {
 
 func (x *WmsRestoreOrderRequest) Reset() {
 	*x = WmsRestoreOrderRequest{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[174]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[179]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11771,7 +12631,7 @@ func (x *WmsRestoreOrderRequest) String() string {
 func (*WmsRestoreOrderRequest) ProtoMessage() {}
 
 func (x *WmsRestoreOrderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[174]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[179]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11784,7 +12644,7 @@ func (x *WmsRestoreOrderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsRestoreOrderRequest.ProtoReflect.Descriptor instead.
 func (*WmsRestoreOrderRequest) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{174}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{179}
 }
 
 func (x *WmsRestoreOrderRequest) GetOrderId() string {
@@ -11839,7 +12699,7 @@ type WmsSuccessResult struct {
 
 func (x *WmsSuccessResult) Reset() {
 	*x = WmsSuccessResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[175]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[180]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11851,7 +12711,7 @@ func (x *WmsSuccessResult) String() string {
 func (*WmsSuccessResult) ProtoMessage() {}
 
 func (x *WmsSuccessResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[175]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[180]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11864,7 +12724,7 @@ func (x *WmsSuccessResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsSuccessResult.ProtoReflect.Descriptor instead.
 func (*WmsSuccessResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{175}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{180}
 }
 
 func (x *WmsSuccessResult) GetSuccess() bool {
@@ -11893,7 +12753,7 @@ type Buyer struct {
 
 func (x *Buyer) Reset() {
 	*x = Buyer{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[176]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[181]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11905,7 +12765,7 @@ func (x *Buyer) String() string {
 func (*Buyer) ProtoMessage() {}
 
 func (x *Buyer) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[176]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[181]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11918,7 +12778,7 @@ func (x *Buyer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Buyer.ProtoReflect.Descriptor instead.
 func (*Buyer) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{176}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{181}
 }
 
 func (x *Buyer) GetMemberId() string {
@@ -11959,7 +12819,7 @@ type WmsDeliveryV2 struct {
 
 func (x *WmsDeliveryV2) Reset() {
 	*x = WmsDeliveryV2{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[177]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[182]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11971,7 +12831,7 @@ func (x *WmsDeliveryV2) String() string {
 func (*WmsDeliveryV2) ProtoMessage() {}
 
 func (x *WmsDeliveryV2) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[177]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[182]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11984,7 +12844,7 @@ func (x *WmsDeliveryV2) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsDeliveryV2.ProtoReflect.Descriptor instead.
 func (*WmsDeliveryV2) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{177}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{182}
 }
 
 func (x *WmsDeliveryV2) GetId() string {
@@ -12018,7 +12878,7 @@ type WmsOrderItemV2 struct {
 
 func (x *WmsOrderItemV2) Reset() {
 	*x = WmsOrderItemV2{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[178]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[183]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12030,7 +12890,7 @@ func (x *WmsOrderItemV2) String() string {
 func (*WmsOrderItemV2) ProtoMessage() {}
 
 func (x *WmsOrderItemV2) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[178]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[183]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12043,7 +12903,7 @@ func (x *WmsOrderItemV2) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsOrderItemV2.ProtoReflect.Descriptor instead.
 func (*WmsOrderItemV2) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{178}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{183}
 }
 
 func (x *WmsOrderItemV2) GetId() string {
@@ -12122,7 +12982,7 @@ type WmsOrderV2 struct {
 
 func (x *WmsOrderV2) Reset() {
 	*x = WmsOrderV2{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[179]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[184]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12134,7 +12994,7 @@ func (x *WmsOrderV2) String() string {
 func (*WmsOrderV2) ProtoMessage() {}
 
 func (x *WmsOrderV2) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[179]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[184]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12147,7 +13007,7 @@ func (x *WmsOrderV2) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsOrderV2.ProtoReflect.Descriptor instead.
 func (*WmsOrderV2) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{179}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{184}
 }
 
 func (x *WmsOrderV2) GetId() string {
@@ -12195,7 +13055,7 @@ type WmsIdentifier struct {
 
 func (x *WmsIdentifier) Reset() {
 	*x = WmsIdentifier{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[180]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[185]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12207,7 +13067,7 @@ func (x *WmsIdentifier) String() string {
 func (*WmsIdentifier) ProtoMessage() {}
 
 func (x *WmsIdentifier) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[180]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[185]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12220,7 +13080,7 @@ func (x *WmsIdentifier) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsIdentifier.ProtoReflect.Descriptor instead.
 func (*WmsIdentifier) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{180}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{185}
 }
 
 func (x *WmsIdentifier) GetType() string {
@@ -12250,7 +13110,7 @@ type WmsOrderGetOrdersRequest struct {
 
 func (x *WmsOrderGetOrdersRequest) Reset() {
 	*x = WmsOrderGetOrdersRequest{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[181]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[186]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12262,7 +13122,7 @@ func (x *WmsOrderGetOrdersRequest) String() string {
 func (*WmsOrderGetOrdersRequest) ProtoMessage() {}
 
 func (x *WmsOrderGetOrdersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[181]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[186]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12275,7 +13135,7 @@ func (x *WmsOrderGetOrdersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsOrderGetOrdersRequest.ProtoReflect.Descriptor instead.
 func (*WmsOrderGetOrdersRequest) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{181}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{186}
 }
 
 func (x *WmsOrderGetOrdersRequest) GetIdentifier() *WmsIdentifier {
@@ -12323,7 +13183,7 @@ type WmsOrderGetOrdersResult struct {
 
 func (x *WmsOrderGetOrdersResult) Reset() {
 	*x = WmsOrderGetOrdersResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[182]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[187]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12335,7 +13195,7 @@ func (x *WmsOrderGetOrdersResult) String() string {
 func (*WmsOrderGetOrdersResult) ProtoMessage() {}
 
 func (x *WmsOrderGetOrdersResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[182]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[187]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12348,7 +13208,7 @@ func (x *WmsOrderGetOrdersResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsOrderGetOrdersResult.ProtoReflect.Descriptor instead.
 func (*WmsOrderGetOrdersResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{182}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{187}
 }
 
 func (x *WmsOrderGetOrdersResult) GetOrders() []*WmsOrderV2 {
@@ -12377,7 +13237,7 @@ type WmsOrderActionRequest struct {
 
 func (x *WmsOrderActionRequest) Reset() {
 	*x = WmsOrderActionRequest{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[183]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[188]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12389,7 +13249,7 @@ func (x *WmsOrderActionRequest) String() string {
 func (*WmsOrderActionRequest) ProtoMessage() {}
 
 func (x *WmsOrderActionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[183]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[188]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12402,7 +13262,7 @@ func (x *WmsOrderActionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsOrderActionRequest.ProtoReflect.Descriptor instead.
 func (*WmsOrderActionRequest) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{183}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{188}
 }
 
 func (x *WmsOrderActionRequest) GetIdentifier() *WmsIdentifier {
@@ -12446,7 +13306,7 @@ type WmsOrderChangeShippingAddressInput struct {
 
 func (x *WmsOrderChangeShippingAddressInput) Reset() {
 	*x = WmsOrderChangeShippingAddressInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[184]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[189]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12458,7 +13318,7 @@ func (x *WmsOrderChangeShippingAddressInput) String() string {
 func (*WmsOrderChangeShippingAddressInput) ProtoMessage() {}
 
 func (x *WmsOrderChangeShippingAddressInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[184]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[189]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12471,7 +13331,7 @@ func (x *WmsOrderChangeShippingAddressInput) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use WmsOrderChangeShippingAddressInput.ProtoReflect.Descriptor instead.
 func (*WmsOrderChangeShippingAddressInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{184}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{189}
 }
 
 func (x *WmsOrderChangeShippingAddressInput) GetIdentifier() *WmsIdentifier {
@@ -12519,7 +13379,7 @@ type WmsOrderResultBody struct {
 
 func (x *WmsOrderResultBody) Reset() {
 	*x = WmsOrderResultBody{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[185]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[190]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12531,7 +13391,7 @@ func (x *WmsOrderResultBody) String() string {
 func (*WmsOrderResultBody) ProtoMessage() {}
 
 func (x *WmsOrderResultBody) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[185]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[190]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12544,7 +13404,7 @@ func (x *WmsOrderResultBody) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsOrderResultBody.ProtoReflect.Descriptor instead.
 func (*WmsOrderResultBody) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{185}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{190}
 }
 
 func (x *WmsOrderResultBody) GetSuccess() bool {
@@ -12570,7 +13430,7 @@ type WmsOrderActionResult struct {
 
 func (x *WmsOrderActionResult) Reset() {
 	*x = WmsOrderActionResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[186]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[191]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12582,7 +13442,7 @@ func (x *WmsOrderActionResult) String() string {
 func (*WmsOrderActionResult) ProtoMessage() {}
 
 func (x *WmsOrderActionResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[186]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[191]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12595,7 +13455,7 @@ func (x *WmsOrderActionResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsOrderActionResult.ProtoReflect.Descriptor instead.
 func (*WmsOrderActionResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{186}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{191}
 }
 
 func (x *WmsOrderActionResult) GetResult() *WmsOrderResultBody {
@@ -12616,7 +13476,7 @@ type WmsFieldConfig struct {
 
 func (x *WmsFieldConfig) Reset() {
 	*x = WmsFieldConfig{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[187]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[192]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12628,7 +13488,7 @@ func (x *WmsFieldConfig) String() string {
 func (*WmsFieldConfig) ProtoMessage() {}
 
 func (x *WmsFieldConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[187]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[192]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12641,7 +13501,7 @@ func (x *WmsFieldConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsFieldConfig.ProtoReflect.Descriptor instead.
 func (*WmsFieldConfig) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{187}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{192}
 }
 
 func (x *WmsFieldConfig) GetType() string {
@@ -12676,7 +13536,7 @@ type WmsOperationOptions struct {
 
 func (x *WmsOperationOptions) Reset() {
 	*x = WmsOperationOptions{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[188]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[193]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12688,7 +13548,7 @@ func (x *WmsOperationOptions) String() string {
 func (*WmsOperationOptions) ProtoMessage() {}
 
 func (x *WmsOperationOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[188]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[193]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12701,7 +13561,7 @@ func (x *WmsOperationOptions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsOperationOptions.ProtoReflect.Descriptor instead.
 func (*WmsOperationOptions) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{188}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{193}
 }
 
 func (x *WmsOperationOptions) GetRequired() []string {
@@ -12741,7 +13601,7 @@ type WmsAppCapabilities struct {
 
 func (x *WmsAppCapabilities) Reset() {
 	*x = WmsAppCapabilities{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[189]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[194]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12753,7 +13613,7 @@ func (x *WmsAppCapabilities) String() string {
 func (*WmsAppCapabilities) ProtoMessage() {}
 
 func (x *WmsAppCapabilities) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[189]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[194]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12766,7 +13626,7 @@ func (x *WmsAppCapabilities) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsAppCapabilities.ProtoReflect.Descriptor instead.
 func (*WmsAppCapabilities) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{189}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{194}
 }
 
 func (x *WmsAppCapabilities) GetGetOrdersOptions() *WmsOperationOptions {
@@ -12833,7 +13693,7 @@ type WmsGetAppConfigsInput struct {
 
 func (x *WmsGetAppConfigsInput) Reset() {
 	*x = WmsGetAppConfigsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[190]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[195]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12845,7 +13705,7 @@ func (x *WmsGetAppConfigsInput) String() string {
 func (*WmsGetAppConfigsInput) ProtoMessage() {}
 
 func (x *WmsGetAppConfigsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[190]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[195]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12858,7 +13718,7 @@ func (x *WmsGetAppConfigsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsGetAppConfigsInput.ProtoReflect.Descriptor instead.
 func (*WmsGetAppConfigsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{190}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{195}
 }
 
 type WmsGetAppConfigsOutput struct {
@@ -12870,7 +13730,7 @@ type WmsGetAppConfigsOutput struct {
 
 func (x *WmsGetAppConfigsOutput) Reset() {
 	*x = WmsGetAppConfigsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[191]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[196]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12882,7 +13742,7 @@ func (x *WmsGetAppConfigsOutput) String() string {
 func (*WmsGetAppConfigsOutput) ProtoMessage() {}
 
 func (x *WmsGetAppConfigsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[191]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[196]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12895,7 +13755,7 @@ func (x *WmsGetAppConfigsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WmsGetAppConfigsOutput.ProtoReflect.Descriptor instead.
 func (*WmsGetAppConfigsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{191}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{196}
 }
 
 func (x *WmsGetAppConfigsOutput) GetAppCapabilities() *WmsAppCapabilities {
@@ -12915,7 +13775,7 @@ type MessagingOnMediumMessageCreatedInput struct {
 
 func (x *MessagingOnMediumMessageCreatedInput) Reset() {
 	*x = MessagingOnMediumMessageCreatedInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[192]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[197]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12927,7 +13787,7 @@ func (x *MessagingOnMediumMessageCreatedInput) String() string {
 func (*MessagingOnMediumMessageCreatedInput) ProtoMessage() {}
 
 func (x *MessagingOnMediumMessageCreatedInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[192]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[197]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12940,7 +13800,7 @@ func (x *MessagingOnMediumMessageCreatedInput) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use MessagingOnMediumMessageCreatedInput.ProtoReflect.Descriptor instead.
 func (*MessagingOnMediumMessageCreatedInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{192}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{197}
 }
 
 func (x *MessagingOnMediumMessageCreatedInput) GetUserChat() *ChannelUserChat {
@@ -12967,7 +13827,7 @@ type MessagingSendResult struct {
 
 func (x *MessagingSendResult) Reset() {
 	*x = MessagingSendResult{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[193]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[198]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12979,7 +13839,7 @@ func (x *MessagingSendResult) String() string {
 func (*MessagingSendResult) ProtoMessage() {}
 
 func (x *MessagingSendResult) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[193]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[198]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12992,7 +13852,7 @@ func (x *MessagingSendResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MessagingSendResult.ProtoReflect.Descriptor instead.
 func (*MessagingSendResult) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{193}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{198}
 }
 
 func (x *MessagingSendResult) GetSendState() string {
@@ -13018,7 +13878,7 @@ type MessagingOnMediumMessageCreatedOutput struct {
 
 func (x *MessagingOnMediumMessageCreatedOutput) Reset() {
 	*x = MessagingOnMediumMessageCreatedOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[194]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[199]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13030,7 +13890,7 @@ func (x *MessagingOnMediumMessageCreatedOutput) String() string {
 func (*MessagingOnMediumMessageCreatedOutput) ProtoMessage() {}
 
 func (x *MessagingOnMediumMessageCreatedOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[194]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[199]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13043,7 +13903,7 @@ func (x *MessagingOnMediumMessageCreatedOutput) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use MessagingOnMediumMessageCreatedOutput.ProtoReflect.Descriptor instead.
 func (*MessagingOnMediumMessageCreatedOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{194}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{199}
 }
 
 func (x *MessagingOnMediumMessageCreatedOutput) GetSendResult() *MessagingSendResult {
@@ -13062,7 +13922,7 @@ type MessagingInboxOnMediumUserChatClosedInput struct {
 
 func (x *MessagingInboxOnMediumUserChatClosedInput) Reset() {
 	*x = MessagingInboxOnMediumUserChatClosedInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[195]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[200]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13074,7 +13934,7 @@ func (x *MessagingInboxOnMediumUserChatClosedInput) String() string {
 func (*MessagingInboxOnMediumUserChatClosedInput) ProtoMessage() {}
 
 func (x *MessagingInboxOnMediumUserChatClosedInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[195]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[200]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13087,7 +13947,7 @@ func (x *MessagingInboxOnMediumUserChatClosedInput) ProtoReflect() protoreflect.
 
 // Deprecated: Use MessagingInboxOnMediumUserChatClosedInput.ProtoReflect.Descriptor instead.
 func (*MessagingInboxOnMediumUserChatClosedInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{195}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{200}
 }
 
 func (x *MessagingInboxOnMediumUserChatClosedInput) GetUserChat() *ChannelUserChat {
@@ -13105,7 +13965,7 @@ type MessagingInboxOnMediumUserChatClosedOutput struct {
 
 func (x *MessagingInboxOnMediumUserChatClosedOutput) Reset() {
 	*x = MessagingInboxOnMediumUserChatClosedOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[196]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[201]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13117,7 +13977,7 @@ func (x *MessagingInboxOnMediumUserChatClosedOutput) String() string {
 func (*MessagingInboxOnMediumUserChatClosedOutput) ProtoMessage() {}
 
 func (x *MessagingInboxOnMediumUserChatClosedOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[196]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[201]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13130,7 +13990,7 @@ func (x *MessagingInboxOnMediumUserChatClosedOutput) ProtoReflect() protoreflect
 
 // Deprecated: Use MessagingInboxOnMediumUserChatClosedOutput.ProtoReflect.Descriptor instead.
 func (*MessagingInboxOnMediumUserChatClosedOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{196}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{201}
 }
 
 type MessagingInboxGetWritingTypesInput struct {
@@ -13142,7 +14002,7 @@ type MessagingInboxGetWritingTypesInput struct {
 
 func (x *MessagingInboxGetWritingTypesInput) Reset() {
 	*x = MessagingInboxGetWritingTypesInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[197]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[202]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13154,7 +14014,7 @@ func (x *MessagingInboxGetWritingTypesInput) String() string {
 func (*MessagingInboxGetWritingTypesInput) ProtoMessage() {}
 
 func (x *MessagingInboxGetWritingTypesInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[197]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[202]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13167,7 +14027,7 @@ func (x *MessagingInboxGetWritingTypesInput) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use MessagingInboxGetWritingTypesInput.ProtoReflect.Descriptor instead.
 func (*MessagingInboxGetWritingTypesInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{197}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{202}
 }
 
 func (x *MessagingInboxGetWritingTypesInput) GetUserChat() *ChannelUserChat {
@@ -13186,7 +14046,7 @@ type MessagingInboxGetWritingTypesOutput struct {
 
 func (x *MessagingInboxGetWritingTypesOutput) Reset() {
 	*x = MessagingInboxGetWritingTypesOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[198]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[203]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13198,7 +14058,7 @@ func (x *MessagingInboxGetWritingTypesOutput) String() string {
 func (*MessagingInboxGetWritingTypesOutput) ProtoMessage() {}
 
 func (x *MessagingInboxGetWritingTypesOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[198]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[203]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13211,7 +14071,7 @@ func (x *MessagingInboxGetWritingTypesOutput) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use MessagingInboxGetWritingTypesOutput.ProtoReflect.Descriptor instead.
 func (*MessagingInboxGetWritingTypesOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{198}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{203}
 }
 
 func (x *MessagingInboxGetWritingTypesOutput) GetWritingTypeMap() *WritingTypeMap {
@@ -13235,7 +14095,7 @@ type MessagingInboxGetCustomEditorWamInput struct {
 
 func (x *MessagingInboxGetCustomEditorWamInput) Reset() {
 	*x = MessagingInboxGetCustomEditorWamInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[199]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[204]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13247,7 +14107,7 @@ func (x *MessagingInboxGetCustomEditorWamInput) String() string {
 func (*MessagingInboxGetCustomEditorWamInput) ProtoMessage() {}
 
 func (x *MessagingInboxGetCustomEditorWamInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[199]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[204]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13260,7 +14120,7 @@ func (x *MessagingInboxGetCustomEditorWamInput) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use MessagingInboxGetCustomEditorWamInput.ProtoReflect.Descriptor instead.
 func (*MessagingInboxGetCustomEditorWamInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{199}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{204}
 }
 
 func (x *MessagingInboxGetCustomEditorWamInput) GetUser() *ChannelUser {
@@ -13314,7 +14174,7 @@ type MessagingInboxGetMediumTopicSelectorWamInput struct {
 
 func (x *MessagingInboxGetMediumTopicSelectorWamInput) Reset() {
 	*x = MessagingInboxGetMediumTopicSelectorWamInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[200]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[205]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13326,7 +14186,7 @@ func (x *MessagingInboxGetMediumTopicSelectorWamInput) String() string {
 func (*MessagingInboxGetMediumTopicSelectorWamInput) ProtoMessage() {}
 
 func (x *MessagingInboxGetMediumTopicSelectorWamInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[200]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[205]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13339,7 +14199,7 @@ func (x *MessagingInboxGetMediumTopicSelectorWamInput) ProtoReflect() protorefle
 
 // Deprecated: Use MessagingInboxGetMediumTopicSelectorWamInput.ProtoReflect.Descriptor instead.
 func (*MessagingInboxGetMediumTopicSelectorWamInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{200}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{205}
 }
 
 func (x *MessagingInboxGetMediumTopicSelectorWamInput) GetUser() *ChannelUser {
@@ -13359,7 +14219,7 @@ type MessagingInboxGetMediumMessageErrorReasonInput struct {
 
 func (x *MessagingInboxGetMediumMessageErrorReasonInput) Reset() {
 	*x = MessagingInboxGetMediumMessageErrorReasonInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[201]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[206]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13371,7 +14231,7 @@ func (x *MessagingInboxGetMediumMessageErrorReasonInput) String() string {
 func (*MessagingInboxGetMediumMessageErrorReasonInput) ProtoMessage() {}
 
 func (x *MessagingInboxGetMediumMessageErrorReasonInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[201]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[206]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13384,7 +14244,7 @@ func (x *MessagingInboxGetMediumMessageErrorReasonInput) ProtoReflect() protoref
 
 // Deprecated: Use MessagingInboxGetMediumMessageErrorReasonInput.ProtoReflect.Descriptor instead.
 func (*MessagingInboxGetMediumMessageErrorReasonInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{201}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{206}
 }
 
 func (x *MessagingInboxGetMediumMessageErrorReasonInput) GetUserChat() *ChannelUserChat {
@@ -13410,7 +14270,7 @@ type MessagingInboxGetMediumMessageErrorReasonOutput struct {
 
 func (x *MessagingInboxGetMediumMessageErrorReasonOutput) Reset() {
 	*x = MessagingInboxGetMediumMessageErrorReasonOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[202]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[207]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13422,7 +14282,7 @@ func (x *MessagingInboxGetMediumMessageErrorReasonOutput) String() string {
 func (*MessagingInboxGetMediumMessageErrorReasonOutput) ProtoMessage() {}
 
 func (x *MessagingInboxGetMediumMessageErrorReasonOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[202]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[207]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13435,7 +14295,7 @@ func (x *MessagingInboxGetMediumMessageErrorReasonOutput) ProtoReflect() protore
 
 // Deprecated: Use MessagingInboxGetMediumMessageErrorReasonOutput.ProtoReflect.Descriptor instead.
 func (*MessagingInboxGetMediumMessageErrorReasonOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{202}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{207}
 }
 
 func (x *MessagingInboxGetMediumMessageErrorReasonOutput) GetErrorMessage() string {
@@ -13453,7 +14313,7 @@ type MessagingPrebuiltGetWritingTypesInput struct {
 
 func (x *MessagingPrebuiltGetWritingTypesInput) Reset() {
 	*x = MessagingPrebuiltGetWritingTypesInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[203]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[208]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13465,7 +14325,7 @@ func (x *MessagingPrebuiltGetWritingTypesInput) String() string {
 func (*MessagingPrebuiltGetWritingTypesInput) ProtoMessage() {}
 
 func (x *MessagingPrebuiltGetWritingTypesInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[203]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[208]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13478,7 +14338,7 @@ func (x *MessagingPrebuiltGetWritingTypesInput) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use MessagingPrebuiltGetWritingTypesInput.ProtoReflect.Descriptor instead.
 func (*MessagingPrebuiltGetWritingTypesInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{203}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{208}
 }
 
 type MessagingPrebuiltGetWritingTypesOutput struct {
@@ -13490,7 +14350,7 @@ type MessagingPrebuiltGetWritingTypesOutput struct {
 
 func (x *MessagingPrebuiltGetWritingTypesOutput) Reset() {
 	*x = MessagingPrebuiltGetWritingTypesOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[204]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[209]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13502,7 +14362,7 @@ func (x *MessagingPrebuiltGetWritingTypesOutput) String() string {
 func (*MessagingPrebuiltGetWritingTypesOutput) ProtoMessage() {}
 
 func (x *MessagingPrebuiltGetWritingTypesOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[204]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[209]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13515,7 +14375,7 @@ func (x *MessagingPrebuiltGetWritingTypesOutput) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use MessagingPrebuiltGetWritingTypesOutput.ProtoReflect.Descriptor instead.
 func (*MessagingPrebuiltGetWritingTypesOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{204}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{209}
 }
 
 func (x *MessagingPrebuiltGetWritingTypesOutput) GetWritingTypeMap() *WritingTypeMap {
@@ -13538,7 +14398,7 @@ type MessagingPrebuiltValidateEntityInput struct {
 
 func (x *MessagingPrebuiltValidateEntityInput) Reset() {
 	*x = MessagingPrebuiltValidateEntityInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[205]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[210]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13550,7 +14410,7 @@ func (x *MessagingPrebuiltValidateEntityInput) String() string {
 func (*MessagingPrebuiltValidateEntityInput) ProtoMessage() {}
 
 func (x *MessagingPrebuiltValidateEntityInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[205]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[210]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13563,7 +14423,7 @@ func (x *MessagingPrebuiltValidateEntityInput) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use MessagingPrebuiltValidateEntityInput.ProtoReflect.Descriptor instead.
 func (*MessagingPrebuiltValidateEntityInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{205}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{210}
 }
 
 func (x *MessagingPrebuiltValidateEntityInput) GetMessage() *PrebuiltMessage {
@@ -13612,7 +14472,7 @@ type MessagingPrebuiltValidateEntityOutput struct {
 
 func (x *MessagingPrebuiltValidateEntityOutput) Reset() {
 	*x = MessagingPrebuiltValidateEntityOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[206]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[211]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13624,7 +14484,7 @@ func (x *MessagingPrebuiltValidateEntityOutput) String() string {
 func (*MessagingPrebuiltValidateEntityOutput) ProtoMessage() {}
 
 func (x *MessagingPrebuiltValidateEntityOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[206]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[211]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13637,7 +14497,7 @@ func (x *MessagingPrebuiltValidateEntityOutput) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use MessagingPrebuiltValidateEntityOutput.ProtoReflect.Descriptor instead.
 func (*MessagingPrebuiltValidateEntityOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{206}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{211}
 }
 
 func (x *MessagingPrebuiltValidateEntityOutput) GetEntityType() string {
@@ -13676,7 +14536,7 @@ type MessagingPrebuiltGetCustomEditorWamInput struct {
 
 func (x *MessagingPrebuiltGetCustomEditorWamInput) Reset() {
 	*x = MessagingPrebuiltGetCustomEditorWamInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[207]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[212]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13688,7 +14548,7 @@ func (x *MessagingPrebuiltGetCustomEditorWamInput) String() string {
 func (*MessagingPrebuiltGetCustomEditorWamInput) ProtoMessage() {}
 
 func (x *MessagingPrebuiltGetCustomEditorWamInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[207]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[212]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13701,7 +14561,7 @@ func (x *MessagingPrebuiltGetCustomEditorWamInput) ProtoReflect() protoreflect.M
 
 // Deprecated: Use MessagingPrebuiltGetCustomEditorWamInput.ProtoReflect.Descriptor instead.
 func (*MessagingPrebuiltGetCustomEditorWamInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{207}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{212}
 }
 
 func (x *MessagingPrebuiltGetCustomEditorWamInput) GetEntityType() string {
@@ -13762,7 +14622,7 @@ type MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput struct {
 
 func (x *MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput) Reset() {
 	*x = MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[208]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[213]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13774,7 +14634,7 @@ func (x *MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput) String() string
 func (*MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput) ProtoMessage() {}
 
 func (x *MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[208]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[213]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13787,7 +14647,7 @@ func (x *MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput) ProtoReflect() 
 
 // Deprecated: Use MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput.ProtoReflect.Descriptor instead.
 func (*MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{208}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{213}
 }
 
 func (x *MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput) GetEntityType() string {
@@ -13808,7 +14668,7 @@ type MessagingPrebuiltBuildMediumTopicsInput struct {
 
 func (x *MessagingPrebuiltBuildMediumTopicsInput) Reset() {
 	*x = MessagingPrebuiltBuildMediumTopicsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[209]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[214]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13820,7 +14680,7 @@ func (x *MessagingPrebuiltBuildMediumTopicsInput) String() string {
 func (*MessagingPrebuiltBuildMediumTopicsInput) ProtoMessage() {}
 
 func (x *MessagingPrebuiltBuildMediumTopicsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[209]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[214]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13833,7 +14693,7 @@ func (x *MessagingPrebuiltBuildMediumTopicsInput) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use MessagingPrebuiltBuildMediumTopicsInput.ProtoReflect.Descriptor instead.
 func (*MessagingPrebuiltBuildMediumTopicsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{209}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{214}
 }
 
 func (x *MessagingPrebuiltBuildMediumTopicsInput) GetUser() *ChannelUser {
@@ -13868,7 +14728,7 @@ type MessagingPrebuiltBuildMediumTopicsOutput struct {
 
 func (x *MessagingPrebuiltBuildMediumTopicsOutput) Reset() {
 	*x = MessagingPrebuiltBuildMediumTopicsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[210]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[215]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13880,7 +14740,7 @@ func (x *MessagingPrebuiltBuildMediumTopicsOutput) String() string {
 func (*MessagingPrebuiltBuildMediumTopicsOutput) ProtoMessage() {}
 
 func (x *MessagingPrebuiltBuildMediumTopicsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[210]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[215]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13893,7 +14753,7 @@ func (x *MessagingPrebuiltBuildMediumTopicsOutput) ProtoReflect() protoreflect.M
 
 // Deprecated: Use MessagingPrebuiltBuildMediumTopicsOutput.ProtoReflect.Descriptor instead.
 func (*MessagingPrebuiltBuildMediumTopicsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{210}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{215}
 }
 
 func (x *MessagingPrebuiltBuildMediumTopicsOutput) GetMediumTopicKey() string {
@@ -13925,7 +14785,7 @@ type MessagingPrebuiltGetDefaultOptionsInput struct {
 
 func (x *MessagingPrebuiltGetDefaultOptionsInput) Reset() {
 	*x = MessagingPrebuiltGetDefaultOptionsInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[211]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[216]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13937,7 +14797,7 @@ func (x *MessagingPrebuiltGetDefaultOptionsInput) String() string {
 func (*MessagingPrebuiltGetDefaultOptionsInput) ProtoMessage() {}
 
 func (x *MessagingPrebuiltGetDefaultOptionsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[211]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[216]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13950,7 +14810,7 @@ func (x *MessagingPrebuiltGetDefaultOptionsInput) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use MessagingPrebuiltGetDefaultOptionsInput.ProtoReflect.Descriptor instead.
 func (*MessagingPrebuiltGetDefaultOptionsInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{211}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{216}
 }
 
 type MessagingDefaultOptions struct {
@@ -13965,7 +14825,7 @@ type MessagingDefaultOptions struct {
 
 func (x *MessagingDefaultOptions) Reset() {
 	*x = MessagingDefaultOptions{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[212]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[217]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -13977,7 +14837,7 @@ func (x *MessagingDefaultOptions) String() string {
 func (*MessagingDefaultOptions) ProtoMessage() {}
 
 func (x *MessagingDefaultOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[212]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[217]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13990,7 +14850,7 @@ func (x *MessagingDefaultOptions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MessagingDefaultOptions.ProtoReflect.Descriptor instead.
 func (*MessagingDefaultOptions) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{212}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{217}
 }
 
 func (x *MessagingDefaultOptions) GetCampaignUserQuery() *structpb.Struct {
@@ -14030,7 +14890,7 @@ type MessagingPrebuiltGetDefaultOptionsOutput struct {
 
 func (x *MessagingPrebuiltGetDefaultOptionsOutput) Reset() {
 	*x = MessagingPrebuiltGetDefaultOptionsOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[213]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[218]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -14042,7 +14902,7 @@ func (x *MessagingPrebuiltGetDefaultOptionsOutput) String() string {
 func (*MessagingPrebuiltGetDefaultOptionsOutput) ProtoMessage() {}
 
 func (x *MessagingPrebuiltGetDefaultOptionsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[213]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[218]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14055,7 +14915,7 @@ func (x *MessagingPrebuiltGetDefaultOptionsOutput) ProtoReflect() protoreflect.M
 
 // Deprecated: Use MessagingPrebuiltGetDefaultOptionsOutput.ProtoReflect.Descriptor instead.
 func (*MessagingPrebuiltGetDefaultOptionsOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{213}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{218}
 }
 
 func (x *MessagingPrebuiltGetDefaultOptionsOutput) GetDefaultOptions() *MessagingDefaultOptions {
@@ -14076,7 +14936,7 @@ type AlfTaskMemoryDefinition struct {
 
 func (x *AlfTaskMemoryDefinition) Reset() {
 	*x = AlfTaskMemoryDefinition{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[214]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[219]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -14088,7 +14948,7 @@ func (x *AlfTaskMemoryDefinition) String() string {
 func (*AlfTaskMemoryDefinition) ProtoMessage() {}
 
 func (x *AlfTaskMemoryDefinition) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[214]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[219]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14101,7 +14961,7 @@ func (x *AlfTaskMemoryDefinition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AlfTaskMemoryDefinition.ProtoReflect.Descriptor instead.
 func (*AlfTaskMemoryDefinition) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{214}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{219}
 }
 
 func (x *AlfTaskMemoryDefinition) GetName() string {
@@ -14137,7 +14997,7 @@ type AlfTaskWorkflowNode struct {
 
 func (x *AlfTaskWorkflowNode) Reset() {
 	*x = AlfTaskWorkflowNode{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[215]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[220]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -14149,7 +15009,7 @@ func (x *AlfTaskWorkflowNode) String() string {
 func (*AlfTaskWorkflowNode) ProtoMessage() {}
 
 func (x *AlfTaskWorkflowNode) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[215]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[220]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14162,7 +15022,7 @@ func (x *AlfTaskWorkflowNode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AlfTaskWorkflowNode.ProtoReflect.Descriptor instead.
 func (*AlfTaskWorkflowNode) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{215}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{220}
 }
 
 func (x *AlfTaskWorkflowNode) GetId() string {
@@ -14207,7 +15067,7 @@ type AlfTaskPredefinedTask struct {
 
 func (x *AlfTaskPredefinedTask) Reset() {
 	*x = AlfTaskPredefinedTask{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[216]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[221]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -14219,7 +15079,7 @@ func (x *AlfTaskPredefinedTask) String() string {
 func (*AlfTaskPredefinedTask) ProtoMessage() {}
 
 func (x *AlfTaskPredefinedTask) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[216]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[221]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14232,7 +15092,7 @@ func (x *AlfTaskPredefinedTask) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AlfTaskPredefinedTask.ProtoReflect.Descriptor instead.
 func (*AlfTaskPredefinedTask) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{216}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{221}
 }
 
 func (x *AlfTaskPredefinedTask) GetVersion() string {
@@ -14286,7 +15146,7 @@ type AlfTaskGetTasksInput struct {
 
 func (x *AlfTaskGetTasksInput) Reset() {
 	*x = AlfTaskGetTasksInput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[217]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[222]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -14298,7 +15158,7 @@ func (x *AlfTaskGetTasksInput) String() string {
 func (*AlfTaskGetTasksInput) ProtoMessage() {}
 
 func (x *AlfTaskGetTasksInput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[217]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[222]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14311,7 +15171,7 @@ func (x *AlfTaskGetTasksInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AlfTaskGetTasksInput.ProtoReflect.Descriptor instead.
 func (*AlfTaskGetTasksInput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{217}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{222}
 }
 
 func (x *AlfTaskGetTasksInput) GetVersion() string {
@@ -14330,7 +15190,7 @@ type AlfTaskGetTasksOutput struct {
 
 func (x *AlfTaskGetTasksOutput) Reset() {
 	*x = AlfTaskGetTasksOutput{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[218]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[223]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -14342,7 +15202,7 @@ func (x *AlfTaskGetTasksOutput) String() string {
 func (*AlfTaskGetTasksOutput) ProtoMessage() {}
 
 func (x *AlfTaskGetTasksOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[218]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[223]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14355,7 +15215,7 @@ func (x *AlfTaskGetTasksOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AlfTaskGetTasksOutput.ProtoReflect.Descriptor instead.
 func (*AlfTaskGetTasksOutput) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{218}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{223}
 }
 
 func (x *AlfTaskGetTasksOutput) GetPredefinedTasks() []*AlfTaskPredefinedTask {
@@ -14374,7 +15234,7 @@ type OAuthTokenRequestMapping struct {
 
 func (x *OAuthTokenRequestMapping) Reset() {
 	*x = OAuthTokenRequestMapping{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[219]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[224]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -14386,7 +15246,7 @@ func (x *OAuthTokenRequestMapping) String() string {
 func (*OAuthTokenRequestMapping) ProtoMessage() {}
 
 func (x *OAuthTokenRequestMapping) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[219]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[224]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14399,7 +15259,7 @@ func (x *OAuthTokenRequestMapping) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OAuthTokenRequestMapping.ProtoReflect.Descriptor instead.
 func (*OAuthTokenRequestMapping) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{219}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{224}
 }
 
 func (x *OAuthTokenRequestMapping) GetAuthorizationCodeParamName() string {
@@ -14422,7 +15282,7 @@ type OAuthTokenResponseMapping struct {
 
 func (x *OAuthTokenResponseMapping) Reset() {
 	*x = OAuthTokenResponseMapping{}
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[220]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[225]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -14434,7 +15294,7 @@ func (x *OAuthTokenResponseMapping) String() string {
 func (*OAuthTokenResponseMapping) ProtoMessage() {}
 
 func (x *OAuthTokenResponseMapping) ProtoReflect() protoreflect.Message {
-	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[220]
+	mi := &file_channel_app_sdk_v1_extension_proto_msgTypes[225]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14447,7 +15307,7 @@ func (x *OAuthTokenResponseMapping) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OAuthTokenResponseMapping.ProtoReflect.Descriptor instead.
 func (*OAuthTokenResponseMapping) Descriptor() ([]byte, []int) {
-	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{220}
+	return file_channel_app_sdk_v1_extension_proto_rawDescGZIP(), []int{225}
 }
 
 func (x *OAuthTokenResponseMapping) GetAccessTokenPath() string {
@@ -14527,22 +15387,70 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\x0fConfigCondition\x12\x1b\n" +
 	"\tfield_key\x18\x01 \x01(\tR\bfieldKey\x12\x1a\n" +
 	"\boperator\x18\x02 \x01(\tR\boperator\x12,\n" +
-	"\x05value\x18\x03 \x01(\v2\x16.google.protobuf.ValueR\x05value\"\x91\x01\n" +
+	"\x05value\x18\x03 \x01(\v2\x16.google.protobuf.ValueR\x05value\"\xe7\b\n" +
+	"\x13ConfigLocalizedText\x12\x14\n" +
+	"\x05label\x18\x01 \x01(\tR\x05label\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x12\n" +
+	"\x04text\x18\x04 \x01(\tR\x04text\x12\x1f\n" +
+	"\vhelper_text\x18\x05 \x01(\tR\n" +
+	"helperText\x12 \n" +
+	"\vplaceholder\x18\x06 \x01(\tR\vplaceholder\x12\x18\n" +
+	"\amessage\x18\a \x01(\tR\amessage\x12\x10\n" +
+	"\x03url\x18\b \x01(\tR\x03url\x12[\n" +
+	"\ffield_labels\x18\t \x03(\v28.channel.app.sdk.v1.ConfigLocalizedText.FieldLabelsEntryR\vfieldLabels\x128\n" +
+	"\x18country_code_placeholder\x18\n" +
+	" \x01(\tR\x16countryCodePlaceholder\x12-\n" +
+	"\x12number_placeholder\x18\v \x01(\tR\x11numberPlaceholder\x123\n" +
+	"\x15recipient_placeholder\x18\f \x01(\tR\x14recipientPlaceholder\x12+\n" +
+	"\x11phone_placeholder\x18\r \x01(\tR\x10phonePlaceholder\x121\n" +
+	"\x14postcode_placeholder\x18\x0e \x01(\tR\x13postcodePlaceholder\x121\n" +
+	"\x14address1_placeholder\x18\x0f \x01(\tR\x13address1Placeholder\x121\n" +
+	"\x14address2_placeholder\x18\x10 \x01(\tR\x13address2Placeholder\x12#\n" +
+	"\rprovider_name\x18\x11 \x01(\tR\fproviderName\x12\x1d\n" +
+	"\n" +
+	"menu_label\x18\x12 \x01(\tR\tmenuLabel\x12'\n" +
+	"\x0fsuccess_message\x18\x13 \x01(\tR\x0esuccessMessage\x12%\n" +
+	"\x0eoverview_label\x18\x14 \x01(\tR\roverviewLabel\x121\n" +
+	"\x14overview_description\x18\x15 \x01(\tR\x13overviewDescription\x12\x1d\n" +
+	"\n" +
+	"name_label\x18\x16 \x01(\tR\tnameLabel\x12\x1b\n" +
+	"\tadd_label\x18\x17 \x01(\tR\baddLabel\x12!\n" +
+	"\fstatus_label\x18\x18 \x01(\tR\vstatusLabel\x12\x1d\n" +
+	"\n" +
+	"none_label\x18\x19 \x01(\tR\tnoneLabel\x129\n" +
+	"\x19on_change_success_message\x18\x1a \x01(\tR\x16onChangeSuccessMessage\x1a>\n" +
+	"\x10FieldLabelsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xc0\x02\n" +
 	"\fConfigChoice\x12\x14\n" +
 	"\x05label\x18\x01 \x01(\tR\x05label\x12,\n" +
 	"\x05value\x18\x02 \x01(\v2\x16.google.protobuf.ValueR\x05value\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x1b\n" +
-	"\timage_url\x18\x04 \x01(\tR\bimageUrl\"L\n" +
+	"\timage_url\x18\x04 \x01(\tR\bimageUrl\x12H\n" +
+	"\bi18n_map\x18\x05 \x03(\v2-.channel.app.sdk.v1.ConfigChoice.I18nMapEntryR\ai18nMap\x1ac\n" +
+	"\fI18nMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
+	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01\"\xff\x01\n" +
 	"\x10ConfigInlineLink\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05label\x18\x02 \x01(\tR\x05label\x12\x10\n" +
-	"\x03url\x18\x03 \x01(\tR\x03url\"\x95\x01\n" +
+	"\x03url\x18\x03 \x01(\tR\x03url\x12L\n" +
+	"\bi18n_map\x18\x04 \x03(\v21.channel.app.sdk.v1.ConfigInlineLink.I18nMapEntryR\ai18nMap\x1ac\n" +
+	"\fI18nMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
+	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01\"\x8a\x03\n" +
 	"\x16ConfigValidationNotice\x12\x12\n" +
 	"\x04tone\x18\x01 \x01(\tR\x04tone\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
 	"\amessage\x18\x03 \x01(\tR\amessage\x12\x1c\n" +
 	"\tplacement\x18\x04 \x01(\tR\tplacement\x12\x19\n" +
-	"\bblock_id\x18\x05 \x01(\tR\ablockId\"\x84\x01\n" +
+	"\bblock_id\x18\x05 \x01(\tR\ablockId\x12R\n" +
+	"\bi18n_map\x18\x06 \x03(\v27.channel.app.sdk.v1.ConfigValidationNotice.I18nMapEntryR\ai18nMap\x12:\n" +
+	"\x05links\x18\a \x03(\v2$.channel.app.sdk.v1.ConfigInlineLinkR\x05links\x1ac\n" +
+	"\fI18nMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
+	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01\"\x84\x01\n" +
 	"\vConfigHooks\x12?\n" +
 	"\x1cdraft_resolver_function_name\x18\x01 \x01(\tR\x19draftResolverFunctionName\x124\n" +
 	"\x16validate_function_name\x18\x02 \x01(\tR\x14validateFunctionName\"M\n" +
@@ -14557,7 +15465,49 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\x06params\x18\x03 \x01(\v2\x17.google.protobuf.StructR\x06params\x12&\n" +
 	"\x0ftrigger_on_load\x18\x04 \x01(\bR\rtriggerOnLoad\x12,\n" +
 	"\x12trigger_field_keys\x18\x05 \x03(\tR\x10triggerFieldKeys\x12\x15\n" +
-	"\x06app_id\x18\x06 \x01(\tR\x05appId\"\x8b\x02\n" +
+	"\x06app_id\x18\x06 \x01(\tR\x05appId\"\xa0\x04\n" +
+	"\x0eConfigOverview\x12\x14\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x1d\n" +
+	"\n" +
+	"name_label\x18\x03 \x01(\tR\tnameLabel\x12\x1b\n" +
+	"\tadd_label\x18\x04 \x01(\tR\baddLabel\x12!\n" +
+	"\fstatus_label\x18\x05 \x01(\tR\vstatusLabel\x129\n" +
+	"\x19connected_at_metadata_key\x18\x06 \x01(\tR\x16connectedAtMetadataKey\x129\n" +
+	"\x19connected_by_metadata_key\x18\a \x01(\tR\x16connectedByMetadataKey\x12,\n" +
+	"\x12feature_section_id\x18\b \x01(\tR\x10featureSectionId\x12\"\n" +
+	"\rshow_add_icon\x18\t \x01(\bR\vshowAddIcon\x12J\n" +
+	"\bi18n_map\x18\n" +
+	" \x03(\v2/.channel.app.sdk.v1.ConfigOverview.I18nMapEntryR\ai18nMap\x1ac\n" +
+	"\fI18nMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
+	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01\"\xa6\x05\n" +
+	"\x15ConfigDefaultSelector\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05label\x18\x02 \x01(\tR\x05label\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12/\n" +
+	"\x13description_display\x18\x04 \x01(\tR\x12descriptionDisplay\x12 \n" +
+	"\vplaceholder\x18\x05 \x01(\tR\vplaceholder\x12\x1d\n" +
+	"\n" +
+	"none_label\x18\x06 \x01(\tR\tnoneLabel\x125\n" +
+	"\x17on_change_function_name\x18\a \x01(\tR\x14onChangeFunctionName\x12'\n" +
+	"\x10on_change_app_id\x18\b \x01(\tR\ronChangeAppId\x12A\n" +
+	"\x10on_change_params\x18\t \x01(\v2\x17.google.protobuf.StructR\x0eonChangeParams\x129\n" +
+	"\x19on_change_success_message\x18\n" +
+	" \x01(\tR\x16onChangeSuccessMessage\x12;\n" +
+	"\x1adefault_value_metadata_key\x18\v \x01(\tR\x17defaultValueMetadataKey\x12Q\n" +
+	"\bi18n_map\x18\f \x03(\v26.channel.app.sdk.v1.ConfigDefaultSelector.I18nMapEntryR\ai18nMap\x1ac\n" +
+	"\fI18nMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
+	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01\"\xd1\x02\n" +
+	"\x0eConfigSettings\x12\x14\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x02 \x01(\tR\vdescription\x12V\n" +
+	"\x11default_selectors\x18\x03 \x03(\v2).channel.app.sdk.v1.ConfigDefaultSelectorR\x10defaultSelectors\x12J\n" +
+	"\bi18n_map\x18\x04 \x03(\v2/.channel.app.sdk.v1.ConfigSettings.I18nMapEntryR\ai18nMap\x1ac\n" +
+	"\fI18nMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
+	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01\"\x8b\x02\n" +
 	"\x1bConfigDraftResolutionParams\x12\x14\n" +
 	"\x05scope\x18\x01 \x01(\tR\x05scope\x12\x1d\n" +
 	"\n" +
@@ -14585,7 +15535,7 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\x05phone\x18\x03 \x01(\tR\x05phone\x12\x1a\n" +
 	"\bpostcode\x18\x04 \x01(\tR\bpostcode\x12\x1a\n" +
 	"\baddress1\x18\x05 \x01(\tR\baddress1\x12\x1a\n" +
-	"\baddress2\x18\x06 \x01(\tR\baddress2\"\xcd\r\n" +
+	"\baddress2\x18\x06 \x01(\tR\baddress2\"\xab\x10\n" +
 	"\vConfigField\x12\x12\n" +
 	"\x04type\x18\x01 \x01(\tR\x04type\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x14\n" +
@@ -14628,7 +15578,15 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\x06accept\x18& \x03(\tR\x06accept\x12'\n" +
 	"\x10max_file_size_mb\x18' \x01(\x01R\rmaxFileSizeMb\x12\x1a\n" +
 	"\bmultiple\x18( \x01(\bR\bmultiple\x12:\n" +
-	"\ffield_labels\x18) \x01(\v2\x17.google.protobuf.StructR\vfieldLabelsJ\x04\b\x1b\x10\x1cJ\x04\b\x1c\x10\x1d\"\xb7\x0f\n" +
+	"\ffield_labels\x18) \x01(\v2\x17.google.protobuf.StructR\vfieldLabels\x12G\n" +
+	"\bi18n_map\x18* \x03(\v2,.channel.app.sdk.v1.ConfigField.I18nMapEntryR\ai18nMap\x12)\n" +
+	"\x10overview_summary\x18+ \x01(\bR\x0foverviewSummary\x12)\n" +
+	"\x10overview_feature\x18, \x01(\bR\x0foverviewFeature\x12%\n" +
+	"\x0eoverview_label\x18- \x01(\tR\roverviewLabel\x121\n" +
+	"\x14overview_description\x18. \x01(\tR\x13overviewDescription\x1ac\n" +
+	"\fI18nMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
+	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01J\x04\b\x1b\x10\x1cJ\x04\b\x1c\x10\x1d\"\xee\x15\n" +
 	"\vConfigBlock\x12\x12\n" +
 	"\x04type\x18\x01 \x01(\tR\x04type\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x14\n" +
@@ -14679,8 +15637,29 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\x14address2_placeholder\x18. \x01(\tR\x13address2Placeholder\x12\x16\n" +
 	"\x06accept\x18/ \x03(\tR\x06accept\x12'\n" +
 	"\x10max_file_size_mb\x180 \x01(\x01R\rmaxFileSizeMb\x12\x1a\n" +
-	"\bmultiple\x181 \x01(\bR\bmultipleJ\x04\b\r\x10\x0eJ\x04\b\x11\x10\x12\"\x1c\n" +
-	"\x1aConfigGetConfigSchemaInput\"\x93\x04\n" +
+	"\bmultiple\x181 \x01(\bR\bmultiple\x12G\n" +
+	"\bi18n_map\x182 \x03(\v2,.channel.app.sdk.v1.ConfigBlock.I18nMapEntryR\ai18nMap\x12)\n" +
+	"\x10overview_summary\x183 \x01(\bR\x0foverviewSummary\x12)\n" +
+	"\x10overview_feature\x184 \x01(\bR\x0foverviewFeature\x12%\n" +
+	"\x0eoverview_label\x185 \x01(\tR\roverviewLabel\x121\n" +
+	"\x14overview_description\x186 \x01(\tR\x13overviewDescription\x12\x1d\n" +
+	"\n" +
+	"menu_label\x187 \x01(\tR\tmenuLabel\x12\x1b\n" +
+	"\tmenu_icon\x188 \x01(\tR\bmenuIcon\x12#\n" +
+	"\rfunction_name\x189 \x01(\tR\ffunctionName\x12\x15\n" +
+	"\x06app_id\x18: \x01(\tR\x05appId\x12/\n" +
+	"\x06params\x18; \x01(\v2\x17.google.protobuf.StructR\x06params\x12!\n" +
+	"\fbutton_style\x18< \x01(\tR\vbuttonStyle\x12.\n" +
+	"\x13validate_before_run\x18= \x01(\bR\x11validateBeforeRun\x122\n" +
+	"\x15validation_field_keys\x18> \x03(\tR\x13validationFieldKeys\x12&\n" +
+	"\x0fsave_before_run\x18? \x01(\bR\rsaveBeforeRun\x12#\n" +
+	"\rafter_success\x18@ \x03(\tR\fafterSuccess\x12'\n" +
+	"\x0fsuccess_message\x18A \x01(\tR\x0esuccessMessage\x121\n" +
+	"\x15show_in_overview_menu\x18B \x01(\bR\x12showInOverviewMenu\x1ac\n" +
+	"\fI18nMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
+	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01J\x04\b\r\x10\x0eJ\x04\b\x11\x10\x12\"\x1c\n" +
+	"\x1aConfigGetConfigSchemaInput\"\xd1\x06\n" +
 	"\x1bConfigGetConfigSchemaOutput\x12%\n" +
 	"\x0eschema_version\x18\x01 \x01(\tR\rschemaVersion\x12!\n" +
 	"\fconfig_scope\x18\x02 \x01(\tR\vconfigScope\x12#\n" +
@@ -14693,12 +15672,22 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\x06blocks\x18\t \x03(\v2\x1f.channel.app.sdk.v1.ConfigBlockR\x06blocks\x12+\n" +
 	"\x11supports_multiple\x18\n" +
 	" \x01(\bR\x10supportsMultiple\x12;\n" +
-	"\x1akey_resolver_function_name\x18\v \x01(\tR\x17keyResolverFunctionName\"o\n" +
+	"\x1akey_resolver_function_name\x18\v \x01(\tR\x17keyResolverFunctionName\x12W\n" +
+	"\bi18n_map\x18\f \x03(\v2<.channel.app.sdk.v1.ConfigGetConfigSchemaOutput.I18nMapEntryR\ai18nMap\x12>\n" +
+	"\boverview\x18\r \x01(\v2\".channel.app.sdk.v1.ConfigOverviewR\boverview\x12>\n" +
+	"\bsettings\x18\x0e \x01(\v2\".channel.app.sdk.v1.ConfigSettingsR\bsettings\x1ac\n" +
+	"\fI18nMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
+	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01\"\xa7\x02\n" +
 	"\x15ConfigValidationError\x12\x1b\n" +
 	"\tfield_key\x18\x01 \x01(\tR\bfieldKey\x12\x1f\n" +
 	"\vreason_code\x18\x02 \x01(\tR\n" +
 	"reasonCode\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage\"!\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\x12Q\n" +
+	"\bi18n_map\x18\x04 \x03(\v26.channel.app.sdk.v1.ConfigValidationError.I18nMapEntryR\ai18nMap\x1ac\n" +
+	"\fI18nMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
+	"\x05value\x18\x02 \x01(\v2'.channel.app.sdk.v1.ConfigLocalizedTextR\x05value:\x028\x01\"!\n" +
 	"\x1fConfigValidateStoredConfigInput\"\xa3\x02\n" +
 	" ConfigValidateStoredConfigOutput\x12\x14\n" +
 	"\x05valid\x18\x01 \x01(\bR\x05valid\x12\x1f\n" +
@@ -14712,7 +15701,10 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\achoices\x18\x01 \x03(\v2 .channel.app.sdk.v1.ConfigChoiceR\achoices\"\x9d\x01\n" +
 	"\x1bConfigDraftResolutionOutput\x12:\n" +
 	"\fvalues_patch\x18\x01 \x01(\v2\x17.google.protobuf.StructR\vvaluesPatch\x12<\n" +
-	"\rchoices_patch\x18\x03 \x01(\v2\x17.google.protobuf.StructR\fchoicesPatchJ\x04\b\x02\x10\x03\"\x95\a\n" +
+	"\rchoices_patch\x18\x03 \x01(\v2\x17.google.protobuf.StructR\fchoicesPatchJ\x04\b\x02\x10\x03\"t\n" +
+	"\x1aOAuthProviderLocalizedText\x12#\n" +
+	"\rprovider_name\x18\x01 \x01(\tR\fproviderName\x121\n" +
+	"\x14provider_description\x18\x02 \x01(\tR\x13providerDescription\"\xcc\b\n" +
 	"\rOAuthProvider\x12\x1a\n" +
 	"\bprovider\x18\x01 \x01(\tR\bprovider\x12+\n" +
 	"\x11authorization_url\x18\x02 \x01(\tR\x10authorizationUrl\x12\x1b\n" +
@@ -14730,10 +15722,14 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\x1dauthorization_code_param_name\x18\r \x01(\tR\x1aauthorizationCodeParamName\x126\n" +
 	"\x17authorization_open_mode\x18\x0e \x01(\tR\x15authorizationOpenMode\x12Q\n" +
 	"\rtoken_request\x18\x0f \x01(\v2,.channel.app.sdk.v1.OAuthTokenRequestMappingR\ftokenRequest\x12T\n" +
-	"\x0etoken_response\x18\x10 \x01(\v2-.channel.app.sdk.v1.OAuthTokenResponseMappingR\rtokenResponse\x1aC\n" +
+	"\x0etoken_response\x18\x10 \x01(\v2-.channel.app.sdk.v1.OAuthTokenResponseMappingR\rtokenResponse\x12I\n" +
+	"\bi18n_map\x18\x11 \x03(\v2..channel.app.sdk.v1.OAuthProvider.I18nMapEntryR\ai18nMap\x1aC\n" +
 	"\x15AdditionalParamsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x19\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aj\n" +
+	"\fI18nMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12D\n" +
+	"\x05value\x18\x02 \x01(\v2..channel.app.sdk.v1.OAuthProviderLocalizedTextR\x05value:\x028\x01\"\x19\n" +
 	"\x17OAuthGetAuthConfigInput\"\x93\x01\n" +
 	"\vOAuthConfig\x12\x1b\n" +
 	"\tauth_type\x18\x01 \x01(\tR\bauthType\x12\x1d\n" +
@@ -15717,7 +16713,7 @@ func file_channel_app_sdk_v1_extension_proto_rawDescGZIP() []byte {
 	return file_channel_app_sdk_v1_extension_proto_rawDescData
 }
 
-var file_channel_app_sdk_v1_extension_proto_msgTypes = make([]protoimpl.MessageInfo, 232)
+var file_channel_app_sdk_v1_extension_proto_msgTypes = make([]protoimpl.MessageInfo, 249)
 var file_channel_app_sdk_v1_extension_proto_goTypes = []any{
 	(*ExtensionEmptyInput)(nil),                                    // 0: channel.app.sdk.v1.ExtensionEmptyInput
 	(*ExtensionChat)(nil),                                          // 1: channel.app.sdk.v1.ExtensionChat
@@ -15729,481 +16725,527 @@ var file_channel_app_sdk_v1_extension_proto_goTypes = []any{
 	(*ApiKeyUserInfo)(nil),                                         // 7: channel.app.sdk.v1.ApiKeyUserInfo
 	(*ApiKeyValidateCredentialsOutput)(nil),                        // 8: channel.app.sdk.v1.ApiKeyValidateCredentialsOutput
 	(*ConfigCondition)(nil),                                        // 9: channel.app.sdk.v1.ConfigCondition
-	(*ConfigChoice)(nil),                                           // 10: channel.app.sdk.v1.ConfigChoice
-	(*ConfigInlineLink)(nil),                                       // 11: channel.app.sdk.v1.ConfigInlineLink
-	(*ConfigValidationNotice)(nil),                                 // 12: channel.app.sdk.v1.ConfigValidationNotice
-	(*ConfigHooks)(nil),                                            // 13: channel.app.sdk.v1.ConfigHooks
-	(*ConfigOAuthAdditionalParam)(nil),                             // 14: channel.app.sdk.v1.ConfigOAuthAdditionalParam
-	(*ConfigOAuth)(nil),                                            // 15: channel.app.sdk.v1.ConfigOAuth
-	(*ConfigChoicesSource)(nil),                                    // 16: channel.app.sdk.v1.ConfigChoicesSource
-	(*ConfigDraftResolutionParams)(nil),                            // 17: channel.app.sdk.v1.ConfigDraftResolutionParams
-	(*ConfigMediaOptions)(nil),                                     // 18: channel.app.sdk.v1.ConfigMediaOptions
-	(*ConfigResolvedValueTarget)(nil),                              // 19: channel.app.sdk.v1.ConfigResolvedValueTarget
-	(*ConfigPhoneFieldLabels)(nil),                                 // 20: channel.app.sdk.v1.ConfigPhoneFieldLabels
-	(*ConfigAddressFieldLabels)(nil),                               // 21: channel.app.sdk.v1.ConfigAddressFieldLabels
-	(*ConfigField)(nil),                                            // 22: channel.app.sdk.v1.ConfigField
-	(*ConfigBlock)(nil),                                            // 23: channel.app.sdk.v1.ConfigBlock
-	(*ConfigGetConfigSchemaInput)(nil),                             // 24: channel.app.sdk.v1.ConfigGetConfigSchemaInput
-	(*ConfigGetConfigSchemaOutput)(nil),                            // 25: channel.app.sdk.v1.ConfigGetConfigSchemaOutput
-	(*ConfigValidationError)(nil),                                  // 26: channel.app.sdk.v1.ConfigValidationError
-	(*ConfigValidateStoredConfigInput)(nil),                        // 27: channel.app.sdk.v1.ConfigValidateStoredConfigInput
-	(*ConfigValidateStoredConfigOutput)(nil),                       // 28: channel.app.sdk.v1.ConfigValidateStoredConfigOutput
-	(*ConfigChoiceList)(nil),                                       // 29: channel.app.sdk.v1.ConfigChoiceList
-	(*ConfigDraftResolutionOutput)(nil),                            // 30: channel.app.sdk.v1.ConfigDraftResolutionOutput
-	(*OAuthProvider)(nil),                                          // 31: channel.app.sdk.v1.OAuthProvider
-	(*OAuthGetAuthConfigInput)(nil),                                // 32: channel.app.sdk.v1.OAuthGetAuthConfigInput
-	(*OAuthConfig)(nil),                                            // 33: channel.app.sdk.v1.OAuthConfig
-	(*OAuthCredentialValidationInput)(nil),                         // 34: channel.app.sdk.v1.OAuthCredentialValidationInput
-	(*OAuthCredentialValidationResult)(nil),                        // 35: channel.app.sdk.v1.OAuthCredentialValidationResult
-	(*Calendar)(nil),                                               // 36: channel.app.sdk.v1.Calendar
-	(*CalendarEventType)(nil),                                      // 37: channel.app.sdk.v1.CalendarEventType
-	(*CalendarTimeSlot)(nil),                                       // 38: channel.app.sdk.v1.CalendarTimeSlot
-	(*CalendarAttendee)(nil),                                       // 39: channel.app.sdk.v1.CalendarAttendee
-	(*CalendarBooking)(nil),                                        // 40: channel.app.sdk.v1.CalendarBooking
-	(*CalendarListCalendarsInput)(nil),                             // 41: channel.app.sdk.v1.CalendarListCalendarsInput
-	(*CalendarListCalendarsOutput)(nil),                            // 42: channel.app.sdk.v1.CalendarListCalendarsOutput
-	(*CalendarListEventTypesInput)(nil),                            // 43: channel.app.sdk.v1.CalendarListEventTypesInput
-	(*CalendarListEventTypesOutput)(nil),                           // 44: channel.app.sdk.v1.CalendarListEventTypesOutput
-	(*CalendarGetAvailabilityInput)(nil),                           // 45: channel.app.sdk.v1.CalendarGetAvailabilityInput
-	(*CalendarGetAvailabilityOutput)(nil),                          // 46: channel.app.sdk.v1.CalendarGetAvailabilityOutput
-	(*CalendarCreateBookingInput)(nil),                             // 47: channel.app.sdk.v1.CalendarCreateBookingInput
-	(*CalendarCancelBookingInput)(nil),                             // 48: channel.app.sdk.v1.CalendarCancelBookingInput
-	(*CalendarCancelBookingOutput)(nil),                            // 49: channel.app.sdk.v1.CalendarCancelBookingOutput
-	(*CalendarGetBookingInput)(nil),                                // 50: channel.app.sdk.v1.CalendarGetBookingInput
-	(*CommandNameI18N)(nil),                                        // 51: channel.app.sdk.v1.CommandNameI18n
-	(*CommandNameDescI18N)(nil),                                    // 52: channel.app.sdk.v1.CommandNameDescI18n
-	(*CommandParamDefI18N)(nil),                                    // 53: channel.app.sdk.v1.CommandParamDefI18n
-	(*CommandChoice)(nil),                                          // 54: channel.app.sdk.v1.CommandChoice
-	(*CommandParamDefinition)(nil),                                 // 55: channel.app.sdk.v1.CommandParamDefinition
-	(*CommandConfig)(nil),                                          // 56: channel.app.sdk.v1.CommandConfig
-	(*CommandGetCommandsInput)(nil),                                // 57: channel.app.sdk.v1.CommandGetCommandsInput
-	(*CommandGetCommandsOutput)(nil),                               // 58: channel.app.sdk.v1.CommandGetCommandsOutput
-	(*CommandTrigger)(nil),                                         // 59: channel.app.sdk.v1.CommandTrigger
-	(*CommandAutoCompleteArgument)(nil),                            // 60: channel.app.sdk.v1.CommandAutoCompleteArgument
-	(*CommandGetSuggestionsInput)(nil),                             // 61: channel.app.sdk.v1.CommandGetSuggestionsInput
-	(*CommandGetSuggestionsOutput)(nil),                            // 62: channel.app.sdk.v1.CommandGetSuggestionsOutput
-	(*CommandExecuteInput)(nil),                                    // 63: channel.app.sdk.v1.CommandExecuteInput
-	(*CommandResult)(nil),                                          // 64: channel.app.sdk.v1.CommandResult
-	(*WidgetNameDescI18N)(nil),                                     // 65: channel.app.sdk.v1.WidgetNameDescI18n
-	(*WidgetConfig)(nil),                                           // 66: channel.app.sdk.v1.WidgetConfig
-	(*WidgetGetWidgetsInput)(nil),                                  // 67: channel.app.sdk.v1.WidgetGetWidgetsInput
-	(*WidgetGetWidgetsOutput)(nil),                                 // 68: channel.app.sdk.v1.WidgetGetWidgetsOutput
-	(*WidgetActionInput)(nil),                                      // 69: channel.app.sdk.v1.WidgetActionInput
-	(*WidgetActionResult)(nil),                                     // 70: channel.app.sdk.v1.WidgetActionResult
-	(*CustomTabNameI18N)(nil),                                      // 71: channel.app.sdk.v1.CustomTabNameI18n
-	(*CustomTabConfig)(nil),                                        // 72: channel.app.sdk.v1.CustomTabConfig
-	(*CustomTabGetCustomTabsInput)(nil),                            // 73: channel.app.sdk.v1.CustomTabGetCustomTabsInput
-	(*CustomTabGetCustomTabsOutput)(nil),                           // 74: channel.app.sdk.v1.CustomTabGetCustomTabsOutput
-	(*CustomTabActionInput)(nil),                                   // 75: channel.app.sdk.v1.CustomTabActionInput
-	(*CustomTabActionResult)(nil),                                  // 76: channel.app.sdk.v1.CustomTabActionResult
-	(*HookConfig)(nil),                                             // 77: channel.app.sdk.v1.HookConfig
-	(*HookGetHooksInput)(nil),                                      // 78: channel.app.sdk.v1.HookGetHooksInput
-	(*HookGetHooksOutput)(nil),                                     // 79: channel.app.sdk.v1.HookGetHooksOutput
-	(*PollingPoller)(nil),                                          // 80: channel.app.sdk.v1.PollingPoller
-	(*PollingGetPollersInput)(nil),                                 // 81: channel.app.sdk.v1.PollingGetPollersInput
-	(*PollingGetPollersOutput)(nil),                                // 82: channel.app.sdk.v1.PollingGetPollersOutput
-	(*PollingGetTargetChannelsInput)(nil),                          // 83: channel.app.sdk.v1.PollingGetTargetChannelsInput
-	(*PollingGetTargetChannelsOutput)(nil),                         // 84: channel.app.sdk.v1.PollingGetTargetChannelsOutput
-	(*MailRelayHeader)(nil),                                        // 85: channel.app.sdk.v1.MailRelayHeader
-	(*MailRelayCommonHeaders)(nil),                                 // 86: channel.app.sdk.v1.MailRelayCommonHeaders
-	(*MailRelayMail)(nil),                                          // 87: channel.app.sdk.v1.MailRelayMail
-	(*MailRelayReceipt)(nil),                                       // 88: channel.app.sdk.v1.MailRelayReceipt
-	(*MailRelayInboundInput)(nil),                                  // 89: channel.app.sdk.v1.MailRelayInboundInput
-	(*MailRelayInboundOutput)(nil),                                 // 90: channel.app.sdk.v1.MailRelayInboundOutput
-	(*StoreProfileImage)(nil),                                      // 91: channel.app.sdk.v1.StoreProfileImage
-	(*StoreProfileIntro)(nil),                                      // 92: channel.app.sdk.v1.StoreProfileIntro
-	(*StoreFaq)(nil),                                               // 93: channel.app.sdk.v1.StoreFaq
-	(*StoreProfileLocalizedContent)(nil),                           // 94: channel.app.sdk.v1.StoreProfileLocalizedContent
-	(*StoreGetProfileInput)(nil),                                   // 95: channel.app.sdk.v1.StoreGetProfileInput
-	(*StoreGetProfileOutput)(nil),                                  // 96: channel.app.sdk.v1.StoreGetProfileOutput
-	(*NotebookCell)(nil),                                           // 97: channel.app.sdk.v1.NotebookCell
-	(*NotebookLayoutColumn)(nil),                                   // 98: channel.app.sdk.v1.NotebookLayoutColumn
-	(*NotebookLayoutRow)(nil),                                      // 99: channel.app.sdk.v1.NotebookLayoutRow
-	(*NotebookTab)(nil),                                            // 100: channel.app.sdk.v1.NotebookTab
-	(*NotebookPayload)(nil),                                        // 101: channel.app.sdk.v1.NotebookPayload
-	(*AppNotebook)(nil),                                            // 102: channel.app.sdk.v1.AppNotebook
-	(*NotebookGetNotebooksInput)(nil),                              // 103: channel.app.sdk.v1.NotebookGetNotebooksInput
-	(*NotebookGetNotebooksOutput)(nil),                             // 104: channel.app.sdk.v1.NotebookGetNotebooksOutput
-	(*DataSourceCatalog)(nil),                                      // 105: channel.app.sdk.v1.DataSourceCatalog
-	(*DataSourceTable)(nil),                                        // 106: channel.app.sdk.v1.DataSourceTable
-	(*DataSourceColumn)(nil),                                       // 107: channel.app.sdk.v1.DataSourceColumn
-	(*DataSourceTableDefinition)(nil),                              // 108: channel.app.sdk.v1.DataSourceTableDefinition
-	(*DataSourceTableListing)(nil),                                 // 109: channel.app.sdk.v1.DataSourceTableListing
-	(*DataSourceListCatalogsInput)(nil),                            // 110: channel.app.sdk.v1.DataSourceListCatalogsInput
-	(*DataSourceListCatalogsOutput)(nil),                           // 111: channel.app.sdk.v1.DataSourceListCatalogsOutput
-	(*DataSourceListTablesInput)(nil),                              // 112: channel.app.sdk.v1.DataSourceListTablesInput
-	(*DataSourceListTablesOutput)(nil),                             // 113: channel.app.sdk.v1.DataSourceListTablesOutput
-	(*DataSourceDescribeTableInput)(nil),                           // 114: channel.app.sdk.v1.DataSourceDescribeTableInput
-	(*DataSourceDescribeTableOutput)(nil),                          // 115: channel.app.sdk.v1.DataSourceDescribeTableOutput
-	(*OrderAddress)(nil),                                           // 116: channel.app.sdk.v1.OrderAddress
-	(*OrderBankAccount)(nil),                                       // 117: channel.app.sdk.v1.OrderBankAccount
-	(*OrderDefectInfo)(nil),                                        // 118: channel.app.sdk.v1.OrderDefectInfo
-	(*OrderClaimReason)(nil),                                       // 119: channel.app.sdk.v1.OrderClaimReason
-	(*OrderClaimability)(nil),                                      // 120: channel.app.sdk.v1.OrderClaimability
-	(*OrderClaim)(nil),                                             // 121: channel.app.sdk.v1.OrderClaim
-	(*OrderItem)(nil),                                              // 122: channel.app.sdk.v1.OrderItem
-	(*OrderPayment)(nil),                                           // 123: channel.app.sdk.v1.OrderPayment
-	(*OrderFulfillment)(nil),                                       // 124: channel.app.sdk.v1.OrderFulfillment
-	(*Order)(nil),                                                  // 125: channel.app.sdk.v1.Order
-	(*OrderAllowedValue)(nil),                                      // 126: channel.app.sdk.v1.OrderAllowedValue
-	(*OrderFieldConfig)(nil),                                       // 127: channel.app.sdk.v1.OrderFieldConfig
-	(*OrderOperationOptions)(nil),                                  // 128: channel.app.sdk.v1.OrderOperationOptions
-	(*OrderAppCapabilities)(nil),                                   // 129: channel.app.sdk.v1.OrderAppCapabilities
-	(*OrderGetOrdersInput)(nil),                                    // 130: channel.app.sdk.v1.OrderGetOrdersInput
-	(*OrderGetOrdersOutput)(nil),                                   // 131: channel.app.sdk.v1.OrderGetOrdersOutput
-	(*OrderGetAppConfigsInput)(nil),                                // 132: channel.app.sdk.v1.OrderGetAppConfigsInput
-	(*OrderGetAppConfigsOutput)(nil),                               // 133: channel.app.sdk.v1.OrderGetAppConfigsOutput
-	(*OrderClaimItem)(nil),                                         // 134: channel.app.sdk.v1.OrderClaimItem
-	(*OrderCancelOrderInput)(nil),                                  // 135: channel.app.sdk.v1.OrderCancelOrderInput
-	(*OrderReturnOrderInput)(nil),                                  // 136: channel.app.sdk.v1.OrderReturnOrderInput
-	(*OrderExchangeItem)(nil),                                      // 137: channel.app.sdk.v1.OrderExchangeItem
-	(*OrderExchangeOrderInput)(nil),                                // 138: channel.app.sdk.v1.OrderExchangeOrderInput
-	(*OrderGetExchangeableItemsInput)(nil),                         // 139: channel.app.sdk.v1.OrderGetExchangeableItemsInput
-	(*OrderGetExchangeableItemsOutput)(nil),                        // 140: channel.app.sdk.v1.OrderGetExchangeableItemsOutput
-	(*OrderChangeShippingAddressInput)(nil),                        // 141: channel.app.sdk.v1.OrderChangeShippingAddressInput
-	(*OrderSuccessOutput)(nil),                                     // 142: channel.app.sdk.v1.OrderSuccessOutput
-	(*CommerceIdentifier)(nil),                                     // 143: channel.app.sdk.v1.CommerceIdentifier
-	(*CommerceOrderItem)(nil),                                      // 144: channel.app.sdk.v1.CommerceOrderItem
-	(*CommerceOrder)(nil),                                          // 145: channel.app.sdk.v1.CommerceOrder
-	(*CommerceGetOrdersInput)(nil),                                 // 146: channel.app.sdk.v1.CommerceGetOrdersInput
-	(*CommerceGetOrdersOutput)(nil),                                // 147: channel.app.sdk.v1.CommerceGetOrdersOutput
-	(*CommerceAppCapabilities)(nil),                                // 148: channel.app.sdk.v1.CommerceAppCapabilities
-	(*CommerceGetAppConfigsInput)(nil),                             // 149: channel.app.sdk.v1.CommerceGetAppConfigsInput
-	(*CommerceGetAppConfigsOutput)(nil),                            // 150: channel.app.sdk.v1.CommerceGetAppConfigsOutput
-	(*CommerceResultBody)(nil),                                     // 151: channel.app.sdk.v1.CommerceResultBody
-	(*CommerceActionResult)(nil),                                   // 152: channel.app.sdk.v1.CommerceActionResult
-	(*CommerceCancelOrderInput)(nil),                               // 153: channel.app.sdk.v1.CommerceCancelOrderInput
-	(*CommerceReturnOrderInput)(nil),                               // 154: channel.app.sdk.v1.CommerceReturnOrderInput
-	(*CommerceReturnAcceptOrderInput)(nil),                         // 155: channel.app.sdk.v1.CommerceReturnAcceptOrderInput
-	(*CommerceExchangeOrderInput)(nil),                             // 156: channel.app.sdk.v1.CommerceExchangeOrderInput
-	(*CommerceGetExchangeableItemsInput)(nil),                      // 157: channel.app.sdk.v1.CommerceGetExchangeableItemsInput
-	(*CommerceGetExchangeableItemsOutput)(nil),                     // 158: channel.app.sdk.v1.CommerceGetExchangeableItemsOutput
-	(*CommerceChangeShippingAddressInput)(nil),                     // 159: channel.app.sdk.v1.CommerceChangeShippingAddressInput
-	(*WmsShippingInfo)(nil),                                        // 160: channel.app.sdk.v1.WmsShippingInfo
-	(*WmsDelivery)(nil),                                            // 161: channel.app.sdk.v1.WmsDelivery
-	(*WmsOrderItem)(nil),                                           // 162: channel.app.sdk.v1.WmsOrderItem
-	(*WmsOrder)(nil),                                               // 163: channel.app.sdk.v1.WmsOrder
-	(*WmsGetOrdersRequest)(nil),                                    // 164: channel.app.sdk.v1.WmsGetOrdersRequest
-	(*WmsGetOrdersResult)(nil),                                     // 165: channel.app.sdk.v1.WmsGetOrdersResult
-	(*WmsGetOrderRequest)(nil),                                     // 166: channel.app.sdk.v1.WmsGetOrderRequest
-	(*WmsGetOrderResult)(nil),                                      // 167: channel.app.sdk.v1.WmsGetOrderResult
-	(*WmsGetShopIDRequest)(nil),                                    // 168: channel.app.sdk.v1.WmsGetShopIDRequest
-	(*WmsGetShopIDResult)(nil),                                     // 169: channel.app.sdk.v1.WmsGetShopIDResult
-	(*WmsGetSupportedCommercesRequest)(nil),                        // 170: channel.app.sdk.v1.WmsGetSupportedCommercesRequest
-	(*WmsGetSupportedCommercesResult)(nil),                         // 171: channel.app.sdk.v1.WmsGetSupportedCommercesResult
-	(*WmsOrderStateRequest)(nil),                                   // 172: channel.app.sdk.v1.WmsOrderStateRequest
-	(*WmsChangeShippingAddressRequest)(nil),                        // 173: channel.app.sdk.v1.WmsChangeShippingAddressRequest
-	(*WmsRestoreOrderRequest)(nil),                                 // 174: channel.app.sdk.v1.WmsRestoreOrderRequest
-	(*WmsSuccessResult)(nil),                                       // 175: channel.app.sdk.v1.WmsSuccessResult
-	(*Buyer)(nil),                                                  // 176: channel.app.sdk.v1.Buyer
-	(*WmsDeliveryV2)(nil),                                          // 177: channel.app.sdk.v1.WmsDeliveryV2
-	(*WmsOrderItemV2)(nil),                                         // 178: channel.app.sdk.v1.WmsOrderItemV2
-	(*WmsOrderV2)(nil),                                             // 179: channel.app.sdk.v1.WmsOrderV2
-	(*WmsIdentifier)(nil),                                          // 180: channel.app.sdk.v1.WmsIdentifier
-	(*WmsOrderGetOrdersRequest)(nil),                               // 181: channel.app.sdk.v1.WmsOrderGetOrdersRequest
-	(*WmsOrderGetOrdersResult)(nil),                                // 182: channel.app.sdk.v1.WmsOrderGetOrdersResult
-	(*WmsOrderActionRequest)(nil),                                  // 183: channel.app.sdk.v1.WmsOrderActionRequest
-	(*WmsOrderChangeShippingAddressInput)(nil),                     // 184: channel.app.sdk.v1.WmsOrderChangeShippingAddressInput
-	(*WmsOrderResultBody)(nil),                                     // 185: channel.app.sdk.v1.WmsOrderResultBody
-	(*WmsOrderActionResult)(nil),                                   // 186: channel.app.sdk.v1.WmsOrderActionResult
-	(*WmsFieldConfig)(nil),                                         // 187: channel.app.sdk.v1.WmsFieldConfig
-	(*WmsOperationOptions)(nil),                                    // 188: channel.app.sdk.v1.WmsOperationOptions
-	(*WmsAppCapabilities)(nil),                                     // 189: channel.app.sdk.v1.WmsAppCapabilities
-	(*WmsGetAppConfigsInput)(nil),                                  // 190: channel.app.sdk.v1.WmsGetAppConfigsInput
-	(*WmsGetAppConfigsOutput)(nil),                                 // 191: channel.app.sdk.v1.WmsGetAppConfigsOutput
-	(*MessagingOnMediumMessageCreatedInput)(nil),                   // 192: channel.app.sdk.v1.MessagingOnMediumMessageCreatedInput
-	(*MessagingSendResult)(nil),                                    // 193: channel.app.sdk.v1.MessagingSendResult
-	(*MessagingOnMediumMessageCreatedOutput)(nil),                  // 194: channel.app.sdk.v1.MessagingOnMediumMessageCreatedOutput
-	(*MessagingInboxOnMediumUserChatClosedInput)(nil),              // 195: channel.app.sdk.v1.MessagingInboxOnMediumUserChatClosedInput
-	(*MessagingInboxOnMediumUserChatClosedOutput)(nil),             // 196: channel.app.sdk.v1.MessagingInboxOnMediumUserChatClosedOutput
-	(*MessagingInboxGetWritingTypesInput)(nil),                     // 197: channel.app.sdk.v1.MessagingInboxGetWritingTypesInput
-	(*MessagingInboxGetWritingTypesOutput)(nil),                    // 198: channel.app.sdk.v1.MessagingInboxGetWritingTypesOutput
-	(*MessagingInboxGetCustomEditorWamInput)(nil),                  // 199: channel.app.sdk.v1.MessagingInboxGetCustomEditorWamInput
-	(*MessagingInboxGetMediumTopicSelectorWamInput)(nil),           // 200: channel.app.sdk.v1.MessagingInboxGetMediumTopicSelectorWamInput
-	(*MessagingInboxGetMediumMessageErrorReasonInput)(nil),         // 201: channel.app.sdk.v1.MessagingInboxGetMediumMessageErrorReasonInput
-	(*MessagingInboxGetMediumMessageErrorReasonOutput)(nil),        // 202: channel.app.sdk.v1.MessagingInboxGetMediumMessageErrorReasonOutput
-	(*MessagingPrebuiltGetWritingTypesInput)(nil),                  // 203: channel.app.sdk.v1.MessagingPrebuiltGetWritingTypesInput
-	(*MessagingPrebuiltGetWritingTypesOutput)(nil),                 // 204: channel.app.sdk.v1.MessagingPrebuiltGetWritingTypesOutput
-	(*MessagingPrebuiltValidateEntityInput)(nil),                   // 205: channel.app.sdk.v1.MessagingPrebuiltValidateEntityInput
-	(*MessagingPrebuiltValidateEntityOutput)(nil),                  // 206: channel.app.sdk.v1.MessagingPrebuiltValidateEntityOutput
-	(*MessagingPrebuiltGetCustomEditorWamInput)(nil),               // 207: channel.app.sdk.v1.MessagingPrebuiltGetCustomEditorWamInput
-	(*MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput)(nil), // 208: channel.app.sdk.v1.MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput
-	(*MessagingPrebuiltBuildMediumTopicsInput)(nil),                // 209: channel.app.sdk.v1.MessagingPrebuiltBuildMediumTopicsInput
-	(*MessagingPrebuiltBuildMediumTopicsOutput)(nil),               // 210: channel.app.sdk.v1.MessagingPrebuiltBuildMediumTopicsOutput
-	(*MessagingPrebuiltGetDefaultOptionsInput)(nil),                // 211: channel.app.sdk.v1.MessagingPrebuiltGetDefaultOptionsInput
-	(*MessagingDefaultOptions)(nil),                                // 212: channel.app.sdk.v1.MessagingDefaultOptions
-	(*MessagingPrebuiltGetDefaultOptionsOutput)(nil),               // 213: channel.app.sdk.v1.MessagingPrebuiltGetDefaultOptionsOutput
-	(*AlfTaskMemoryDefinition)(nil),                                // 214: channel.app.sdk.v1.AlfTaskMemoryDefinition
-	(*AlfTaskWorkflowNode)(nil),                                    // 215: channel.app.sdk.v1.AlfTaskWorkflowNode
-	(*AlfTaskPredefinedTask)(nil),                                  // 216: channel.app.sdk.v1.AlfTaskPredefinedTask
-	(*AlfTaskGetTasksInput)(nil),                                   // 217: channel.app.sdk.v1.AlfTaskGetTasksInput
-	(*AlfTaskGetTasksOutput)(nil),                                  // 218: channel.app.sdk.v1.AlfTaskGetTasksOutput
-	(*OAuthTokenRequestMapping)(nil),                               // 219: channel.app.sdk.v1.OAuthTokenRequestMapping
-	(*OAuthTokenResponseMapping)(nil),                              // 220: channel.app.sdk.v1.OAuthTokenResponseMapping
-	nil,                                                            // 221: channel.app.sdk.v1.OAuthProvider.AdditionalParamsEntry
-	nil,                                                            // 222: channel.app.sdk.v1.CommandChoice.NameDescI18nMapEntry
-	nil,                                                            // 223: channel.app.sdk.v1.CommandParamDefinition.NameDescI18nMapEntry
-	nil,                                                            // 224: channel.app.sdk.v1.CommandConfig.ButtonNameI18nMapEntry
-	nil,                                                            // 225: channel.app.sdk.v1.CommandConfig.NameDescI18nMapEntry
-	nil,                                                            // 226: channel.app.sdk.v1.CommandTrigger.AttributesEntry
-	nil,                                                            // 227: channel.app.sdk.v1.WidgetConfig.DefaultNameDescI18nMapEntry
-	nil,                                                            // 228: channel.app.sdk.v1.CustomTabConfig.NameI18nMapEntry
-	nil,                                                            // 229: channel.app.sdk.v1.StoreGetProfileOutput.I18nMapEntry
-	nil,                                                            // 230: channel.app.sdk.v1.OrderOperationOptions.FieldConfigsEntry
-	nil,                                                            // 231: channel.app.sdk.v1.WmsOperationOptions.FieldConfigsEntry
-	(*structpb.Struct)(nil),                                        // 232: google.protobuf.Struct
-	(*structpb.Value)(nil),                                         // 233: google.protobuf.Value
-	(*ChannelUserChat)(nil),                                        // 234: channel.app.sdk.v1.ChannelUserChat
-	(*ChannelMessage)(nil),                                         // 235: channel.app.sdk.v1.ChannelMessage
-	(*WritingTypeMap)(nil),                                         // 236: channel.app.sdk.v1.WritingTypeMap
-	(*ChannelUser)(nil),                                            // 237: channel.app.sdk.v1.ChannelUser
-	(*PrebuiltMessage)(nil),                                        // 238: channel.app.sdk.v1.PrebuiltMessage
-	(*UnavailableReason)(nil),                                      // 239: channel.app.sdk.v1.UnavailableReason
-	(*MediumProfile)(nil),                                          // 240: channel.app.sdk.v1.MediumProfile
+	(*ConfigLocalizedText)(nil),                                    // 10: channel.app.sdk.v1.ConfigLocalizedText
+	(*ConfigChoice)(nil),                                           // 11: channel.app.sdk.v1.ConfigChoice
+	(*ConfigInlineLink)(nil),                                       // 12: channel.app.sdk.v1.ConfigInlineLink
+	(*ConfigValidationNotice)(nil),                                 // 13: channel.app.sdk.v1.ConfigValidationNotice
+	(*ConfigHooks)(nil),                                            // 14: channel.app.sdk.v1.ConfigHooks
+	(*ConfigOAuthAdditionalParam)(nil),                             // 15: channel.app.sdk.v1.ConfigOAuthAdditionalParam
+	(*ConfigOAuth)(nil),                                            // 16: channel.app.sdk.v1.ConfigOAuth
+	(*ConfigChoicesSource)(nil),                                    // 17: channel.app.sdk.v1.ConfigChoicesSource
+	(*ConfigOverview)(nil),                                         // 18: channel.app.sdk.v1.ConfigOverview
+	(*ConfigDefaultSelector)(nil),                                  // 19: channel.app.sdk.v1.ConfigDefaultSelector
+	(*ConfigSettings)(nil),                                         // 20: channel.app.sdk.v1.ConfigSettings
+	(*ConfigDraftResolutionParams)(nil),                            // 21: channel.app.sdk.v1.ConfigDraftResolutionParams
+	(*ConfigMediaOptions)(nil),                                     // 22: channel.app.sdk.v1.ConfigMediaOptions
+	(*ConfigResolvedValueTarget)(nil),                              // 23: channel.app.sdk.v1.ConfigResolvedValueTarget
+	(*ConfigPhoneFieldLabels)(nil),                                 // 24: channel.app.sdk.v1.ConfigPhoneFieldLabels
+	(*ConfigAddressFieldLabels)(nil),                               // 25: channel.app.sdk.v1.ConfigAddressFieldLabels
+	(*ConfigField)(nil),                                            // 26: channel.app.sdk.v1.ConfigField
+	(*ConfigBlock)(nil),                                            // 27: channel.app.sdk.v1.ConfigBlock
+	(*ConfigGetConfigSchemaInput)(nil),                             // 28: channel.app.sdk.v1.ConfigGetConfigSchemaInput
+	(*ConfigGetConfigSchemaOutput)(nil),                            // 29: channel.app.sdk.v1.ConfigGetConfigSchemaOutput
+	(*ConfigValidationError)(nil),                                  // 30: channel.app.sdk.v1.ConfigValidationError
+	(*ConfigValidateStoredConfigInput)(nil),                        // 31: channel.app.sdk.v1.ConfigValidateStoredConfigInput
+	(*ConfigValidateStoredConfigOutput)(nil),                       // 32: channel.app.sdk.v1.ConfigValidateStoredConfigOutput
+	(*ConfigChoiceList)(nil),                                       // 33: channel.app.sdk.v1.ConfigChoiceList
+	(*ConfigDraftResolutionOutput)(nil),                            // 34: channel.app.sdk.v1.ConfigDraftResolutionOutput
+	(*OAuthProviderLocalizedText)(nil),                             // 35: channel.app.sdk.v1.OAuthProviderLocalizedText
+	(*OAuthProvider)(nil),                                          // 36: channel.app.sdk.v1.OAuthProvider
+	(*OAuthGetAuthConfigInput)(nil),                                // 37: channel.app.sdk.v1.OAuthGetAuthConfigInput
+	(*OAuthConfig)(nil),                                            // 38: channel.app.sdk.v1.OAuthConfig
+	(*OAuthCredentialValidationInput)(nil),                         // 39: channel.app.sdk.v1.OAuthCredentialValidationInput
+	(*OAuthCredentialValidationResult)(nil),                        // 40: channel.app.sdk.v1.OAuthCredentialValidationResult
+	(*Calendar)(nil),                                               // 41: channel.app.sdk.v1.Calendar
+	(*CalendarEventType)(nil),                                      // 42: channel.app.sdk.v1.CalendarEventType
+	(*CalendarTimeSlot)(nil),                                       // 43: channel.app.sdk.v1.CalendarTimeSlot
+	(*CalendarAttendee)(nil),                                       // 44: channel.app.sdk.v1.CalendarAttendee
+	(*CalendarBooking)(nil),                                        // 45: channel.app.sdk.v1.CalendarBooking
+	(*CalendarListCalendarsInput)(nil),                             // 46: channel.app.sdk.v1.CalendarListCalendarsInput
+	(*CalendarListCalendarsOutput)(nil),                            // 47: channel.app.sdk.v1.CalendarListCalendarsOutput
+	(*CalendarListEventTypesInput)(nil),                            // 48: channel.app.sdk.v1.CalendarListEventTypesInput
+	(*CalendarListEventTypesOutput)(nil),                           // 49: channel.app.sdk.v1.CalendarListEventTypesOutput
+	(*CalendarGetAvailabilityInput)(nil),                           // 50: channel.app.sdk.v1.CalendarGetAvailabilityInput
+	(*CalendarGetAvailabilityOutput)(nil),                          // 51: channel.app.sdk.v1.CalendarGetAvailabilityOutput
+	(*CalendarCreateBookingInput)(nil),                             // 52: channel.app.sdk.v1.CalendarCreateBookingInput
+	(*CalendarCancelBookingInput)(nil),                             // 53: channel.app.sdk.v1.CalendarCancelBookingInput
+	(*CalendarCancelBookingOutput)(nil),                            // 54: channel.app.sdk.v1.CalendarCancelBookingOutput
+	(*CalendarGetBookingInput)(nil),                                // 55: channel.app.sdk.v1.CalendarGetBookingInput
+	(*CommandNameI18N)(nil),                                        // 56: channel.app.sdk.v1.CommandNameI18n
+	(*CommandNameDescI18N)(nil),                                    // 57: channel.app.sdk.v1.CommandNameDescI18n
+	(*CommandParamDefI18N)(nil),                                    // 58: channel.app.sdk.v1.CommandParamDefI18n
+	(*CommandChoice)(nil),                                          // 59: channel.app.sdk.v1.CommandChoice
+	(*CommandParamDefinition)(nil),                                 // 60: channel.app.sdk.v1.CommandParamDefinition
+	(*CommandConfig)(nil),                                          // 61: channel.app.sdk.v1.CommandConfig
+	(*CommandGetCommandsInput)(nil),                                // 62: channel.app.sdk.v1.CommandGetCommandsInput
+	(*CommandGetCommandsOutput)(nil),                               // 63: channel.app.sdk.v1.CommandGetCommandsOutput
+	(*CommandTrigger)(nil),                                         // 64: channel.app.sdk.v1.CommandTrigger
+	(*CommandAutoCompleteArgument)(nil),                            // 65: channel.app.sdk.v1.CommandAutoCompleteArgument
+	(*CommandGetSuggestionsInput)(nil),                             // 66: channel.app.sdk.v1.CommandGetSuggestionsInput
+	(*CommandGetSuggestionsOutput)(nil),                            // 67: channel.app.sdk.v1.CommandGetSuggestionsOutput
+	(*CommandExecuteInput)(nil),                                    // 68: channel.app.sdk.v1.CommandExecuteInput
+	(*CommandResult)(nil),                                          // 69: channel.app.sdk.v1.CommandResult
+	(*WidgetNameDescI18N)(nil),                                     // 70: channel.app.sdk.v1.WidgetNameDescI18n
+	(*WidgetConfig)(nil),                                           // 71: channel.app.sdk.v1.WidgetConfig
+	(*WidgetGetWidgetsInput)(nil),                                  // 72: channel.app.sdk.v1.WidgetGetWidgetsInput
+	(*WidgetGetWidgetsOutput)(nil),                                 // 73: channel.app.sdk.v1.WidgetGetWidgetsOutput
+	(*WidgetActionInput)(nil),                                      // 74: channel.app.sdk.v1.WidgetActionInput
+	(*WidgetActionResult)(nil),                                     // 75: channel.app.sdk.v1.WidgetActionResult
+	(*CustomTabNameI18N)(nil),                                      // 76: channel.app.sdk.v1.CustomTabNameI18n
+	(*CustomTabConfig)(nil),                                        // 77: channel.app.sdk.v1.CustomTabConfig
+	(*CustomTabGetCustomTabsInput)(nil),                            // 78: channel.app.sdk.v1.CustomTabGetCustomTabsInput
+	(*CustomTabGetCustomTabsOutput)(nil),                           // 79: channel.app.sdk.v1.CustomTabGetCustomTabsOutput
+	(*CustomTabActionInput)(nil),                                   // 80: channel.app.sdk.v1.CustomTabActionInput
+	(*CustomTabActionResult)(nil),                                  // 81: channel.app.sdk.v1.CustomTabActionResult
+	(*HookConfig)(nil),                                             // 82: channel.app.sdk.v1.HookConfig
+	(*HookGetHooksInput)(nil),                                      // 83: channel.app.sdk.v1.HookGetHooksInput
+	(*HookGetHooksOutput)(nil),                                     // 84: channel.app.sdk.v1.HookGetHooksOutput
+	(*PollingPoller)(nil),                                          // 85: channel.app.sdk.v1.PollingPoller
+	(*PollingGetPollersInput)(nil),                                 // 86: channel.app.sdk.v1.PollingGetPollersInput
+	(*PollingGetPollersOutput)(nil),                                // 87: channel.app.sdk.v1.PollingGetPollersOutput
+	(*PollingGetTargetChannelsInput)(nil),                          // 88: channel.app.sdk.v1.PollingGetTargetChannelsInput
+	(*PollingGetTargetChannelsOutput)(nil),                         // 89: channel.app.sdk.v1.PollingGetTargetChannelsOutput
+	(*MailRelayHeader)(nil),                                        // 90: channel.app.sdk.v1.MailRelayHeader
+	(*MailRelayCommonHeaders)(nil),                                 // 91: channel.app.sdk.v1.MailRelayCommonHeaders
+	(*MailRelayMail)(nil),                                          // 92: channel.app.sdk.v1.MailRelayMail
+	(*MailRelayReceipt)(nil),                                       // 93: channel.app.sdk.v1.MailRelayReceipt
+	(*MailRelayInboundInput)(nil),                                  // 94: channel.app.sdk.v1.MailRelayInboundInput
+	(*MailRelayInboundOutput)(nil),                                 // 95: channel.app.sdk.v1.MailRelayInboundOutput
+	(*StoreProfileImage)(nil),                                      // 96: channel.app.sdk.v1.StoreProfileImage
+	(*StoreProfileIntro)(nil),                                      // 97: channel.app.sdk.v1.StoreProfileIntro
+	(*StoreFaq)(nil),                                               // 98: channel.app.sdk.v1.StoreFaq
+	(*StoreProfileLocalizedContent)(nil),                           // 99: channel.app.sdk.v1.StoreProfileLocalizedContent
+	(*StoreGetProfileInput)(nil),                                   // 100: channel.app.sdk.v1.StoreGetProfileInput
+	(*StoreGetProfileOutput)(nil),                                  // 101: channel.app.sdk.v1.StoreGetProfileOutput
+	(*NotebookCell)(nil),                                           // 102: channel.app.sdk.v1.NotebookCell
+	(*NotebookLayoutColumn)(nil),                                   // 103: channel.app.sdk.v1.NotebookLayoutColumn
+	(*NotebookLayoutRow)(nil),                                      // 104: channel.app.sdk.v1.NotebookLayoutRow
+	(*NotebookTab)(nil),                                            // 105: channel.app.sdk.v1.NotebookTab
+	(*NotebookPayload)(nil),                                        // 106: channel.app.sdk.v1.NotebookPayload
+	(*AppNotebook)(nil),                                            // 107: channel.app.sdk.v1.AppNotebook
+	(*NotebookGetNotebooksInput)(nil),                              // 108: channel.app.sdk.v1.NotebookGetNotebooksInput
+	(*NotebookGetNotebooksOutput)(nil),                             // 109: channel.app.sdk.v1.NotebookGetNotebooksOutput
+	(*DataSourceCatalog)(nil),                                      // 110: channel.app.sdk.v1.DataSourceCatalog
+	(*DataSourceTable)(nil),                                        // 111: channel.app.sdk.v1.DataSourceTable
+	(*DataSourceColumn)(nil),                                       // 112: channel.app.sdk.v1.DataSourceColumn
+	(*DataSourceTableDefinition)(nil),                              // 113: channel.app.sdk.v1.DataSourceTableDefinition
+	(*DataSourceTableListing)(nil),                                 // 114: channel.app.sdk.v1.DataSourceTableListing
+	(*DataSourceListCatalogsInput)(nil),                            // 115: channel.app.sdk.v1.DataSourceListCatalogsInput
+	(*DataSourceListCatalogsOutput)(nil),                           // 116: channel.app.sdk.v1.DataSourceListCatalogsOutput
+	(*DataSourceListTablesInput)(nil),                              // 117: channel.app.sdk.v1.DataSourceListTablesInput
+	(*DataSourceListTablesOutput)(nil),                             // 118: channel.app.sdk.v1.DataSourceListTablesOutput
+	(*DataSourceDescribeTableInput)(nil),                           // 119: channel.app.sdk.v1.DataSourceDescribeTableInput
+	(*DataSourceDescribeTableOutput)(nil),                          // 120: channel.app.sdk.v1.DataSourceDescribeTableOutput
+	(*OrderAddress)(nil),                                           // 121: channel.app.sdk.v1.OrderAddress
+	(*OrderBankAccount)(nil),                                       // 122: channel.app.sdk.v1.OrderBankAccount
+	(*OrderDefectInfo)(nil),                                        // 123: channel.app.sdk.v1.OrderDefectInfo
+	(*OrderClaimReason)(nil),                                       // 124: channel.app.sdk.v1.OrderClaimReason
+	(*OrderClaimability)(nil),                                      // 125: channel.app.sdk.v1.OrderClaimability
+	(*OrderClaim)(nil),                                             // 126: channel.app.sdk.v1.OrderClaim
+	(*OrderItem)(nil),                                              // 127: channel.app.sdk.v1.OrderItem
+	(*OrderPayment)(nil),                                           // 128: channel.app.sdk.v1.OrderPayment
+	(*OrderFulfillment)(nil),                                       // 129: channel.app.sdk.v1.OrderFulfillment
+	(*Order)(nil),                                                  // 130: channel.app.sdk.v1.Order
+	(*OrderAllowedValue)(nil),                                      // 131: channel.app.sdk.v1.OrderAllowedValue
+	(*OrderFieldConfig)(nil),                                       // 132: channel.app.sdk.v1.OrderFieldConfig
+	(*OrderOperationOptions)(nil),                                  // 133: channel.app.sdk.v1.OrderOperationOptions
+	(*OrderAppCapabilities)(nil),                                   // 134: channel.app.sdk.v1.OrderAppCapabilities
+	(*OrderGetOrdersInput)(nil),                                    // 135: channel.app.sdk.v1.OrderGetOrdersInput
+	(*OrderGetOrdersOutput)(nil),                                   // 136: channel.app.sdk.v1.OrderGetOrdersOutput
+	(*OrderGetAppConfigsInput)(nil),                                // 137: channel.app.sdk.v1.OrderGetAppConfigsInput
+	(*OrderGetAppConfigsOutput)(nil),                               // 138: channel.app.sdk.v1.OrderGetAppConfigsOutput
+	(*OrderClaimItem)(nil),                                         // 139: channel.app.sdk.v1.OrderClaimItem
+	(*OrderCancelOrderInput)(nil),                                  // 140: channel.app.sdk.v1.OrderCancelOrderInput
+	(*OrderReturnOrderInput)(nil),                                  // 141: channel.app.sdk.v1.OrderReturnOrderInput
+	(*OrderExchangeItem)(nil),                                      // 142: channel.app.sdk.v1.OrderExchangeItem
+	(*OrderExchangeOrderInput)(nil),                                // 143: channel.app.sdk.v1.OrderExchangeOrderInput
+	(*OrderGetExchangeableItemsInput)(nil),                         // 144: channel.app.sdk.v1.OrderGetExchangeableItemsInput
+	(*OrderGetExchangeableItemsOutput)(nil),                        // 145: channel.app.sdk.v1.OrderGetExchangeableItemsOutput
+	(*OrderChangeShippingAddressInput)(nil),                        // 146: channel.app.sdk.v1.OrderChangeShippingAddressInput
+	(*OrderSuccessOutput)(nil),                                     // 147: channel.app.sdk.v1.OrderSuccessOutput
+	(*CommerceIdentifier)(nil),                                     // 148: channel.app.sdk.v1.CommerceIdentifier
+	(*CommerceOrderItem)(nil),                                      // 149: channel.app.sdk.v1.CommerceOrderItem
+	(*CommerceOrder)(nil),                                          // 150: channel.app.sdk.v1.CommerceOrder
+	(*CommerceGetOrdersInput)(nil),                                 // 151: channel.app.sdk.v1.CommerceGetOrdersInput
+	(*CommerceGetOrdersOutput)(nil),                                // 152: channel.app.sdk.v1.CommerceGetOrdersOutput
+	(*CommerceAppCapabilities)(nil),                                // 153: channel.app.sdk.v1.CommerceAppCapabilities
+	(*CommerceGetAppConfigsInput)(nil),                             // 154: channel.app.sdk.v1.CommerceGetAppConfigsInput
+	(*CommerceGetAppConfigsOutput)(nil),                            // 155: channel.app.sdk.v1.CommerceGetAppConfigsOutput
+	(*CommerceResultBody)(nil),                                     // 156: channel.app.sdk.v1.CommerceResultBody
+	(*CommerceActionResult)(nil),                                   // 157: channel.app.sdk.v1.CommerceActionResult
+	(*CommerceCancelOrderInput)(nil),                               // 158: channel.app.sdk.v1.CommerceCancelOrderInput
+	(*CommerceReturnOrderInput)(nil),                               // 159: channel.app.sdk.v1.CommerceReturnOrderInput
+	(*CommerceReturnAcceptOrderInput)(nil),                         // 160: channel.app.sdk.v1.CommerceReturnAcceptOrderInput
+	(*CommerceExchangeOrderInput)(nil),                             // 161: channel.app.sdk.v1.CommerceExchangeOrderInput
+	(*CommerceGetExchangeableItemsInput)(nil),                      // 162: channel.app.sdk.v1.CommerceGetExchangeableItemsInput
+	(*CommerceGetExchangeableItemsOutput)(nil),                     // 163: channel.app.sdk.v1.CommerceGetExchangeableItemsOutput
+	(*CommerceChangeShippingAddressInput)(nil),                     // 164: channel.app.sdk.v1.CommerceChangeShippingAddressInput
+	(*WmsShippingInfo)(nil),                                        // 165: channel.app.sdk.v1.WmsShippingInfo
+	(*WmsDelivery)(nil),                                            // 166: channel.app.sdk.v1.WmsDelivery
+	(*WmsOrderItem)(nil),                                           // 167: channel.app.sdk.v1.WmsOrderItem
+	(*WmsOrder)(nil),                                               // 168: channel.app.sdk.v1.WmsOrder
+	(*WmsGetOrdersRequest)(nil),                                    // 169: channel.app.sdk.v1.WmsGetOrdersRequest
+	(*WmsGetOrdersResult)(nil),                                     // 170: channel.app.sdk.v1.WmsGetOrdersResult
+	(*WmsGetOrderRequest)(nil),                                     // 171: channel.app.sdk.v1.WmsGetOrderRequest
+	(*WmsGetOrderResult)(nil),                                      // 172: channel.app.sdk.v1.WmsGetOrderResult
+	(*WmsGetShopIDRequest)(nil),                                    // 173: channel.app.sdk.v1.WmsGetShopIDRequest
+	(*WmsGetShopIDResult)(nil),                                     // 174: channel.app.sdk.v1.WmsGetShopIDResult
+	(*WmsGetSupportedCommercesRequest)(nil),                        // 175: channel.app.sdk.v1.WmsGetSupportedCommercesRequest
+	(*WmsGetSupportedCommercesResult)(nil),                         // 176: channel.app.sdk.v1.WmsGetSupportedCommercesResult
+	(*WmsOrderStateRequest)(nil),                                   // 177: channel.app.sdk.v1.WmsOrderStateRequest
+	(*WmsChangeShippingAddressRequest)(nil),                        // 178: channel.app.sdk.v1.WmsChangeShippingAddressRequest
+	(*WmsRestoreOrderRequest)(nil),                                 // 179: channel.app.sdk.v1.WmsRestoreOrderRequest
+	(*WmsSuccessResult)(nil),                                       // 180: channel.app.sdk.v1.WmsSuccessResult
+	(*Buyer)(nil),                                                  // 181: channel.app.sdk.v1.Buyer
+	(*WmsDeliveryV2)(nil),                                          // 182: channel.app.sdk.v1.WmsDeliveryV2
+	(*WmsOrderItemV2)(nil),                                         // 183: channel.app.sdk.v1.WmsOrderItemV2
+	(*WmsOrderV2)(nil),                                             // 184: channel.app.sdk.v1.WmsOrderV2
+	(*WmsIdentifier)(nil),                                          // 185: channel.app.sdk.v1.WmsIdentifier
+	(*WmsOrderGetOrdersRequest)(nil),                               // 186: channel.app.sdk.v1.WmsOrderGetOrdersRequest
+	(*WmsOrderGetOrdersResult)(nil),                                // 187: channel.app.sdk.v1.WmsOrderGetOrdersResult
+	(*WmsOrderActionRequest)(nil),                                  // 188: channel.app.sdk.v1.WmsOrderActionRequest
+	(*WmsOrderChangeShippingAddressInput)(nil),                     // 189: channel.app.sdk.v1.WmsOrderChangeShippingAddressInput
+	(*WmsOrderResultBody)(nil),                                     // 190: channel.app.sdk.v1.WmsOrderResultBody
+	(*WmsOrderActionResult)(nil),                                   // 191: channel.app.sdk.v1.WmsOrderActionResult
+	(*WmsFieldConfig)(nil),                                         // 192: channel.app.sdk.v1.WmsFieldConfig
+	(*WmsOperationOptions)(nil),                                    // 193: channel.app.sdk.v1.WmsOperationOptions
+	(*WmsAppCapabilities)(nil),                                     // 194: channel.app.sdk.v1.WmsAppCapabilities
+	(*WmsGetAppConfigsInput)(nil),                                  // 195: channel.app.sdk.v1.WmsGetAppConfigsInput
+	(*WmsGetAppConfigsOutput)(nil),                                 // 196: channel.app.sdk.v1.WmsGetAppConfigsOutput
+	(*MessagingOnMediumMessageCreatedInput)(nil),                   // 197: channel.app.sdk.v1.MessagingOnMediumMessageCreatedInput
+	(*MessagingSendResult)(nil),                                    // 198: channel.app.sdk.v1.MessagingSendResult
+	(*MessagingOnMediumMessageCreatedOutput)(nil),                  // 199: channel.app.sdk.v1.MessagingOnMediumMessageCreatedOutput
+	(*MessagingInboxOnMediumUserChatClosedInput)(nil),              // 200: channel.app.sdk.v1.MessagingInboxOnMediumUserChatClosedInput
+	(*MessagingInboxOnMediumUserChatClosedOutput)(nil),             // 201: channel.app.sdk.v1.MessagingInboxOnMediumUserChatClosedOutput
+	(*MessagingInboxGetWritingTypesInput)(nil),                     // 202: channel.app.sdk.v1.MessagingInboxGetWritingTypesInput
+	(*MessagingInboxGetWritingTypesOutput)(nil),                    // 203: channel.app.sdk.v1.MessagingInboxGetWritingTypesOutput
+	(*MessagingInboxGetCustomEditorWamInput)(nil),                  // 204: channel.app.sdk.v1.MessagingInboxGetCustomEditorWamInput
+	(*MessagingInboxGetMediumTopicSelectorWamInput)(nil),           // 205: channel.app.sdk.v1.MessagingInboxGetMediumTopicSelectorWamInput
+	(*MessagingInboxGetMediumMessageErrorReasonInput)(nil),         // 206: channel.app.sdk.v1.MessagingInboxGetMediumMessageErrorReasonInput
+	(*MessagingInboxGetMediumMessageErrorReasonOutput)(nil),        // 207: channel.app.sdk.v1.MessagingInboxGetMediumMessageErrorReasonOutput
+	(*MessagingPrebuiltGetWritingTypesInput)(nil),                  // 208: channel.app.sdk.v1.MessagingPrebuiltGetWritingTypesInput
+	(*MessagingPrebuiltGetWritingTypesOutput)(nil),                 // 209: channel.app.sdk.v1.MessagingPrebuiltGetWritingTypesOutput
+	(*MessagingPrebuiltValidateEntityInput)(nil),                   // 210: channel.app.sdk.v1.MessagingPrebuiltValidateEntityInput
+	(*MessagingPrebuiltValidateEntityOutput)(nil),                  // 211: channel.app.sdk.v1.MessagingPrebuiltValidateEntityOutput
+	(*MessagingPrebuiltGetCustomEditorWamInput)(nil),               // 212: channel.app.sdk.v1.MessagingPrebuiltGetCustomEditorWamInput
+	(*MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput)(nil), // 213: channel.app.sdk.v1.MessagingPrebuiltGetMediumTopicBuilderSelectorWamInput
+	(*MessagingPrebuiltBuildMediumTopicsInput)(nil),                // 214: channel.app.sdk.v1.MessagingPrebuiltBuildMediumTopicsInput
+	(*MessagingPrebuiltBuildMediumTopicsOutput)(nil),               // 215: channel.app.sdk.v1.MessagingPrebuiltBuildMediumTopicsOutput
+	(*MessagingPrebuiltGetDefaultOptionsInput)(nil),                // 216: channel.app.sdk.v1.MessagingPrebuiltGetDefaultOptionsInput
+	(*MessagingDefaultOptions)(nil),                                // 217: channel.app.sdk.v1.MessagingDefaultOptions
+	(*MessagingPrebuiltGetDefaultOptionsOutput)(nil),               // 218: channel.app.sdk.v1.MessagingPrebuiltGetDefaultOptionsOutput
+	(*AlfTaskMemoryDefinition)(nil),                                // 219: channel.app.sdk.v1.AlfTaskMemoryDefinition
+	(*AlfTaskWorkflowNode)(nil),                                    // 220: channel.app.sdk.v1.AlfTaskWorkflowNode
+	(*AlfTaskPredefinedTask)(nil),                                  // 221: channel.app.sdk.v1.AlfTaskPredefinedTask
+	(*AlfTaskGetTasksInput)(nil),                                   // 222: channel.app.sdk.v1.AlfTaskGetTasksInput
+	(*AlfTaskGetTasksOutput)(nil),                                  // 223: channel.app.sdk.v1.AlfTaskGetTasksOutput
+	(*OAuthTokenRequestMapping)(nil),                               // 224: channel.app.sdk.v1.OAuthTokenRequestMapping
+	(*OAuthTokenResponseMapping)(nil),                              // 225: channel.app.sdk.v1.OAuthTokenResponseMapping
+	nil,                                                            // 226: channel.app.sdk.v1.ConfigLocalizedText.FieldLabelsEntry
+	nil,                                                            // 227: channel.app.sdk.v1.ConfigChoice.I18nMapEntry
+	nil,                                                            // 228: channel.app.sdk.v1.ConfigInlineLink.I18nMapEntry
+	nil,                                                            // 229: channel.app.sdk.v1.ConfigValidationNotice.I18nMapEntry
+	nil,                                                            // 230: channel.app.sdk.v1.ConfigOverview.I18nMapEntry
+	nil,                                                            // 231: channel.app.sdk.v1.ConfigDefaultSelector.I18nMapEntry
+	nil,                                                            // 232: channel.app.sdk.v1.ConfigSettings.I18nMapEntry
+	nil,                                                            // 233: channel.app.sdk.v1.ConfigField.I18nMapEntry
+	nil,                                                            // 234: channel.app.sdk.v1.ConfigBlock.I18nMapEntry
+	nil,                                                            // 235: channel.app.sdk.v1.ConfigGetConfigSchemaOutput.I18nMapEntry
+	nil,                                                            // 236: channel.app.sdk.v1.ConfigValidationError.I18nMapEntry
+	nil,                                                            // 237: channel.app.sdk.v1.OAuthProvider.AdditionalParamsEntry
+	nil,                                                            // 238: channel.app.sdk.v1.OAuthProvider.I18nMapEntry
+	nil,                                                            // 239: channel.app.sdk.v1.CommandChoice.NameDescI18nMapEntry
+	nil,                                                            // 240: channel.app.sdk.v1.CommandParamDefinition.NameDescI18nMapEntry
+	nil,                                                            // 241: channel.app.sdk.v1.CommandConfig.ButtonNameI18nMapEntry
+	nil,                                                            // 242: channel.app.sdk.v1.CommandConfig.NameDescI18nMapEntry
+	nil,                                                            // 243: channel.app.sdk.v1.CommandTrigger.AttributesEntry
+	nil,                                                            // 244: channel.app.sdk.v1.WidgetConfig.DefaultNameDescI18nMapEntry
+	nil,                                                            // 245: channel.app.sdk.v1.CustomTabConfig.NameI18nMapEntry
+	nil,                                                            // 246: channel.app.sdk.v1.StoreGetProfileOutput.I18nMapEntry
+	nil,                                                            // 247: channel.app.sdk.v1.OrderOperationOptions.FieldConfigsEntry
+	nil,                                                            // 248: channel.app.sdk.v1.WmsOperationOptions.FieldConfigsEntry
+	(*structpb.Struct)(nil),                                        // 249: google.protobuf.Struct
+	(*structpb.Value)(nil),                                         // 250: google.protobuf.Value
+	(*ChannelUserChat)(nil),                                        // 251: channel.app.sdk.v1.ChannelUserChat
+	(*ChannelMessage)(nil),                                         // 252: channel.app.sdk.v1.ChannelMessage
+	(*WritingTypeMap)(nil),                                         // 253: channel.app.sdk.v1.WritingTypeMap
+	(*ChannelUser)(nil),                                            // 254: channel.app.sdk.v1.ChannelUser
+	(*PrebuiltMessage)(nil),                                        // 255: channel.app.sdk.v1.PrebuiltMessage
+	(*UnavailableReason)(nil),                                      // 256: channel.app.sdk.v1.UnavailableReason
+	(*MediumProfile)(nil),                                          // 257: channel.app.sdk.v1.MediumProfile
 }
 var file_channel_app_sdk_v1_extension_proto_depIdxs = []int32{
-	232, // 0: channel.app.sdk.v1.ExtensionActionResult.attributes:type_name -> google.protobuf.Struct
+	249, // 0: channel.app.sdk.v1.ExtensionActionResult.attributes:type_name -> google.protobuf.Struct
 	3,   // 1: channel.app.sdk.v1.ApiKeyGetAuthConfigOutput.fields:type_name -> channel.app.sdk.v1.ApiKeyField
 	7,   // 2: channel.app.sdk.v1.ApiKeyValidateCredentialsOutput.user_info:type_name -> channel.app.sdk.v1.ApiKeyUserInfo
-	233, // 3: channel.app.sdk.v1.ConfigCondition.value:type_name -> google.protobuf.Value
-	233, // 4: channel.app.sdk.v1.ConfigChoice.value:type_name -> google.protobuf.Value
-	14,  // 5: channel.app.sdk.v1.ConfigOAuth.additional_params:type_name -> channel.app.sdk.v1.ConfigOAuthAdditionalParam
-	232, // 6: channel.app.sdk.v1.ConfigChoicesSource.params:type_name -> google.protobuf.Struct
-	233, // 7: channel.app.sdk.v1.ConfigDraftResolutionParams.changed_value:type_name -> google.protobuf.Value
-	232, // 8: channel.app.sdk.v1.ConfigDraftResolutionParams.values:type_name -> google.protobuf.Struct
-	11,  // 9: channel.app.sdk.v1.ConfigField.helper_links:type_name -> channel.app.sdk.v1.ConfigInlineLink
-	18,  // 10: channel.app.sdk.v1.ConfigField.media:type_name -> channel.app.sdk.v1.ConfigMediaOptions
-	19,  // 11: channel.app.sdk.v1.ConfigField.resolves_to:type_name -> channel.app.sdk.v1.ConfigResolvedValueTarget
-	9,   // 12: channel.app.sdk.v1.ConfigField.visible_when:type_name -> channel.app.sdk.v1.ConfigCondition
-	9,   // 13: channel.app.sdk.v1.ConfigField.enabled_when:type_name -> channel.app.sdk.v1.ConfigCondition
-	233, // 14: channel.app.sdk.v1.ConfigField.default_value:type_name -> google.protobuf.Value
-	16,  // 15: channel.app.sdk.v1.ConfigField.choices_source:type_name -> channel.app.sdk.v1.ConfigChoicesSource
-	10,  // 16: channel.app.sdk.v1.ConfigField.choices:type_name -> channel.app.sdk.v1.ConfigChoice
-	10,  // 17: channel.app.sdk.v1.ConfigField.country_code_choices:type_name -> channel.app.sdk.v1.ConfigChoice
-	232, // 18: channel.app.sdk.v1.ConfigField.field_labels:type_name -> google.protobuf.Struct
-	9,   // 19: channel.app.sdk.v1.ConfigBlock.visible_when:type_name -> channel.app.sdk.v1.ConfigCondition
-	11,  // 20: channel.app.sdk.v1.ConfigBlock.helper_links:type_name -> channel.app.sdk.v1.ConfigInlineLink
-	22,  // 21: channel.app.sdk.v1.ConfigBlock.fields:type_name -> channel.app.sdk.v1.ConfigField
-	232, // 22: channel.app.sdk.v1.ConfigBlock.props:type_name -> google.protobuf.Struct
-	18,  // 23: channel.app.sdk.v1.ConfigBlock.media:type_name -> channel.app.sdk.v1.ConfigMediaOptions
-	19,  // 24: channel.app.sdk.v1.ConfigBlock.resolves_to:type_name -> channel.app.sdk.v1.ConfigResolvedValueTarget
-	9,   // 25: channel.app.sdk.v1.ConfigBlock.enabled_when:type_name -> channel.app.sdk.v1.ConfigCondition
-	233, // 26: channel.app.sdk.v1.ConfigBlock.default_value:type_name -> google.protobuf.Value
-	16,  // 27: channel.app.sdk.v1.ConfigBlock.choices_source:type_name -> channel.app.sdk.v1.ConfigChoicesSource
-	10,  // 28: channel.app.sdk.v1.ConfigBlock.choices:type_name -> channel.app.sdk.v1.ConfigChoice
-	10,  // 29: channel.app.sdk.v1.ConfigBlock.country_code_choices:type_name -> channel.app.sdk.v1.ConfigChoice
-	232, // 30: channel.app.sdk.v1.ConfigBlock.field_labels:type_name -> google.protobuf.Struct
-	15,  // 31: channel.app.sdk.v1.ConfigGetConfigSchemaOutput.oauth:type_name -> channel.app.sdk.v1.ConfigOAuth
-	13,  // 32: channel.app.sdk.v1.ConfigGetConfigSchemaOutput.hooks:type_name -> channel.app.sdk.v1.ConfigHooks
-	23,  // 33: channel.app.sdk.v1.ConfigGetConfigSchemaOutput.blocks:type_name -> channel.app.sdk.v1.ConfigBlock
-	26,  // 34: channel.app.sdk.v1.ConfigValidateStoredConfigOutput.errors:type_name -> channel.app.sdk.v1.ConfigValidationError
-	12,  // 35: channel.app.sdk.v1.ConfigValidateStoredConfigOutput.notices:type_name -> channel.app.sdk.v1.ConfigValidationNotice
-	10,  // 36: channel.app.sdk.v1.ConfigChoiceList.choices:type_name -> channel.app.sdk.v1.ConfigChoice
-	232, // 37: channel.app.sdk.v1.ConfigDraftResolutionOutput.values_patch:type_name -> google.protobuf.Struct
-	232, // 38: channel.app.sdk.v1.ConfigDraftResolutionOutput.choices_patch:type_name -> google.protobuf.Struct
-	221, // 39: channel.app.sdk.v1.OAuthProvider.additional_params:type_name -> channel.app.sdk.v1.OAuthProvider.AdditionalParamsEntry
-	219, // 40: channel.app.sdk.v1.OAuthProvider.token_request:type_name -> channel.app.sdk.v1.OAuthTokenRequestMapping
-	220, // 41: channel.app.sdk.v1.OAuthProvider.token_response:type_name -> channel.app.sdk.v1.OAuthTokenResponseMapping
-	31,  // 42: channel.app.sdk.v1.OAuthConfig.oauth_provider:type_name -> channel.app.sdk.v1.OAuthProvider
-	39,  // 43: channel.app.sdk.v1.CalendarBooking.attendee:type_name -> channel.app.sdk.v1.CalendarAttendee
-	36,  // 44: channel.app.sdk.v1.CalendarListCalendarsOutput.calendars:type_name -> channel.app.sdk.v1.Calendar
-	37,  // 45: channel.app.sdk.v1.CalendarListEventTypesOutput.event_types:type_name -> channel.app.sdk.v1.CalendarEventType
-	38,  // 46: channel.app.sdk.v1.CalendarGetAvailabilityOutput.slots:type_name -> channel.app.sdk.v1.CalendarTimeSlot
-	39,  // 47: channel.app.sdk.v1.CalendarCreateBookingInput.attendee:type_name -> channel.app.sdk.v1.CalendarAttendee
-	40,  // 48: channel.app.sdk.v1.CalendarCancelBookingOutput.booking:type_name -> channel.app.sdk.v1.CalendarBooking
-	233, // 49: channel.app.sdk.v1.CommandChoice.value:type_name -> google.protobuf.Value
-	222, // 50: channel.app.sdk.v1.CommandChoice.name_desc_i18n_map:type_name -> channel.app.sdk.v1.CommandChoice.NameDescI18nMapEntry
-	54,  // 51: channel.app.sdk.v1.CommandParamDefinition.choices:type_name -> channel.app.sdk.v1.CommandChoice
-	223, // 52: channel.app.sdk.v1.CommandParamDefinition.name_desc_i18n_map:type_name -> channel.app.sdk.v1.CommandParamDefinition.NameDescI18nMapEntry
-	224, // 53: channel.app.sdk.v1.CommandConfig.button_name_i18n_map:type_name -> channel.app.sdk.v1.CommandConfig.ButtonNameI18nMapEntry
-	225, // 54: channel.app.sdk.v1.CommandConfig.name_desc_i18n_map:type_name -> channel.app.sdk.v1.CommandConfig.NameDescI18nMapEntry
-	55,  // 55: channel.app.sdk.v1.CommandConfig.param_definitions:type_name -> channel.app.sdk.v1.CommandParamDefinition
-	56,  // 56: channel.app.sdk.v1.CommandGetCommandsOutput.commands:type_name -> channel.app.sdk.v1.CommandConfig
-	226, // 57: channel.app.sdk.v1.CommandTrigger.attributes:type_name -> channel.app.sdk.v1.CommandTrigger.AttributesEntry
-	233, // 58: channel.app.sdk.v1.CommandAutoCompleteArgument.value:type_name -> google.protobuf.Value
-	1,   // 59: channel.app.sdk.v1.CommandGetSuggestionsInput.chat:type_name -> channel.app.sdk.v1.ExtensionChat
-	60,  // 60: channel.app.sdk.v1.CommandGetSuggestionsInput.input:type_name -> channel.app.sdk.v1.CommandAutoCompleteArgument
-	54,  // 61: channel.app.sdk.v1.CommandGetSuggestionsOutput.choices:type_name -> channel.app.sdk.v1.CommandChoice
-	1,   // 62: channel.app.sdk.v1.CommandExecuteInput.chat:type_name -> channel.app.sdk.v1.ExtensionChat
-	59,  // 63: channel.app.sdk.v1.CommandExecuteInput.trigger:type_name -> channel.app.sdk.v1.CommandTrigger
-	232, // 64: channel.app.sdk.v1.CommandExecuteInput.input:type_name -> google.protobuf.Struct
-	232, // 65: channel.app.sdk.v1.CommandResult.attributes:type_name -> google.protobuf.Struct
-	227, // 66: channel.app.sdk.v1.WidgetConfig.default_name_desc_i18n_map:type_name -> channel.app.sdk.v1.WidgetConfig.DefaultNameDescI18nMapEntry
-	66,  // 67: channel.app.sdk.v1.WidgetGetWidgetsOutput.widgets:type_name -> channel.app.sdk.v1.WidgetConfig
-	1,   // 68: channel.app.sdk.v1.WidgetActionInput.chat:type_name -> channel.app.sdk.v1.ExtensionChat
-	232, // 69: channel.app.sdk.v1.WidgetActionResult.attributes:type_name -> google.protobuf.Struct
-	228, // 70: channel.app.sdk.v1.CustomTabConfig.name_i18n_map:type_name -> channel.app.sdk.v1.CustomTabConfig.NameI18nMapEntry
-	72,  // 71: channel.app.sdk.v1.CustomTabGetCustomTabsOutput.custom_tabs:type_name -> channel.app.sdk.v1.CustomTabConfig
-	233, // 72: channel.app.sdk.v1.CustomTabActionInput.wam_args:type_name -> google.protobuf.Value
-	232, // 73: channel.app.sdk.v1.CustomTabActionResult.attributes:type_name -> google.protobuf.Struct
-	77,  // 74: channel.app.sdk.v1.HookGetHooksOutput.hooks:type_name -> channel.app.sdk.v1.HookConfig
-	80,  // 75: channel.app.sdk.v1.PollingGetPollersOutput.pollers:type_name -> channel.app.sdk.v1.PollingPoller
-	86,  // 76: channel.app.sdk.v1.MailRelayMail.common_headers:type_name -> channel.app.sdk.v1.MailRelayCommonHeaders
-	85,  // 77: channel.app.sdk.v1.MailRelayMail.headers:type_name -> channel.app.sdk.v1.MailRelayHeader
-	87,  // 78: channel.app.sdk.v1.MailRelayInboundInput.mail:type_name -> channel.app.sdk.v1.MailRelayMail
-	88,  // 79: channel.app.sdk.v1.MailRelayInboundInput.receipt:type_name -> channel.app.sdk.v1.MailRelayReceipt
-	91,  // 80: channel.app.sdk.v1.StoreProfileLocalizedContent.images:type_name -> channel.app.sdk.v1.StoreProfileImage
-	92,  // 81: channel.app.sdk.v1.StoreProfileLocalizedContent.intro:type_name -> channel.app.sdk.v1.StoreProfileIntro
-	93,  // 82: channel.app.sdk.v1.StoreProfileLocalizedContent.faqs:type_name -> channel.app.sdk.v1.StoreFaq
-	229, // 83: channel.app.sdk.v1.StoreGetProfileOutput.i18n_map:type_name -> channel.app.sdk.v1.StoreGetProfileOutput.I18nMapEntry
-	232, // 84: channel.app.sdk.v1.NotebookCell.definition:type_name -> google.protobuf.Struct
-	232, // 85: channel.app.sdk.v1.NotebookCell.presentation:type_name -> google.protobuf.Struct
-	98,  // 86: channel.app.sdk.v1.NotebookLayoutRow.columns:type_name -> channel.app.sdk.v1.NotebookLayoutColumn
-	99,  // 87: channel.app.sdk.v1.NotebookTab.layout:type_name -> channel.app.sdk.v1.NotebookLayoutRow
-	97,  // 88: channel.app.sdk.v1.NotebookPayload.cells:type_name -> channel.app.sdk.v1.NotebookCell
-	100, // 89: channel.app.sdk.v1.NotebookPayload.tabs:type_name -> channel.app.sdk.v1.NotebookTab
-	101, // 90: channel.app.sdk.v1.AppNotebook.notebook:type_name -> channel.app.sdk.v1.NotebookPayload
-	102, // 91: channel.app.sdk.v1.NotebookGetNotebooksOutput.notebooks:type_name -> channel.app.sdk.v1.AppNotebook
-	106, // 92: channel.app.sdk.v1.DataSourceTableDefinition.table:type_name -> channel.app.sdk.v1.DataSourceTable
-	107, // 93: channel.app.sdk.v1.DataSourceTableDefinition.columns:type_name -> channel.app.sdk.v1.DataSourceColumn
-	106, // 94: channel.app.sdk.v1.DataSourceTableListing.table:type_name -> channel.app.sdk.v1.DataSourceTable
-	105, // 95: channel.app.sdk.v1.DataSourceListCatalogsOutput.catalogs:type_name -> channel.app.sdk.v1.DataSourceCatalog
-	109, // 96: channel.app.sdk.v1.DataSourceListTablesOutput.tables:type_name -> channel.app.sdk.v1.DataSourceTableListing
-	108, // 97: channel.app.sdk.v1.DataSourceDescribeTableOutput.definition:type_name -> channel.app.sdk.v1.DataSourceTableDefinition
-	232, // 98: channel.app.sdk.v1.DataSourceDescribeTableOutput.sample:type_name -> google.protobuf.Struct
-	120, // 99: channel.app.sdk.v1.OrderItem.claimability:type_name -> channel.app.sdk.v1.OrderClaimability
-	122, // 100: channel.app.sdk.v1.Order.items:type_name -> channel.app.sdk.v1.OrderItem
-	123, // 101: channel.app.sdk.v1.Order.payment:type_name -> channel.app.sdk.v1.OrderPayment
-	124, // 102: channel.app.sdk.v1.Order.fulfillments:type_name -> channel.app.sdk.v1.OrderFulfillment
-	116, // 103: channel.app.sdk.v1.Order.shipping_address:type_name -> channel.app.sdk.v1.OrderAddress
-	121, // 104: channel.app.sdk.v1.Order.claims:type_name -> channel.app.sdk.v1.OrderClaim
-	126, // 105: channel.app.sdk.v1.OrderFieldConfig.allowed_values:type_name -> channel.app.sdk.v1.OrderAllowedValue
-	230, // 106: channel.app.sdk.v1.OrderOperationOptions.field_configs:type_name -> channel.app.sdk.v1.OrderOperationOptions.FieldConfigsEntry
-	128, // 107: channel.app.sdk.v1.OrderAppCapabilities.get_orders_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
-	128, // 108: channel.app.sdk.v1.OrderAppCapabilities.cancel_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
-	128, // 109: channel.app.sdk.v1.OrderAppCapabilities.return_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
-	128, // 110: channel.app.sdk.v1.OrderAppCapabilities.exchange_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
-	128, // 111: channel.app.sdk.v1.OrderAppCapabilities.change_address_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
-	125, // 112: channel.app.sdk.v1.OrderGetOrdersOutput.orders:type_name -> channel.app.sdk.v1.Order
-	129, // 113: channel.app.sdk.v1.OrderGetAppConfigsOutput.app_capabilities:type_name -> channel.app.sdk.v1.OrderAppCapabilities
-	134, // 114: channel.app.sdk.v1.OrderCancelOrderInput.cancel_items:type_name -> channel.app.sdk.v1.OrderClaimItem
-	119, // 115: channel.app.sdk.v1.OrderCancelOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
-	117, // 116: channel.app.sdk.v1.OrderCancelOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
-	134, // 117: channel.app.sdk.v1.OrderReturnOrderInput.return_items:type_name -> channel.app.sdk.v1.OrderClaimItem
-	119, // 118: channel.app.sdk.v1.OrderReturnOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
-	116, // 119: channel.app.sdk.v1.OrderReturnOrderInput.pickup_address:type_name -> channel.app.sdk.v1.OrderAddress
-	117, // 120: channel.app.sdk.v1.OrderReturnOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
-	118, // 121: channel.app.sdk.v1.OrderReturnOrderInput.defect_info:type_name -> channel.app.sdk.v1.OrderDefectInfo
-	134, // 122: channel.app.sdk.v1.OrderExchangeOrderInput.before_exchange_items:type_name -> channel.app.sdk.v1.OrderClaimItem
-	137, // 123: channel.app.sdk.v1.OrderExchangeOrderInput.after_exchange_items:type_name -> channel.app.sdk.v1.OrderExchangeItem
-	119, // 124: channel.app.sdk.v1.OrderExchangeOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
-	116, // 125: channel.app.sdk.v1.OrderExchangeOrderInput.pickup_address:type_name -> channel.app.sdk.v1.OrderAddress
-	117, // 126: channel.app.sdk.v1.OrderExchangeOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
-	118, // 127: channel.app.sdk.v1.OrderExchangeOrderInput.defect_info:type_name -> channel.app.sdk.v1.OrderDefectInfo
-	134, // 128: channel.app.sdk.v1.OrderGetExchangeableItemsInput.items:type_name -> channel.app.sdk.v1.OrderClaimItem
-	122, // 129: channel.app.sdk.v1.OrderGetExchangeableItemsOutput.items:type_name -> channel.app.sdk.v1.OrderItem
-	116, // 130: channel.app.sdk.v1.OrderChangeShippingAddressInput.new_address:type_name -> channel.app.sdk.v1.OrderAddress
-	120, // 131: channel.app.sdk.v1.CommerceOrderItem.claimability:type_name -> channel.app.sdk.v1.OrderClaimability
-	176, // 132: channel.app.sdk.v1.CommerceOrder.buyer:type_name -> channel.app.sdk.v1.Buyer
-	144, // 133: channel.app.sdk.v1.CommerceOrder.items:type_name -> channel.app.sdk.v1.CommerceOrderItem
-	123, // 134: channel.app.sdk.v1.CommerceOrder.payment:type_name -> channel.app.sdk.v1.OrderPayment
-	124, // 135: channel.app.sdk.v1.CommerceOrder.fulfillments:type_name -> channel.app.sdk.v1.OrderFulfillment
-	116, // 136: channel.app.sdk.v1.CommerceOrder.shipping_address:type_name -> channel.app.sdk.v1.OrderAddress
-	121, // 137: channel.app.sdk.v1.CommerceOrder.claims:type_name -> channel.app.sdk.v1.OrderClaim
-	143, // 138: channel.app.sdk.v1.CommerceGetOrdersInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
-	233, // 139: channel.app.sdk.v1.CommerceGetOrdersInput.search_filter:type_name -> google.protobuf.Value
-	145, // 140: channel.app.sdk.v1.CommerceGetOrdersOutput.orders:type_name -> channel.app.sdk.v1.CommerceOrder
-	128, // 141: channel.app.sdk.v1.CommerceAppCapabilities.get_orders_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
-	128, // 142: channel.app.sdk.v1.CommerceAppCapabilities.cancel_request_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
-	128, // 143: channel.app.sdk.v1.CommerceAppCapabilities.return_request_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
-	128, // 144: channel.app.sdk.v1.CommerceAppCapabilities.return_accept_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
-	128, // 145: channel.app.sdk.v1.CommerceAppCapabilities.exchange_request_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
-	128, // 146: channel.app.sdk.v1.CommerceAppCapabilities.change_shipping_address_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
-	148, // 147: channel.app.sdk.v1.CommerceGetAppConfigsOutput.app_capabilities:type_name -> channel.app.sdk.v1.CommerceAppCapabilities
-	151, // 148: channel.app.sdk.v1.CommerceActionResult.result:type_name -> channel.app.sdk.v1.CommerceResultBody
-	143, // 149: channel.app.sdk.v1.CommerceCancelOrderInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
-	134, // 150: channel.app.sdk.v1.CommerceCancelOrderInput.cancel_items:type_name -> channel.app.sdk.v1.OrderClaimItem
-	119, // 151: channel.app.sdk.v1.CommerceCancelOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
-	117, // 152: channel.app.sdk.v1.CommerceCancelOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
-	143, // 153: channel.app.sdk.v1.CommerceReturnOrderInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
-	134, // 154: channel.app.sdk.v1.CommerceReturnOrderInput.return_items:type_name -> channel.app.sdk.v1.OrderClaimItem
-	119, // 155: channel.app.sdk.v1.CommerceReturnOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
-	116, // 156: channel.app.sdk.v1.CommerceReturnOrderInput.pickup_address:type_name -> channel.app.sdk.v1.OrderAddress
-	117, // 157: channel.app.sdk.v1.CommerceReturnOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
-	118, // 158: channel.app.sdk.v1.CommerceReturnOrderInput.defect_info:type_name -> channel.app.sdk.v1.OrderDefectInfo
-	143, // 159: channel.app.sdk.v1.CommerceReturnAcceptOrderInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
-	134, // 160: channel.app.sdk.v1.CommerceReturnAcceptOrderInput.return_items:type_name -> channel.app.sdk.v1.OrderClaimItem
-	119, // 161: channel.app.sdk.v1.CommerceReturnAcceptOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
-	117, // 162: channel.app.sdk.v1.CommerceReturnAcceptOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
-	143, // 163: channel.app.sdk.v1.CommerceExchangeOrderInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
-	134, // 164: channel.app.sdk.v1.CommerceExchangeOrderInput.before_exchange_items:type_name -> channel.app.sdk.v1.OrderClaimItem
-	137, // 165: channel.app.sdk.v1.CommerceExchangeOrderInput.after_exchange_items:type_name -> channel.app.sdk.v1.OrderExchangeItem
-	119, // 166: channel.app.sdk.v1.CommerceExchangeOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
-	116, // 167: channel.app.sdk.v1.CommerceExchangeOrderInput.pickup_address:type_name -> channel.app.sdk.v1.OrderAddress
-	117, // 168: channel.app.sdk.v1.CommerceExchangeOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
-	118, // 169: channel.app.sdk.v1.CommerceExchangeOrderInput.defect_info:type_name -> channel.app.sdk.v1.OrderDefectInfo
-	143, // 170: channel.app.sdk.v1.CommerceGetExchangeableItemsInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
-	134, // 171: channel.app.sdk.v1.CommerceGetExchangeableItemsInput.items:type_name -> channel.app.sdk.v1.OrderClaimItem
-	144, // 172: channel.app.sdk.v1.CommerceGetExchangeableItemsOutput.items:type_name -> channel.app.sdk.v1.CommerceOrderItem
-	143, // 173: channel.app.sdk.v1.CommerceChangeShippingAddressInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
-	116, // 174: channel.app.sdk.v1.CommerceChangeShippingAddressInput.new_address:type_name -> channel.app.sdk.v1.OrderAddress
-	160, // 175: channel.app.sdk.v1.WmsOrderItem.shipping_info:type_name -> channel.app.sdk.v1.WmsShippingInfo
-	162, // 176: channel.app.sdk.v1.WmsOrder.items:type_name -> channel.app.sdk.v1.WmsOrderItem
-	161, // 177: channel.app.sdk.v1.WmsOrder.deliveries:type_name -> channel.app.sdk.v1.WmsDelivery
-	163, // 178: channel.app.sdk.v1.WmsGetOrdersResult.orders:type_name -> channel.app.sdk.v1.WmsOrder
-	163, // 179: channel.app.sdk.v1.WmsGetOrderResult.order:type_name -> channel.app.sdk.v1.WmsOrder
-	233, // 180: channel.app.sdk.v1.WmsGetShopIDResult.shop_id:type_name -> google.protobuf.Value
-	176, // 181: channel.app.sdk.v1.WmsOrderV2.buyer:type_name -> channel.app.sdk.v1.Buyer
-	178, // 182: channel.app.sdk.v1.WmsOrderV2.items:type_name -> channel.app.sdk.v1.WmsOrderItemV2
-	177, // 183: channel.app.sdk.v1.WmsOrderV2.deliveries:type_name -> channel.app.sdk.v1.WmsDeliveryV2
-	180, // 184: channel.app.sdk.v1.WmsOrderGetOrdersRequest.identifier:type_name -> channel.app.sdk.v1.WmsIdentifier
-	233, // 185: channel.app.sdk.v1.WmsOrderGetOrdersRequest.search_filter:type_name -> google.protobuf.Value
-	179, // 186: channel.app.sdk.v1.WmsOrderGetOrdersResult.orders:type_name -> channel.app.sdk.v1.WmsOrderV2
-	180, // 187: channel.app.sdk.v1.WmsOrderActionRequest.identifier:type_name -> channel.app.sdk.v1.WmsIdentifier
-	180, // 188: channel.app.sdk.v1.WmsOrderChangeShippingAddressInput.identifier:type_name -> channel.app.sdk.v1.WmsIdentifier
-	116, // 189: channel.app.sdk.v1.WmsOrderChangeShippingAddressInput.new_address:type_name -> channel.app.sdk.v1.OrderAddress
-	185, // 190: channel.app.sdk.v1.WmsOrderActionResult.result:type_name -> channel.app.sdk.v1.WmsOrderResultBody
-	126, // 191: channel.app.sdk.v1.WmsFieldConfig.allowed_values:type_name -> channel.app.sdk.v1.OrderAllowedValue
-	231, // 192: channel.app.sdk.v1.WmsOperationOptions.field_configs:type_name -> channel.app.sdk.v1.WmsOperationOptions.FieldConfigsEntry
-	188, // 193: channel.app.sdk.v1.WmsAppCapabilities.get_orders_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
-	188, // 194: channel.app.sdk.v1.WmsAppCapabilities.cancel_request_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
-	188, // 195: channel.app.sdk.v1.WmsAppCapabilities.cancel_restore_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
-	188, // 196: channel.app.sdk.v1.WmsAppCapabilities.return_request_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
-	188, // 197: channel.app.sdk.v1.WmsAppCapabilities.return_restore_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
-	188, // 198: channel.app.sdk.v1.WmsAppCapabilities.exchange_request_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
-	188, // 199: channel.app.sdk.v1.WmsAppCapabilities.exchange_restore_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
-	188, // 200: channel.app.sdk.v1.WmsAppCapabilities.change_shipping_address_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
-	189, // 201: channel.app.sdk.v1.WmsGetAppConfigsOutput.app_capabilities:type_name -> channel.app.sdk.v1.WmsAppCapabilities
-	234, // 202: channel.app.sdk.v1.MessagingOnMediumMessageCreatedInput.user_chat:type_name -> channel.app.sdk.v1.ChannelUserChat
-	235, // 203: channel.app.sdk.v1.MessagingOnMediumMessageCreatedInput.message:type_name -> channel.app.sdk.v1.ChannelMessage
-	193, // 204: channel.app.sdk.v1.MessagingOnMediumMessageCreatedOutput.send_result:type_name -> channel.app.sdk.v1.MessagingSendResult
-	234, // 205: channel.app.sdk.v1.MessagingInboxOnMediumUserChatClosedInput.user_chat:type_name -> channel.app.sdk.v1.ChannelUserChat
-	234, // 206: channel.app.sdk.v1.MessagingInboxGetWritingTypesInput.user_chat:type_name -> channel.app.sdk.v1.ChannelUserChat
-	236, // 207: channel.app.sdk.v1.MessagingInboxGetWritingTypesOutput.writing_type_map:type_name -> channel.app.sdk.v1.WritingTypeMap
-	237, // 208: channel.app.sdk.v1.MessagingInboxGetCustomEditorWamInput.user:type_name -> channel.app.sdk.v1.ChannelUser
-	234, // 209: channel.app.sdk.v1.MessagingInboxGetCustomEditorWamInput.user_chat:type_name -> channel.app.sdk.v1.ChannelUserChat
-	235, // 210: channel.app.sdk.v1.MessagingInboxGetCustomEditorWamInput.message:type_name -> channel.app.sdk.v1.ChannelMessage
-	237, // 211: channel.app.sdk.v1.MessagingInboxGetMediumTopicSelectorWamInput.user:type_name -> channel.app.sdk.v1.ChannelUser
-	234, // 212: channel.app.sdk.v1.MessagingInboxGetMediumMessageErrorReasonInput.user_chat:type_name -> channel.app.sdk.v1.ChannelUserChat
-	235, // 213: channel.app.sdk.v1.MessagingInboxGetMediumMessageErrorReasonInput.message:type_name -> channel.app.sdk.v1.ChannelMessage
-	236, // 214: channel.app.sdk.v1.MessagingPrebuiltGetWritingTypesOutput.writing_type_map:type_name -> channel.app.sdk.v1.WritingTypeMap
-	238, // 215: channel.app.sdk.v1.MessagingPrebuiltValidateEntityInput.message:type_name -> channel.app.sdk.v1.PrebuiltMessage
-	239, // 216: channel.app.sdk.v1.MessagingPrebuiltValidateEntityOutput.reasons:type_name -> channel.app.sdk.v1.UnavailableReason
-	238, // 217: channel.app.sdk.v1.MessagingPrebuiltGetCustomEditorWamInput.message:type_name -> channel.app.sdk.v1.PrebuiltMessage
-	232, // 218: channel.app.sdk.v1.MessagingPrebuiltGetCustomEditorWamInput.trigger_event_name_i18n_map:type_name -> google.protobuf.Struct
-	237, // 219: channel.app.sdk.v1.MessagingPrebuiltBuildMediumTopicsInput.user:type_name -> channel.app.sdk.v1.ChannelUser
-	240, // 220: channel.app.sdk.v1.MessagingPrebuiltBuildMediumTopicsOutput.medium_profile:type_name -> channel.app.sdk.v1.MediumProfile
-	232, // 221: channel.app.sdk.v1.MessagingDefaultOptions.campaign_user_query:type_name -> google.protobuf.Struct
-	232, // 222: channel.app.sdk.v1.MessagingDefaultOptions.one_time_msg_user_query:type_name -> google.protobuf.Struct
-	212, // 223: channel.app.sdk.v1.MessagingPrebuiltGetDefaultOptionsOutput.default_options:type_name -> channel.app.sdk.v1.MessagingDefaultOptions
-	232, // 224: channel.app.sdk.v1.AlfTaskWorkflowNode.config:type_name -> google.protobuf.Struct
-	214, // 225: channel.app.sdk.v1.AlfTaskPredefinedTask.memory_schema:type_name -> channel.app.sdk.v1.AlfTaskMemoryDefinition
-	215, // 226: channel.app.sdk.v1.AlfTaskPredefinedTask.nodes:type_name -> channel.app.sdk.v1.AlfTaskWorkflowNode
-	216, // 227: channel.app.sdk.v1.AlfTaskGetTasksOutput.predefined_tasks:type_name -> channel.app.sdk.v1.AlfTaskPredefinedTask
-	52,  // 228: channel.app.sdk.v1.CommandChoice.NameDescI18nMapEntry.value:type_name -> channel.app.sdk.v1.CommandNameDescI18n
-	53,  // 229: channel.app.sdk.v1.CommandParamDefinition.NameDescI18nMapEntry.value:type_name -> channel.app.sdk.v1.CommandParamDefI18n
-	51,  // 230: channel.app.sdk.v1.CommandConfig.ButtonNameI18nMapEntry.value:type_name -> channel.app.sdk.v1.CommandNameI18n
-	52,  // 231: channel.app.sdk.v1.CommandConfig.NameDescI18nMapEntry.value:type_name -> channel.app.sdk.v1.CommandNameDescI18n
-	65,  // 232: channel.app.sdk.v1.WidgetConfig.DefaultNameDescI18nMapEntry.value:type_name -> channel.app.sdk.v1.WidgetNameDescI18n
-	71,  // 233: channel.app.sdk.v1.CustomTabConfig.NameI18nMapEntry.value:type_name -> channel.app.sdk.v1.CustomTabNameI18n
-	94,  // 234: channel.app.sdk.v1.StoreGetProfileOutput.I18nMapEntry.value:type_name -> channel.app.sdk.v1.StoreProfileLocalizedContent
-	127, // 235: channel.app.sdk.v1.OrderOperationOptions.FieldConfigsEntry.value:type_name -> channel.app.sdk.v1.OrderFieldConfig
-	187, // 236: channel.app.sdk.v1.WmsOperationOptions.FieldConfigsEntry.value:type_name -> channel.app.sdk.v1.WmsFieldConfig
-	237, // [237:237] is the sub-list for method output_type
-	237, // [237:237] is the sub-list for method input_type
-	237, // [237:237] is the sub-list for extension type_name
-	237, // [237:237] is the sub-list for extension extendee
-	0,   // [0:237] is the sub-list for field type_name
+	250, // 3: channel.app.sdk.v1.ConfigCondition.value:type_name -> google.protobuf.Value
+	226, // 4: channel.app.sdk.v1.ConfigLocalizedText.field_labels:type_name -> channel.app.sdk.v1.ConfigLocalizedText.FieldLabelsEntry
+	250, // 5: channel.app.sdk.v1.ConfigChoice.value:type_name -> google.protobuf.Value
+	227, // 6: channel.app.sdk.v1.ConfigChoice.i18n_map:type_name -> channel.app.sdk.v1.ConfigChoice.I18nMapEntry
+	228, // 7: channel.app.sdk.v1.ConfigInlineLink.i18n_map:type_name -> channel.app.sdk.v1.ConfigInlineLink.I18nMapEntry
+	229, // 8: channel.app.sdk.v1.ConfigValidationNotice.i18n_map:type_name -> channel.app.sdk.v1.ConfigValidationNotice.I18nMapEntry
+	12,  // 9: channel.app.sdk.v1.ConfigValidationNotice.links:type_name -> channel.app.sdk.v1.ConfigInlineLink
+	15,  // 10: channel.app.sdk.v1.ConfigOAuth.additional_params:type_name -> channel.app.sdk.v1.ConfigOAuthAdditionalParam
+	249, // 11: channel.app.sdk.v1.ConfigChoicesSource.params:type_name -> google.protobuf.Struct
+	230, // 12: channel.app.sdk.v1.ConfigOverview.i18n_map:type_name -> channel.app.sdk.v1.ConfigOverview.I18nMapEntry
+	249, // 13: channel.app.sdk.v1.ConfigDefaultSelector.on_change_params:type_name -> google.protobuf.Struct
+	231, // 14: channel.app.sdk.v1.ConfigDefaultSelector.i18n_map:type_name -> channel.app.sdk.v1.ConfigDefaultSelector.I18nMapEntry
+	19,  // 15: channel.app.sdk.v1.ConfigSettings.default_selectors:type_name -> channel.app.sdk.v1.ConfigDefaultSelector
+	232, // 16: channel.app.sdk.v1.ConfigSettings.i18n_map:type_name -> channel.app.sdk.v1.ConfigSettings.I18nMapEntry
+	250, // 17: channel.app.sdk.v1.ConfigDraftResolutionParams.changed_value:type_name -> google.protobuf.Value
+	249, // 18: channel.app.sdk.v1.ConfigDraftResolutionParams.values:type_name -> google.protobuf.Struct
+	12,  // 19: channel.app.sdk.v1.ConfigField.helper_links:type_name -> channel.app.sdk.v1.ConfigInlineLink
+	22,  // 20: channel.app.sdk.v1.ConfigField.media:type_name -> channel.app.sdk.v1.ConfigMediaOptions
+	23,  // 21: channel.app.sdk.v1.ConfigField.resolves_to:type_name -> channel.app.sdk.v1.ConfigResolvedValueTarget
+	9,   // 22: channel.app.sdk.v1.ConfigField.visible_when:type_name -> channel.app.sdk.v1.ConfigCondition
+	9,   // 23: channel.app.sdk.v1.ConfigField.enabled_when:type_name -> channel.app.sdk.v1.ConfigCondition
+	250, // 24: channel.app.sdk.v1.ConfigField.default_value:type_name -> google.protobuf.Value
+	17,  // 25: channel.app.sdk.v1.ConfigField.choices_source:type_name -> channel.app.sdk.v1.ConfigChoicesSource
+	11,  // 26: channel.app.sdk.v1.ConfigField.choices:type_name -> channel.app.sdk.v1.ConfigChoice
+	11,  // 27: channel.app.sdk.v1.ConfigField.country_code_choices:type_name -> channel.app.sdk.v1.ConfigChoice
+	249, // 28: channel.app.sdk.v1.ConfigField.field_labels:type_name -> google.protobuf.Struct
+	233, // 29: channel.app.sdk.v1.ConfigField.i18n_map:type_name -> channel.app.sdk.v1.ConfigField.I18nMapEntry
+	9,   // 30: channel.app.sdk.v1.ConfigBlock.visible_when:type_name -> channel.app.sdk.v1.ConfigCondition
+	12,  // 31: channel.app.sdk.v1.ConfigBlock.helper_links:type_name -> channel.app.sdk.v1.ConfigInlineLink
+	26,  // 32: channel.app.sdk.v1.ConfigBlock.fields:type_name -> channel.app.sdk.v1.ConfigField
+	249, // 33: channel.app.sdk.v1.ConfigBlock.props:type_name -> google.protobuf.Struct
+	22,  // 34: channel.app.sdk.v1.ConfigBlock.media:type_name -> channel.app.sdk.v1.ConfigMediaOptions
+	23,  // 35: channel.app.sdk.v1.ConfigBlock.resolves_to:type_name -> channel.app.sdk.v1.ConfigResolvedValueTarget
+	9,   // 36: channel.app.sdk.v1.ConfigBlock.enabled_when:type_name -> channel.app.sdk.v1.ConfigCondition
+	250, // 37: channel.app.sdk.v1.ConfigBlock.default_value:type_name -> google.protobuf.Value
+	17,  // 38: channel.app.sdk.v1.ConfigBlock.choices_source:type_name -> channel.app.sdk.v1.ConfigChoicesSource
+	11,  // 39: channel.app.sdk.v1.ConfigBlock.choices:type_name -> channel.app.sdk.v1.ConfigChoice
+	11,  // 40: channel.app.sdk.v1.ConfigBlock.country_code_choices:type_name -> channel.app.sdk.v1.ConfigChoice
+	249, // 41: channel.app.sdk.v1.ConfigBlock.field_labels:type_name -> google.protobuf.Struct
+	234, // 42: channel.app.sdk.v1.ConfigBlock.i18n_map:type_name -> channel.app.sdk.v1.ConfigBlock.I18nMapEntry
+	249, // 43: channel.app.sdk.v1.ConfigBlock.params:type_name -> google.protobuf.Struct
+	16,  // 44: channel.app.sdk.v1.ConfigGetConfigSchemaOutput.oauth:type_name -> channel.app.sdk.v1.ConfigOAuth
+	14,  // 45: channel.app.sdk.v1.ConfigGetConfigSchemaOutput.hooks:type_name -> channel.app.sdk.v1.ConfigHooks
+	27,  // 46: channel.app.sdk.v1.ConfigGetConfigSchemaOutput.blocks:type_name -> channel.app.sdk.v1.ConfigBlock
+	235, // 47: channel.app.sdk.v1.ConfigGetConfigSchemaOutput.i18n_map:type_name -> channel.app.sdk.v1.ConfigGetConfigSchemaOutput.I18nMapEntry
+	18,  // 48: channel.app.sdk.v1.ConfigGetConfigSchemaOutput.overview:type_name -> channel.app.sdk.v1.ConfigOverview
+	20,  // 49: channel.app.sdk.v1.ConfigGetConfigSchemaOutput.settings:type_name -> channel.app.sdk.v1.ConfigSettings
+	236, // 50: channel.app.sdk.v1.ConfigValidationError.i18n_map:type_name -> channel.app.sdk.v1.ConfigValidationError.I18nMapEntry
+	30,  // 51: channel.app.sdk.v1.ConfigValidateStoredConfigOutput.errors:type_name -> channel.app.sdk.v1.ConfigValidationError
+	13,  // 52: channel.app.sdk.v1.ConfigValidateStoredConfigOutput.notices:type_name -> channel.app.sdk.v1.ConfigValidationNotice
+	11,  // 53: channel.app.sdk.v1.ConfigChoiceList.choices:type_name -> channel.app.sdk.v1.ConfigChoice
+	249, // 54: channel.app.sdk.v1.ConfigDraftResolutionOutput.values_patch:type_name -> google.protobuf.Struct
+	249, // 55: channel.app.sdk.v1.ConfigDraftResolutionOutput.choices_patch:type_name -> google.protobuf.Struct
+	237, // 56: channel.app.sdk.v1.OAuthProvider.additional_params:type_name -> channel.app.sdk.v1.OAuthProvider.AdditionalParamsEntry
+	224, // 57: channel.app.sdk.v1.OAuthProvider.token_request:type_name -> channel.app.sdk.v1.OAuthTokenRequestMapping
+	225, // 58: channel.app.sdk.v1.OAuthProvider.token_response:type_name -> channel.app.sdk.v1.OAuthTokenResponseMapping
+	238, // 59: channel.app.sdk.v1.OAuthProvider.i18n_map:type_name -> channel.app.sdk.v1.OAuthProvider.I18nMapEntry
+	36,  // 60: channel.app.sdk.v1.OAuthConfig.oauth_provider:type_name -> channel.app.sdk.v1.OAuthProvider
+	44,  // 61: channel.app.sdk.v1.CalendarBooking.attendee:type_name -> channel.app.sdk.v1.CalendarAttendee
+	41,  // 62: channel.app.sdk.v1.CalendarListCalendarsOutput.calendars:type_name -> channel.app.sdk.v1.Calendar
+	42,  // 63: channel.app.sdk.v1.CalendarListEventTypesOutput.event_types:type_name -> channel.app.sdk.v1.CalendarEventType
+	43,  // 64: channel.app.sdk.v1.CalendarGetAvailabilityOutput.slots:type_name -> channel.app.sdk.v1.CalendarTimeSlot
+	44,  // 65: channel.app.sdk.v1.CalendarCreateBookingInput.attendee:type_name -> channel.app.sdk.v1.CalendarAttendee
+	45,  // 66: channel.app.sdk.v1.CalendarCancelBookingOutput.booking:type_name -> channel.app.sdk.v1.CalendarBooking
+	250, // 67: channel.app.sdk.v1.CommandChoice.value:type_name -> google.protobuf.Value
+	239, // 68: channel.app.sdk.v1.CommandChoice.name_desc_i18n_map:type_name -> channel.app.sdk.v1.CommandChoice.NameDescI18nMapEntry
+	59,  // 69: channel.app.sdk.v1.CommandParamDefinition.choices:type_name -> channel.app.sdk.v1.CommandChoice
+	240, // 70: channel.app.sdk.v1.CommandParamDefinition.name_desc_i18n_map:type_name -> channel.app.sdk.v1.CommandParamDefinition.NameDescI18nMapEntry
+	241, // 71: channel.app.sdk.v1.CommandConfig.button_name_i18n_map:type_name -> channel.app.sdk.v1.CommandConfig.ButtonNameI18nMapEntry
+	242, // 72: channel.app.sdk.v1.CommandConfig.name_desc_i18n_map:type_name -> channel.app.sdk.v1.CommandConfig.NameDescI18nMapEntry
+	60,  // 73: channel.app.sdk.v1.CommandConfig.param_definitions:type_name -> channel.app.sdk.v1.CommandParamDefinition
+	61,  // 74: channel.app.sdk.v1.CommandGetCommandsOutput.commands:type_name -> channel.app.sdk.v1.CommandConfig
+	243, // 75: channel.app.sdk.v1.CommandTrigger.attributes:type_name -> channel.app.sdk.v1.CommandTrigger.AttributesEntry
+	250, // 76: channel.app.sdk.v1.CommandAutoCompleteArgument.value:type_name -> google.protobuf.Value
+	1,   // 77: channel.app.sdk.v1.CommandGetSuggestionsInput.chat:type_name -> channel.app.sdk.v1.ExtensionChat
+	65,  // 78: channel.app.sdk.v1.CommandGetSuggestionsInput.input:type_name -> channel.app.sdk.v1.CommandAutoCompleteArgument
+	59,  // 79: channel.app.sdk.v1.CommandGetSuggestionsOutput.choices:type_name -> channel.app.sdk.v1.CommandChoice
+	1,   // 80: channel.app.sdk.v1.CommandExecuteInput.chat:type_name -> channel.app.sdk.v1.ExtensionChat
+	64,  // 81: channel.app.sdk.v1.CommandExecuteInput.trigger:type_name -> channel.app.sdk.v1.CommandTrigger
+	249, // 82: channel.app.sdk.v1.CommandExecuteInput.input:type_name -> google.protobuf.Struct
+	249, // 83: channel.app.sdk.v1.CommandResult.attributes:type_name -> google.protobuf.Struct
+	244, // 84: channel.app.sdk.v1.WidgetConfig.default_name_desc_i18n_map:type_name -> channel.app.sdk.v1.WidgetConfig.DefaultNameDescI18nMapEntry
+	71,  // 85: channel.app.sdk.v1.WidgetGetWidgetsOutput.widgets:type_name -> channel.app.sdk.v1.WidgetConfig
+	1,   // 86: channel.app.sdk.v1.WidgetActionInput.chat:type_name -> channel.app.sdk.v1.ExtensionChat
+	249, // 87: channel.app.sdk.v1.WidgetActionResult.attributes:type_name -> google.protobuf.Struct
+	245, // 88: channel.app.sdk.v1.CustomTabConfig.name_i18n_map:type_name -> channel.app.sdk.v1.CustomTabConfig.NameI18nMapEntry
+	77,  // 89: channel.app.sdk.v1.CustomTabGetCustomTabsOutput.custom_tabs:type_name -> channel.app.sdk.v1.CustomTabConfig
+	250, // 90: channel.app.sdk.v1.CustomTabActionInput.wam_args:type_name -> google.protobuf.Value
+	249, // 91: channel.app.sdk.v1.CustomTabActionResult.attributes:type_name -> google.protobuf.Struct
+	82,  // 92: channel.app.sdk.v1.HookGetHooksOutput.hooks:type_name -> channel.app.sdk.v1.HookConfig
+	85,  // 93: channel.app.sdk.v1.PollingGetPollersOutput.pollers:type_name -> channel.app.sdk.v1.PollingPoller
+	91,  // 94: channel.app.sdk.v1.MailRelayMail.common_headers:type_name -> channel.app.sdk.v1.MailRelayCommonHeaders
+	90,  // 95: channel.app.sdk.v1.MailRelayMail.headers:type_name -> channel.app.sdk.v1.MailRelayHeader
+	92,  // 96: channel.app.sdk.v1.MailRelayInboundInput.mail:type_name -> channel.app.sdk.v1.MailRelayMail
+	93,  // 97: channel.app.sdk.v1.MailRelayInboundInput.receipt:type_name -> channel.app.sdk.v1.MailRelayReceipt
+	96,  // 98: channel.app.sdk.v1.StoreProfileLocalizedContent.images:type_name -> channel.app.sdk.v1.StoreProfileImage
+	97,  // 99: channel.app.sdk.v1.StoreProfileLocalizedContent.intro:type_name -> channel.app.sdk.v1.StoreProfileIntro
+	98,  // 100: channel.app.sdk.v1.StoreProfileLocalizedContent.faqs:type_name -> channel.app.sdk.v1.StoreFaq
+	246, // 101: channel.app.sdk.v1.StoreGetProfileOutput.i18n_map:type_name -> channel.app.sdk.v1.StoreGetProfileOutput.I18nMapEntry
+	249, // 102: channel.app.sdk.v1.NotebookCell.definition:type_name -> google.protobuf.Struct
+	249, // 103: channel.app.sdk.v1.NotebookCell.presentation:type_name -> google.protobuf.Struct
+	103, // 104: channel.app.sdk.v1.NotebookLayoutRow.columns:type_name -> channel.app.sdk.v1.NotebookLayoutColumn
+	104, // 105: channel.app.sdk.v1.NotebookTab.layout:type_name -> channel.app.sdk.v1.NotebookLayoutRow
+	102, // 106: channel.app.sdk.v1.NotebookPayload.cells:type_name -> channel.app.sdk.v1.NotebookCell
+	105, // 107: channel.app.sdk.v1.NotebookPayload.tabs:type_name -> channel.app.sdk.v1.NotebookTab
+	106, // 108: channel.app.sdk.v1.AppNotebook.notebook:type_name -> channel.app.sdk.v1.NotebookPayload
+	107, // 109: channel.app.sdk.v1.NotebookGetNotebooksOutput.notebooks:type_name -> channel.app.sdk.v1.AppNotebook
+	111, // 110: channel.app.sdk.v1.DataSourceTableDefinition.table:type_name -> channel.app.sdk.v1.DataSourceTable
+	112, // 111: channel.app.sdk.v1.DataSourceTableDefinition.columns:type_name -> channel.app.sdk.v1.DataSourceColumn
+	111, // 112: channel.app.sdk.v1.DataSourceTableListing.table:type_name -> channel.app.sdk.v1.DataSourceTable
+	110, // 113: channel.app.sdk.v1.DataSourceListCatalogsOutput.catalogs:type_name -> channel.app.sdk.v1.DataSourceCatalog
+	114, // 114: channel.app.sdk.v1.DataSourceListTablesOutput.tables:type_name -> channel.app.sdk.v1.DataSourceTableListing
+	113, // 115: channel.app.sdk.v1.DataSourceDescribeTableOutput.definition:type_name -> channel.app.sdk.v1.DataSourceTableDefinition
+	249, // 116: channel.app.sdk.v1.DataSourceDescribeTableOutput.sample:type_name -> google.protobuf.Struct
+	125, // 117: channel.app.sdk.v1.OrderItem.claimability:type_name -> channel.app.sdk.v1.OrderClaimability
+	127, // 118: channel.app.sdk.v1.Order.items:type_name -> channel.app.sdk.v1.OrderItem
+	128, // 119: channel.app.sdk.v1.Order.payment:type_name -> channel.app.sdk.v1.OrderPayment
+	129, // 120: channel.app.sdk.v1.Order.fulfillments:type_name -> channel.app.sdk.v1.OrderFulfillment
+	121, // 121: channel.app.sdk.v1.Order.shipping_address:type_name -> channel.app.sdk.v1.OrderAddress
+	126, // 122: channel.app.sdk.v1.Order.claims:type_name -> channel.app.sdk.v1.OrderClaim
+	131, // 123: channel.app.sdk.v1.OrderFieldConfig.allowed_values:type_name -> channel.app.sdk.v1.OrderAllowedValue
+	247, // 124: channel.app.sdk.v1.OrderOperationOptions.field_configs:type_name -> channel.app.sdk.v1.OrderOperationOptions.FieldConfigsEntry
+	133, // 125: channel.app.sdk.v1.OrderAppCapabilities.get_orders_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
+	133, // 126: channel.app.sdk.v1.OrderAppCapabilities.cancel_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
+	133, // 127: channel.app.sdk.v1.OrderAppCapabilities.return_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
+	133, // 128: channel.app.sdk.v1.OrderAppCapabilities.exchange_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
+	133, // 129: channel.app.sdk.v1.OrderAppCapabilities.change_address_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
+	130, // 130: channel.app.sdk.v1.OrderGetOrdersOutput.orders:type_name -> channel.app.sdk.v1.Order
+	134, // 131: channel.app.sdk.v1.OrderGetAppConfigsOutput.app_capabilities:type_name -> channel.app.sdk.v1.OrderAppCapabilities
+	139, // 132: channel.app.sdk.v1.OrderCancelOrderInput.cancel_items:type_name -> channel.app.sdk.v1.OrderClaimItem
+	124, // 133: channel.app.sdk.v1.OrderCancelOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
+	122, // 134: channel.app.sdk.v1.OrderCancelOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
+	139, // 135: channel.app.sdk.v1.OrderReturnOrderInput.return_items:type_name -> channel.app.sdk.v1.OrderClaimItem
+	124, // 136: channel.app.sdk.v1.OrderReturnOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
+	121, // 137: channel.app.sdk.v1.OrderReturnOrderInput.pickup_address:type_name -> channel.app.sdk.v1.OrderAddress
+	122, // 138: channel.app.sdk.v1.OrderReturnOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
+	123, // 139: channel.app.sdk.v1.OrderReturnOrderInput.defect_info:type_name -> channel.app.sdk.v1.OrderDefectInfo
+	139, // 140: channel.app.sdk.v1.OrderExchangeOrderInput.before_exchange_items:type_name -> channel.app.sdk.v1.OrderClaimItem
+	142, // 141: channel.app.sdk.v1.OrderExchangeOrderInput.after_exchange_items:type_name -> channel.app.sdk.v1.OrderExchangeItem
+	124, // 142: channel.app.sdk.v1.OrderExchangeOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
+	121, // 143: channel.app.sdk.v1.OrderExchangeOrderInput.pickup_address:type_name -> channel.app.sdk.v1.OrderAddress
+	122, // 144: channel.app.sdk.v1.OrderExchangeOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
+	123, // 145: channel.app.sdk.v1.OrderExchangeOrderInput.defect_info:type_name -> channel.app.sdk.v1.OrderDefectInfo
+	139, // 146: channel.app.sdk.v1.OrderGetExchangeableItemsInput.items:type_name -> channel.app.sdk.v1.OrderClaimItem
+	127, // 147: channel.app.sdk.v1.OrderGetExchangeableItemsOutput.items:type_name -> channel.app.sdk.v1.OrderItem
+	121, // 148: channel.app.sdk.v1.OrderChangeShippingAddressInput.new_address:type_name -> channel.app.sdk.v1.OrderAddress
+	125, // 149: channel.app.sdk.v1.CommerceOrderItem.claimability:type_name -> channel.app.sdk.v1.OrderClaimability
+	181, // 150: channel.app.sdk.v1.CommerceOrder.buyer:type_name -> channel.app.sdk.v1.Buyer
+	149, // 151: channel.app.sdk.v1.CommerceOrder.items:type_name -> channel.app.sdk.v1.CommerceOrderItem
+	128, // 152: channel.app.sdk.v1.CommerceOrder.payment:type_name -> channel.app.sdk.v1.OrderPayment
+	129, // 153: channel.app.sdk.v1.CommerceOrder.fulfillments:type_name -> channel.app.sdk.v1.OrderFulfillment
+	121, // 154: channel.app.sdk.v1.CommerceOrder.shipping_address:type_name -> channel.app.sdk.v1.OrderAddress
+	126, // 155: channel.app.sdk.v1.CommerceOrder.claims:type_name -> channel.app.sdk.v1.OrderClaim
+	148, // 156: channel.app.sdk.v1.CommerceGetOrdersInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
+	250, // 157: channel.app.sdk.v1.CommerceGetOrdersInput.search_filter:type_name -> google.protobuf.Value
+	150, // 158: channel.app.sdk.v1.CommerceGetOrdersOutput.orders:type_name -> channel.app.sdk.v1.CommerceOrder
+	133, // 159: channel.app.sdk.v1.CommerceAppCapabilities.get_orders_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
+	133, // 160: channel.app.sdk.v1.CommerceAppCapabilities.cancel_request_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
+	133, // 161: channel.app.sdk.v1.CommerceAppCapabilities.return_request_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
+	133, // 162: channel.app.sdk.v1.CommerceAppCapabilities.return_accept_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
+	133, // 163: channel.app.sdk.v1.CommerceAppCapabilities.exchange_request_order_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
+	133, // 164: channel.app.sdk.v1.CommerceAppCapabilities.change_shipping_address_options:type_name -> channel.app.sdk.v1.OrderOperationOptions
+	153, // 165: channel.app.sdk.v1.CommerceGetAppConfigsOutput.app_capabilities:type_name -> channel.app.sdk.v1.CommerceAppCapabilities
+	156, // 166: channel.app.sdk.v1.CommerceActionResult.result:type_name -> channel.app.sdk.v1.CommerceResultBody
+	148, // 167: channel.app.sdk.v1.CommerceCancelOrderInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
+	139, // 168: channel.app.sdk.v1.CommerceCancelOrderInput.cancel_items:type_name -> channel.app.sdk.v1.OrderClaimItem
+	124, // 169: channel.app.sdk.v1.CommerceCancelOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
+	122, // 170: channel.app.sdk.v1.CommerceCancelOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
+	148, // 171: channel.app.sdk.v1.CommerceReturnOrderInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
+	139, // 172: channel.app.sdk.v1.CommerceReturnOrderInput.return_items:type_name -> channel.app.sdk.v1.OrderClaimItem
+	124, // 173: channel.app.sdk.v1.CommerceReturnOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
+	121, // 174: channel.app.sdk.v1.CommerceReturnOrderInput.pickup_address:type_name -> channel.app.sdk.v1.OrderAddress
+	122, // 175: channel.app.sdk.v1.CommerceReturnOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
+	123, // 176: channel.app.sdk.v1.CommerceReturnOrderInput.defect_info:type_name -> channel.app.sdk.v1.OrderDefectInfo
+	148, // 177: channel.app.sdk.v1.CommerceReturnAcceptOrderInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
+	139, // 178: channel.app.sdk.v1.CommerceReturnAcceptOrderInput.return_items:type_name -> channel.app.sdk.v1.OrderClaimItem
+	124, // 179: channel.app.sdk.v1.CommerceReturnAcceptOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
+	122, // 180: channel.app.sdk.v1.CommerceReturnAcceptOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
+	148, // 181: channel.app.sdk.v1.CommerceExchangeOrderInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
+	139, // 182: channel.app.sdk.v1.CommerceExchangeOrderInput.before_exchange_items:type_name -> channel.app.sdk.v1.OrderClaimItem
+	142, // 183: channel.app.sdk.v1.CommerceExchangeOrderInput.after_exchange_items:type_name -> channel.app.sdk.v1.OrderExchangeItem
+	124, // 184: channel.app.sdk.v1.CommerceExchangeOrderInput.reason:type_name -> channel.app.sdk.v1.OrderClaimReason
+	121, // 185: channel.app.sdk.v1.CommerceExchangeOrderInput.pickup_address:type_name -> channel.app.sdk.v1.OrderAddress
+	122, // 186: channel.app.sdk.v1.CommerceExchangeOrderInput.refund_bank_account:type_name -> channel.app.sdk.v1.OrderBankAccount
+	123, // 187: channel.app.sdk.v1.CommerceExchangeOrderInput.defect_info:type_name -> channel.app.sdk.v1.OrderDefectInfo
+	148, // 188: channel.app.sdk.v1.CommerceGetExchangeableItemsInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
+	139, // 189: channel.app.sdk.v1.CommerceGetExchangeableItemsInput.items:type_name -> channel.app.sdk.v1.OrderClaimItem
+	149, // 190: channel.app.sdk.v1.CommerceGetExchangeableItemsOutput.items:type_name -> channel.app.sdk.v1.CommerceOrderItem
+	148, // 191: channel.app.sdk.v1.CommerceChangeShippingAddressInput.identifier:type_name -> channel.app.sdk.v1.CommerceIdentifier
+	121, // 192: channel.app.sdk.v1.CommerceChangeShippingAddressInput.new_address:type_name -> channel.app.sdk.v1.OrderAddress
+	165, // 193: channel.app.sdk.v1.WmsOrderItem.shipping_info:type_name -> channel.app.sdk.v1.WmsShippingInfo
+	167, // 194: channel.app.sdk.v1.WmsOrder.items:type_name -> channel.app.sdk.v1.WmsOrderItem
+	166, // 195: channel.app.sdk.v1.WmsOrder.deliveries:type_name -> channel.app.sdk.v1.WmsDelivery
+	168, // 196: channel.app.sdk.v1.WmsGetOrdersResult.orders:type_name -> channel.app.sdk.v1.WmsOrder
+	168, // 197: channel.app.sdk.v1.WmsGetOrderResult.order:type_name -> channel.app.sdk.v1.WmsOrder
+	250, // 198: channel.app.sdk.v1.WmsGetShopIDResult.shop_id:type_name -> google.protobuf.Value
+	181, // 199: channel.app.sdk.v1.WmsOrderV2.buyer:type_name -> channel.app.sdk.v1.Buyer
+	183, // 200: channel.app.sdk.v1.WmsOrderV2.items:type_name -> channel.app.sdk.v1.WmsOrderItemV2
+	182, // 201: channel.app.sdk.v1.WmsOrderV2.deliveries:type_name -> channel.app.sdk.v1.WmsDeliveryV2
+	185, // 202: channel.app.sdk.v1.WmsOrderGetOrdersRequest.identifier:type_name -> channel.app.sdk.v1.WmsIdentifier
+	250, // 203: channel.app.sdk.v1.WmsOrderGetOrdersRequest.search_filter:type_name -> google.protobuf.Value
+	184, // 204: channel.app.sdk.v1.WmsOrderGetOrdersResult.orders:type_name -> channel.app.sdk.v1.WmsOrderV2
+	185, // 205: channel.app.sdk.v1.WmsOrderActionRequest.identifier:type_name -> channel.app.sdk.v1.WmsIdentifier
+	185, // 206: channel.app.sdk.v1.WmsOrderChangeShippingAddressInput.identifier:type_name -> channel.app.sdk.v1.WmsIdentifier
+	121, // 207: channel.app.sdk.v1.WmsOrderChangeShippingAddressInput.new_address:type_name -> channel.app.sdk.v1.OrderAddress
+	190, // 208: channel.app.sdk.v1.WmsOrderActionResult.result:type_name -> channel.app.sdk.v1.WmsOrderResultBody
+	131, // 209: channel.app.sdk.v1.WmsFieldConfig.allowed_values:type_name -> channel.app.sdk.v1.OrderAllowedValue
+	248, // 210: channel.app.sdk.v1.WmsOperationOptions.field_configs:type_name -> channel.app.sdk.v1.WmsOperationOptions.FieldConfigsEntry
+	193, // 211: channel.app.sdk.v1.WmsAppCapabilities.get_orders_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
+	193, // 212: channel.app.sdk.v1.WmsAppCapabilities.cancel_request_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
+	193, // 213: channel.app.sdk.v1.WmsAppCapabilities.cancel_restore_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
+	193, // 214: channel.app.sdk.v1.WmsAppCapabilities.return_request_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
+	193, // 215: channel.app.sdk.v1.WmsAppCapabilities.return_restore_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
+	193, // 216: channel.app.sdk.v1.WmsAppCapabilities.exchange_request_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
+	193, // 217: channel.app.sdk.v1.WmsAppCapabilities.exchange_restore_order_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
+	193, // 218: channel.app.sdk.v1.WmsAppCapabilities.change_shipping_address_options:type_name -> channel.app.sdk.v1.WmsOperationOptions
+	194, // 219: channel.app.sdk.v1.WmsGetAppConfigsOutput.app_capabilities:type_name -> channel.app.sdk.v1.WmsAppCapabilities
+	251, // 220: channel.app.sdk.v1.MessagingOnMediumMessageCreatedInput.user_chat:type_name -> channel.app.sdk.v1.ChannelUserChat
+	252, // 221: channel.app.sdk.v1.MessagingOnMediumMessageCreatedInput.message:type_name -> channel.app.sdk.v1.ChannelMessage
+	198, // 222: channel.app.sdk.v1.MessagingOnMediumMessageCreatedOutput.send_result:type_name -> channel.app.sdk.v1.MessagingSendResult
+	251, // 223: channel.app.sdk.v1.MessagingInboxOnMediumUserChatClosedInput.user_chat:type_name -> channel.app.sdk.v1.ChannelUserChat
+	251, // 224: channel.app.sdk.v1.MessagingInboxGetWritingTypesInput.user_chat:type_name -> channel.app.sdk.v1.ChannelUserChat
+	253, // 225: channel.app.sdk.v1.MessagingInboxGetWritingTypesOutput.writing_type_map:type_name -> channel.app.sdk.v1.WritingTypeMap
+	254, // 226: channel.app.sdk.v1.MessagingInboxGetCustomEditorWamInput.user:type_name -> channel.app.sdk.v1.ChannelUser
+	251, // 227: channel.app.sdk.v1.MessagingInboxGetCustomEditorWamInput.user_chat:type_name -> channel.app.sdk.v1.ChannelUserChat
+	252, // 228: channel.app.sdk.v1.MessagingInboxGetCustomEditorWamInput.message:type_name -> channel.app.sdk.v1.ChannelMessage
+	254, // 229: channel.app.sdk.v1.MessagingInboxGetMediumTopicSelectorWamInput.user:type_name -> channel.app.sdk.v1.ChannelUser
+	251, // 230: channel.app.sdk.v1.MessagingInboxGetMediumMessageErrorReasonInput.user_chat:type_name -> channel.app.sdk.v1.ChannelUserChat
+	252, // 231: channel.app.sdk.v1.MessagingInboxGetMediumMessageErrorReasonInput.message:type_name -> channel.app.sdk.v1.ChannelMessage
+	253, // 232: channel.app.sdk.v1.MessagingPrebuiltGetWritingTypesOutput.writing_type_map:type_name -> channel.app.sdk.v1.WritingTypeMap
+	255, // 233: channel.app.sdk.v1.MessagingPrebuiltValidateEntityInput.message:type_name -> channel.app.sdk.v1.PrebuiltMessage
+	256, // 234: channel.app.sdk.v1.MessagingPrebuiltValidateEntityOutput.reasons:type_name -> channel.app.sdk.v1.UnavailableReason
+	255, // 235: channel.app.sdk.v1.MessagingPrebuiltGetCustomEditorWamInput.message:type_name -> channel.app.sdk.v1.PrebuiltMessage
+	249, // 236: channel.app.sdk.v1.MessagingPrebuiltGetCustomEditorWamInput.trigger_event_name_i18n_map:type_name -> google.protobuf.Struct
+	254, // 237: channel.app.sdk.v1.MessagingPrebuiltBuildMediumTopicsInput.user:type_name -> channel.app.sdk.v1.ChannelUser
+	257, // 238: channel.app.sdk.v1.MessagingPrebuiltBuildMediumTopicsOutput.medium_profile:type_name -> channel.app.sdk.v1.MediumProfile
+	249, // 239: channel.app.sdk.v1.MessagingDefaultOptions.campaign_user_query:type_name -> google.protobuf.Struct
+	249, // 240: channel.app.sdk.v1.MessagingDefaultOptions.one_time_msg_user_query:type_name -> google.protobuf.Struct
+	217, // 241: channel.app.sdk.v1.MessagingPrebuiltGetDefaultOptionsOutput.default_options:type_name -> channel.app.sdk.v1.MessagingDefaultOptions
+	249, // 242: channel.app.sdk.v1.AlfTaskWorkflowNode.config:type_name -> google.protobuf.Struct
+	219, // 243: channel.app.sdk.v1.AlfTaskPredefinedTask.memory_schema:type_name -> channel.app.sdk.v1.AlfTaskMemoryDefinition
+	220, // 244: channel.app.sdk.v1.AlfTaskPredefinedTask.nodes:type_name -> channel.app.sdk.v1.AlfTaskWorkflowNode
+	221, // 245: channel.app.sdk.v1.AlfTaskGetTasksOutput.predefined_tasks:type_name -> channel.app.sdk.v1.AlfTaskPredefinedTask
+	10,  // 246: channel.app.sdk.v1.ConfigChoice.I18nMapEntry.value:type_name -> channel.app.sdk.v1.ConfigLocalizedText
+	10,  // 247: channel.app.sdk.v1.ConfigInlineLink.I18nMapEntry.value:type_name -> channel.app.sdk.v1.ConfigLocalizedText
+	10,  // 248: channel.app.sdk.v1.ConfigValidationNotice.I18nMapEntry.value:type_name -> channel.app.sdk.v1.ConfigLocalizedText
+	10,  // 249: channel.app.sdk.v1.ConfigOverview.I18nMapEntry.value:type_name -> channel.app.sdk.v1.ConfigLocalizedText
+	10,  // 250: channel.app.sdk.v1.ConfigDefaultSelector.I18nMapEntry.value:type_name -> channel.app.sdk.v1.ConfigLocalizedText
+	10,  // 251: channel.app.sdk.v1.ConfigSettings.I18nMapEntry.value:type_name -> channel.app.sdk.v1.ConfigLocalizedText
+	10,  // 252: channel.app.sdk.v1.ConfigField.I18nMapEntry.value:type_name -> channel.app.sdk.v1.ConfigLocalizedText
+	10,  // 253: channel.app.sdk.v1.ConfigBlock.I18nMapEntry.value:type_name -> channel.app.sdk.v1.ConfigLocalizedText
+	10,  // 254: channel.app.sdk.v1.ConfigGetConfigSchemaOutput.I18nMapEntry.value:type_name -> channel.app.sdk.v1.ConfigLocalizedText
+	10,  // 255: channel.app.sdk.v1.ConfigValidationError.I18nMapEntry.value:type_name -> channel.app.sdk.v1.ConfigLocalizedText
+	35,  // 256: channel.app.sdk.v1.OAuthProvider.I18nMapEntry.value:type_name -> channel.app.sdk.v1.OAuthProviderLocalizedText
+	57,  // 257: channel.app.sdk.v1.CommandChoice.NameDescI18nMapEntry.value:type_name -> channel.app.sdk.v1.CommandNameDescI18n
+	58,  // 258: channel.app.sdk.v1.CommandParamDefinition.NameDescI18nMapEntry.value:type_name -> channel.app.sdk.v1.CommandParamDefI18n
+	56,  // 259: channel.app.sdk.v1.CommandConfig.ButtonNameI18nMapEntry.value:type_name -> channel.app.sdk.v1.CommandNameI18n
+	57,  // 260: channel.app.sdk.v1.CommandConfig.NameDescI18nMapEntry.value:type_name -> channel.app.sdk.v1.CommandNameDescI18n
+	70,  // 261: channel.app.sdk.v1.WidgetConfig.DefaultNameDescI18nMapEntry.value:type_name -> channel.app.sdk.v1.WidgetNameDescI18n
+	76,  // 262: channel.app.sdk.v1.CustomTabConfig.NameI18nMapEntry.value:type_name -> channel.app.sdk.v1.CustomTabNameI18n
+	99,  // 263: channel.app.sdk.v1.StoreGetProfileOutput.I18nMapEntry.value:type_name -> channel.app.sdk.v1.StoreProfileLocalizedContent
+	132, // 264: channel.app.sdk.v1.OrderOperationOptions.FieldConfigsEntry.value:type_name -> channel.app.sdk.v1.OrderFieldConfig
+	192, // 265: channel.app.sdk.v1.WmsOperationOptions.FieldConfigsEntry.value:type_name -> channel.app.sdk.v1.WmsFieldConfig
+	266, // [266:266] is the sub-list for method output_type
+	266, // [266:266] is the sub-list for method input_type
+	266, // [266:266] is the sub-list for extension type_name
+	266, // [266:266] is the sub-list for extension extendee
+	0,   // [0:266] is the sub-list for field type_name
 }
 
 func init() { file_channel_app_sdk_v1_extension_proto_init() }
@@ -16212,18 +17254,18 @@ func file_channel_app_sdk_v1_extension_proto_init() {
 		return
 	}
 	file_channel_app_sdk_v1_common_proto_init()
-	file_channel_app_sdk_v1_extension_proto_msgTypes[105].OneofWrappers = []any{}
-	file_channel_app_sdk_v1_extension_proto_msgTypes[106].OneofWrappers = []any{}
-	file_channel_app_sdk_v1_extension_proto_msgTypes[107].OneofWrappers = []any{}
+	file_channel_app_sdk_v1_extension_proto_msgTypes[110].OneofWrappers = []any{}
+	file_channel_app_sdk_v1_extension_proto_msgTypes[111].OneofWrappers = []any{}
 	file_channel_app_sdk_v1_extension_proto_msgTypes[112].OneofWrappers = []any{}
-	file_channel_app_sdk_v1_extension_proto_msgTypes[114].OneofWrappers = []any{}
+	file_channel_app_sdk_v1_extension_proto_msgTypes[117].OneofWrappers = []any{}
+	file_channel_app_sdk_v1_extension_proto_msgTypes[119].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_channel_app_sdk_v1_extension_proto_rawDesc), len(file_channel_app_sdk_v1_extension_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   232,
+			NumMessages:   249,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

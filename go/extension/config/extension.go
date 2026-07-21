@@ -132,9 +132,14 @@ type OAuthConfig = sdkv1.ConfigOAuth
 type OAuthAdditionalParam = sdkv1.ConfigOAuthAdditionalParam
 type Hooks = sdkv1.ConfigHooks
 type Condition = sdkv1.ConfigCondition
+type LocalizedText = sdkv1.ConfigLocalizedText
+type I18nMap = map[string]*sdkv1.ConfigLocalizedText
 type Choice = sdkv1.ConfigChoice
 type InlineLink = sdkv1.ConfigInlineLink
 type ChoicesSource = sdkv1.ConfigChoicesSource
+type Overview = sdkv1.ConfigOverview
+type DefaultSelector = sdkv1.ConfigDefaultSelector
+type Settings = sdkv1.ConfigSettings
 type MediaOptions = sdkv1.ConfigMediaOptions
 type ResolvedValueTarget = sdkv1.ConfigResolvedValueTarget
 type PhoneFieldLabels = sdkv1.ConfigPhoneFieldLabels
@@ -148,3 +153,9 @@ type Notice = sdkv1.ConfigValidationNotice
 type ChoiceList = sdkv1.ConfigChoiceList
 type DraftResolutionParams = sdkv1.ConfigDraftResolutionParams
 type DraftResolutionOutput = sdkv1.ConfigDraftResolutionOutput
+
+const (
+	LocaleKO = "ko"
+	LocaleJA = "ja"
+	LocaleEN = "en"
+)

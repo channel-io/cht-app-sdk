@@ -18,6 +18,7 @@ const allowedTsEnumTypes = new Set([
   "ConfigNoticeTone",
   "ConfigScope",
   "ConfigStorageClass",
+  "ConfigSupportedLocale",
   "DataSourceDialect",
   "DataSourceManagerAccess",
   "DataSourceTableType",
@@ -25,6 +26,7 @@ const allowedTsEnumTypes = new Set([
   "MessagingPrebuiltEntityType",
   "MessagingWritingTypeAvailabilityState",
   "OAuthAuthScope",
+  "OAuthProviderSupportedLocale",
   "ParameterCase",
   "TokenRequestContentType",
   "WidgetScope",
@@ -32,17 +34,24 @@ const allowedTsEnumTypes = new Set([
 ]);
 const allowedTsHelperTypes = new Set([
   "AlfTaskExtensionProvider",
+  "ConfigI18nMap",
   "CreateDataSourceIngestionEventRowInput",
   "DataSourceIngestionEventRow",
   "DataSourceMetadataProvider",
   "NotebookExtensionProvider",
+  "OAuthProviderI18nMap",
   "StaticDataSourceMetadata",
   "StoreProfileProvider",
+]);
+const allowedTsHelperSchemas = new Set([
+  "ConfigI18nMapSchema",
+  "OAuthProviderI18nMapSchema",
 ]);
 
 const allowedGoHelpers = new Set([
   "Builder",
   "ExtensionBuilder",
+  "I18nMap",
   "Metadata",
   "Option",
 ]);
@@ -136,7 +145,10 @@ function checkTypeScriptExtensionTypes() {
         continue;
       }
       if (rhs.startsWith("z.infer")) {
-        if (!allowedTsEnumTypes.has(alias.name)) {
+        if (
+          !allowedTsEnumTypes.has(alias.name) &&
+          !allowedTsHelperTypes.has(alias.name)
+        ) {
           violations.push(
             `${relPath}: exported DTO type ${alias.name} must be ProtoBacked<z.infer<...>, Proto...>`,
           );
@@ -169,6 +181,9 @@ function checkTypeScriptExtensionTypes() {
     }
 
     for (const schema of exportedSchemas(source)) {
+      if (allowedTsHelperSchemas.has(schema.name)) {
+        continue;
+      }
       if (contractSchemas.has(schema.name)) {
         continue;
       }
@@ -208,13 +223,13 @@ function checkGoExtensionTypes() {
       const name = match[1];
       const definition = match[2].trim();
 
+      if (allowedGoHelpers.has(name)) {
+        continue;
+      }
       if (definition.startsWith("= sdkv1.")) {
         continue;
       }
       if (definition.startsWith("struct")) {
-        if (allowedGoHelpers.has(name)) {
-          continue;
-        }
         violations.push(
           `${relPath}: exported struct ${name} must be a sdkv1 proto alias`,
         );
@@ -227,9 +242,6 @@ function checkGoExtensionTypes() {
         violations.push(
           `${relPath}: exported interface ${name} is not an extension interface helper`,
         );
-        continue;
-      }
-      if (definition.startsWith("func(") && allowedGoHelpers.has(name)) {
         continue;
       }
 
@@ -269,7 +281,9 @@ function checkGoCoreDTOs() {
 
   for (const file of files) {
     const source = readFileSync(join(repoRoot, file.relPath), "utf8");
-    for (const match of source.matchAll(/^type\s+([A-Z][A-Za-z0-9_]*)\s+struct\b/gm)) {
+    for (const match of source.matchAll(
+      /^type\s+([A-Z][A-Za-z0-9_]*)\s+struct\b/gm,
+    )) {
       const name = match[1];
       if (!file.allowedStructs.has(name)) {
         violations.push(
@@ -346,9 +360,11 @@ function checkTypeScriptCoreDTOs() {
 
 function exportedTypeOrInterfaceNames(source) {
   return new Set(
-    [...source.matchAll(/^export\s+(?:interface|type)\s+([A-Z][A-Za-z0-9_]*)\b/gm)].map(
-      (match) => match[1],
-    ),
+    [
+      ...source.matchAll(
+        /^export\s+(?:interface|type)\s+([A-Z][A-Za-z0-9_]*)\b/gm,
+      ),
+    ].map((match) => match[1]),
   );
 }
 

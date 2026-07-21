@@ -46,6 +46,7 @@ Set `supportsMultiple: true` when one scope can store multiple independent confi
 - use `storageClass: "media"` for image fields that should upload to the media server and persist only a media reference
 - use `resolvesTo` when a transient input should produce a different stored config or credential key
 - use `group` blocks to keep related inputs together
+- use `i18nMap` for locale-specific display text while keeping fallback text such as `label`, `title`, and `description`
 - `validateStoredConfig` should validate the already stored values, not raw request payloads
 - use `hooks.draftResolverFunctionName` when field changes should derive additional draft values
   - AppStore standard WAM calls the referenced function with `{ scope, channelId, managerId?, changedFieldKey, changedValue, values }`
@@ -93,3 +94,72 @@ For image inputs that should not be stored but should produce a credential, comb
 ```
 
 In this pattern, the draft resolver receives the image value, returns `valuesPatch.otpSecret`, and AppStore persists only `otpSecret`. The image remains draft-only.
+
+## Internationalized Display Text
+
+Config schemas can include optional `i18nMap` entries for user-facing text. The base fields remain the fallback and should always be usable on their own. Supported locale keys are `ko`, `ja`, and `en`.
+
+```json
+{
+  "type": "select",
+  "key": "storeType",
+  "label": "Store type",
+  "description": "Choose the store type.",
+  "placeholder": "Select a store type",
+  "helperText": "Use {guide} if you are unsure.",
+  "helperLinks": [
+    {
+      "key": "guide",
+      "label": "setup guide",
+      "url": "https://example.com/en/guide",
+      "i18nMap": {
+        "ko": {
+          "label": "설정 가이드",
+          "url": "https://example.com/ko/guide"
+        }
+      }
+    }
+  ],
+  "i18nMap": {
+    "ko": {
+      "label": "스토어 유형",
+      "description": "스토어 유형을 선택하세요.",
+      "placeholder": "스토어 유형 선택",
+      "helperText": "잘 모르겠다면 {guide}를 확인하세요."
+    },
+    "ja": {
+      "label": "ストア種別",
+      "description": "ストア種別を選択してください。",
+      "placeholder": "ストア種別を選択"
+    },
+    "en": {
+      "label": "Store type"
+    }
+  },
+  "choices": [
+    {
+      "label": "Online",
+      "value": "online",
+      "i18nMap": {
+        "ko": {
+          "label": "온라인"
+        }
+      }
+    }
+  ]
+}
+```
+
+`i18nMap` is supported on the schema root, overview, settings, default selectors, blocks, fields, choices, helper links, validation errors, and validation notices. Use it only for text or locale-specific helper URLs. Stable identifiers such as `key`, `id`, `fieldKey`, `value`, `renderer`, and function names must not be localized.
+
+Locale entries are partial. For example, `i18nMap.ko.label` can override only the label while the base `description` remains the fallback. Japanese uses the locale key `ja`.
+
+Supported localized display keys include:
+
+- schema: `providerName`, `title`, `description`
+- overview: `title`, `description`, `nameLabel`, `addLabel`, `statusLabel`
+- settings and default selectors: `title`, `description`, `label`, `placeholder`, `noneLabel`, `onChangeSuccessMessage`
+- blocks and actions: `title`, `description`, `text`, `menuLabel`, `label`, `successMessage`
+- fields: `label`, `description`, `helperText`, `placeholder`, `fieldLabels`, phone/address placeholders, `overviewLabel`, `overviewDescription`
+- choices and links: `label`, `description`, `url`
+- validation: `message`, `title`
