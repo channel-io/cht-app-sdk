@@ -37,6 +37,18 @@ const config = {
     scopes: ["openid", "profile"],
     providerName: "Yahoo! Shopping",
     providerDescription: "Connect a Yahoo! Shopping store account.",
+    i18nMap: {
+      ko: {
+        providerName: "야후 쇼핑",
+        providerDescription: "Yahoo! Shopping 스토어 계정을 연결합니다.",
+      },
+      ja: {
+        providerName: "Yahoo!ショッピング",
+      },
+      en: {
+        providerDescription: "Connect a Yahoo! Shopping store account.",
+      },
+    },
     parameterCase: "snake",
     authorizationOpenMode: "popup",
   },
@@ -59,6 +71,12 @@ that AppStore reads. `oauthProvider.tokenRequest.authorizationCodeParamName`
 controls the outbound field sent to the provider token endpoint. They are
 separate because some providers use a custom callback field but still expect
 the standard `code` token request field.
+
+Use `oauthProvider.i18nMap` for locale-specific provider display text. The
+base `providerName` remains required and is used as the fallback;
+`providerDescription` remains optional. Locale entries are partial and support
+only `providerName` and `providerDescription`. Supported locale keys are `ko`,
+`ja`, and `en`.
 
 Use `oauthProvider.tokenResponse` only when the provider nests or renames token
 response fields. Paths use dot-separated JSON object keys such as

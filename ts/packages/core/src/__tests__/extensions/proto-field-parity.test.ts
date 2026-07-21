@@ -31,6 +31,7 @@ import {
   ConfigFieldSchema,
   ConfigHooksSchema,
   ConfigInlineLinkSchema,
+  LocalizedConfigTextSchema,
   ConfigOAuthAdditionalParamSchema,
   ConfigOAuthSchema,
   ConfigResolvedValueTargetSchema,
@@ -111,6 +112,7 @@ import {
   MessagingWritingTypeStateSchema,
   NameDescI18nSchema,
   OAuthConfigSchema,
+  OAuthProviderLocalizedTextSchema,
   OAuthProviderSchema,
   OAuthTokenRequestMappingSchema,
   OAuthTokenResponseMappingSchema,
@@ -221,6 +223,7 @@ const contracts: Contract[] = [
   ),
 
   contract("ConfigCondition", ConfigConditionSchema, "extension", "ConfigCondition"),
+  contract("LocalizedConfigText", LocalizedConfigTextSchema, "extension", "ConfigLocalizedText"),
   contract("ConfigChoice", ConfigChoiceSchema, "extension", "ConfigChoice"),
   contract("ConfigInlineLink", ConfigInlineLinkSchema, "extension", "ConfigInlineLink"),
   contract(
@@ -277,6 +280,12 @@ const contracts: Contract[] = [
     "ConfigDraftResolutionOutput"
   ),
 
+  contract(
+    "OAuthProviderLocalizedText",
+    OAuthProviderLocalizedTextSchema,
+    "extension",
+    "OAuthProviderLocalizedText"
+  ),
   contract("OAuthProvider", OAuthProviderSchema, "extension", "OAuthProvider"),
   contract(
     "OAuthTokenRequestMapping",

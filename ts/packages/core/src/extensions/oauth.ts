@@ -4,6 +4,7 @@ import type {
   OAuthCredentialValidationInput as ProtoCredentialValidationInput,
   OAuthCredentialValidationResult as ProtoCredentialValidationResult,
   OAuthProvider as ProtoOAuthProvider,
+  OAuthProviderLocalizedText as ProtoOAuthProviderLocalizedText,
   OAuthTokenRequestMapping as ProtoTokenRequestMapping,
   OAuthTokenResponseMapping as ProtoTokenResponseMapping,
 } from "../gen/channel/app/sdk/v1/extension.js";
@@ -30,8 +31,35 @@ export type AuthorizationOpenMode = z.infer<typeof AuthorizationOpenModeSchema>;
 export const OAuthAuthScopeSchema = z.enum(["channel", "manager"]);
 export type OAuthAuthScope = z.infer<typeof OAuthAuthScopeSchema>;
 
+export const OAuthProviderSupportedLocaleSchema = z.enum(["ko", "ja", "en"]);
+export type OAuthProviderSupportedLocale = z.infer<typeof OAuthProviderSupportedLocaleSchema>;
+
 const OAuthParamNameSchema = z.string().regex(/^[A-Za-z0-9_.-]+$/);
 const OAuthJSONPathSchema = z.string().regex(/^[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*$/);
+
+export const OAuthProviderLocalizedTextSchema = z.object({
+  providerName: z.string().optional(),
+  providerDescription: z.string().optional(),
+});
+export type OAuthProviderLocalizedText = ProtoBacked<
+  z.infer<typeof OAuthProviderLocalizedTextSchema>,
+  ProtoOAuthProviderLocalizedText
+>;
+
+export const OAuthProviderI18nMapSchema = z
+  .record(z.string(), OAuthProviderLocalizedTextSchema)
+  .superRefine((value, ctx) => {
+    for (const locale of Object.keys(value)) {
+      if (!OAuthProviderSupportedLocaleSchema.safeParse(locale).success) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: [locale],
+          message: "Unsupported OAuth provider i18n locale. Supported locales: ko, ja, en.",
+        });
+      }
+    }
+  });
+export type OAuthProviderI18nMap = z.infer<typeof OAuthProviderI18nMapSchema>;
 
 /** Provider-specific field names used by the outbound token request. */
 export const OAuthTokenRequestMappingSchema = z.object({
@@ -75,6 +103,7 @@ export const OAuthProviderSchema = z.object({
   scopes: z.array(z.string()).min(1),
   providerName: z.string().min(1),
   providerDescription: z.string().optional(),
+  i18nMap: OAuthProviderI18nMapSchema.optional(),
   providerIconUrl: z.string().url().optional(),
   pkceRequired: z.boolean().optional(),
   additionalParams: z.record(z.string()).optional(),

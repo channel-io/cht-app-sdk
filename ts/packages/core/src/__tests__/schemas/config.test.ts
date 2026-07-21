@@ -187,6 +187,269 @@ describe("config extension schema", () => {
     }
   });
 
+  it("accepts locale maps for user-facing config text", () => {
+    const parsed = GetConfigSchemaOutputSchema.parse({
+      schemaVersion: "v1",
+      configScope: "channel",
+      providerName: "Cafe24 Hub",
+      title: "Cafe24 setup",
+      description: "Configure Cafe24 credentials.",
+      i18nMap: {
+        ko: {
+          providerName: "Cafe24 허브",
+          title: "Cafe24 설정",
+          description: "Cafe24 인증 정보를 설정하세요.",
+        },
+        ja: {
+          title: "Cafe24設定",
+          description: "Cafe24認証情報を設定してください。",
+        },
+        en: {
+          title: "Cafe24 setup",
+        },
+      },
+      overview: {
+        title: "Connected stores",
+        description: "Manage connected store settings.",
+        nameLabel: "Store name",
+        addLabel: "Add store",
+        statusLabel: "Status",
+        i18nMap: {
+          ko: {
+            title: "연결된 스토어",
+            description: "연결된 스토어 설정을 관리하세요.",
+            nameLabel: "스토어 이름",
+            addLabel: "스토어 추가",
+            statusLabel: "상태",
+          },
+        },
+      },
+      settings: {
+        title: "Defaults",
+        description: "Choose the default connected store.",
+        defaultSelectors: [
+          {
+            key: "defaultStoreKey",
+            label: "Default store",
+            placeholder: "Select a default store",
+            noneLabel: "No default",
+            onChangeSuccessMessage: "Default store updated.",
+            i18nMap: {
+              ko: {
+                label: "기본 스토어",
+                placeholder: "기본 스토어 선택",
+                noneLabel: "선택 안 함",
+                onChangeSuccessMessage: "기본 스토어가 변경되었습니다.",
+              },
+            },
+          },
+        ],
+        i18nMap: {
+          ko: {
+            title: "기본값",
+            description: "기본 연결 스토어를 선택하세요.",
+          },
+        },
+      },
+      blocks: [
+        {
+          type: "section",
+          title: "Connection",
+          menuLabel: "Connection settings",
+          menuIcon: "settings",
+          i18nMap: {
+            ko: { title: "연동", menuLabel: "연동 설정" },
+          },
+        },
+        {
+          type: "select",
+          key: "storeType",
+          label: "Store type",
+          description: "Choose the store type.",
+          placeholder: "Select a store type",
+          overviewLabel: "Store",
+          overviewDescription: "Selected store type",
+          helperText: "Use {guide} if you are unsure.",
+          helperLinks: [
+            {
+              key: "guide",
+              label: "setup guide",
+              url: "https://example.com/en/guide",
+              i18nMap: {
+                ko: {
+                  label: "설정 가이드",
+                  url: "https://example.com/ko/guide",
+                },
+              },
+            },
+          ],
+          i18nMap: {
+            ko: {
+              label: "스토어 유형",
+              description: "스토어 유형을 선택하세요.",
+              placeholder: "스토어 유형 선택",
+              overviewLabel: "스토어",
+              overviewDescription: "선택된 스토어 유형",
+              helperText: "잘 모르겠다면 {guide}를 확인하세요.",
+            },
+          },
+          choices: [
+            {
+              label: "Online",
+              value: "online",
+              description: "Online store",
+              i18nMap: {
+                ko: {
+                  label: "온라인",
+                  description: "온라인 스토어",
+                },
+              },
+            },
+          ],
+        },
+        {
+          type: "phone",
+          key: "supportPhone",
+          label: "Support phone",
+          countryCodePlaceholder: "+82",
+          numberPlaceholder: "10-0000-0000",
+          i18nMap: {
+            ko: {
+              label: "고객센터 전화번호",
+              countryCodePlaceholder: "국가번호",
+              numberPlaceholder: "전화번호",
+            },
+          },
+        },
+        {
+          type: "address",
+          key: "returnAddress",
+          label: "Return address",
+          fieldLabels: {
+            recipient: "Recipient",
+            address1: "Address line 1",
+          },
+          recipientPlaceholder: "Name",
+          address1Placeholder: "Street",
+          i18nMap: {
+            ko: {
+              label: "반품 주소",
+              fieldLabels: {
+                recipient: "수령인",
+                address1: "주소",
+              },
+              recipientPlaceholder: "이름",
+              address1Placeholder: "도로명 주소",
+            },
+          },
+        },
+        {
+          type: "action",
+          label: "Sync store",
+          description: "Fetch the latest store data.",
+          functionName: "cafe24.config.syncStore",
+          buttonStyle: "secondary",
+          afterSuccess: ["reload"],
+          successMessage: "Store data synced.",
+          showInOverviewMenu: true,
+          menuIcon: "disconnect",
+          i18nMap: {
+            ko: {
+              label: "스토어 동기화",
+              description: "최신 스토어 데이터를 가져옵니다.",
+              successMessage: "스토어 데이터가 동기화되었습니다.",
+            },
+          },
+        },
+      ],
+    });
+
+    expect(parsed.i18nMap?.ko?.providerName).toBe("Cafe24 허브");
+    expect(parsed.i18nMap?.ko?.title).toBe("Cafe24 설정");
+    expect(parsed.overview?.i18nMap?.ko?.nameLabel).toBe("스토어 이름");
+    expect(parsed.settings?.i18nMap?.ko?.title).toBe("기본값");
+    expect(parsed.settings?.defaultSelectors?.[0]?.i18nMap?.ko?.noneLabel).toBe("선택 안 함");
+    expect(parsed.settings?.defaultSelectors?.[0]?.i18nMap?.ko?.placeholder).toBe(
+      "기본 스토어 선택"
+    );
+    expect(parsed.blocks[0]?.type === "section" ? parsed.blocks[0].menuLabel : undefined).toBe(
+      "Connection settings"
+    );
+    expect(parsed.blocks[0]?.i18nMap?.ko?.menuLabel).toBe("연동 설정");
+    if (parsed.blocks[1]?.type === "select") {
+      expect(parsed.blocks[1].overviewLabel).toBe("Store");
+      expect(parsed.blocks[1].i18nMap?.ko?.helperText).toContain("{guide}");
+      expect(parsed.blocks[1].i18nMap?.ko?.overviewLabel).toBe("스토어");
+      expect(parsed.blocks[1].helperLinks?.[0]?.i18nMap?.ko?.label).toBe("설정 가이드");
+      expect(parsed.blocks[1].choices?.[0]?.i18nMap?.ko?.label).toBe("온라인");
+    }
+    if (parsed.blocks[2]?.type === "phone") {
+      expect(parsed.blocks[2].i18nMap?.ko?.countryCodePlaceholder).toBe("국가번호");
+      expect(parsed.blocks[2].i18nMap?.ko?.numberPlaceholder).toBe("전화번호");
+    }
+    if (parsed.blocks[3]?.type === "address") {
+      expect(parsed.blocks[3].i18nMap?.ko?.fieldLabels?.recipient).toBe("수령인");
+      expect(parsed.blocks[3].i18nMap?.ko?.address1Placeholder).toBe("도로명 주소");
+    }
+    if (parsed.blocks[4]?.type === "action") {
+      expect(parsed.blocks[4].successMessage).toBe("Store data synced.");
+      expect(parsed.blocks[4].i18nMap?.ko?.successMessage).toBe(
+        "스토어 데이터가 동기화되었습니다."
+      );
+    }
+
+    const validation = ValidateStoredConfigOutputSchema.parse({
+      valid: false,
+      message: "Review required",
+      errors: [
+        {
+          fieldKey: "storeType",
+          message: "Store type is not supported.",
+          i18nMap: { ko: { message: "지원하지 않는 스토어 유형입니다." } },
+        },
+      ],
+      notices: [
+        {
+          tone: "warning",
+          message: "Additional setup is required.",
+          links: [
+            {
+              key: "guide",
+              label: "guide",
+              url: "https://example.com/en/guide",
+              i18nMap: { ko: { label: "가이드" } },
+            },
+          ],
+          i18nMap: { ko: { message: "추가 설정이 필요합니다." } },
+        },
+      ],
+    });
+    expect(validation.errors?.[0]?.i18nMap?.ko?.message).toBe("지원하지 않는 스토어 유형입니다.");
+    expect(validation.notices?.[0]?.links?.[0]?.i18nMap?.ko?.label).toBe("가이드");
+  });
+
+  it("rejects unsupported config i18n locales", () => {
+    expect(() =>
+      GetConfigSchemaOutputSchema.parse({
+        schemaVersion: "v1",
+        configScope: "channel",
+        providerName: "Cafe24 Hub",
+        i18nMap: {
+          fr: {
+            title: "Configuration Cafe24",
+          },
+        },
+        blocks: [
+          {
+            type: "text",
+            key: "apiKey",
+            label: "API key",
+          },
+        ],
+      })
+    ).toThrow();
+  });
+
   it("accepts draft resolution output", () => {
     const parsed = ConfigDraftResolutionOutputSchema.parse({
       valuesPatch: {

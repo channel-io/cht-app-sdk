@@ -72,17 +72,63 @@ export interface ConfigCondition {
   value?: any | undefined;
 }
 
+export interface ConfigLocalizedText {
+  label?: string | undefined;
+  title?: string | undefined;
+  description?: string | undefined;
+  text?: string | undefined;
+  helperText?: string | undefined;
+  placeholder?: string | undefined;
+  message?: string | undefined;
+  url?: string | undefined;
+  fieldLabels?: { [key: string]: string } | undefined;
+  countryCodePlaceholder?: string | undefined;
+  numberPlaceholder?: string | undefined;
+  recipientPlaceholder?: string | undefined;
+  phonePlaceholder?: string | undefined;
+  postcodePlaceholder?: string | undefined;
+  address1Placeholder?: string | undefined;
+  address2Placeholder?: string | undefined;
+  providerName?: string | undefined;
+  menuLabel?: string | undefined;
+  successMessage?: string | undefined;
+  overviewLabel?: string | undefined;
+  overviewDescription?: string | undefined;
+  nameLabel?: string | undefined;
+  addLabel?: string | undefined;
+  statusLabel?: string | undefined;
+  noneLabel?: string | undefined;
+  onChangeSuccessMessage?: string | undefined;
+}
+
+export interface ConfigLocalizedText_FieldLabelsEntry {
+  key: string;
+  value: string;
+}
+
 export interface ConfigChoice {
   label?: string | undefined;
   value?: any | undefined;
   description?: string | undefined;
   imageUrl?: string | undefined;
+  i18nMap?: { [key: string]: ConfigLocalizedText } | undefined;
+}
+
+export interface ConfigChoice_I18nMapEntry {
+  key: string;
+  value?: ConfigLocalizedText | undefined;
 }
 
 export interface ConfigInlineLink {
   key?: string | undefined;
   label?: string | undefined;
   url?: string | undefined;
+  i18nMap?: { [key: string]: ConfigLocalizedText } | undefined;
+}
+
+export interface ConfigInlineLink_I18nMapEntry {
+  key: string;
+  value?: ConfigLocalizedText | undefined;
 }
 
 export interface ConfigValidationNotice {
@@ -91,6 +137,13 @@ export interface ConfigValidationNotice {
   message?: string | undefined;
   placement?: string | undefined;
   blockId?: string | undefined;
+  i18nMap?: { [key: string]: ConfigLocalizedText } | undefined;
+  links?: ConfigInlineLink[] | undefined;
+}
+
+export interface ConfigValidationNotice_I18nMapEntry {
+  key: string;
+  value?: ConfigLocalizedText | undefined;
 }
 
 export interface ConfigHooks {
@@ -114,6 +167,56 @@ export interface ConfigChoicesSource {
   triggerOnLoad?: boolean | undefined;
   triggerFieldKeys?: string[] | undefined;
   appId?: string | undefined;
+}
+
+export interface ConfigOverview {
+  title?: string | undefined;
+  description?: string | undefined;
+  nameLabel?: string | undefined;
+  addLabel?: string | undefined;
+  statusLabel?: string | undefined;
+  connectedAtMetadataKey?: string | undefined;
+  connectedByMetadataKey?: string | undefined;
+  featureSectionId?: string | undefined;
+  showAddIcon?: boolean | undefined;
+  i18nMap?: { [key: string]: ConfigLocalizedText } | undefined;
+}
+
+export interface ConfigOverview_I18nMapEntry {
+  key: string;
+  value?: ConfigLocalizedText | undefined;
+}
+
+export interface ConfigDefaultSelector {
+  key?: string | undefined;
+  label?: string | undefined;
+  description?: string | undefined;
+  descriptionDisplay?: string | undefined;
+  placeholder?: string | undefined;
+  noneLabel?: string | undefined;
+  onChangeFunctionName?: string | undefined;
+  onChangeAppId?: string | undefined;
+  onChangeParams?: { [key: string]: any } | undefined;
+  onChangeSuccessMessage?: string | undefined;
+  defaultValueMetadataKey?: string | undefined;
+  i18nMap?: { [key: string]: ConfigLocalizedText } | undefined;
+}
+
+export interface ConfigDefaultSelector_I18nMapEntry {
+  key: string;
+  value?: ConfigLocalizedText | undefined;
+}
+
+export interface ConfigSettings {
+  title?: string | undefined;
+  description?: string | undefined;
+  defaultSelectors?: ConfigDefaultSelector[] | undefined;
+  i18nMap?: { [key: string]: ConfigLocalizedText } | undefined;
+}
+
+export interface ConfigSettings_I18nMapEntry {
+  key: string;
+  value?: ConfigLocalizedText | undefined;
 }
 
 export interface ConfigDraftResolutionParams {
@@ -190,6 +293,16 @@ export interface ConfigField {
   maxFileSizeMb?: number | undefined;
   multiple?: boolean | undefined;
   fieldLabels?: { [key: string]: any } | undefined;
+  i18nMap?: { [key: string]: ConfigLocalizedText } | undefined;
+  overviewSummary?: boolean | undefined;
+  overviewFeature?: boolean | undefined;
+  overviewLabel?: string | undefined;
+  overviewDescription?: string | undefined;
+}
+
+export interface ConfigField_I18nMapEntry {
+  key: string;
+  value?: ConfigLocalizedText | undefined;
 }
 
 export interface ConfigBlock {
@@ -240,6 +353,28 @@ export interface ConfigBlock {
   accept?: string[] | undefined;
   maxFileSizeMb?: number | undefined;
   multiple?: boolean | undefined;
+  i18nMap?: { [key: string]: ConfigLocalizedText } | undefined;
+  overviewSummary?: boolean | undefined;
+  overviewFeature?: boolean | undefined;
+  overviewLabel?: string | undefined;
+  overviewDescription?: string | undefined;
+  menuLabel?: string | undefined;
+  menuIcon?: string | undefined;
+  functionName?: string | undefined;
+  appId?: string | undefined;
+  params?: { [key: string]: any } | undefined;
+  buttonStyle?: string | undefined;
+  validateBeforeRun?: boolean | undefined;
+  validationFieldKeys?: string[] | undefined;
+  saveBeforeRun?: boolean | undefined;
+  afterSuccess?: string[] | undefined;
+  successMessage?: string | undefined;
+  showInOverviewMenu?: boolean | undefined;
+}
+
+export interface ConfigBlock_I18nMapEntry {
+  key: string;
+  value?: ConfigLocalizedText | undefined;
 }
 
 export interface ConfigGetConfigSchemaInput {
@@ -257,12 +392,26 @@ export interface ConfigGetConfigSchemaOutput {
   blocks?: ConfigBlock[] | undefined;
   supportsMultiple?: boolean | undefined;
   keyResolverFunctionName?: string | undefined;
+  i18nMap?: { [key: string]: ConfigLocalizedText } | undefined;
+  overview?: ConfigOverview | undefined;
+  settings?: ConfigSettings | undefined;
+}
+
+export interface ConfigGetConfigSchemaOutput_I18nMapEntry {
+  key: string;
+  value?: ConfigLocalizedText | undefined;
 }
 
 export interface ConfigValidationError {
   fieldKey?: string | undefined;
   reasonCode?: string | undefined;
   message?: string | undefined;
+  i18nMap?: { [key: string]: ConfigLocalizedText } | undefined;
+}
+
+export interface ConfigValidationError_I18nMapEntry {
+  key: string;
+  value?: ConfigLocalizedText | undefined;
 }
 
 export interface ConfigValidateStoredConfigInput {
@@ -286,6 +435,11 @@ export interface ConfigDraftResolutionOutput {
   choicesPatch?: { [key: string]: any } | undefined;
 }
 
+export interface OAuthProviderLocalizedText {
+  providerName?: string | undefined;
+  providerDescription?: string | undefined;
+}
+
 export interface OAuthProvider {
   provider?: string | undefined;
   authorizationUrl?: string | undefined;
@@ -303,11 +457,17 @@ export interface OAuthProvider {
   authorizationOpenMode?: string | undefined;
   tokenRequest?: OAuthTokenRequestMapping | undefined;
   tokenResponse?: OAuthTokenResponseMapping | undefined;
+  i18nMap?: { [key: string]: OAuthProviderLocalizedText } | undefined;
 }
 
 export interface OAuthProvider_AdditionalParamsEntry {
   key: string;
   value: string;
+}
+
+export interface OAuthProvider_I18nMapEntry {
+  key: string;
+  value?: OAuthProviderLocalizedText | undefined;
 }
 
 export interface OAuthGetAuthConfigInput {

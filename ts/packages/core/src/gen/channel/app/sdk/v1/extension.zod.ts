@@ -66,11 +66,42 @@ export const ConfigConditionProtoSchema = z.object({
 }) satisfies z.ZodType<pb.ConfigCondition>;
 export type ConfigConditionProto = z.infer<typeof ConfigConditionProtoSchema>;
 
+export const ConfigLocalizedTextProtoSchema = z.object({
+  label: z.string().optional(),
+  title: z.string().optional(),
+  description: z.string().optional(),
+  text: z.string().optional(),
+  helperText: z.string().optional(),
+  placeholder: z.string().optional(),
+  message: z.string().optional(),
+  url: z.string().optional(),
+  fieldLabels: z.record(z.string(), z.string()).optional(),
+  countryCodePlaceholder: z.string().optional(),
+  numberPlaceholder: z.string().optional(),
+  recipientPlaceholder: z.string().optional(),
+  phonePlaceholder: z.string().optional(),
+  postcodePlaceholder: z.string().optional(),
+  address1Placeholder: z.string().optional(),
+  address2Placeholder: z.string().optional(),
+  providerName: z.string().optional(),
+  menuLabel: z.string().optional(),
+  successMessage: z.string().optional(),
+  overviewLabel: z.string().optional(),
+  overviewDescription: z.string().optional(),
+  nameLabel: z.string().optional(),
+  addLabel: z.string().optional(),
+  statusLabel: z.string().optional(),
+  noneLabel: z.string().optional(),
+  onChangeSuccessMessage: z.string().optional(),
+}) satisfies z.ZodType<pb.ConfigLocalizedText>;
+export type ConfigLocalizedTextProto = z.infer<typeof ConfigLocalizedTextProtoSchema>;
+
 export const ConfigChoiceProtoSchema = z.object({
   label: z.string().optional(),
   value: z.any().optional(),
   description: z.string().optional(),
   imageUrl: z.string().optional(),
+  i18nMap: z.record(z.string(), z.lazy(() => ConfigLocalizedTextProtoSchema)).optional(),
 }) satisfies z.ZodType<pb.ConfigChoice>;
 export type ConfigChoiceProto = z.infer<typeof ConfigChoiceProtoSchema>;
 
@@ -78,6 +109,7 @@ export const ConfigInlineLinkProtoSchema = z.object({
   key: z.string().optional(),
   label: z.string().optional(),
   url: z.string().optional(),
+  i18nMap: z.record(z.string(), z.lazy(() => ConfigLocalizedTextProtoSchema)).optional(),
 }) satisfies z.ZodType<pb.ConfigInlineLink>;
 export type ConfigInlineLinkProto = z.infer<typeof ConfigInlineLinkProtoSchema>;
 
@@ -87,6 +119,8 @@ export const ConfigValidationNoticeProtoSchema = z.object({
   message: z.string().optional(),
   placement: z.string().optional(),
   blockId: z.string().optional(),
+  i18nMap: z.record(z.string(), z.lazy(() => ConfigLocalizedTextProtoSchema)).optional(),
+  links: z.array(z.lazy(() => ConfigInlineLinkProtoSchema)).optional(),
 }) satisfies z.ZodType<pb.ConfigValidationNotice>;
 export type ConfigValidationNoticeProto = z.infer<typeof ConfigValidationNoticeProtoSchema>;
 
@@ -116,6 +150,44 @@ export const ConfigChoicesSourceProtoSchema = z.object({
   appId: z.string().optional(),
 }) satisfies z.ZodType<pb.ConfigChoicesSource>;
 export type ConfigChoicesSourceProto = z.infer<typeof ConfigChoicesSourceProtoSchema>;
+
+export const ConfigOverviewProtoSchema = z.object({
+  title: z.string().optional(),
+  description: z.string().optional(),
+  nameLabel: z.string().optional(),
+  addLabel: z.string().optional(),
+  statusLabel: z.string().optional(),
+  connectedAtMetadataKey: z.string().optional(),
+  connectedByMetadataKey: z.string().optional(),
+  featureSectionId: z.string().optional(),
+  showAddIcon: z.boolean().optional(),
+  i18nMap: z.record(z.string(), z.lazy(() => ConfigLocalizedTextProtoSchema)).optional(),
+}) satisfies z.ZodType<pb.ConfigOverview>;
+export type ConfigOverviewProto = z.infer<typeof ConfigOverviewProtoSchema>;
+
+export const ConfigDefaultSelectorProtoSchema = z.object({
+  key: z.string().optional(),
+  label: z.string().optional(),
+  description: z.string().optional(),
+  descriptionDisplay: z.string().optional(),
+  placeholder: z.string().optional(),
+  noneLabel: z.string().optional(),
+  onChangeFunctionName: z.string().optional(),
+  onChangeAppId: z.string().optional(),
+  onChangeParams: z.record(z.string(), z.any()).optional(),
+  onChangeSuccessMessage: z.string().optional(),
+  defaultValueMetadataKey: z.string().optional(),
+  i18nMap: z.record(z.string(), z.lazy(() => ConfigLocalizedTextProtoSchema)).optional(),
+}) satisfies z.ZodType<pb.ConfigDefaultSelector>;
+export type ConfigDefaultSelectorProto = z.infer<typeof ConfigDefaultSelectorProtoSchema>;
+
+export const ConfigSettingsProtoSchema = z.object({
+  title: z.string().optional(),
+  description: z.string().optional(),
+  defaultSelectors: z.array(z.lazy(() => ConfigDefaultSelectorProtoSchema)).optional(),
+  i18nMap: z.record(z.string(), z.lazy(() => ConfigLocalizedTextProtoSchema)).optional(),
+}) satisfies z.ZodType<pb.ConfigSettings>;
+export type ConfigSettingsProto = z.infer<typeof ConfigSettingsProtoSchema>;
 
 export const ConfigDraftResolutionParamsProtoSchema = z.object({
   scope: z.string().optional(),
@@ -196,6 +268,11 @@ export const ConfigFieldProtoSchema = z.object({
   maxFileSizeMb: z.number().optional(),
   multiple: z.boolean().optional(),
   fieldLabels: z.record(z.string(), z.any()).optional(),
+  i18nMap: z.record(z.string(), z.lazy(() => ConfigLocalizedTextProtoSchema)).optional(),
+  overviewSummary: z.boolean().optional(),
+  overviewFeature: z.boolean().optional(),
+  overviewLabel: z.string().optional(),
+  overviewDescription: z.string().optional(),
 }) satisfies z.ZodType<pb.ConfigField>;
 export type ConfigFieldProto = z.infer<typeof ConfigFieldProtoSchema>;
 
@@ -247,6 +324,23 @@ export const ConfigBlockProtoSchema = z.object({
   accept: z.array(z.string()).optional(),
   maxFileSizeMb: z.number().optional(),
   multiple: z.boolean().optional(),
+  i18nMap: z.record(z.string(), z.lazy(() => ConfigLocalizedTextProtoSchema)).optional(),
+  overviewSummary: z.boolean().optional(),
+  overviewFeature: z.boolean().optional(),
+  overviewLabel: z.string().optional(),
+  overviewDescription: z.string().optional(),
+  menuLabel: z.string().optional(),
+  menuIcon: z.string().optional(),
+  functionName: z.string().optional(),
+  appId: z.string().optional(),
+  params: z.record(z.string(), z.any()).optional(),
+  buttonStyle: z.string().optional(),
+  validateBeforeRun: z.boolean().optional(),
+  validationFieldKeys: z.array(z.string()).optional(),
+  saveBeforeRun: z.boolean().optional(),
+  afterSuccess: z.array(z.string()).optional(),
+  successMessage: z.string().optional(),
+  showInOverviewMenu: z.boolean().optional(),
 }) satisfies z.ZodType<pb.ConfigBlock>;
 export type ConfigBlockProto = z.infer<typeof ConfigBlockProtoSchema>;
 
@@ -265,6 +359,9 @@ export const ConfigGetConfigSchemaOutputProtoSchema = z.object({
   blocks: z.array(z.lazy(() => ConfigBlockProtoSchema)).optional(),
   supportsMultiple: z.boolean().optional(),
   keyResolverFunctionName: z.string().optional(),
+  i18nMap: z.record(z.string(), z.lazy(() => ConfigLocalizedTextProtoSchema)).optional(),
+  overview: z.lazy(() => ConfigOverviewProtoSchema).optional(),
+  settings: z.lazy(() => ConfigSettingsProtoSchema).optional(),
 }) satisfies z.ZodType<pb.ConfigGetConfigSchemaOutput>;
 export type ConfigGetConfigSchemaOutputProto = z.infer<typeof ConfigGetConfigSchemaOutputProtoSchema>;
 
@@ -272,6 +369,7 @@ export const ConfigValidationErrorProtoSchema = z.object({
   fieldKey: z.string().optional(),
   reasonCode: z.string().optional(),
   message: z.string().optional(),
+  i18nMap: z.record(z.string(), z.lazy(() => ConfigLocalizedTextProtoSchema)).optional(),
 }) satisfies z.ZodType<pb.ConfigValidationError>;
 export type ConfigValidationErrorProto = z.infer<typeof ConfigValidationErrorProtoSchema>;
 
@@ -299,6 +397,12 @@ export const ConfigDraftResolutionOutputProtoSchema = z.object({
 }) satisfies z.ZodType<pb.ConfigDraftResolutionOutput>;
 export type ConfigDraftResolutionOutputProto = z.infer<typeof ConfigDraftResolutionOutputProtoSchema>;
 
+export const OAuthProviderLocalizedTextProtoSchema = z.object({
+  providerName: z.string().optional(),
+  providerDescription: z.string().optional(),
+}) satisfies z.ZodType<pb.OAuthProviderLocalizedText>;
+export type OAuthProviderLocalizedTextProto = z.infer<typeof OAuthProviderLocalizedTextProtoSchema>;
+
 export const OAuthProviderProtoSchema = z.object({
   provider: z.string().optional(),
   authorizationUrl: z.string().optional(),
@@ -316,6 +420,7 @@ export const OAuthProviderProtoSchema = z.object({
   authorizationOpenMode: z.string().optional(),
   tokenRequest: z.lazy(() => OAuthTokenRequestMappingProtoSchema).optional(),
   tokenResponse: z.lazy(() => OAuthTokenResponseMappingProtoSchema).optional(),
+  i18nMap: z.record(z.string(), z.lazy(() => OAuthProviderLocalizedTextProtoSchema)).optional(),
 }) satisfies z.ZodType<pb.OAuthProvider>;
 export type OAuthProviderProto = z.infer<typeof OAuthProviderProtoSchema>;
 
