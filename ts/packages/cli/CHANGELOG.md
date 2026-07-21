@@ -1,5 +1,18 @@
 # @channel.io/app-sdk
 
+## 0.17.0
+
+### Minor Changes
+
+- f5ca25f: Add typed Hook Extension metadata for app-level public webhook ingress.
+
+### Patch Changes
+
+- Updated dependencies [f5ca25f]
+  - @channel.io/app-sdk-core@0.17.0
+  - @channel.io/app-sdk-server@0.17.0
+  - @channel.io/app-sdk-wam@0.17.0
+
 ## 0.16.5
 
 ### Patch Changes

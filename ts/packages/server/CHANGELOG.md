@@ -1,5 +1,12 @@
 # @channel.io/app-sdk-server
 
+## 0.17.0
+
+### Patch Changes
+
+- Updated dependencies [f5ca25f]
+  - @channel.io/app-sdk-core@0.17.0
+
 ## 0.16.5
 
 ### Patch Changes
