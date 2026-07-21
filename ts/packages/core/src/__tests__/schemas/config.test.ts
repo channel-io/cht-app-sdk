@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   ConfigDraftResolutionParamsSchema,
   ConfigDraftResolutionOutputSchema,
+  ConfigHooksSchema,
   GetConfigSchemaOutputSchema,
   ValidateStoredConfigOutputSchema,
 } from "../../extensions/index.js";
@@ -544,6 +545,15 @@ describe("config extension schema", () => {
 
     expect(parsed.changedFieldKey).toBe("appWmsType");
     expect(parsed.values.appWmsType).toBe("none");
+  });
+
+  it("accepts config hooks that request draft resolution on initial load", () => {
+    const parsed = ConfigHooksSchema.parse({
+      draftResolverFunctionName: "amazon.config.resolveDraft",
+      draftResolverOnLoadFieldKeys: ["marketplaceId"],
+    });
+
+    expect(parsed.draftResolverOnLoadFieldKeys).toEqual(["marketplaceId"]);
   });
 
   it("accepts config validation feedback", () => {
