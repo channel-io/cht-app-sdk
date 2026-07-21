@@ -3,6 +3,8 @@
 WAM is the frontend runtime for Channel app UI.
 In practice, WAM is how command actions, widgets, and custom tabs render interactive experiences.
 
+A WAM is not an app server and does not own server credentials. The Channel host injects runtime data and exposes a bridge for app/native Function calls.
+
 ## Install
 
 ```bash
@@ -19,6 +21,21 @@ Common entry points:
 - widget action returns `{ type: "wam", attributes: ... }`
 - custom tab action returns `{ type: "wam", attributes: ... }`
 
+For example:
+
+```json
+{
+  "type": "wam",
+  "attributes": {
+    "appId": "public-app-id",
+    "name": "tutorial",
+    "wamArgs": { "view": "summary" }
+  }
+}
+```
+
+Register the WAM Endpoint root and serve the built SPA from `${WAM_ENDPOINT}/${name}`. `wamArgs` and injected runtime data are client-readable; never use them to transport a secret or token.
+
 ## Minimal Setup
 
 ```tsx
@@ -32,7 +49,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <WamProvider>
       <App />
     </WamProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 ```
 
@@ -55,6 +72,7 @@ The most common keys are:
 
 Call your own app function.
 This is the main way a WAM UI talks back to your server extension logic.
+Use it for business logic and for work that must execute as the app or bot. The app server can obtain a channel token without exposing it to the WAM.
 
 ```tsx
 const appId = useWamData("appId") as string;
@@ -68,6 +86,7 @@ const { call, loading, error } = useCallFunction({
 
 Call a Channel native function that is exposed to the current role and surface.
 This is useful for manager-scoped OAuth or API key management flows, and for other runtime-native integrations.
+Authorization comes from the current Channel surface and manager/user role. The WAM does not receive or mint that token.
 
 ```tsx
 const { call } = useNativeFunction({
@@ -111,5 +130,9 @@ Calendar is a good concrete example because it combines:
 - Prefer `useCallFunction()` for your own business logic
 - Treat `useNativeFunction()` as the boundary to Channel-owned capabilities
 - Pass only the minimum needed `wamArgs`
+- Never put App Secret, Signing Key, app/channel token, provider token, or config credentials in WAM code or data
+- Validate authorization again in server Functions; client UI visibility is not an authorization boundary
 - Set an initial size early
 - Keep action handlers small and push real logic into app functions
+
+For the complete credential model, read [Authentication and Tokens](AUTH-AND-TOKENS.md). For a runnable implementation, see the [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts).

@@ -1,514 +1,229 @@
-# Channel.io App SDK
+# Channel App SDK — TypeScript Context
 
-> TypeScript SDK for building Channel.io apps with the extension system
+Use this file as a compact, current reference for code generation. Public package exports are the final source of truth.
 
-## Quick Start
+Verified releases on 2026-07-22:
 
-```bash
-npm install @channel.io/app-sdk
-npx @channel.io/app-sdk create my-app --template=basic
-```
+- `@channel.io/app-sdk-core`: `0.17.0`
+- `@channel.io/app-sdk-server`: `0.17.0`
+- `@channel.io/app-sdk-wam`: `0.17.0`
+- `@channel.io/app-sdk-wam-ui`: `0.2.2`
+- Node.js: 20.11+
 
-## What is this SDK?
+## Packages
 
-This SDK helps developers quickly build Channel.io apps by providing:
+- Core: contexts, extension contracts, Zod schemas, generated protocol types.
+- Server: NestJS module, decorators, discovery, routes, tokens, signatures, native clients, testing.
+- WAM: React provider and runtime hooks.
+- WAM UI: optional Channel-consistent components.
+- CLI: scaffolding entry point; inspect generated output because some templates may lag public exports.
 
-- Version-specific extension implementation (v1, v2, etc.)
-- NestJS framework integration with auto-registration
-- WAM (Web App Module) React utilities
-- Token management with automatic caching and refresh
-- Signature verification for secure requests
-- Native function client for calling Channel App platform APIs
-- CLI tools for project scaffolding
+## Source priority
 
-## Core Concepts
+1. Public exports in package `index.ts`/`.d.ts`.
+2. Core extension schemas and interfaces.
+3. Server discovery, token, native-client, and WAM hook source.
+4. SDK reference and current examples.
+5. Legacy developers.channel.io App articles.
 
-### Extensions
+## Current defaults
 
-Extensions are predefined function collections with version-specific APIs. Available extensions (all V1):
+- AppStore base URL: `https://app-store.channel.io`
+- Incoming route: `PUT /functions/:version`
+- Developer portal Function Endpoint: the `/functions` root
+- Registration: extension metadata plus `registerExtension`
+- Context type: `Context` (not `FunctionContext`)
+- `TokenManager` scopes: app and channel
 
-- `createOAuthExtensionV1` - OAuth 2.0 authentication
-- `createApiKeyExtensionV1` - API key authentication
-- `createCalendarExtensionV1` - Calendar booking system
-- `command` - Chat slash commands via `extension.command.metadata.getCommands`
-- `widget` - Widgets via `extension.widget.metadata.getWidgets`
-- `customtab` - Custom desk tabs via `extension.customtab.metadata.getCustomTabs`
-- `hook` - Lifecycle and app-level public webhook hooks via `extension.hook.metadata.getHooks`
-- `createAlfTaskExtensionV1` - ALF AI agent automation tasks
-- `createNotebookExtensionV1` - App-managed notebook definitions
+## Define a NestJS extension
 
-### System Version
+Use decorators from `@channel.io/app-sdk-server`.
 
-Each extension has a `systemVersion` (e.g., "v1", "v2") that determines the API contract.
-
-- Extensions with the same name but different versions can coexist
-- The endpoint includes version: `PUT /functions/v1`, `PUT /functions/v2`
-- Future v2 extensions will be breaking changes with new factory functions
-
-### Function Naming
-
-Functions follow: `{groupName}.{functionName}`
-Full path in app store: `extension.{extensionName}.{groupName}.{functionName}`
-
-### Metadata-Driven Registration
-
-`command`, `widget`, `customtab`, and `hook` are registered by calling
-`registerExtension(extensionName, "v1")`. During registration, AppStore calls
-their metadata functions and persists the returned definitions.
-
-- Command metadata: `extension.command.metadata.getCommands`
-- Widget metadata: `extension.widget.metadata.getWidgets`
-- Custom tab metadata: `extension.customtab.metadata.getCustomTabs`
-- Hook metadata: `extension.hook.metadata.getHooks`
-
-For these extension types, UI/action handlers are plain app functions referenced
-by metadata fields such as `actionFunctionName`.
-
-## Server SDK (NestJS)
-
-### Define an Extension
-
-```typescript
-import { createCalendarExtensionV1 } from "@channel.io/app-sdk-server";
-
-export const calendarExtension = createCalendarExtensionV1({
-  listEventTypes: async (ctx, params) => ({
-    eventTypes: [{ id: "1", name: "30 Minute Meeting", duration: 30 }],
-  }),
-  getAvailability: async (ctx, params) => ({ slots: [] }),
-  createBooking: async (ctx, params) => {
-    // Create booking logic
-    return { booking: { id: "123", status: "confirmed" } };
-  },
-});
-```
-
-For metadata-driven extensions such as `command`, `widget`, `customtab`, and `hook`,
-define the extension with `createExtension()` / `defineFunction()` and expose a
-metadata function plus any referenced action functions:
-
-```typescript
-import {
-  createExtension,
-  defineFunction,
-  GetWidgetsOutputSchema,
-  WidgetActionResultSchema,
-} from "@channel.io/app-sdk";
+```ts
 import { z } from "zod";
+import {
+  Context,
+  Ctx,
+  Extension,
+  Func,
+  GetCommandsOutputSchema,
+  Input,
+  InputSchema,
+  OutputSchema,
+  CommandResultSchema,
+} from "@channel.io/app-sdk-server";
 
-export const widgetExtension = createExtension({
-  name: "widget",
-  systemVersion: "v1",
-  groups: {
-    metadata: {
-      getWidgets: defineFunction({
-        input: z.object({}),
-        output: GetWidgetsOutputSchema,
-        handler: async () => ({
-          widgets: [
-            {
-              name: "quick_actions",
-              scope: "desk",
-              widgetType: "wam",
-              actionFunctionName: "extension.widget.widgets.open",
-              defaultName: "Quick Actions",
-            },
-          ],
-        }),
-      }),
-    },
-    widgets: {
-      open: defineFunction({
-        input: z.object({
-          chat: z.object({ type: z.string(), id: z.string() }),
-          language: z.string(),
-        }),
-        output: WidgetActionResultSchema,
-        handler: async (_ctx, params) => ({
-          type: "wam",
-          attributes: {
-            appId: process.env.APP_ID,
-            name: "quick-actions",
-            wamArgs: { chatId: params.chat.id },
-          },
-        }),
-      }),
-    },
-  },
+const ExecuteInput = z.object({
+  chat: z.object({ type: z.string(), id: z.string() }),
+  trigger: z.object({ type: z.string(), attributes: z.record(z.string()) }),
+  input: z.record(z.unknown()),
+  language: z.string().optional(),
 });
-```
 
-Hook metadata uses flat items shaped like:
+@Extension({ name: "command", systemVersion: "v1" })
+export class CommandExtension {
+  @Func("metadata.getCommands")
+  @InputSchema(z.object({}))
+  @OutputSchema(GetCommandsOutputSchema)
+  getCommands() {
+    return {
+      commands: [
+        {
+          name: "hello",
+          scope: "desk",
+          description: "Open the hello action",
+          actionFunctionName: "extension.command.command.hello",
+          alfMode: "disable",
+          enabledByDefault: true,
+        },
+      ],
+    };
+  }
 
-```typescript
-{
-  type: "app.installed" | "app.uninstalled" | "command.toggle" | "config.saved" | "config.deleted" | "widget.installed" | "widget.uninstalled" | "webhook.received";
-  targetId?: string;
-  actionFunctionName: string;
-  systemVersion?: string;
-  webhook?: { endpointToken: string };
+  @Func("command.hello")
+  @InputSchema(ExecuteInput)
+  @OutputSchema(CommandResultSchema)
+  hello(@Ctx() ctx: Context, @Input() input: z.infer<typeof ExecuteInput>) {
+    return { type: "text", attributes: { message: `Hello ${ctx.caller.id}` } };
+  }
 }
 ```
 
-The fields are discriminated by `type`:
+Known extension names include config, oauth, apikey (legacy), calendar, command, widget, customtab, hook, mailRelay, polling, store, datasource, messaging, alftask/alfTask, notebook, commerce, order, and wms. Hook metadata in `0.17.0` also supports app-level public webhook ingress through `webhook.received`; read the hook guide for its required public `targetId` and high-entropy `endpointToken`. Read every extension's guide and exported schemas before choosing relative function names.
 
-- `app.*`, `command.toggle`, and `config.*` hooks forbid both `targetId` and
-  `webhook`.
-- `widget.*` hooks require `targetId` and forbid `webhook`.
-- `webhook.received` requires both a public `targetId` and `webhook`. Its
-  `targetId` must be 1-64 characters, start with an alphanumeric character, and
-  otherwise contain only `A-Z`, `a-z`, `0-9`, `.`, `_`, or `-`.
-- `webhook.endpointToken` must be a high-entropy capability token containing
-  32-128 URL-safe characters (`A-Z`, `a-z`, `0-9`, `_`, or `-`).
+Do not use generic `createExtension()` / `defineFunction()` snippets from older templates; those are not current public exports. Some family-specific core factories exist, but use them only when a current guide shows how the returned definition is integrated into the chosen runtime.
 
-### Register in NestJS (with Auto-Registration)
+## NestJS module and auto-registration
 
-```typescript
-import { Module } from "@nestjs/common";
-import { ChannelAppModule } from "@channel.io/app-sdk-server";
-import { calendarExtension } from "./extensions/calendar";
+Decorated classes must be NestJS providers.
 
-@Module({
-  imports: [
-    ChannelAppModule.forRoot({
-      appId: process.env.APP_ID,
-      appSecret: process.env.APP_SECRET,
-      extensions: [calendarExtension],
-      // Auto-register extensions with Channel App platform on startup
-      autoRegister: true,
-      // Optional: Custom AppStore URL
-      appStoreUrl: "https://app-store.channel.io",
-      // Optional: Callback after registration
-      onAutoRegister: (results) => {
-        results.forEach((r) => {
-          console.log(`${r.extensionName}: ${r.success ? "OK" : r.error}`);
-        });
-      },
-    }),
-  ],
-})
-export class AppModule {}
-```
-
-### Versioned Endpoints
-
-The SDK automatically serves extensions at versioned endpoints:
-
-- `PUT /functions/v1` - for v1 extensions
-- `PUT /functions/v2` - for v2 extensions (future)
-
-Channel App platform calls `{functionURL}/{systemVersion}` (e.g., `https://your-app.com/functions/v1`).
-
-## Signature Verification
-
-Channel App platform signs requests with HMAC-SHA256. Use the `SignatureGuard` to verify:
-
-### Setup Raw Body Parsing
-
-```typescript
-// main.ts
-import express from "express";
-import { NestFactory } from "@nestjs/core";
-import { jsonWithRawBody } from "@channel.io/app-sdk-server";
-
-const app = await NestFactory.create(AppModule, {
-  bodyParser: false,
-});
-
-// Capture raw body for signature verification
-app.use(express.json(jsonWithRawBody()));
-```
-
-### Use SignatureGuard
-
-```typescript
+```ts
 import { Module } from "@nestjs/common";
 import { APP_GUARD } from "@nestjs/core";
 import { ChannelAppModule, SignatureGuard } from "@channel.io/app-sdk-server";
 
+const channelOptions = {
+  appId: process.env.APP_ID!,
+  appSecret: process.env.APP_SECRET!,
+  signingKey: process.env.SIGNING_KEY!,
+  appStoreUrl: process.env.APP_STORE_URL ?? "https://app-store.channel.io",
+  autoRegister: true,
+};
+
 @Module({
-  imports: [
-    ChannelAppModule.forRoot({
-      appId: process.env.APP_ID,
-      appSecret: process.env.APP_SECRET,
-      signingKey: process.env.SIGNING_KEY, // 64-char hex string
-      extensions: [calendarExtension],
-    }),
-  ],
+  imports: [ChannelAppModule.forRoot(channelOptions)],
   providers: [
-    // Apply signature verification globally
-    { provide: APP_GUARD, useClass: SignatureGuard },
+    CommandExtension,
+    {
+      provide: APP_GUARD,
+      useFactory: () => new SignatureGuard(channelOptions),
+    },
   ],
 })
 export class AppModule {}
 ```
 
-### Signature Algorithm
+Auto-registration waits for the HTTP server to listen, obtains a cached app token, calls `registerExtension` for every discovered extension, and retries transient failures.
 
-- Algorithm: HMAC-SHA256, Base64 encoded
-- Signed data: Raw request body only
-- Key format: 64-character hex string (decoded to bytes)
+## Raw-body signature verification
 
-## Token Management
+```ts
+const app = await NestFactory.create(AppModule, { rawBody: true });
+await app.listen(process.env.PORT ?? 3000);
+```
 
-The SDK provides `TokenManager` for handling Channel.io API tokens with automatic caching and refresh.
+The signature is Base64(HMAC-SHA256(hex-decoded signing key, exact raw body bytes)). Do not re-serialize the request before verification. Never enable `skipSignatureVerification` in production.
 
-### Basic Usage
+## Token management
 
-```typescript
+```ts
 import { TokenManager } from "@channel.io/app-sdk-server";
 
-const tokenManager = new TokenManager({
-  appId: process.env.APP_ID,
-  appSecret: process.env.APP_SECRET,
+const tokens = new TokenManager({
+  appId: process.env.APP_ID!,
+  appSecret: process.env.APP_SECRET!,
 });
 
-// Get a manager token (with automatic caching and refresh)
-const token = await tokenManager.getManagerToken({
-  channelId: "channel-123",
-  managerId: "manager-456",
-});
-
-// Use the token for API calls
-await fetch("https://api.channel.io/open/v5/...", {
-  headers: {
-    Authorization: `Bearer ${token.accessToken}`,
-  },
-});
+const appToken = await tokens.getAppToken();
+const channelToken = await tokens.getChannelToken({ channelId: "channel-123" });
 ```
 
-### Token Types
+`TokenManager` caches, refreshes before expiry, and deduplicates concurrent requests. Use custom `TokenCacheStorage` for multiple replicas. `issueToken` and `refreshToken` share a limited rate quota; never issue per incoming request.
 
-```typescript
-// Manager token - for desk/agent operations
-const managerToken = await tokenManager.getManagerToken({
-  channelId: "channel-123",
-  managerId: "manager-456",
-});
+Manager/user authorization is provided by the Channel runtime for WAM operations. The server token manager does not issue manager or user tokens.
 
-// User token - for user-facing operations
-const userToken = await tokenManager.getUserToken({
-  channelId: "channel-123",
-  userId: "user-789",
-});
+## Native client
 
-// Channel token - for channel-level operations
-const channelToken = await tokenManager.getChannelToken({
-  channelId: "channel-123",
-});
-```
-
-### Features
-
-- **Automatic Caching**: Tokens are cached in memory (or custom storage)
-- **Automatic Refresh**: Tokens are refreshed 5 minutes before expiry
-- **Custom Storage**: Implement `TokenCacheStorage` interface for Redis/database
-- **Error Handling**: `TokenManagerError` with status code and response body
-
-## Native Function Client
-
-Call Channel App platform native functions from your server:
-
-```typescript
+```ts
 import { NativeFunctionClient } from "@channel.io/app-sdk-server";
 
-const client = new NativeFunctionClient({
-  appId: process.env.APP_ID,
-  appSecret: process.env.APP_SECRET,
+const client = new NativeFunctionClient();
+const token = await tokens.getChannelToken({ channelId: "channel-123" });
+const api = client.createProxyApi(token.accessToken);
+
+await api.writeGroupMessage({
+  channelId: "channel-123",
+  groupId: "group-456",
+  dto: { plainText: "Hello", botName: "ExampleBot" },
 });
+```
 
-// Issue a token (no auth required)
-const token = await client.issueToken({ channelId: "channel-123" });
+Use `NativeFunctionClient.registerExtension` with an app token only when not using module auto-registration. `AppStoreClient` and the simple API service are deprecated.
 
-// Write system logs (requires token)
-await client.writeSystemLog(
-  {
-    channelId: "channel-123",
-    logs: [{ action: "booking_created", metadata: { bookingId: "123" } }],
-  },
-  token.accessToken
-);
+## WAM
 
-// Get API key credentials
-const creds = await client.getAPIKeyCredentials("channel-123", token.accessToken);
+```tsx
+import { WamProvider } from "@channel.io/app-sdk-wam";
 
-// Call any app function
-const result = await client.callAppFunction(
-  "target-app-id",
-  "extension.calendar.booking.createBooking",
-  { eventTypeId: "1", startTime: "2024-01-01T10:00:00Z" },
-  { channel: { id: "channel-123" }, caller: { type: "manager", id: "mgr-1" } },
-  token.accessToken,
-  "v1"
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <WamProvider>
+    <App />
+  </WamProvider>,
 );
 ```
 
-## AppStore Client
-
-Register/unregister extensions programmatically:
-
-```typescript
-import { AppStoreClient } from "@channel.io/app-sdk-server";
-
-const client = new AppStoreClient({
-  appId: process.env.APP_ID,
-  appSecret: process.env.APP_SECRET,
-});
-
-// Register a single extension
-const result = await client.registerExtension({
-  extensionName: "calendar",
-  systemVersion: "v1",
-});
-
-// Register multiple extensions
-const results = await client.registerExtensions([
-  { extensionName: "calendar", systemVersion: "v1" },
-  { extensionName: "oauth", systemVersion: "v1" },
-]);
-
-// Unregister an extension
-await client.unregisterExtension({
-  extensionName: "calendar",
-  systemVersion: "v1",
+```tsx
+const appId = useTypedWamData("appId") ?? "";
+const channelId = useTypedWamData("channelId") ?? "";
+const { setSize } = useWamSize();
+const { close } = useWamClose();
+const { call: callApp } = useCallFunction({ appId, name: "tutorial.save" });
+const { call: callNative } = useNativeFunction({
+  name: "writeGroupMessageAsManager",
 });
 ```
 
-## WAM SDK (React)
+Return a WAM action from a server function:
 
-### Access WAM Data
-
-```typescript
-import { useWamData, useWamSize } from "@channel.io/app-sdk-wam";
-
-function Widget() {
-  const appId = useWamData("appId");
-  const { setSize } = useWamSize();
-
-  useEffect(() => {
-    setSize({ height: 400 });
-  }, []);
-}
-```
-
-### Call Server Functions
-
-```typescript
-import { useCallFunction } from "@channel.io/app-sdk-wam";
-
-function Widget() {
-  const { call, loading } = useCallFunction({
-    appId: useWamData("appId"),
-    name: "calendar.booking.createBooking",
-  });
-
-  const handleSubmit = () => call({ eventTypeId: "123", startTime: "..." });
-}
-```
-
-## CLI Commands
-
-```bash
-# Create new app
-npx @channel.io/app-sdk create <name> --template=<template>
-
-# Add extension
-npx @channel.io/app-sdk add extension <name>
-
-# Development server
-npx @channel.io/app-sdk dev
-
-# Production build
-npx @channel.io/app-sdk build
-```
-
-## ALF Task Extension
-
-For AI agent automation, use the ALF Task extension:
-
-```typescript
-import { createAlfTaskExtensionV1 } from "@channel.io/app-sdk-server";
-
-export const alfTaskExtension = createAlfTaskExtensionV1({
-  getAlfTasks: async (ctx) => ({
-    predefinedTasks: [
-      {
-        version: "v1.0.0",
-        name: "Auto Reply",
-        trigger: "user_message",
-        memorySchema: [
-          { name: "userMessage", type: "string" },
-          { name: "reply", type: "string" },
-        ],
-        nodes: [
-          {
-            id: "analyze",
-            type: "function",
-            config: { function: "analyzeMessage" },
-            next: "reply",
-          },
-          {
-            id: "reply",
-            type: "send_message",
-            config: { message: "{{memory.reply}}" },
-          },
-        ],
-        startNodeId: "analyze",
-      },
-    ],
-  }),
-});
-```
-
-## Complete Example
-
-```typescript
-// app.module.ts
-import { Module } from "@nestjs/common";
-import { APP_GUARD } from "@nestjs/core";
-import {
-  ChannelAppModule,
-  SignatureGuard,
-  createCalendarExtensionV1,
-  createOAuthExtensionV1,
-} from "@channel.io/app-sdk-server";
-
-const calendarExtension = createCalendarExtensionV1({
-  listEventTypes: async () => ({ eventTypes: [] }),
-  getAvailability: async () => ({ slots: [] }),
-  createBooking: async () => ({ booking: { id: "1", status: "confirmed" } }),
-});
-
-const oauthExtension = createOAuthExtensionV1({
-  getAuthConfig: async () => ({
-    authType: "oauth",
-    authScope: "channel",
-    oauthProvider: {
-      provider: "example",
-      authorizationUrl: "https://example.com/oauth/authorize",
-      tokenUrl: "https://example.com/oauth/token",
-      scopes: ["read"],
-      providerName: "Example",
-    },
-  }),
-  validateCredentials: async (ctx, params) => {
-    const accessToken = ctx.authToken ?? params.accessToken;
-    return { valid: Boolean(accessToken) };
+```ts
+return {
+  type: "wam",
+  attributes: {
+    appId: process.env.APP_ID,
+    name: "tutorial",
+    wamArgs: { recordId },
   },
-});
-
-@Module({
-  imports: [
-    ChannelAppModule.forRoot({
-      appId: process.env.APP_ID,
-      appSecret: process.env.APP_SECRET,
-      signingKey: process.env.SIGNING_KEY,
-      extensions: [calendarExtension, oauthExtension],
-      autoRegister: true,
-      debug: process.env.NODE_ENV === "development",
-    }),
-  ],
-  providers: [{ provide: APP_GUARD, useClass: SignatureGuard }],
-})
-export class AppModule {}
+};
 ```
+
+Serve the built SPA at `${WAM_ENDPOINT}/tutorial`. Do not place secrets in `wamArgs`.
+
+## Testing
+
+- Use `createTestExtension` and `createMockContext` for decorator handlers.
+- Test input validation, structured function errors, and metadata output.
+- Test missing/invalid signatures against the HTTP route.
+- Run TypeScript typecheck, tests, build, and WAM build from a clean lockfile install.
+- Verify extension registration, WAM load, app calls, native calls, and permission failures in an installed private test app.
+
+## References
+
+- `docs/guides/en/app-development.md`
+- `docs/reference/typescript/AUTH-AND-TOKENS.md`
+- `docs/reference/typescript/EXTENSIONS.md`
+- `docs/reference/typescript/WAM.md`
+- `docs/reference/typescript/extensions/README.md`
+- `ts/examples/basic`
+- `ts/examples/calendar`
+- `https://github.com/channel-io/app-tutorial-ts`
+- `https://github.com/channel-io/app-tutorial`

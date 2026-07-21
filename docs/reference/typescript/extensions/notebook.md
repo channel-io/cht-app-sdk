@@ -1,41 +1,55 @@
 # Notebook Extension
 
 Use the Notebook extension when your app should publish app-managed notebook
-definitions to cht-notebook.
+definitions to Channel's notebook feature.
 
 ## Required Function
 
 - `extension.notebook.core.getNotebooks`
 
-The SDK helper names the function group `core` and the function `getNotebooks`.
+The Function group is `core` and the Function is `getNotebooks`. Current NestJS apps should use decorators; the lower-level `createNotebookExtensionV1()` export builds an `ExtensionDefinition` that `ChannelAppModule` does not consume directly.
 
 ```typescript
-import { createNotebookExtensionV1 } from "@channel.io/app-sdk-server";
+import {
+  Extension,
+  Func,
+  GetNotebooksInputSchema,
+  GetNotebooksResponseSchema,
+  InputSchema,
+  NotebookFunctionNames,
+  OutputSchema,
+} from "@channel.io/app-sdk-server";
 
-export const notebookExtension = createNotebookExtensionV1({
-  getNotebooks: async () => ({
-    notebooks: [
-      {
-        notebookKey: "sales-dashboard",
-        version: 1,
-        title: "Sales Dashboard",
-        initialVisibility: "visible",
-        notebook: {
-          cells: [
-            {
-              cellKey: "intro",
-              type: "markdown",
-              definition: {
-                markdown: "# Sales Dashboard",
+@Extension({ name: "notebook", systemVersion: "v1" })
+export class NotebookExtension {
+  @Func(NotebookFunctionNames.getNotebooks)
+  @InputSchema(GetNotebooksInputSchema)
+  @OutputSchema(GetNotebooksResponseSchema)
+  async getNotebooks() {
+    return {
+      notebooks: [
+        {
+          notebookKey: "sales-dashboard",
+          version: 1,
+          title: "Sales Dashboard",
+          initialVisibility: "visible",
+          notebook: {
+            cells: [
+              {
+                cellKey: "intro",
+                type: "markdown",
+                definition: { markdown: "# Sales Dashboard" },
               },
-            },
-          ],
+            ],
+          },
         },
-      },
-    ],
-  }),
-});
+      ],
+    };
+  }
+}
 ```
+
+List `NotebookExtension` in the NestJS module's `providers` so the SDK can discover it.
 
 ## Registration Is Two-Step
 
@@ -49,5 +63,5 @@ Notebook apps normally need both:
 Use `getAppNotebookVersions(appId, accessToken)` when you need to inspect the
 latest synced notebook versions.
 
-AppStore owns extension registration and native function proxying. cht-notebook
-owns appNotebook storage, revision history, sync runs, and UI presentation.
+AppStore owns extension registration and native function proxying. Channel owns
+notebook storage, revision history, sync runs, and UI presentation.

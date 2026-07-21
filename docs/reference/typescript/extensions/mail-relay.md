@@ -18,23 +18,33 @@ The canonical function is:
 extension.mailRelay.inbound.onMailReceived
 ```
 
-With decorators, implement the relative function name:
+TypeScript `0.17.0` does not include `mailRelay` in the names accepted by the `@Extension` decorator. Register the full Function name as a standalone `@Func` and register the Extension explicitly:
 
 ```typescript
 import {
   MailRelayFunctionNames,
   MailRelayInboundInputSchema,
   MailRelayInboundOutputSchema,
-  type MailRelayExtensionInterface,
+  type Context,
+  type MailRelayInboundInput,
+  type MailRelayInboundOutput,
 } from "@channel.io/app-sdk-core";
-import { Ctx, Extension, Func, Input, InputSchema, OutputSchema } from "@channel.io/app-sdk-server";
+import {
+  Ctx,
+  Func,
+  Input,
+  InputSchema,
+  OutputSchema,
+} from "@channel.io/app-sdk-server";
 
-@Extension({ name: "mailRelay", systemVersion: "v1" })
-export class ExampleMailRelayExtension implements MailRelayExtensionInterface {
-  @Func(MailRelayFunctionNames.inbound.onMailReceived)
+export class MailRelayFunctions {
+  @Func(`extension.mailRelay.${MailRelayFunctionNames.inbound.onMailReceived}`)
   @InputSchema(MailRelayInboundInputSchema)
   @OutputSchema(MailRelayInboundOutputSchema)
-  async onMailReceived(@Ctx() ctx, @Input() input) {
+  async onMailReceived(
+    @Ctx() _ctx: Context,
+    @Input() input: MailRelayInboundInput,
+  ): Promise<MailRelayInboundOutput> {
     return {
       status: "accepted",
       idempotencyKey: `ses:${input.sesMessageId}`,
@@ -42,6 +52,20 @@ export class ExampleMailRelayExtension implements MailRelayExtensionInterface {
   }
 }
 ```
+
+List `MailRelayFunctions` in the NestJS module's `providers`. After the HTTP server is listening, obtain a cached app token from `TokenManager` and call:
+
+```ts
+const token = await tokenManager.getAppToken();
+await nativeClient.registerExtension(
+  appId,
+  "mailRelay",
+  "v1",
+  token.accessToken,
+);
+```
+
+Do not issue a token or register the Extension for every inbound message. A deployment system may own this one-time registration step. Go applications can use the typed `extension/mailrelay` builder.
 
 ## Domains
 
@@ -51,9 +75,9 @@ Production recipients use:
 {slug}.mail.channel.io
 ```
 
-The proxy extracts the domain slug only and forwards the normalized SES envelope to AppStore. AppStore resolves the slug against registered `mailRelay` extensions and invokes the app function using the app's server settings. Apps own the local-part format, relay token validation, and idempotency rules.
+The relay extracts the domain slug and forwards a normalized mail envelope to AppStore. AppStore resolves the slug against registered `mailRelay` Extensions and invokes the app Function using its configured endpoint. Apps own the local-part format, relay token validation, and idempotency rules.
 
-Do not configure app-specific base URLs in the proxy. The app function endpoint belongs to AppStore developer server settings (`function_endpoint`) and is not part of the `mailRelay` extension registration payload.
+Do not configure app-specific base URLs in the relay. The app Function Endpoint comes from the developer portal and is not part of the `mailRelay` Extension registration payload.
 
 ## Input
 
@@ -71,12 +95,12 @@ The raw MIME body is not included in the function input.
 
 ## Output
 
-`MailRelayInboundOutput.status` tells the proxy how to treat the event:
+`MailRelayInboundOutput.status` tells the relay how to treat the event:
 
 - `accepted`: accepted for processing.
 - `ignored`: invalid or irrelevant recipient.
 - `duplicate`: already processed.
-- `retryableFailure`: temporary failure; proxy may surface a retryable HTTP failure.
+- `retryableFailure`: temporary failure; the relay may retry delivery.
 - `permanentFailure`: non-retryable failure.
 
 Do not return raw MIME content, attachment content, or provider PII in `reason`.

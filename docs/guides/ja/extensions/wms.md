@@ -5,7 +5,7 @@ Go SDK は WMS method を helper で登録できます。
 ```go
 app := appsdk.New(appsdk.Options{AppID: appID})
 err := app.Use(wms.Extension().
-  GetSupportedCommerces(wms.StaticSupportedCommerces("app-cafe24")).
+  GetSupportedCommerces(wms.StaticSupportedCommerces("commerce-provider")).
   GetOrders(handler.GetOrders).
   GetShopID(handler.GetShopID).
   CancelOrder(handler.CancelOrder),

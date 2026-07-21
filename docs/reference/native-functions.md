@@ -52,7 +52,7 @@ contract; AppStore/Core resolve app-owned BigQuery resources from `appId`.
 
 App Notebook functions follow the ALF task pattern. Use an app-scoped access
 token, register the `notebook` extension, then call `registerAppNotebooks` to
-ask cht-notebook to sync notebooks from the app server. Use
+ask Channel's notebook feature to sync notebooks from the app server. Use
 `getAppNotebookVersions` to inspect the latest synced versions.
 
 The SDK also exports native function schemas:

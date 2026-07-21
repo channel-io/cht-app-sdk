@@ -4,8 +4,10 @@
 
 ## ドキュメント
 
-- [クイックスタート](quickstart.md)
 - [基本概念](concepts.md)
+- [クイックスタート](quickstart.md)
+- [アプリ開発完全ガイド](app-development.md)
+- [旧 Web ドキュメントとの差分](legacy-documentation-notes.md)
 - [Function 登録](functions.md)
 - [部分移行](partial-migration.md)
 - [WMS 拡張](extensions/wms.md)
@@ -15,3 +17,15 @@
 ## SDK の選び方
 
 NestJS、Zod、WAM React 開発には TypeScript SDK が向いています。既存の Go サービスに typed function、native client、extension helper を段階的に入れる場合は Go SDK が向いています。
+
+Web 記事、チュートリアル、SDK 例が一致しない場合は、公開 SDK export、SDK reference、最新 tutorial の順で確認してください。
+
+## 実行可能な例
+
+- [TypeScript app tutorial](https://github.com/channel-io/app-tutorial-ts)
+- [Go app tutorial](https://github.com/channel-io/app-tutorial)
+
+## 言語別リファレンス
+
+- [TypeScript architecture](../../reference/typescript/ARCHITECTURE.md)、[authentication と token](../../reference/typescript/AUTH-AND-TOKENS.md)、[Extension](../../reference/typescript/EXTENSIONS.md)、[WAM](../../reference/typescript/WAM.md)
+- [Go reference](../../reference/go/README.md): Function、server、authentication と token、Extension、native Function、WAM integration

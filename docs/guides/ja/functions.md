@@ -1,13 +1,15 @@
 # Function 登録
 
+Request の `method` が Function の完全名です。App 固有の処理は `orders.get` のような standalone Function として登録します。標準 Extension 内では `@Extension({ name: "order" })` と relative name を組み合わせて `extension.order.{relativeName}` を作ります。違いは [基本概念](concepts.md) を参照してください。
+
 ## TypeScript
 
-TypeScript は decorator API と simple API の両方を提供します。
+新規 TypeScript app では decorator API を使ってください。Legacy simple API も export されていますが、その service は deprecated で削除予定です。
 
 ```ts
-@Func("extension.order.get")
+@Func("orders.get")
 @InputSchema(z.object({ orderId: z.string() }))
-async getOrder(@Ctx() ctx: FunctionContext, @Input() input: { orderId: string }) {
+async getOrder(@Ctx() ctx: Context, @Input() input: { orderId: string }) {
   return this.service.getOrder(ctx.channel.id, input.orderId);
 }
 ```
@@ -27,7 +29,7 @@ type GetOrderOutput struct {
 
 appsdk.MustRegister(
   app,
-  "extension.order.get",
+  "orders.get",
   func(ctx context.Context, fnCtx appsdk.Context, in *GetOrderInput) (*GetOrderOutput, error) {
     return &GetOrderOutput{ID: in.OrderID}, nil
   },

@@ -64,7 +64,12 @@ export function BookingForm({ appId, eventType, slot, onComplete }: Props) {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} style={styles.form}>
+      <form
+        onSubmit={(event) => {
+          void handleSubmit(event);
+        }}
+        style={styles.form}
+      >
         <div style={styles.inputGroup}>
           <label style={styles.label}>Name *</label>
           <input

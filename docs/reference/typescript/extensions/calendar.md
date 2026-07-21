@@ -36,4 +36,4 @@ Calendar is a good example of the server/WAM split:
 
 ## Reference
 
-- [examples/calendar](../../examples/calendar/README.md)
+- [examples/calendar](../../../../ts/examples/calendar/README.md)

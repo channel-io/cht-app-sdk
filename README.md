@@ -2,6 +2,22 @@
 
 Monorepo for Channel App SDKs.
 
+## Build A Channel App
+
+If this is your first Channel app, start with a concept guide, prepare a private app and its
+credentials, and then run the tutorial for your server language:
+
+1. Concepts: [Korean](docs/guides/ko/concepts.md),
+   [English](docs/guides/en/concepts.md), or [Japanese](docs/guides/ja/concepts.md)
+2. End-to-end setup: [Korean](docs/guides/ko/app-development.md),
+   [English](docs/guides/en/app-development.md), or
+   [Japanese](docs/guides/ja/app-development.md)
+3. Runnable app: [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) or
+   [Go tutorial](https://github.com/channel-io/app-tutorial)
+
+The guides define the current contract. The tutorial repositories show the same contract as a
+complete server-and-WAM app.
+
 ## Layout
 
 - `proto/`: shared SDK contracts.
@@ -9,7 +25,7 @@ Monorepo for Channel App SDKs.
 - `ts/`: existing TypeScript SDK workspace and npm packages.
 - `docs/guides`: app developer guides in Korean, English, and Japanese.
 - `docs/reference`: protocol and SDK reference documents.
-- `examples/go`: runnable Go examples.
+- `skills/build-channel-app`: reusable Codex workflow for creating and reviewing apps.
 
 ## TypeScript
 
@@ -93,16 +109,33 @@ scan. Report suspected vulnerabilities privately as described in
 - [English](docs/guides/en/README.md)
 - [Japanese](docs/guides/ja/README.md)
 
+Use the guides and references in this repository as the contract, then use these repositories as
+runnable server-and-WAM examples:
+
+- [TypeScript app tutorial](https://github.com/channel-io/app-tutorial-ts) — SDK-only NestJS server,
+  typed native proxy, and React WAM hooks
+- [Go app tutorial](https://github.com/channel-io/app-tutorial) — Go SDK server and React WAM; see
+  [Go Feature Parity](docs/reference/go-feature-parity.md) for the remaining native-call gap
+
 ## Documentation
 
 - [Agent Guide](AGENT.md) - Best entry point for humans and coding agents
+- [Korean Concepts](docs/guides/ko/concepts.md), [English Concepts](docs/guides/en/concepts.md), [Japanese Concepts](docs/guides/ja/concepts.md)
 - [TypeScript README](ts/README.md) - TypeScript SDK usage
 - [TypeScript Auth and Tokens](docs/reference/typescript/AUTH-AND-TOKENS.md)
 - [TypeScript Extensions](docs/reference/typescript/EXTENSIONS.md)
 - [TypeScript WAM SDK](docs/reference/typescript/WAM.md)
 - [TypeScript WAM UI](docs/reference/typescript/WAM-UI.md)
 - [TypeScript CLI](docs/reference/typescript/CLI.md)
+- [Go SDK Reference](docs/reference/go/README.md)
+- [Go Functions and Schemas](docs/reference/go/FUNCTIONS.md)
+- [Go Server and Routing](docs/reference/go/SERVER.md)
+- [Go Auth and Tokens](docs/reference/go/AUTH-AND-TOKENS.md)
+- [Go Extensions](docs/reference/go/EXTENSIONS.md)
+- [Go Native Functions](docs/reference/go/NATIVE.md)
+- [Go WAM Integration](docs/reference/go/WAM.md)
 - [Go Feature Parity](docs/reference/go-feature-parity.md)
+- [Build Channel App skill](skills/build-channel-app/SKILL.md)
 
 ## License
 

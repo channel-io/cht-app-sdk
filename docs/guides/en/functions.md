@@ -1,13 +1,15 @@
 # Function Registration
 
+The request `method` is the Function's full name. Register app-specific behavior as a standalone Function such as `orders.get`. Inside a standard Extension, combine `@Extension({ name: "order" })` with a relative name to produce `extension.order.{relativeName}`. See [Concepts](concepts.md) for the distinction.
+
 ## TypeScript
 
-TypeScript supports both decorator and simple APIs.
+Use the decorator API for new TypeScript apps. A legacy simple API is still exported, but its service is deprecated and scheduled for removal.
 
 ```ts
-@Func("extension.order.get")
+@Func("orders.get")
 @InputSchema(z.object({ orderId: z.string() }))
-async getOrder(@Ctx() ctx: FunctionContext, @Input() input: { orderId: string }) {
+async getOrder(@Ctx() ctx: Context, @Input() input: { orderId: string }) {
   return this.service.getOrder(ctx.channel.id, input.orderId);
 }
 ```
@@ -27,7 +29,7 @@ type GetOrderOutput struct {
 
 appsdk.MustRegister(
   app,
-  "extension.order.get",
+  "orders.get",
   func(ctx context.Context, fnCtx appsdk.Context, in *GetOrderInput) (*GetOrderOutput, error) {
     return &GetOrderOutput{ID: in.OrderID}, nil
   },

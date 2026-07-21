@@ -150,7 +150,7 @@ export class CalendarExtension {
         startTime.setHours(hour, 0, 0, 0);
 
         const endTime = new Date(startTime);
-        endTime.setMinutes(endTime.getMinutes() + Number(eventType.duration));
+        endTime.setMinutes(endTime.getMinutes() + eventType.duration);
 
         // Only add if end time is before 5 PM
         if (endTime.getHours() <= 17) {
@@ -180,7 +180,7 @@ export class CalendarExtension {
 
     const startTime = new Date(params.startTime);
     const endTime = new Date(startTime);
-    endTime.setMinutes(endTime.getMinutes() + Number(eventType.duration));
+    endTime.setMinutes(endTime.getMinutes() + eventType.duration);
 
     const booking: Booking = {
       id: `booking-${Date.now()}`,
