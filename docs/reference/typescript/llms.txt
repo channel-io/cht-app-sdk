@@ -143,12 +143,23 @@ Hook metadata uses flat items shaped like:
 ```typescript
 {
   type: "app.installed" | "app.uninstalled" | "command.toggle" | "config.saved" | "config.deleted" | "widget.installed" | "widget.uninstalled" | "webhook.received";
-  targetId?: string; // required for widget.* and webhook.received hooks
+  targetId?: string;
   actionFunctionName: string;
   systemVersion?: string;
-  webhook?: { endpointToken: string }; // required for webhook.received
+  webhook?: { endpointToken: string };
 }
 ```
+
+The fields are discriminated by `type`:
+
+- `app.*`, `command.toggle`, and `config.*` hooks forbid both `targetId` and
+  `webhook`.
+- `widget.*` hooks require `targetId` and forbid `webhook`.
+- `webhook.received` requires both a public `targetId` and `webhook`. Its
+  `targetId` must be 1-64 characters, start with an alphanumeric character, and
+  otherwise contain only `A-Z`, `a-z`, `0-9`, `.`, `_`, or `-`.
+- `webhook.endpointToken` must be a high-entropy capability token containing
+  32-128 URL-safe characters (`A-Z`, `a-z`, `0-9`, `_`, or `-`).
 
 ### Register in NestJS (with Auto-Registration)
 

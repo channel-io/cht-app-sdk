@@ -23,7 +23,10 @@ Current SDK schema supports:
 
 Widget hooks must include a `targetId` that matches the widget name. App,
 command, and config hooks must not include a `targetId`. Public webhook hooks
-must include a public `targetId` and a high-entropy `webhook.endpointToken`.
+must include a public `targetId` that is 1-64 characters, starts with an
+alphanumeric character, and otherwise contains only `A-Z`, `a-z`, `0-9`, `.`,
+`_`, or `-`. They must also include a high-entropy
+`webhook.endpointToken`. The `webhook` field is not allowed on other hook types.
 
 ## Public Webhook Ingress
 

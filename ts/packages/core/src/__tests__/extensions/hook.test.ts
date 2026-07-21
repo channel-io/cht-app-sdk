@@ -26,11 +26,22 @@ describe("HookConfigSchema", () => {
     });
   });
 
-  it("rejects invalid webhook target IDs and endpoint tokens", () => {
+  it("rejects invalid webhook target IDs", () => {
     expect(() =>
       HookConfigSchema.parse({
         type: "webhook.received",
         targetId: "invalid target",
+        actionFunctionName: "hooks.receive",
+        webhook: { endpointToken },
+      })
+    ).toThrow();
+  });
+
+  it("rejects short webhook endpoint tokens", () => {
+    expect(() =>
+      HookConfigSchema.parse({
+        type: "webhook.received",
+        targetId: "valid.target",
         actionFunctionName: "hooks.receive",
         webhook: { endpointToken: "too-short" },
       })

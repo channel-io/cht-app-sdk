@@ -9,13 +9,14 @@ import (
 )
 
 func TestStaticWebhookHooks(t *testing.T) {
+	endpointToken := strings.Repeat("a", 32)
 	handler := StaticHooks(&Config{
 		Type:               TypeWebhookReceived,
 		ActionFunctionName: "hooks.bcart.receive",
 		SystemVersion:      "v1",
 		TargetId:           "bcart.orders",
 		Webhook: &WebhookConfig{
-			EndpointToken: strings.Repeat("a", 32),
+			EndpointToken: endpointToken,
 		},
 	})
 
@@ -30,7 +31,7 @@ func TestStaticWebhookHooks(t *testing.T) {
 	if hook.Type != TypeWebhookReceived || hook.TargetId != "bcart.orders" {
 		t.Fatalf("unexpected webhook hook: %#v", hook)
 	}
-	if hook.Webhook == nil || hook.Webhook.EndpointToken == "" {
-		t.Fatal("expected a webhook endpoint token")
+	if hook.Webhook == nil || hook.Webhook.EndpointToken != endpointToken {
+		t.Fatalf("expected webhook endpoint token %q, got %#v", endpointToken, hook.Webhook)
 	}
 }
