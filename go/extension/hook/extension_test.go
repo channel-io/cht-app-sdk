@@ -2,6 +2,7 @@ package hook
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	"github.com/channel-io/cht-app-sdk/go/appsdk"
@@ -14,7 +15,7 @@ func TestStaticWebhookHooks(t *testing.T) {
 		SystemVersion:      "v1",
 		TargetId:           "bcart.orders",
 		Webhook: &WebhookConfig{
-			EndpointToken: "0123456789abcdef0123456789abcdef",
+			EndpointToken: strings.Repeat("a", 32),
 		},
 	})
 

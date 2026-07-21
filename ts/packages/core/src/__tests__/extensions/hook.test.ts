@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { HookConfigSchema, WebhookConfigSchema } from "../../extensions/hook.js";
 
+const endpointToken = "a".repeat(32);
+
 describe("HookConfigSchema", () => {
   it("accepts an app-level public webhook hook", () => {
     expect(
@@ -10,7 +12,7 @@ describe("HookConfigSchema", () => {
         actionFunctionName: "hooks.bcart.receive",
         systemVersion: "v1",
         webhook: {
-          endpointToken: "0123456789abcdef0123456789abcdef",
+          endpointToken,
         },
       })
     ).toEqual({
@@ -19,7 +21,7 @@ describe("HookConfigSchema", () => {
       actionFunctionName: "hooks.bcart.receive",
       systemVersion: "v1",
       webhook: {
-        endpointToken: "0123456789abcdef0123456789abcdef",
+        endpointToken,
       },
     });
   });
@@ -41,7 +43,7 @@ describe("HookConfigSchema", () => {
         type: "app.installed",
         actionFunctionName: "hooks.lifecycle.install",
         webhook: {
-          endpointToken: "0123456789abcdef0123456789abcdef",
+          endpointToken,
         },
       })
     ).toThrow();
