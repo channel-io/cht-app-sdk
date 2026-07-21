@@ -1,5 +1,5 @@
 /**
- * WAM Design Tokens — extracted from ch-desk-web via desk-design-kit
+ * WAM design tokens aligned with Channel.io app surfaces.
  *
  * Use these tokens instead of hardcoded values to keep WAM UIs
  * consistent with Channel.io desk.
@@ -7,7 +7,7 @@
 
 /**
  * Typography scales matching bezier-react `typo` prop values.
- * Each entry maps to a font-size / line-height pair used in ch-desk-web.
+ * Each entry maps to a font-size / line-height pair used in Channel.io app surfaces.
  */
 export const TYPO = {
   /** 11px / 16px — timestamps, badges */
@@ -27,7 +27,7 @@ export const TYPO = {
 } as const;
 
 /**
- * Common spacing patterns from ch-desk-web.
+ * Common spacing patterns for Channel.io app surfaces.
  */
 export const SPACING = {
   /** Form section vertical padding */
@@ -47,7 +47,7 @@ export const SPACING = {
 } as const;
 
 /**
- * Preset bezier Button prop combinations used in ch-desk-web.
+ * Preset Bezier Button prop combinations for common WAM actions.
  *
  * @example
  * ```tsx
@@ -100,9 +100,9 @@ export const TEXT_PRESETS = {
   /** Bold body — 14px bold */
   bodyBold: { typo: "14" as const, bold: true },
   /** Description / helper — 13px muted */
-  caption: { typo: "13" as const, color: "txt-black-dark" as const },
+  caption: { typo: "13" as const, color: "text-neutral-light" as const },
   /** Meta / timestamp — 12px lighter */
-  meta: { typo: "12" as const, color: "txt-black-darker" as const },
+  meta: { typo: "12" as const, color: "text-neutral-lighter" as const },
   /** Form label — 13px bold */
   label: { typo: "13" as const, bold: true },
 } as const;

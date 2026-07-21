@@ -40,7 +40,7 @@ const Dimmer = styled.div<{ position: "bottom" | "center" }>`
 `;
 
 const BottomContent = styled.div`
-  background: var(--bg-white-normal);
+  background: var(--color-surface-high);
   width: 100%;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
@@ -48,7 +48,7 @@ const BottomContent = styled.div`
 `;
 
 const CenterContent = styled.div`
-  background: var(--bg-white-normal);
+  background: var(--color-surface-high);
   border-radius: 12px;
   max-width: 90%;
   animation: ${scaleIn} 0.2s ease;

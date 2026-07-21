@@ -41,7 +41,7 @@ const IconButton = styled.button`
   flex-shrink: 0;
 
   &:hover {
-    background-color: var(--bg-black-light);
+    background-color: var(--color-fill-neutral-light);
   }
 `;
 
@@ -88,7 +88,7 @@ export function WamHeader({
     <Header>
       {showBackButton ? (
         <IconButton onClick={handleBack} aria-label="back">
-          <Icon source={ChevronLeftIcon} size="s" color="txt-black-darkest" />
+          <Icon source={ChevronLeftIcon} size="s" color="icon-neutral-heavier" />
         </IconButton>
       ) : (
         <div style={{ width: 32, flexShrink: 0 }} />
@@ -104,7 +104,7 @@ export function WamHeader({
         {rightContent}
         {showCloseButton && (
           <IconButton onClick={handleClose} aria-label="close">
-            <Icon source={CancelIcon} size="s" color="txt-black-darkest" />
+            <Icon source={CancelIcon} size="s" color="icon-neutral-heavier" />
           </IconButton>
         )}
       </RightGroup>

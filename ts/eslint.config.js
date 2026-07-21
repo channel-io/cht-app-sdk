@@ -68,7 +68,7 @@ export default tseslint.config(
   {
     files: ["packages/wam-ui/src/**/*.{ts,tsx}"],
     rules: {
-      // wam-ui intentionally wraps Bezier's legacy components for v3/v4 compatibility.
+      // wam-ui intentionally wraps Bezier's legacy component exports during the v4 prerelease.
       // A beta-component migration should happen separately from the v4 peer rollout.
       "@typescript-eslint/no-deprecated": "off",
     },

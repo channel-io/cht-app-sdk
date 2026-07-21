@@ -18,8 +18,8 @@ export function ErrorPage({ error, onRetry, retryText = "Retry", height = 200 }:
   return (
     <Center height={height} width="100%">
       <VStack spacing={12} align="center">
-        <Icon source={ErrorTriangleFilledIcon} size="l" color="txt-black-darker" />
-        <Text typo="14" color="txt-black-darker">
+        <Icon source={ErrorTriangleFilledIcon} size="l" color="icon-neutral-heavy" />
+        <Text typo="14" color="text-neutral-light">
           {message}
         </Text>
         {onRetry && (

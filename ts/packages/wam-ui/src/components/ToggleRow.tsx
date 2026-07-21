@@ -31,7 +31,7 @@ export function ToggleRow({ label, description, checked, onChange, disabled }: T
       <LabelGroup htmlFor={id}>
         <Text typo="14">{label}</Text>
         {description && (
-          <Text typo="13" color="txt-black-dark">
+          <Text typo="13" color="text-neutral-light">
             {description}
           </Text>
         )}
