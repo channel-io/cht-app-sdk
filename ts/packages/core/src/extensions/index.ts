@@ -167,9 +167,11 @@ export {
 // Hook Extension Schemas (v1)
 export {
   HookTypeSchema,
+  WebhookConfigSchema,
   HookConfigSchema,
   GetHooksOutputSchema,
   type HookType,
+  type WebhookConfig,
   type HookConfig,
   type GetHooksOutput,
 } from "./hook.js";

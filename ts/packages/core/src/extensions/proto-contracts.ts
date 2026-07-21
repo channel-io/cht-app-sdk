@@ -84,6 +84,7 @@ import type {
   DataSourceTableListing as ProtoDataSourceTableListing,
   HookConfig as ProtoHookConfig,
   HookGetHooksOutput as ProtoHookGetHooksOutput,
+  HookWebhookConfig as ProtoHookWebhookConfig,
   MessagingInboxGetCustomEditorWamInput as ProtoInboxGetCustomEditorWamInput,
   MessagingInboxGetMediumMessageErrorReasonInput as ProtoInboxGetMediumMessageErrorReasonInput,
   MessagingInboxGetMediumMessageErrorReasonOutput as ProtoInboxGetMediumMessageErrorReasonOutput,
@@ -469,6 +470,7 @@ export type ExtensionProtoSchemaContracts = [
     >
   >,
 
+  Expect<SchemaOutputExtendsProto<typeof HookSchemas.WebhookConfigSchema, ProtoHookWebhookConfig>>,
   Expect<SchemaOutputExtendsProto<typeof HookSchemas.HookConfigSchema, ProtoHookConfig>>,
   Expect<
     SchemaOutputExtendsProto<typeof HookSchemas.GetHooksOutputSchema, ProtoHookGetHooksOutput>

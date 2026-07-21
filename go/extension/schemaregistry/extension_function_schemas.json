@@ -16779,6 +16779,55 @@
                   "targetId"
                 ],
                 "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "actionFunctionName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "pattern": "^[a-zA-Z_][a-zA-Z0-9._]*$"
+                  },
+                  "systemVersion": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 50,
+                    "pattern": "^[A-Za-z0-9._-]+$"
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "webhook.received"
+                  },
+                  "targetId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+                  },
+                  "webhook": {
+                    "type": "object",
+                    "properties": {
+                      "endpointToken": {
+                        "type": "string",
+                        "minLength": 32,
+                        "maxLength": 128,
+                        "pattern": "^[A-Za-z0-9_-]+$"
+                      }
+                    },
+                    "required": [
+                      "endpointToken"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "actionFunctionName",
+                  "type",
+                  "targetId",
+                  "webhook"
+                ],
+                "additionalProperties": false
               }
             ]
           }

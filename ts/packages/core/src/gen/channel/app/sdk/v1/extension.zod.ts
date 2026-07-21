@@ -722,11 +722,17 @@ export const CustomTabActionResultProtoSchema = z.object({
 }) satisfies z.ZodType<pb.CustomTabActionResult>;
 export type CustomTabActionResultProto = z.infer<typeof CustomTabActionResultProtoSchema>;
 
+export const HookWebhookConfigProtoSchema = z.object({
+  endpointToken: z.string().optional(),
+}) satisfies z.ZodType<pb.HookWebhookConfig>;
+export type HookWebhookConfigProto = z.infer<typeof HookWebhookConfigProtoSchema>;
+
 export const HookConfigProtoSchema = z.object({
   type: z.string().optional(),
   actionFunctionName: z.string().optional(),
   systemVersion: z.string().optional(),
   targetId: z.string().optional(),
+  webhook: z.lazy(() => HookWebhookConfigProtoSchema).optional(),
 }) satisfies z.ZodType<pb.HookConfig>;
 export type HookConfigProto = z.infer<typeof HookConfigProtoSchema>;
 

@@ -762,11 +762,16 @@ export interface CustomTabActionResult {
   attributes?: { [key: string]: any } | undefined;
 }
 
+export interface HookWebhookConfig {
+  endpointToken?: string | undefined;
+}
+
 export interface HookConfig {
   type?: string | undefined;
   actionFunctionName?: string | undefined;
   systemVersion?: string | undefined;
   targetId?: string | undefined;
+  webhook?: HookWebhookConfig | undefined;
 }
 
 export interface HookGetHooksInput {
