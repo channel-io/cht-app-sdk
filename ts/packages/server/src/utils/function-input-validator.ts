@@ -1,9 +1,25 @@
 import { ValidationError } from "@channel.io/app-sdk-core";
-import { ZodError, type z } from "zod";
+import type { z } from "zod";
 import {
   isMessagingExtensionMethod,
   parseMessagingExtensionInputParams,
 } from "./messaging-input-normalizer.js";
+
+interface ZodErrorLike {
+  name: "ZodError";
+  issues: unknown[];
+}
+
+function isZodErrorLike(error: unknown): error is ZodErrorLike {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "name" in error &&
+    error.name === "ZodError" &&
+    "issues" in error &&
+    Array.isArray(error.issues)
+  );
+}
 
 export function parseFunctionInputParams<T>(
   functionName: string,
@@ -15,7 +31,7 @@ export function parseFunctionInputParams<T>(
       ? parseMessagingExtensionInputParams(inputSchema, params)
       : inputSchema.parse(params);
   } catch (error) {
-    if (error instanceof ZodError) {
+    if (isZodErrorLike(error)) {
       throw new ValidationError(`Invalid input for function ${functionName}`, error.issues);
     }
 
