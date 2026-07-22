@@ -1,42 +1,56 @@
-# WAM UI Components
+# WAM UI
 
-`@channel.io/app-sdk-wam-ui` provides UI components for building WAM widgets that look consistent with Channel.io desk.
+`@channel.io/app-sdk-wam-ui` provides runtime-aware UI infrastructure and presets for Channel.io
+WAMs. Use it together with the WAM bridge and redesigned Bezier components instead of treating it
+as a replacement design system.
 
-## When to Use
-
-- **New WAM apps** — Start with `WamThemeProvider` + form components instead of building from scratch
-- **Existing WAM apps** — Replace duplicated infrastructure code (theme setup, height sync, confirm modals)
-- **Third-party apps** — Build WAM interfaces that blend naturally with Channel.io desk
-
-## Relationship to Other Packages
+## Package responsibilities
 
 ```text
-@channel.io/app-sdk-wam      ← Bridge layer (hooks for WAM data, function calls)
-@channel.io/app-sdk-wam-ui   ← UI layer (theme, components, patterns)
-@channel.io/bezier-react      ← Design system (low-level primitives)
+@channel.io/app-sdk-wam       WAM data, app/native calls, sizing, and closing
+@channel.io/app-sdk-wam-ui    WAM theme, height sync, navigation, states, and presets
+@channel.io/bezier-react/beta General-purpose redesigned UI components
 ```
 
-`wam-ui` builds **on top of** bezier-react, providing higher-level patterns specific to WAM development.
+Use `wam-ui` when behavior depends on the WAM host, such as detecting appearance, synchronizing
+iframe height, closing the current WAM, or showing a compact WAM loading/error state. Import
+buttons, forms, settings, inputs, selects, switches, search, banners, and modals directly from
+`@channel.io/bezier-react/beta`.
 
-The current SDK verification baseline is Bezier React `4.0.0-next.13` with Bezier Icons
-`0.60.0`. Bezier React 4 is published under the `next` tag rather than the stable `latest`
-tag, so applications should keep the selected prerelease version visible in their lockfile.
+## Versions
 
-## Getting Started
+The current verified baseline is:
+
+| Package                      | Version         |
+| ---------------------------- | --------------- |
+| `@channel.io/app-sdk-wam-ui` | `0.4.0`         |
+| `@channel.io/bezier-react`   | `4.0.0-next.13` |
+| `@channel.io/bezier-icons`   | `0.60.0`        |
+| `styled-components`          | `6.x`           |
+
+Bezier React 4 is published under the `next` tag. Pin the exact prerelease in application
+lockfiles and review release notes before upgrading.
+
+## Setup
 
 ```tsx
-import {
-  WamThemeProvider,
-  HeightSynchronizer,
-} from "@channel.io/app-sdk-wam-ui";
 import { WamProvider } from "@channel.io/app-sdk-wam";
+import {
+  HeightSynchronizer,
+  WamHeader,
+  WamThemeProvider,
+} from "@channel.io/app-sdk-wam-ui";
+import { Button, HStack } from "@channel.io/bezier-react/beta";
 
-function App() {
+export function App() {
   return (
     <WamProvider>
       <WamThemeProvider>
-        <HeightSynchronizer>
-          <MyWidget />
+        <HeightSynchronizer maxHeight={480}>
+          <WamHeader title="Example" />
+          <HStack padding={16} justify="end">
+            <Button label="Save" variant="filled" semantic="primary" />
+          </HStack>
         </HeightSynchronizer>
       </WamThemeProvider>
     </WamProvider>
@@ -44,4 +58,43 @@ function App() {
 }
 ```
 
-See the [package README](../../../ts/packages/wam-ui/README.md) for full API documentation.
+`WamThemeProvider` uses Bezier's root `AppProvider` because provider and stable token APIs remain
+at the root. UI components should use the `/beta` subpath. Do not use legacy root UI components or
+deprecated `useBetaTokens` APIs.
+
+## WAM-specific exports
+
+- `WamThemeProvider`: detects light/dark appearance and installs Bezier providers
+- `HeightSynchronizer`: observes content and calls `window.ChannelIOWam.setSize()`
+- `WamHeader`: standard back and close behavior
+- `LoadingPage`, `ErrorPage`, `EmptyState`: compact WAM state presets
+- `InlineBanner`: semantic preset over Bezier beta `Banner`
+- `ConfirmDialog`: confirmation preset over Bezier beta `ConfirmModal`
+- `SkeletonBox`, `SkeletonCircle`: loading placeholders
+- `BottomSheet`: compact overlay with focus, Escape, and scroll handling
+
+`BottomSheet` requires an `ariaLabel` that describes the dialog.
+
+## General UI equivalents
+
+Version 0.4 removed wrappers that duplicated redesigned Bezier components:
+
+| Previous WAM UI export | Bezier beta replacement          |
+| ---------------------- | -------------------------------- |
+| `FormSection`          | `Form`, `Settings`, or `Section` |
+| `FormRow`              | `FormField` or `SettingsField`   |
+| `InputRow`             | `TextInput` inside `FormField`   |
+| `SelectRow`            | `Select` inside `FormField`      |
+| `ToggleRow`            | `SettingsField` with `Switch`    |
+| `SearchInput`          | `Search`                         |
+
+Bezier beta buttons use `label`, `variant`, and `semantic` instead of `text`, `styleVariant`, and
+`colorVariant`.
+
+## Complete examples
+
+- [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts)
+- [Go tutorial](https://github.com/channel-io/app-tutorial)
+
+See the [package README](../../../ts/packages/wam-ui/README.md) for the full API and migration
+examples.
