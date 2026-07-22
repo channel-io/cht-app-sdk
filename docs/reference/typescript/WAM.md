@@ -53,6 +53,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 );
 ```
 
+`WamProvider` synchronizes the document's `html` and `body` background color and
+`color-scheme` with the current WAM runtime theme. It uses `#FEFFFF` for light
+appearance and `#1C1C1F` for dark appearance.
+
 ## Core Hooks
 
 ### `useWamData()`
@@ -66,6 +70,7 @@ The most common keys are:
 - `chatId`
 - `chatType`
 - `rootMessageId`
+- `appearance` (`"light"` or `"dark"`)
 - custom keys passed in `wamArgs`
 
 ### `useCallFunction()`

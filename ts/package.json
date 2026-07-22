@@ -2,6 +2,7 @@
   "name": "@channel.io/app-sdk-monorepo",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "description": "TypeScript SDK for building Channel.io apps",
   "repository": {
     "type": "git",
@@ -20,7 +21,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "typecheck": "turbo run typecheck",
-    "test": "vitest run",
+    "test": "vitest run && pnpm --filter @channel.io/app-sdk-wam test && pnpm --filter @channel.io/app-sdk-wam-ui test",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "clean": "turbo run clean && rm -rf node_modules",

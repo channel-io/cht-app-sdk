@@ -1,4 +1,14 @@
-import { createContext, useContext, type ReactNode, useMemo } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  type ReactNode,
+  useMemo,
+} from "react";
+import { getWamCanvasColor, getWamCanvasTheme, synchronizeWamCanvas } from "../utils/wamCanvas.js";
+
+const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 /**
  * WAM context value
@@ -36,6 +46,11 @@ export function WamProvider({ children }: WamProviderProps) {
     const isAvailable = typeof window !== "undefined" && window.ChannelIOWam !== undefined;
 
     return { isAvailable };
+  }, []);
+
+  useIsomorphicLayoutEffect(() => {
+    const theme = getWamCanvasTheme();
+    return synchronizeWamCanvas(theme, getWamCanvasColor(theme), 0);
   }, []);
 
   return <WamContext.Provider value={value}>{children}</WamContext.Provider>;

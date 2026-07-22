@@ -44,6 +44,7 @@ export type WamDataKey =
   | "chatType"
   | "chatTitle"
   | "rootMessageId"
+  | "appearance"
   | "broadcast"
   | "isPrivate"
   | (string & {});
@@ -62,6 +63,7 @@ export type WamDataKey =
 export function useTypedWamData(
   key: "appId" | "channelId" | "managerId" | "chatId" | "chatType" | "chatTitle" | "rootMessageId"
 ): string | undefined;
+export function useTypedWamData(key: "appearance"): "light" | "dark" | undefined;
 export function useTypedWamData(key: "broadcast" | "isPrivate"): boolean | undefined;
 export function useTypedWamData(key: string): unknown;
 export function useTypedWamData(key: WamDataKey): unknown {

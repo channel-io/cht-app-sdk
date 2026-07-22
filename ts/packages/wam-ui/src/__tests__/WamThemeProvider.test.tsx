@@ -39,6 +39,12 @@ describe("WamThemeProvider", () => {
       </WamThemeProvider>
     );
     expect(appProviderTheme).toHaveBeenCalledWith("light");
+    expect([
+      document.documentElement.style.backgroundColor,
+      document.body.style.backgroundColor,
+      document.documentElement.style.colorScheme,
+      document.body.style.colorScheme,
+    ]).toEqual(["rgb(254, 255, 255)", "rgb(254, 255, 255)", "light", "light"]);
   });
 
   it("reads dark theme from WAM context", () => {
@@ -56,11 +62,17 @@ describe("WamThemeProvider", () => {
       </WamThemeProvider>
     );
     expect(appProviderTheme).toHaveBeenCalledWith("dark");
+    expect([
+      document.documentElement.style.backgroundColor,
+      document.body.style.backgroundColor,
+      document.documentElement.style.colorScheme,
+      document.body.style.colorScheme,
+    ]).toEqual(["rgb(28, 28, 31)", "rgb(28, 28, 31)", "dark", "dark"]);
   });
 
   it("uses explicit theme prop over WAM context", () => {
     window.ChannelIOWam = {
-      getWamData: vi.fn(() => "dark"),
+      getWamData: vi.fn((key: string) => (key === "appearance" ? "dark" : null)),
       setSize: vi.fn(),
       callFunction: vi.fn(),
       callNativeFunction: vi.fn(),
@@ -73,6 +85,7 @@ describe("WamThemeProvider", () => {
       </WamThemeProvider>
     );
     expect(appProviderTheme).toHaveBeenCalledWith("light");
+    expect(document.body.style.backgroundColor).toBe("rgb(254, 255, 255)");
   });
 
   it("reacts to theme prop changes", () => {
@@ -89,5 +102,6 @@ describe("WamThemeProvider", () => {
       </WamThemeProvider>
     );
     expect(appProviderTheme).toHaveBeenLastCalledWith("dark");
+    expect(document.body.style.backgroundColor).toBe("rgb(28, 28, 31)");
   });
 });
