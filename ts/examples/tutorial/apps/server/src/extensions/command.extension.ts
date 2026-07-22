@@ -74,7 +74,7 @@ export class CommandExtension {
     @Ctx() ctx: Context,
     @Input() params: z.infer<typeof CommandActionInput>
   ): Promise<z.infer<typeof CommandResultSchema>> {
-    const appId = process.env.APP_ID ?? (ctx["appId"] as string | undefined) ?? "";
+    const appId = process.env.APP_ID ?? (ctx.appId as string | undefined) ?? "";
 
     console.log("[Tutorial] Command executed:", {
       channelId: ctx.channel.id,

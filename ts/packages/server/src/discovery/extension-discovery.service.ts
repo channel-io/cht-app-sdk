@@ -15,10 +15,7 @@ import {
   type FunctionParamMetadata,
 } from "../decorators/index.js";
 import type { ExtensionMetadata, FunctionMetadata } from "./metadata.interface.js";
-import {
-  isMessagingExtensionMethod,
-  parseMessagingExtensionInputParams,
-} from "../utils/messaging-input-normalizer.js";
+import { parseFunctionInputParams } from "../utils/function-input-validator.js";
 
 @Injectable()
 export class ExtensionDiscoveryService implements OnModuleInit {
@@ -227,11 +224,7 @@ export class ExtensionDiscoveryService implements OnModuleInit {
       // Validate input if schema is defined
       let validatedParams = params;
       if (inputSchema) {
-        if (isMessagingExtensionMethod(fullName)) {
-          validatedParams = parseMessagingExtensionInputParams(inputSchema, params);
-        } else {
-          validatedParams = inputSchema.parse(params);
-        }
+        validatedParams = parseFunctionInputParams(fullName, inputSchema, params);
       }
 
       // Build arguments based on parameter decorators

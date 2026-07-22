@@ -21,13 +21,14 @@ import type {
   FunctionSchema,
   GetFunctionsResponse,
 } from "@channel.io/app-sdk-core";
-import { FunctionCallError, FunctionNotFoundError } from "@channel.io/app-sdk-core";
+import {
+  FunctionCallError,
+  FunctionNotFoundError,
+  ValidationError,
+} from "@channel.io/app-sdk-core";
 import { AppStoreClient } from "../appstore/client.js";
 import { normalizeExtensionResult } from "../utils/extension-result-normalizer.js";
-import {
-  isMessagingExtensionMethod,
-  parseMessagingExtensionInputParams,
-} from "../utils/messaging-input-normalizer.js";
+import { parseFunctionInputParams } from "../utils/function-input-validator.js";
 
 const SIMPLE_FUNCTIONS = Symbol("SIMPLE_FUNCTIONS");
 const SIMPLE_OPTIONS = Symbol("SIMPLE_OPTIONS");
@@ -137,9 +138,7 @@ export class ChannelApp {
       test,
       handler: async (ctx, params) => {
         const fullName = name.startsWith("extension.") ? name : `extension.${name}`;
-        const validated = isMessagingExtensionMethod(fullName)
-          ? parseMessagingExtensionInputParams(inputSchema, params)
-          : inputSchema.parse(params);
+        const validated = parseFunctionInputParams(fullName, inputSchema, params);
         return handler(ctx, validated);
       },
     };
@@ -340,6 +339,16 @@ class ChannelAppSimpleController {
         throw new HttpException(
           { error: "FUNCTION_NOT_FOUND", message: error.message },
           HttpStatus.NOT_FOUND
+        );
+      }
+      if (error instanceof ValidationError) {
+        throw new HttpException(
+          {
+            error: "VALIDATION_ERROR",
+            message: error.message,
+            details: error.details,
+          },
+          HttpStatus.BAD_REQUEST
         );
       }
       throw new HttpException(
