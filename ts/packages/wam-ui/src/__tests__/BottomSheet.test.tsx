@@ -10,7 +10,7 @@ function renderWithTheme(ui: React.ReactElement) {
 describe("BottomSheet", () => {
   it("does not render when open=false", () => {
     renderWithTheme(
-      <BottomSheet open={false} onClose={() => {}}>
+      <BottomSheet open={false} onClose={() => {}} ariaLabel="Test sheet">
         <span data-testid="content">Sheet content</span>
       </BottomSheet>
     );
@@ -20,7 +20,7 @@ describe("BottomSheet", () => {
 
   it("renders children when open=true", () => {
     renderWithTheme(
-      <BottomSheet open={true} onClose={() => {}}>
+      <BottomSheet open={true} onClose={() => {}} ariaLabel="Test sheet">
         <span data-testid="content">Sheet content</span>
       </BottomSheet>
     );
@@ -31,7 +31,7 @@ describe("BottomSheet", () => {
   it("calls onClose when dimmer is clicked", () => {
     const onClose = vi.fn();
     renderWithTheme(
-      <BottomSheet open={true} onClose={onClose}>
+      <BottomSheet open={true} onClose={onClose} ariaLabel="Test sheet">
         <span>Sheet content</span>
       </BottomSheet>
     );
@@ -42,7 +42,7 @@ describe("BottomSheet", () => {
   it("does not call onClose when content is clicked", () => {
     const onClose = vi.fn();
     renderWithTheme(
-      <BottomSheet open={true} onClose={onClose}>
+      <BottomSheet open={true} onClose={onClose} ariaLabel="Test sheet">
         <span data-testid="inner">Inner content</span>
       </BottomSheet>
     );
@@ -52,7 +52,7 @@ describe("BottomSheet", () => {
 
   it("renders in portal (content in document.body)", () => {
     renderWithTheme(
-      <BottomSheet open={true} onClose={() => {}}>
+      <BottomSheet open={true} onClose={() => {}} ariaLabel="Test sheet">
         <span data-testid="portal-content">Portal content</span>
       </BottomSheet>
     );
@@ -62,7 +62,7 @@ describe("BottomSheet", () => {
 
   it("bottom position applies appropriate styling", () => {
     renderWithTheme(
-      <BottomSheet open={true} onClose={() => {}} position="bottom">
+      <BottomSheet open={true} onClose={() => {}} ariaLabel="Test sheet" position="bottom">
         <span>Content</span>
       </BottomSheet>
     );
@@ -77,11 +77,31 @@ describe("BottomSheet", () => {
 
   it("center position renders content with center layout", () => {
     renderWithTheme(
-      <BottomSheet open={true} onClose={() => {}} position="center">
+      <BottomSheet open={true} onClose={() => {}} ariaLabel="Test sheet" position="center">
         <span>Center content</span>
       </BottomSheet>
     );
     expect(screen.getByTestId("bottom-sheet-content")).toBeInTheDocument();
     expect(screen.getByText("Center content")).toBeInTheDocument();
+  });
+
+  it("exposes dialog semantics and receives initial focus", () => {
+    renderWithTheme(
+      <BottomSheet open onClose={() => {}} ariaLabel="Choose an account">
+        <button>Choose</button>
+      </BottomSheet>
+    );
+    expect(screen.getByRole("dialog", { name: "Choose an account" })).toHaveFocus();
+  });
+
+  it("closes on Escape", () => {
+    const onClose = vi.fn();
+    renderWithTheme(
+      <BottomSheet open onClose={onClose} ariaLabel="Test sheet">
+        <span>Content</span>
+      </BottomSheet>
+    );
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

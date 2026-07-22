@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Text, VStack, Icon } from "@channel.io/bezier-react";
+import { Text, VStack, Icon } from "@channel.io/bezier-react/beta";
 import type { BezierIcon } from "@channel.io/bezier-icons";
 import styled from "styled-components";
 
@@ -25,7 +25,7 @@ const Container = styled.div`
 export function EmptyState({ icon, title, description, action }: EmptyStateProps) {
   return (
     <Container>
-      {icon && <Icon source={icon} size="xl" color="icon-neutral-heavy" />}
+      {icon && <Icon source={icon} size="36" color="icon-neutral-heavy" />}
       <VStack spacing={4} align="center">
         <Text typo="16" bold>
           {title}

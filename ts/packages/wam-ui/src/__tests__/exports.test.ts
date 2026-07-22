@@ -10,13 +10,13 @@ describe("package exports", () => {
     expect(WamUI.ConfirmDialog).toBeDefined();
   });
 
-  it("exports all design components", () => {
-    expect(WamUI.FormSection).toBeDefined();
-    expect(WamUI.FormRow).toBeDefined();
-    expect(WamUI.ToggleRow).toBeDefined();
-    expect(WamUI.InputRow).toBeDefined();
-    expect(WamUI.SelectRow).toBeDefined();
+  it("exports WAM-specific components", () => {
     expect(WamUI.EmptyState).toBeDefined();
+    expect(WamUI.SkeletonBox).toBeDefined();
+    expect(WamUI.SkeletonCircle).toBeDefined();
+    expect(WamUI.BottomSheet).toBeDefined();
+    expect(WamUI.WamHeader).toBeDefined();
+    expect(WamUI.InlineBanner).toBeDefined();
   });
 
   it("exports design tokens", () => {
@@ -29,7 +29,8 @@ describe("package exports", () => {
   it("has correct token values", () => {
     expect(WamUI.TYPO["14"]).toEqual({ fontSize: "14px", lineHeight: "20px" });
     expect(WamUI.SPACING.wamMaxWidth).toBe("520px");
-    expect(WamUI.BUTTON_VARIANTS.primary.colorVariant).toBe("blue");
+    expect(WamUI.BUTTON_VARIANTS.primary.semantic).toBe("primary");
+    expect(WamUI.BUTTON_VARIANTS.primary.variant).toBe("filled");
     expect(WamUI.TEXT_PRESETS.label.bold).toBe(true);
   });
 });

@@ -1,4 +1,4 @@
-import { Center, Text, VStack, Button, Icon } from "@channel.io/bezier-react";
+import { Box, Text, VStack, Button, Icon } from "@channel.io/bezier-react/beta";
 import { ErrorTriangleFilledIcon } from "@channel.io/bezier-icons";
 
 export interface ErrorPageProps {
@@ -16,22 +16,26 @@ export function ErrorPage({ error, onRetry, retryText = "Retry", height = 200 }:
   const message = typeof error === "string" ? error : (error?.message ?? "An error occurred");
 
   return (
-    <Center height={height} width="100%">
+    <Box
+      height={height}
+      width="100%"
+      style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+    >
       <VStack spacing={12} align="center">
-        <Icon source={ErrorTriangleFilledIcon} size="l" color="icon-neutral-heavy" />
+        <Icon source={ErrorTriangleFilledIcon} size="24" color="icon-neutral-heavy" />
         <Text typo="14" color="text-neutral-light">
           {message}
         </Text>
         {onRetry && (
           <Button
-            text={retryText}
-            styleVariant="secondary"
-            colorVariant="monochrome-dark"
+            label={retryText}
+            variant="outlined"
+            semantic="secondary"
             size="s"
             onClick={onRetry}
           />
         )}
       </VStack>
-    </Center>
+    </Box>
   );
 }

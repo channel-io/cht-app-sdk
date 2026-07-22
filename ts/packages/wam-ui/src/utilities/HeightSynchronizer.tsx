@@ -1,5 +1,5 @@
 import { type PropsWithChildren, useEffect, useRef, useState } from "react";
-import { Box } from "@channel.io/bezier-react";
+import { Box } from "@channel.io/bezier-react/beta";
 
 export interface HeightSynchronizerProps extends PropsWithChildren {
   /** Paths where height sync is disabled (e.g., ['/connect']) */
@@ -64,7 +64,7 @@ export function HeightSynchronizer({
   );
 
   return (
-    <Box ref={setRef} backgroundColor="surface-high">
+    <Box ref={setRef} style={{ backgroundColor: "var(--color-surface-high)" }}>
       {children}
     </Box>
   );

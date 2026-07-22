@@ -1,4 +1,4 @@
-import { Center, Spinner, Text, VStack } from "@channel.io/bezier-react";
+import { Box, Spinner, Text, VStack } from "@channel.io/bezier-react/beta";
 
 export interface LoadingPageProps {
   /** Optional message below spinner */
@@ -9,15 +9,19 @@ export interface LoadingPageProps {
 
 export function LoadingPage({ message, height = 200 }: LoadingPageProps) {
   return (
-    <Center height={height} width="100%">
+    <Box
+      height={height}
+      width="100%"
+      style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+    >
       <VStack spacing={12} align="center">
-        <Spinner color="icon-neutral-heavy" />
+        <Spinner size="24" color="icon-neutral-heavy" data-testid="wam-loading-spinner" />
         {message && (
           <Text typo="14" color="text-neutral-light">
             {message}
           </Text>
         )}
       </VStack>
-    </Center>
+    </Box>
   );
 }

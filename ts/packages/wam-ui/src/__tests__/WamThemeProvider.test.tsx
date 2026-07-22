@@ -14,6 +14,15 @@ vi.mock("@channel.io/bezier-react", async () => {
       appProviderTheme(themeName);
       return <div data-theme={themeName}>{children}</div>;
     },
+  };
+});
+
+vi.mock("@channel.io/bezier-react/beta", async () => {
+  const actual = await vi.importActual<typeof import("@channel.io/bezier-react/beta")>(
+    "@channel.io/bezier-react/beta"
+  );
+  return {
+    ...actual,
     ToastProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   };
 });

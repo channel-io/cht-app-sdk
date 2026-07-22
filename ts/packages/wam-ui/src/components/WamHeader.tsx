@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Text, Icon } from "@channel.io/bezier-react";
+import { IconButton, Text } from "@channel.io/bezier-react/beta";
 import { ChevronLeftIcon, CancelIcon } from "@channel.io/bezier-icons";
 import styled from "styled-components";
 
@@ -25,24 +25,6 @@ const Header = styled.div`
   align-items: center;
   height: 56px;
   padding: 0 16px;
-`;
-
-const IconButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: none;
-  background: transparent;
-  border-radius: 50%;
-  cursor: pointer;
-  padding: 0;
-  flex-shrink: 0;
-
-  &:hover {
-    background-color: var(--color-fill-neutral-light);
-  }
 `;
 
 const TitleWrapper = styled.div`
@@ -87,9 +69,14 @@ export function WamHeader({
   return (
     <Header>
       {showBackButton ? (
-        <IconButton onClick={handleBack} aria-label="back">
-          <Icon source={ChevronLeftIcon} size="s" color="icon-neutral-heavier" />
-        </IconButton>
+        <IconButton
+          content={ChevronLeftIcon}
+          size="s"
+          variant="ghost"
+          semantic="secondary"
+          onClick={handleBack}
+          aria-label="Back"
+        />
       ) : (
         <div style={{ width: 32, flexShrink: 0 }} />
       )}
@@ -103,9 +90,14 @@ export function WamHeader({
       <RightGroup>
         {rightContent}
         {showCloseButton && (
-          <IconButton onClick={handleClose} aria-label="close">
-            <Icon source={CancelIcon} size="s" color="icon-neutral-heavier" />
-          </IconButton>
+          <IconButton
+            content={CancelIcon}
+            size="s"
+            variant="ghost"
+            semantic="secondary"
+            onClick={handleClose}
+            aria-label="Close"
+          />
         )}
       </RightGroup>
     </Header>
