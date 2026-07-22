@@ -7,7 +7,7 @@ import {
   ConfirmModalClose,
   Button,
   ButtonGroup,
-} from "@channel.io/bezier-react";
+} from "@channel.io/bezier-react/beta";
 
 export interface ConfirmDialogProps {
   /** Dialog title */
@@ -66,23 +66,22 @@ export function ConfirmDialog({
 }: ConfirmDialogProps) {
   return (
     <ConfirmModal show={show} onHide={onHide}>
-      <ConfirmModalContent width={420}>
+      <ConfirmModalContent
+        width={420}
+        {...(description === undefined ? { "aria-describedby": undefined } : {})}
+      >
         <ConfirmModalHeader title={title} description={description} />
         <ConfirmModalFooter
           rightContent={
             <ButtonGroup>
               <ConfirmModalClose>
-                <Button
-                  colorVariant="monochrome-light"
-                  styleVariant="secondary"
-                  text={cancelText}
-                />
+                <Button label={cancelText} variant="outlined" semantic="secondary" />
               </ConfirmModalClose>
               <ConfirmModalClose>
                 <Button
-                  colorVariant={destructive ? "red" : "blue"}
-                  styleVariant="primary"
-                  text={confirmText}
+                  label={confirmText}
+                  variant="filled"
+                  semantic={destructive ? "destructive" : "primary"}
                   onClick={onConfirm}
                 />
               </ConfirmModalClose>

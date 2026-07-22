@@ -1,4 +1,4 @@
-import { Banner } from "@channel.io/bezier-react";
+import { Banner } from "@channel.io/bezier-react/beta";
 import { CheckCircleFilledIcon, ErrorTriangleFilledIcon } from "@channel.io/bezier-icons";
 
 export interface InlineBannerProps {
@@ -38,5 +38,5 @@ const VARIANT_CONFIG = {
 export function InlineBanner({ variant, content }: InlineBannerProps) {
   const config = VARIANT_CONFIG[variant];
 
-  return <Banner icon={config.icon} variant={config.bezierVariant} content={content} />;
+  return <Banner leadingIcon={config.icon} variant={config.bezierVariant} content={content} />;
 }

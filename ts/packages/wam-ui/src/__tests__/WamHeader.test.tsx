@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { WamThemeProvider } from "../providers/WamThemeProvider.js";
 import { WamHeader } from "../components/WamHeader.js";
 
@@ -15,18 +15,18 @@ describe("WamHeader", () => {
 
   it("shows close button by default", () => {
     renderWithTheme(<WamHeader title="My App" />);
-    expect(screen.getByRole("button", { name: "close" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Close" })).toBeInTheDocument();
   });
 
   it("hides close button when showCloseButton=false", () => {
     renderWithTheme(<WamHeader title="My App" showCloseButton={false} />);
-    expect(screen.queryByRole("button", { name: "close" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Close" })).not.toBeInTheDocument();
   });
 
   it("calls onClose when close button clicked", () => {
     const onClose = vi.fn();
     renderWithTheme(<WamHeader title="My App" onClose={onClose} />);
-    fireEvent.click(screen.getByRole("button", { name: "close" }));
+    fireEvent.click(screen.getByRole("button", { name: "Close" }));
     expect(onClose).toHaveBeenCalled();
   });
 
@@ -35,7 +35,7 @@ describe("WamHeader", () => {
     (window as unknown as Record<string, unknown>).ChannelIOWam = { close: mockClose };
 
     renderWithTheme(<WamHeader title="My App" />);
-    fireEvent.click(screen.getByRole("button", { name: "close" }));
+    fireEvent.click(screen.getByRole("button", { name: "Close" }));
     expect(mockClose).toHaveBeenCalled();
 
     delete (window as unknown as Record<string, unknown>).ChannelIOWam;
@@ -43,25 +43,25 @@ describe("WamHeader", () => {
 
   it("does not show back button by default", () => {
     renderWithTheme(<WamHeader title="My App" />);
-    expect(screen.queryByRole("button", { name: "back" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Back" })).not.toBeInTheDocument();
   });
 
   it("shows back button when showBackButton=true", () => {
     renderWithTheme(<WamHeader title="My App" showBackButton />);
-    expect(screen.getByRole("button", { name: "back" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Back" })).toBeInTheDocument();
   });
 
   it("calls onBack when back button clicked", () => {
     const onBack = vi.fn();
     renderWithTheme(<WamHeader title="My App" showBackButton onBack={onBack} />);
-    fireEvent.click(screen.getByRole("button", { name: "back" }));
+    fireEvent.click(screen.getByRole("button", { name: "Back" }));
     expect(onBack).toHaveBeenCalled();
   });
 
   it("calls history.back() when no onBack provided", () => {
     const historyBack = vi.spyOn(history, "back").mockImplementation(() => {});
     renderWithTheme(<WamHeader title="My App" showBackButton />);
-    fireEvent.click(screen.getByRole("button", { name: "back" }));
+    fireEvent.click(screen.getByRole("button", { name: "Back" }));
     expect(historyBack).toHaveBeenCalled();
     historyBack.mockRestore();
   });

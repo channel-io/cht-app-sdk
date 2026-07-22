@@ -1,5 +1,6 @@
 import { type PropsWithChildren, useMemo } from "react";
-import { AppProvider, type ThemeName, ToastProvider } from "@channel.io/bezier-react";
+import { AppProvider, type ThemeName } from "@channel.io/bezier-react";
+import { ToastProvider } from "@channel.io/bezier-react/beta";
 
 export interface WamThemeProviderProps extends PropsWithChildren {
   /** Override theme. If omitted, reads from window.ChannelIOWam */

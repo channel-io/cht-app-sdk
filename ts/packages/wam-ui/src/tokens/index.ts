@@ -51,33 +51,33 @@ export const SPACING = {
  *
  * @example
  * ```tsx
- * <Button {...BUTTON_VARIANTS.primary} text="Save" />
+ * <Button {...BUTTON_VARIANTS.primary} label="Save" />
  * ```
  */
 export const BUTTON_VARIANTS = {
   /** Primary action — e.g., Save, Connect */
   primary: {
     size: "m" as const,
-    styleVariant: "primary" as const,
-    colorVariant: "blue" as const,
+    variant: "filled" as const,
+    semantic: "primary" as const,
   },
   /** Secondary action — e.g., Cancel, Back */
   secondary: {
     size: "m" as const,
-    styleVariant: "secondary" as const,
-    colorVariant: "monochrome-dark" as const,
+    variant: "outlined" as const,
+    semantic: "secondary" as const,
   },
   /** Destructive action — e.g., Delete, Disconnect */
   destructive: {
     size: "m" as const,
-    styleVariant: "secondary" as const,
-    colorVariant: "red" as const,
+    variant: "outlined" as const,
+    semantic: "destructive" as const,
   },
   /** Small tertiary — e.g., section actions */
   tertiary: {
     size: "xs" as const,
-    styleVariant: "tertiary" as const,
-    colorVariant: "monochrome-light" as const,
+    variant: "ghost" as const,
+    semantic: "secondary" as const,
   },
 } as const;
 

@@ -1,172 +1,170 @@
 # @channel.io/app-sdk-wam-ui
 
-UI components for [Channel.io](https://channel.io) WAM (Web App Module) development.
+WAM-specific UI infrastructure and presets for Channel.io apps.
 
-Build desk-consistent WAM interfaces without reinventing common patterns.
+Use this package for WAM runtime behavior such as theme detection, iframe height synchronization,
+navigation, and common full-page states. Import general-purpose UI components directly from the
+redesigned Bezier subpath.
 
 ## Installation
 
 ```bash
 npm install @channel.io/app-sdk-wam-ui
-# peer dependencies
 npm install react @channel.io/bezier-react@4.0.0-next.13 @channel.io/bezier-icons@0.60.0 styled-components@^6
 ```
 
-The package is currently verified against Bezier React `4.0.0-next.13` and Bezier Icons
-`0.60.0`. Bezier React 4 is still a prerelease, so pin the `next` version in application
-lockfiles and review its release notes before upgrading.
+Bezier React 4 is still a prerelease. Pin `4.0.0-next.13` in application lockfiles and review its
+release notes before upgrading.
 
-## Quick Start
+## Quick start
 
 ```tsx
-import { WamThemeProvider, FormSection, FormRow, ToggleRow } from "@channel.io/app-sdk-wam-ui";
-import { TextField } from "@channel.io/bezier-react";
+import { SendIcon } from "@channel.io/bezier-icons";
+import { Button, HStack } from "@channel.io/bezier-react/beta";
+import {
+  HeightSynchronizer,
+  InlineBanner,
+  WamHeader,
+  WamThemeProvider,
+} from "@channel.io/app-sdk-wam-ui";
 
-function App() {
+export function App() {
   return (
     <WamThemeProvider>
-      <FormSection title="Notification Settings" description="Configure when to send alerts.">
-        <FormRow label="Name">
-          <TextField value={name} onChange={(e) => setName(e.target.value)} size="m" />
-        </FormRow>
-        <ToggleRow
-          label="Enable"
-          description="Turn this notification on or off."
-          checked={enabled}
-          onChange={setEnabled}
-        />
-      </FormSection>
+      <HeightSynchronizer maxHeight={480}>
+        <WamHeader title="Example" />
+        <HStack spacing={8} padding={16}>
+          <Button label="Send" leadingContent={SendIcon} variant="filled" semantic="primary" />
+        </HStack>
+        <InlineBanner variant="info" content="Ready to send." />
+      </HeightSynchronizer>
     </WamThemeProvider>
   );
 }
 ```
 
+## Bezier usage
+
+New WAM interfaces should import redesigned components from
+`@channel.io/bezier-react/beta`:
+
+```tsx
+import {
+  Banner,
+  Button,
+  ConfirmModal,
+  FormField,
+  Search,
+  Select,
+  SettingsField,
+  Switch,
+  TextInput,
+} from "@channel.io/bezier-react/beta";
+```
+
+Provider and stable token APIs that are not exported by the beta subpath remain available from
+`@channel.io/bezier-react`. Do not use legacy root UI components or deprecated `useBetaTokens`
+APIs.
+
 ## Components
 
-### Infrastructure
+### `WamThemeProvider`
 
-Components that solve common WAM boilerplate across all apps.
-
-#### `WamThemeProvider`
-
-Wraps your WAM with `BezierAppProvider` + `ToastProvider`, auto-detecting the theme from Channel.io desk.
+Wraps a WAM with Bezier's `AppProvider` and redesigned `ToastProvider`. It detects the light or
+dark appearance from the WAM runtime, or accepts an explicit override.
 
 ```tsx
 <WamThemeProvider>
-  <MyWidget />
-</WamThemeProvider>
-
-// Or override the theme
-<WamThemeProvider theme="dark">
-  <MyWidget />
+  <MyWam />
 </WamThemeProvider>
 ```
 
-#### `HeightSynchronizer`
+### `HeightSynchronizer`
 
-Automatically syncs iframe height with content using `ResizeObserver` + `window.ChannelIOWam.setSize()`.
+Observes content changes and calls `window.ChannelIOWam.setSize()` with the current iframe height.
 
 ```tsx
-<HeightSynchronizer>
-  <MyContent />
-</HeightSynchronizer>
-
-// Exclude specific routes from height sync
-<HeightSynchronizer excludePaths={['/connect']} pathname={location.pathname}>
-  <MyContent />
-</HeightSynchronizer>
-
-// Limit max height
 <HeightSynchronizer maxHeight={600}>
   <MyContent />
 </HeightSynchronizer>
 ```
 
-#### `ConfirmDialog`
+Use `excludePaths` with `pathname` when a route manages its own size.
 
-Desk-style confirmation dialog. Works standalone or with `@ebay/nice-modal-react`.
+### `WamHeader`
+
+Provides WAM back and close behavior with Bezier beta icon buttons. `onBack` defaults to
+`history.back()` and `onClose` defaults to `window.ChannelIOWam.close()`.
 
 ```tsx
-// Standalone
+<WamHeader title="Settings" showBackButton />
+```
+
+### `LoadingPage`, `ErrorPage`, and `EmptyState`
+
+Consistent full-page states for small WAM surfaces.
+
+```tsx
+if (loading) return <LoadingPage message="Loading data..." />;
+if (error) return <ErrorPage error={error} onRetry={refetch} />;
+return <EmptyState title="No results" description="Try a different search." />;
+```
+
+### `InlineBanner`
+
+A semantic success, error, or information preset over Bezier beta `Banner`.
+
+```tsx
+<InlineBanner variant="success" content="Saved successfully." />
+```
+
+### `ConfirmDialog`
+
+A compact confirmation preset over Bezier beta `ConfirmModal`.
+
+```tsx
 <ConfirmDialog
-  show={isOpen}
-  onHide={() => setIsOpen(false)}
+  show={open}
+  onHide={() => setOpen(false)}
   title="Delete this item?"
   description="This action cannot be undone."
   destructive
   confirmText="Delete"
   onConfirm={handleDelete}
-/>;
-
-// With NiceModal
-import NiceModal, { useModal } from "@ebay/nice-modal-react";
-import { ConfirmDialog } from "@channel.io/app-sdk-wam-ui";
-
-const MyConfirm = NiceModal.create((props) => {
-  const { visible, remove } = useModal();
-  return <ConfirmDialog {...props} show={visible} onHide={remove} />;
-});
+/>
 ```
 
-#### `LoadingPage` / `ErrorPage`
+### `SkeletonBox`, `SkeletonCircle`, and `BottomSheet`
 
-Full-page loading spinner and error fallback.
+WAM-oriented loading placeholders and compact overlay layouts that do not have a direct Bezier
+beta equivalent. Give every `BottomSheet` an `ariaLabel`; it manages focus, Escape, and scroll
+locking while open.
 
-```tsx
-if (loading) return <LoadingPage message="Loading data..." />;
-if (error) return <ErrorPage error={error} onRetry={refetch} />;
-```
+## Migrating from 0.3
 
-### Design
+Version 0.4 removes general-purpose wrappers that duplicate redesigned Bezier components.
 
-Desk-consistent UI patterns extracted from Channel.io desk pages. Ideal for new WAM apps and third-party developers.
+| Removed WAM UI export | Use instead                                                     |
+| --------------------- | --------------------------------------------------------------- |
+| `FormSection`         | Bezier beta `Form`, `Settings`, or `Section`                    |
+| `FormRow`             | Bezier beta `FormField` or `SettingsField`                      |
+| `InputRow`            | Bezier beta `TextInput` inside `FormField`                      |
+| `SelectRow`           | Bezier beta `Select` inside `FormField`                         |
+| `ToggleRow`           | Bezier beta `SettingsField` with `Switch`                       |
+| `SearchInput`         | Bezier beta `Search`; debounce in application state when needed |
 
-#### `FormSection`
+Bezier beta buttons use `label`, `variant`, and `semantic` instead of the legacy `text`,
+`styleVariant`, and `colorVariant` props.
 
-Groups form fields under a title with optional description.
+## Examples
 
-```tsx
-<FormSection title="General" description="Basic settings for your integration.">
-  {/* FormRow, ToggleRow, InputRow, etc. */}
-</FormSection>
-```
+- [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts)
+- [Go tutorial](https://github.com/channel-io/app-tutorial)
 
-#### `FormRow`
+Both tutorials show a React WAM using `@channel.io/app-sdk-wam` and this package alongside a
+language-specific app server.
 
-Responsive label + field layout. Horizontal grid on wide viewports, vertical stack on narrow.
-
-```tsx
-<FormRow label="API Key" description="Your secret API key.">
-  <TextField value={apiKey} onChange={...} size="m" />
-</FormRow>
-```
-
-#### `InputRow` / `SelectRow` / `ToggleRow`
-
-Pre-composed FormRow variants for common field types.
-
-```tsx
-<InputRow label="Webhook URL" value={url} onChange={setUrl} placeholder="https://..." />
-<SelectRow label="Frequency" options={[...]} value={freq} onChange={setFreq} />
-<ToggleRow label="Active" description="Enable this webhook." checked={active} onChange={setActive} />
-```
-
-#### `EmptyState`
-
-Empty state display with icon, title, description, and optional action.
-
-```tsx
-import { InboxIcon } from "@channel.io/bezier-icons";
-
-<EmptyState
-  icon={InboxIcon}
-  title="No messages yet"
-  description="Messages will appear here."
-  action={{ text: "Refresh", onClick: refetch }}
-/>;
-```
-
-## Peer Dependencies
+## Peer dependencies
 
 | Package                    | Version                |
 | -------------------------- | ---------------------- |
@@ -175,10 +173,7 @@ import { InboxIcon } from "@channel.io/bezier-icons";
 | `@channel.io/bezier-icons` | >=0.60.0 <1.0.0        |
 | `styled-components`        | >=6.0.0                |
 
-Optional: `@ebay/nice-modal-react` >=1.0.0 (for `ConfirmDialog` NiceModal integration)
-
-Apps still using Bezier 3 should stay on `@channel.io/app-sdk-wam-ui` 0.2.x until they are
-ready to migrate the design-system tokens and styled-components peer dependency together.
+Apps still using Bezier 3 should remain on `@channel.io/app-sdk-wam-ui` 0.2.x.
 
 ## License
 
