@@ -1,9 +1,9 @@
 {
   "name": "tutorial-command-app",
-  "installRoot": "ts/examples/tutorial",
-  "serverRoot": "ts/examples/tutorial/apps/server",
+  "installRoot": ".app-studio/server",
+  "serverRoot": ".app-studio/server",
   "entryFile": "dist/main.js",
-  "wamRoot": "ts/examples/tutorial/apps/wam",
+  "wamRoot": ".app-studio/wam",
   "permissions": {
     "native": {
       "channel": [
