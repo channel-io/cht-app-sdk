@@ -1,5 +1,12 @@
 # @channel.io/app-sdk-server
 
+## 0.17.1
+
+### Patch Changes
+
+- 68fd2df: Return HTTP 400 responses for invalid function inputs instead of treating Zod validation failures as internal server errors.
+  - @channel.io/app-sdk-core@0.17.1
+
 ## 0.17.0
 
 ### Patch Changes
