@@ -1,5 +1,12 @@
 # @channel.io/app-sdk-server
 
+## 0.17.2
+
+### Patch Changes
+
+- 969c5bd: Recognize function input Zod errors across CommonJS and ESM module boundaries so validation failures consistently return HTTP 400.
+  - @channel.io/app-sdk-core@0.17.2
+
 ## 0.17.1
 
 ### Patch Changes
