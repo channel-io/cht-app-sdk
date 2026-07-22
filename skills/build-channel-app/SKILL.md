@@ -16,6 +16,7 @@ Use the official SDK as the implementation source of truth. Read [references/cur
    - Korean: [../../docs/guides/ko/app-development.md](../../docs/guides/ko/app-development.md)
    - Japanese: [../../docs/guides/ja/app-development.md](../../docs/guides/ja/app-development.md)
      Read that locale's `concepts.md` when the task introduces or changes Functions, Extensions, WAM, authentication, tokens, or endpoints.
+     Read that locale's `extensions.md` before selecting an Extension family, then open the linked language-specific reference for exact schemas.
      For Go implementations, also read [../../docs/reference/go/README.md](../../docs/reference/go/README.md) and the task-specific Go reference it links.
 4. If no app exists yet, guide the user through a development private app, server-side credential storage, minimum permissions, stable HTTPS endpoint roots, startup/auto-registration, and test-channel installation in that order. Do not guess portal labels that cannot be verified.
 5. Define the user outcome, execution surface, minimum permissions, standard Extension, and standard Function names before writing code. Separate official Extension Functions from standalone app Functions; do not invent an Extension as a namespace.
@@ -23,7 +24,7 @@ Use the official SDK as the implementation source of truth. Read [references/cur
 7. Classify authentication before generating handlers. Separate inbound `x-signature`, server app/channel tokens, WAM manager/user authorization, provider OAuth tokens, and config-backed credentials. Authorization Code uses OAuth metadata and `ctx.authToken`; `client_credentials`, API keys, and per-shop secrets use config-backed credentials.
 8. Implement the smallest end-to-end slice: extension metadata, typed action function, server route, optional WAM, required token/native call, and request verification.
 9. Configure the Function Endpoint as the `/functions` root and the WAM Endpoint as the WAM root before relying on startup auto-registration. Let the SDK and AppStore add system versions and WAM names; restart after endpoint or permission changes when registration runs at startup.
-10. For a managed builder project, preserve runtime-provided `APP_STORE_URL` and registration settings; the platform may own endpoint synchronization and post-deploy registration.
+10. When a hosting platform supplies `APP_STORE_URL` or registration settings, preserve them; the platform may own endpoint synchronization and post-deploy registration.
 11. Verify clean installs, type checks, builds, tests, bad signatures, extension registration, WAM load, unsupported surfaces, loading/error UI, and permission failures.
 12. Report protocol fallbacks explicitly when the selected language lacks an SDK wrapper. Keep each fallback isolated behind a small adapter.
 

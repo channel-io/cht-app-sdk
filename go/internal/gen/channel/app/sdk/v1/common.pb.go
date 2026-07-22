@@ -3223,7 +3223,7 @@ const file_channel_app_sdk_v1_common_proto_rawDesc = "" +
 	"\x15USER_TYPE_UNSPECIFIED\x10\x00\x12\x14\n" +
 	"\x10USER_TYPE_MEMBER\x10\x01\x12\x12\n" +
 	"\x0eUSER_TYPE_LEAD\x10\x02\x12\x15\n" +
-	"\x11USER_TYPE_UNIFIED\x10\x03BLZJgithub.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
+	"\x11USER_TYPE_UNIFIED\x10\x03BHZFgithub.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
 
 var (
 	file_channel_app_sdk_v1_common_proto_rawDescOnce sync.Once

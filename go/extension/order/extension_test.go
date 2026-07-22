@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
-	"github.com/channel-io/cht-app-sdk/go/extension/order"
+	"github.com/channel-io/app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/extension/order"
 )
 
 func TestExtensionRegistersOrderFunctions(t *testing.T) {

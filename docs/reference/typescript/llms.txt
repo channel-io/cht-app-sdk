@@ -4,10 +4,10 @@ Use this file as a compact, current reference for code generation. Public packag
 
 Verified releases on 2026-07-22:
 
-- `@channel.io/app-sdk-core`: `0.17.0`
-- `@channel.io/app-sdk-server`: `0.17.0`
-- `@channel.io/app-sdk-wam`: `0.17.0`
-- `@channel.io/app-sdk-wam-ui`: `0.2.2`
+- `@channel.io/app-sdk-core`: `0.17.2`
+- `@channel.io/app-sdk-server`: `0.17.2`
+- `@channel.io/app-sdk-wam`: `0.17.2`
+- `@channel.io/app-sdk-wam-ui`: `0.4.0`
 - Node.js: 20.11+
 
 ## Packages
@@ -89,7 +89,7 @@ export class CommandExtension {
 }
 ```
 
-Known extension names include config, oauth, apikey (legacy), calendar, command, widget, customtab, hook, mailRelay, polling, store, datasource, messaging, alftask/alfTask, notebook, commerce, order, and wms. Hook metadata in `0.17.0` also supports app-level public webhook ingress through `webhook.received`; read the hook guide for its required public `targetId` and high-entropy `endpointToken`. Read every extension's guide and exported schemas before choosing relative function names.
+Known extension names include config, oauth, apikey (legacy), calendar, command, widget, customtab, hook, mailRelay, polling, store, datasource, messaging, alftask/alfTask, notebook, commerce, order, and wms. Hook metadata in `0.17.2` also supports app-level public webhook ingress through `webhook.received`; read the hook guide for its required public `targetId` and high-entropy `endpointToken`. Read every extension's guide and exported schemas before choosing relative function names.
 
 Do not use generic `createExtension()` / `defineFunction()` snippets from older templates; those are not current public exports. Some family-specific core factories exist, but use them only when a current guide shows how the returned definition is integrated into the chosen runtime.
 

@@ -2,7 +2,7 @@
 
 The Go SDK covers the server-side Channel app responsibilities provided by the TypeScript SDK, using Go builders, generics, structs, and Gin instead of decorators, Zod, and NestJS.
 
-Verified release: `github.com/channel-io/cht-app-sdk/go v0.13.14`, requiring Go 1.25.
+Verified release: `github.com/channel-io/app-sdk/go v0.14.0`, requiring Go 1.25.
 
 ## Reference Map
 

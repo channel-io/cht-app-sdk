@@ -1,8 +1,8 @@
 package wms
 
 import (
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
-	"github.com/channel-io/cht-app-sdk/go/extension/schemaregistry"
+	"github.com/channel-io/app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/extension/schemaregistry"
 )
 
 func FunctionOptions(name string, opts ...appsdk.FunctionOption) []appsdk.FunctionOption {

@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
-	"github.com/channel-io/cht-app-sdk/go/extension/datasource"
-	"github.com/channel-io/cht-app-sdk/go/testkit"
+	"github.com/channel-io/app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/extension/datasource"
+	"github.com/channel-io/app-sdk/go/testkit"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 

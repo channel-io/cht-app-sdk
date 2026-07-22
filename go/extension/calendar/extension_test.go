@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
-	"github.com/channel-io/cht-app-sdk/go/extension/calendar"
+	"github.com/channel-io/app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/extension/calendar"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 

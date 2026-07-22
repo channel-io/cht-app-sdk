@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/appsdk"
 )
 
 type HandlerFunc func(ctx context.Context, params json.RawMessage, fnCtx appsdk.Context) (json.RawMessage, error)

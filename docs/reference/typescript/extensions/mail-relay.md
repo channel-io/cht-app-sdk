@@ -18,7 +18,7 @@ The canonical function is:
 extension.mailRelay.inbound.onMailReceived
 ```
 
-TypeScript `0.17.0` does not include `mailRelay` in the names accepted by the `@Extension` decorator. Register the full Function name as a standalone `@Func` and register the Extension explicitly:
+TypeScript `0.17.2` does not include `mailRelay` in the names accepted by the `@Extension` decorator. Register the full Function name as a standalone `@Func` and register the Extension explicitly:
 
 ```typescript
 import {

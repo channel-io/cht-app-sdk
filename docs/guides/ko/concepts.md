@@ -30,7 +30,7 @@ AppStore는 `extension.core.function.getFunctions`로 Function 이름과 input/o
 
 Extension은 관련 Function과 metadata를 Channel의 기능으로 선언하는 **이름과 system version이 있는 capability contract**입니다. 단순한 코드 폴더나 클래스 분류가 아닙니다. 등록된 계약을 보고 AppStore는 command를 노출하거나 widget/custom tab을 열고, hook을 전달하거나 OAuth/config 흐름을 연결합니다.
 
-대표적인 Extension은 command, widget, custom tab, hook, OAuth, config, calendar, polling, commerce, order, WMS, messaging입니다. 각 Extension은 정해진 Function 이름과 schema를 가지므로 [TypeScript Extension 레퍼런스](../../reference/typescript/EXTENSIONS.md)와 언어별 helper를 먼저 확인하세요.
+대표적인 Extension은 command, widget, custom tab, hook, OAuth, config, calendar, polling, commerce, order, WMS, messaging입니다. 각 Extension은 정해진 Function 이름과 schema를 가집니다. 먼저 [Extension 전체 가이드](extensions.md)를 읽고 [TypeScript Extension 레퍼런스](../../reference/typescript/EXTENSIONS.md)와 언어별 helper를 확인하세요.
 
 TypeScript의 현재 권장 경로는 다음과 같습니다.
 

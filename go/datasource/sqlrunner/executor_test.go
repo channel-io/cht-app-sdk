@@ -7,8 +7,8 @@ import (
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/apache/arrow-go/v18/arrow"
 
-	"github.com/channel-io/cht-app-sdk/go/datasource"
-	grpcdatasource "github.com/channel-io/cht-app-sdk/go/datasource/grpc"
+	"github.com/channel-io/app-sdk/go/datasource"
+	grpcdatasource "github.com/channel-io/app-sdk/go/datasource/grpc"
 )
 
 func TestExecutorStreamsRowsInBatches(t *testing.T) {

@@ -29,8 +29,8 @@ The default controller route is `PUT /functions/:version`. The developer portal 
 `/functions` root. Versioned discovery appends the system version. Callers without a system version
 can invoke the bare root, so a standalone ingress must rewrite only bare `PUT /functions` to the
 default `/functions/v1` route while preserving the raw body. Reuse the same SDK controller and
-signature guard; do not add an unsigned second dispatcher. Managed runtimes normally own this
-mapping.
+signature guard; do not add an unsigned second dispatcher. A hosting platform may provide this
+mapping; otherwise configure it in the app's ingress.
 
 ## Extension discovery
 

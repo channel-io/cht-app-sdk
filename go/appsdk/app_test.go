@@ -6,9 +6,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
-	sdkv1 "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1"
-	"github.com/channel-io/cht-app-sdk/go/schema"
+	"github.com/channel-io/app-sdk/go/appsdk"
+	sdkv1 "github.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1"
+	"github.com/channel-io/app-sdk/go/schema"
 )
 
 type echoInput struct {

@@ -10,8 +10,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
-	"github.com/channel-io/cht-app-sdk/go/native"
+	"github.com/channel-io/app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/native"
 	ginlib "github.com/gin-gonic/gin"
 )
 

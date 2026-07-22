@@ -3,7 +3,7 @@ package schema
 import (
 	"testing"
 
-	sdkv1 "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1"
+	sdkv1 "github.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1"
 	"google.golang.org/protobuf/types/known/anypb"
 	"google.golang.org/protobuf/types/known/durationpb"
 	"google.golang.org/protobuf/types/known/emptypb"

@@ -99,7 +99,7 @@ const file_channel_app_sdk_v1_error_proto_rawDesc = "" +
 	"\x04code\x18\x01 \x01(\x05R\x04code\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\tR\x04type\x12\x18\n" +
 	"\amessage\x18\x03 \x01(\tR\amessage\x12*\n" +
-	"\x04data\x18\x04 \x01(\v2\x16.google.protobuf.ValueR\x04dataBLZJgithub.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
+	"\x04data\x18\x04 \x01(\v2\x16.google.protobuf.ValueR\x04dataBHZFgithub.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
 
 var (
 	file_channel_app_sdk_v1_error_proto_rawDescOnce sync.Once

@@ -291,7 +291,7 @@ const file_channel_app_sdk_v1_function_proto_rawDesc = "" +
 	"\x12GetFunctionsResult\x12@\n" +
 	"\tfunctions\x18\x01 \x03(\v2\".channel.app.sdk.v1.FunctionSchemaR\tfunctions\x12\x18\n" +
 	"\asuccess\x18\x02 \x01(\bR\asuccess\x12#\n" +
-	"\rerror_message\x18\x03 \x01(\tR\ferrorMessageBLZJgithub.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
+	"\rerror_message\x18\x03 \x01(\tR\ferrorMessageBHZFgithub.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
 
 var (
 	file_channel_app_sdk_v1_function_proto_rawDescOnce sync.Once

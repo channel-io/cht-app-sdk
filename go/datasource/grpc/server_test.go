@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	datasourcearrow "github.com/channel-io/cht-app-sdk/go/datasource/arrow"
-	grpcdatasource "github.com/channel-io/cht-app-sdk/go/datasource/grpc"
-	datasourcev1 "github.com/channel-io/cht-app-sdk/go/internal/gen/io/channel/datasource/v1"
+	datasourcearrow "github.com/channel-io/app-sdk/go/datasource/arrow"
+	grpcdatasource "github.com/channel-io/app-sdk/go/datasource/grpc"
+	datasourcev1 "github.com/channel-io/app-sdk/go/internal/gen/io/channel/datasource/v1"
 	"google.golang.org/grpc/metadata"
 )
 

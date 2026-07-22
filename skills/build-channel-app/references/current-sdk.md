@@ -2,13 +2,13 @@
 
 Check registries before pinning versions. Values verified on 2026-07-22:
 
-| Surface           | Package/module                         | Verified release |
-| ----------------- | -------------------------------------- | ---------------- |
-| TypeScript server | `@channel.io/app-sdk-server`           | `0.17.0`         |
-| TypeScript core   | `@channel.io/app-sdk-core`             | `0.17.0`         |
-| React WAM         | `@channel.io/app-sdk-wam`              | `0.17.0`         |
-| WAM UI            | `@channel.io/app-sdk-wam-ui`           | `0.2.2`          |
-| Go                | `github.com/channel-io/cht-app-sdk/go` | `v0.13.14`       |
+| Surface           | Package/module                     | Verified release |
+| ----------------- | ---------------------------------- | ---------------- |
+| TypeScript server | `@channel.io/app-sdk-server`       | `0.17.2`         |
+| TypeScript core   | `@channel.io/app-sdk-core`         | `0.17.2`         |
+| React WAM         | `@channel.io/app-sdk-wam`          | `0.17.2`         |
+| WAM UI            | `@channel.io/app-sdk-wam-ui`       | `0.4.0`          |
+| Go                | `github.com/channel-io/app-sdk/go` | `v0.14.0`        |
 
 ## Source priority
 
@@ -46,12 +46,13 @@ Check registries before pinning versions. Values verified on 2026-07-22:
 - `ctx.authToken` is a connected external OAuth provider token.
 - API keys, `client_credentials`, and per-shop secrets belong in config-backed credentials, not OAuth Authorization Code flows.
 
-## Managed builder contract
+## Hosting contract
 
 - Generated TypeScript apps should use `ChannelAppModule` and lock the resolved SDK version before release.
-- The generated runtime path is `/functions/v1`; the AppStore Function Endpoint remains the
-  `/functions` root, and the managed gateway maps bare root calls to that default runtime path.
-- A managed platform can own deploy-time endpoint synchronization and extension registration, so respect its provided `APP_STORE_URL` and registration settings.
+- The runtime path is `/functions/v1`; the AppStore Function Endpoint remains the `/functions`
+  root. If callers use the bare root, route it to the same verified default-version handler.
+- A hosting platform may own endpoint synchronization and extension registration. Preserve any
+  supplied `APP_STORE_URL` and registration settings.
 - Do not copy builder-only preview calls into a WAM that runs in the Channel client; use the public WAM SDK hooks.
 
 ## Feature choice

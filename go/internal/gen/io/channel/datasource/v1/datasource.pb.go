@@ -1285,7 +1285,7 @@ const file_io_channel_datasource_v1_datasource_proto_rawDesc = "" +
 	"ListTables\x12+.io.channel.datasource.v1.ListTablesRequest\x1a,.io.channel.datasource.v1.ListTablesResponse\x12j\n" +
 	"\rDescribeTable\x12..io.channel.datasource.v1.DescribeTableRequest\x1a).io.channel.datasource.v1.TableDefinition\x12m\n" +
 	"\fSearchTables\x12-.io.channel.datasource.v1.SearchTablesRequest\x1a..io.channel.datasource.v1.SearchTablesResponse\x12e\n" +
-	"\fExecuteQuery\x12-.io.channel.datasource.v1.ExecuteQueryRequest\x1a$.io.channel.datasource.v1.QueryChunk0\x01BYZWgithub.com/channel-io/cht-app-sdk/go/internal/gen/io/channel/datasource/v1;datasourcev1b\x06proto3"
+	"\fExecuteQuery\x12-.io.channel.datasource.v1.ExecuteQueryRequest\x1a$.io.channel.datasource.v1.QueryChunk0\x01BUZSgithub.com/channel-io/app-sdk/go/internal/gen/io/channel/datasource/v1;datasourcev1b\x06proto3"
 
 var (
 	file_io_channel_datasource_v1_datasource_proto_rawDescOnce sync.Once

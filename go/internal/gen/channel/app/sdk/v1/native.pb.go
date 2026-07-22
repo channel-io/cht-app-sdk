@@ -870,7 +870,7 @@ const file_channel_app_sdk_v1_native_proto_rawDesc = "" +
 	"\x1cGetAppNotebookVersionsResult\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12#\n" +
 	"\rerror_message\x18\x02 \x01(\tR\ferrorMessage\x12D\n" +
-	"\tnotebooks\x18\x03 \x03(\v2&.channel.app.sdk.v1.AppNotebookVersionR\tnotebooksBLZJgithub.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
+	"\tnotebooks\x18\x03 \x03(\v2&.channel.app.sdk.v1.AppNotebookVersionR\tnotebooksBHZFgithub.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
 
 var (
 	file_channel_app_sdk_v1_native_proto_rawDescOnce sync.Once

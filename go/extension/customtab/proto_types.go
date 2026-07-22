@@ -1,6 +1,6 @@
 package customtab
 
-import sdkv1 "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1"
+import sdkv1 "github.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1"
 
 type ProtoNameI18n = sdkv1.CustomTabNameI18N
 type ProtoConfig = sdkv1.CustomTabConfig

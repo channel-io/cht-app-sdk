@@ -1,6 +1,6 @@
 package native
 
-import "github.com/channel-io/cht-app-sdk/go/appsdk"
+import "github.com/channel-io/app-sdk/go/appsdk"
 
 var appDataTableFunctionSchemas = []appsdk.FunctionSchema{
 	{

@@ -10,10 +10,10 @@ project setting. For a copyable first run, clone the
 
 ## TypeScript
 
-Requires Node.js 20.11 or newer. The current published server package is `0.17.0`.
+Requires Node.js 20.11 or newer. The current published server package is `0.17.2`.
 
 ```bash
-npm install @channel.io/app-sdk-server@0.17.0 @nestjs/common @nestjs/core @nestjs/platform-express reflect-metadata rxjs zod
+npm install @channel.io/app-sdk-server@0.17.2 @nestjs/common @nestjs/core @nestjs/platform-express reflect-metadata rxjs zod
 ```
 
 ```ts
@@ -72,7 +72,7 @@ This is a standalone Function, so no arbitrary `@Extension` is needed. The SDK e
 Requires Go 1.25. The Go SDK is published from the `go/` module.
 
 ```bash
-go get github.com/channel-io/cht-app-sdk/go@v0.13.14
+go get github.com/channel-io/app-sdk/go@v0.14.0
 ```
 
 ```go

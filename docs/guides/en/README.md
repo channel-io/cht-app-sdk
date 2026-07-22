@@ -9,6 +9,7 @@ These guides give Channel app developers one shared model for the TypeScript and
 - [Complete app development guide](app-development.md)
 - [Legacy web documentation notes](legacy-documentation-notes.md)
 - [Function registration](functions.md)
+- [Extension guide](extensions.md)
 - [Partial migration](partial-migration.md)
 - [WMS extension](extensions/wms.md)
 - [Order extension (legacy)](extensions/order.md)

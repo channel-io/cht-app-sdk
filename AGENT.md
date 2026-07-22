@@ -8,13 +8,14 @@ If you are building or reviewing a Channel.io app, start from the files below in
 1. [README.md](./README.md)
 2. [docs/guides/en/concepts.md](./docs/guides/en/concepts.md)
 3. [docs/guides/en/app-development.md](./docs/guides/en/app-development.md)
-4. Language reference:
+4. [docs/guides/en/extensions.md](./docs/guides/en/extensions.md)
+5. Language reference:
    - TypeScript: [docs/reference/typescript/ARCHITECTURE.md](./docs/reference/typescript/ARCHITECTURE.md)
    - Go: [docs/reference/go/README.md](./docs/reference/go/README.md)
-5. [docs/reference/typescript/AUTH-AND-TOKENS.md](./docs/reference/typescript/AUTH-AND-TOKENS.md)
-6. [docs/reference/typescript/extensions/README.md](./docs/reference/typescript/extensions/README.md)
-7. [docs/reference/typescript/WAM.md](./docs/reference/typescript/WAM.md)
-8. Examples:
+6. [docs/reference/typescript/AUTH-AND-TOKENS.md](./docs/reference/typescript/AUTH-AND-TOKENS.md)
+7. [docs/reference/typescript/extensions/README.md](./docs/reference/typescript/extensions/README.md)
+8. [docs/reference/typescript/WAM.md](./docs/reference/typescript/WAM.md)
+9. Examples:
    - [ts/examples/basic/README.md](./ts/examples/basic/README.md)
    - [ts/examples/calendar/README.md](./ts/examples/calendar/README.md)
    - [TypeScript app tutorial](https://github.com/channel-io/app-tutorial-ts)

@@ -8,7 +8,7 @@ import (
 	"github.com/apache/arrow-go/v18/arrow/array"
 	"github.com/apache/arrow-go/v18/arrow/ipc"
 
-	datasourcearrow "github.com/channel-io/cht-app-sdk/go/datasource/arrow"
+	datasourcearrow "github.com/channel-io/app-sdk/go/datasource/arrow"
 )
 
 func TestEncodeRowsReturnsArrowIPCBytes(t *testing.T) {

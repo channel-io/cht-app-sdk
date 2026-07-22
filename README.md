@@ -91,7 +91,7 @@ workflow creates a release pull request, and packages are published to npm when
 that pull request is merged.
 
 The Go SDK is released separately from npm packages. Keep the Go module path as
-`github.com/channel-io/cht-app-sdk/go`, and use Go module tags such as
+`github.com/channel-io/app-sdk/go`, and use Go module tags such as
 `go/v0.1.0` for Go releases.
 
 Because this repository is public, pull requests, commit messages, changelogs,
@@ -121,6 +121,7 @@ runnable server-and-WAM examples:
 
 - [Agent Guide](AGENT.md) - Best entry point for humans and coding agents
 - [Korean Concepts](docs/guides/ko/concepts.md), [English Concepts](docs/guides/en/concepts.md), [Japanese Concepts](docs/guides/ja/concepts.md)
+- Extension guides: [Korean](docs/guides/ko/extensions.md), [English](docs/guides/en/extensions.md), [Japanese](docs/guides/ja/extensions.md)
 - [TypeScript README](ts/README.md) - TypeScript SDK usage
 - [TypeScript Auth and Tokens](docs/reference/typescript/AUTH-AND-TOKENS.md)
 - [TypeScript Extensions](docs/reference/typescript/EXTENSIONS.md)

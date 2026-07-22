@@ -14,7 +14,7 @@ import (
 	"github.com/apache/arrow-go/v18/arrow/decimal256"
 	"github.com/apache/arrow-go/v18/arrow/memory"
 
-	"github.com/channel-io/cht-app-sdk/go/datasource/arrowipc"
+	"github.com/channel-io/app-sdk/go/datasource/arrowipc"
 )
 
 type StreamRowsOptions struct {

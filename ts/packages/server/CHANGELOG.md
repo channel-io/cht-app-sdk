@@ -14,12 +14,12 @@
 - 68fd2df: Return HTTP 400 responses for invalid function inputs instead of treating Zod validation failures as internal server errors.
   - @channel.io/app-sdk-core@0.17.1
 
-## 0.17.0
+## 0.17.2
 
 ### Patch Changes
 
 - Updated dependencies [f5ca25f]
-  - @channel.io/app-sdk-core@0.17.0
+  - @channel.io/app-sdk-core@0.17.2
 
 ## 0.16.5
 
