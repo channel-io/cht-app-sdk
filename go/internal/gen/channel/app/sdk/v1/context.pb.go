@@ -490,7 +490,7 @@ const file_channel_app_sdk_v1_context_proto_rawDesc = "" +
 	"seed_state\x18\f \x01(\v2\x16.google.protobuf.ValueR\tseedState\x1aA\n" +
 	"\x13ApiCredentialsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01BLZJgithub.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01BHZFgithub.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
 
 var (
 	file_channel_app_sdk_v1_context_proto_rawDescOnce sync.Once

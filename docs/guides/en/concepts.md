@@ -30,7 +30,7 @@ AppStore discovers Function names and input/output schemas through `extension.co
 
 An Extension is a **named, system-versioned capability contract** that declares related Functions and metadata as a Channel feature. It is not merely a folder or class grouping. AppStore uses a registered contract to expose commands, open widgets or custom tabs, deliver hooks, and connect OAuth or config flows.
 
-Common Extensions include command, widget, custom tab, hook, OAuth, config, calendar, polling, commerce, order, WMS, and messaging. Each has standard Function names and schemas. Check the [TypeScript Extension reference](../../reference/typescript/EXTENSIONS.md) and the typed helper for your language before implementing one.
+Common Extensions include command, widget, custom tab, hook, OAuth, config, calendar, polling, commerce, order, WMS, and messaging. Each has standard Function names and schemas. Start with the [Extension guide](extensions.md), then check the [TypeScript Extension reference](../../reference/typescript/EXTENSIONS.md) and the typed helper for your language before implementing one.
 
 The current recommended TypeScript path is:
 

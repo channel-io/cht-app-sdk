@@ -9,6 +9,7 @@
 - [アプリ開発完全ガイド](app-development.md)
 - [旧 Web ドキュメントとの差分](legacy-documentation-notes.md)
 - [Function 登録](functions.md)
+- [Extension 完全ガイド](extensions.md)
 - [部分移行](partial-migration.md)
 - [WMS 拡張](extensions/wms.md)
 - [Order 拡張（レガシー）](extensions/order.md)

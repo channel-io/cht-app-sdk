@@ -6,7 +6,7 @@ import "channel/app/sdk/v1/context.proto";
 import "channel/app/sdk/v1/error.proto";
 import "google/protobuf/struct.proto";
 
-option go_package = "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1";
+option go_package = "github.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1";
 
 message NativeFunctionRequest {
   string method = 1;

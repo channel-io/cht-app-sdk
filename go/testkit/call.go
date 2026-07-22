@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/appsdk"
 )
 
 func Call(t *testing.T, app *appsdk.App, method string, params any) appsdk.FunctionResponse {

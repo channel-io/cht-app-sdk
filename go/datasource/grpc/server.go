@@ -4,8 +4,8 @@ import (
 	"context"
 	"strings"
 
-	datasourcearrow "github.com/channel-io/cht-app-sdk/go/datasource/arrow"
-	datasourcev1 "github.com/channel-io/cht-app-sdk/go/internal/gen/io/channel/datasource/v1"
+	datasourcearrow "github.com/channel-io/app-sdk/go/datasource/arrow"
+	datasourcev1 "github.com/channel-io/app-sdk/go/internal/gen/io/channel/datasource/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

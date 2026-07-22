@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/appsdk"
 )
 
 const DefaultAppStoreURL = "https://app-store.channel.io"

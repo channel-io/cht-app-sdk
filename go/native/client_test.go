@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/channel-io/cht-app-sdk/go/native"
+	"github.com/channel-io/app-sdk/go/native"
 )
 
 func TestIssueToken(t *testing.T) {

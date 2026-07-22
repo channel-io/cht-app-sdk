@@ -3,7 +3,7 @@ package datasource_test
 import (
 	"testing"
 
-	"github.com/channel-io/cht-app-sdk/go/datasource"
+	"github.com/channel-io/app-sdk/go/datasource"
 )
 
 func TestValidateReadOnlyQueryRejectsWrites(t *testing.T) {

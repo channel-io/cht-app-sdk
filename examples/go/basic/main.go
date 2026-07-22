@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
-	"github.com/channel-io/cht-app-sdk/go/extension/wms"
-	sdkgin "github.com/channel-io/cht-app-sdk/go/server/gin"
+	"github.com/channel-io/app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/extension/wms"
+	sdkgin "github.com/channel-io/app-sdk/go/server/gin"
 )
 
 func main() {

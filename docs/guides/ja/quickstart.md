@@ -10,10 +10,10 @@ standalone file ではありません。最初から実行する場合は
 
 ## TypeScript
 
-Node.js 20.11 以上が必要です。現在公開されている server package は `0.17.0` です。
+Node.js 20.11 以上が必要です。現在公開されている server package は `0.17.2` です。
 
 ```bash
-npm install @channel.io/app-sdk-server@0.17.0 @nestjs/common @nestjs/core @nestjs/platform-express reflect-metadata rxjs zod
+npm install @channel.io/app-sdk-server@0.17.2 @nestjs/common @nestjs/core @nestjs/platform-express reflect-metadata rxjs zod
 ```
 
 ```ts
@@ -72,7 +72,7 @@ await app.listen(process.env.PORT ?? 3000);
 Go 1.25 が必要です。Go SDK は `go/` 配下のモジュールとして公開されます。
 
 ```bash
-go get github.com/channel-io/cht-app-sdk/go@v0.13.14
+go get github.com/channel-io/app-sdk/go@v0.14.0
 ```
 
 ```go

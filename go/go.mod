@@ -1,4 +1,4 @@
-module github.com/channel-io/cht-app-sdk/go
+module github.com/channel-io/app-sdk/go
 
 go 1.25.0
 

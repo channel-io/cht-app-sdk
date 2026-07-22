@@ -1,6 +1,6 @@
 package messaging
 
-import sdkv1 "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1"
+import sdkv1 "github.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1"
 
 type AlfMessageType = sdkv1.AlfMessageType
 type MeetMode = sdkv1.MeetMode

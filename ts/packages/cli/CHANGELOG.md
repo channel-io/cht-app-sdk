@@ -18,7 +18,7 @@
   - @channel.io/app-sdk-core@0.17.1
   - @channel.io/app-sdk-wam@0.17.1
 
-## 0.17.0
+## 0.17.2
 
 ### Minor Changes
 
@@ -27,9 +27,9 @@
 ### Patch Changes
 
 - Updated dependencies [f5ca25f]
-  - @channel.io/app-sdk-core@0.17.0
-  - @channel.io/app-sdk-server@0.17.0
-  - @channel.io/app-sdk-wam@0.17.0
+  - @channel.io/app-sdk-core@0.17.2
+  - @channel.io/app-sdk-server@0.17.2
+  - @channel.io/app-sdk-wam@0.17.2
 
 ## 0.16.5
 

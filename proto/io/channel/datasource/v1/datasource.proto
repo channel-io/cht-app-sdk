@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package io.channel.datasource.v1;
 
-option go_package = "github.com/channel-io/cht-app-sdk/go/internal/gen/io/channel/datasource/v1;datasourcev1";
+option go_package = "github.com/channel-io/app-sdk/go/internal/gen/io/channel/datasource/v1;datasourcev1";
 
 service DataSourceService {
   rpc ListTables(ListTablesRequest) returns (ListTablesResponse);

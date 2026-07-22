@@ -5,9 +5,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
-	"github.com/channel-io/cht-app-sdk/go/extension/apikey"
-	"github.com/channel-io/cht-app-sdk/go/extension/schemaregistry"
+	"github.com/channel-io/app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/extension/apikey"
+	"github.com/channel-io/app-sdk/go/extension/schemaregistry"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 

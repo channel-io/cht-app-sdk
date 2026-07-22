@@ -3,7 +3,7 @@ package native_test
 import (
 	"testing"
 
-	"github.com/channel-io/cht-app-sdk/go/native"
+	"github.com/channel-io/app-sdk/go/native"
 )
 
 func TestAppDataTableFunctionSchemas(t *testing.T) {

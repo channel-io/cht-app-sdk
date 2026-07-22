@@ -5,7 +5,7 @@
   "description": "TypeScript SDK for building Channel.io apps",
   "repository": {
     "type": "git",
-    "url": "https://github.com/channel-io/cht-app-sdk.git"
+    "url": "https://github.com/channel-io/app-sdk.git"
   },
   "license": "MIT",
   "packageManager": "pnpm@9.15.4",

@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/appsdk"
 )
 
 //go:embed extension_function_schemas.json

@@ -1,6 +1,6 @@
 package config
 
-import sdkv1 "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1"
+import sdkv1 "github.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1"
 
 type ProtoCondition = sdkv1.ConfigCondition
 type ProtoChoice = sdkv1.ConfigChoice

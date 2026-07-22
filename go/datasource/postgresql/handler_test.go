@@ -10,8 +10,8 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/channel-io/cht-app-sdk/go/datasource/postgresql"
-	datasourcev1 "github.com/channel-io/cht-app-sdk/go/internal/gen/io/channel/datasource/v1"
+	"github.com/channel-io/app-sdk/go/datasource/postgresql"
+	datasourcev1 "github.com/channel-io/app-sdk/go/internal/gen/io/channel/datasource/v1"
 	"google.golang.org/grpc/metadata"
 )
 

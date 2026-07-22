@@ -16763,7 +16763,7 @@ const file_channel_app_sdk_v1_extension_proto_rawDesc = "" +
 	"\x12refresh_token_path\x18\x02 \x01(\tR\x10refreshTokenPath\x12&\n" +
 	"\x0fexpires_in_path\x18\x03 \x01(\tR\rexpiresInPath\x12&\n" +
 	"\x0ftoken_type_path\x18\x04 \x01(\tR\rtokenTypePath\x12@\n" +
-	"\x1drefresh_token_expires_in_path\x18\x05 \x01(\tR\x19refreshTokenExpiresInPathBLZJgithub.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
+	"\x1drefresh_token_expires_in_path\x18\x05 \x01(\tR\x19refreshTokenExpiresInPathBHZFgithub.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1;sdkv1b\x06proto3"
 
 var (
 	file_channel_app_sdk_v1_extension_proto_rawDescOnce sync.Once

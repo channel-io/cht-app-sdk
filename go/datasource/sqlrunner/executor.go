@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/channel-io/cht-app-sdk/go/datasource"
-	"github.com/channel-io/cht-app-sdk/go/datasource/arrowipc"
-	grpcdatasource "github.com/channel-io/cht-app-sdk/go/datasource/grpc"
+	"github.com/channel-io/app-sdk/go/datasource"
+	"github.com/channel-io/app-sdk/go/datasource/arrowipc"
+	grpcdatasource "github.com/channel-io/app-sdk/go/datasource/grpc"
 )
 
 const DefaultBatchSize = 1024

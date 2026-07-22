@@ -9,10 +9,10 @@
 
 ## TypeScript
 
-Node.js 20.11 이상이 필요합니다. 현재 공개된 server 패키지는 `0.17.0`입니다.
+Node.js 20.11 이상이 필요합니다. 현재 공개된 server 패키지는 `0.17.2`입니다.
 
 ```bash
-npm install @channel.io/app-sdk-server@0.17.0 @nestjs/common @nestjs/core @nestjs/platform-express reflect-metadata rxjs zod
+npm install @channel.io/app-sdk-server@0.17.2 @nestjs/common @nestjs/core @nestjs/platform-express reflect-metadata rxjs zod
 ```
 
 ```ts
@@ -71,7 +71,7 @@ await app.listen(process.env.PORT ?? 3000);
 Go 1.25가 필요합니다. Go SDK는 `go/` 하위 모듈로 배포됩니다.
 
 ```bash
-go get github.com/channel-io/cht-app-sdk/go@v0.13.14
+go get github.com/channel-io/app-sdk/go@v0.14.0
 ```
 
 ```go

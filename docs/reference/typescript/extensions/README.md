@@ -34,7 +34,7 @@ Older factory examples are not part of the current public exports.
 ## Notes
 
 - Command, widget, custom tab, hook, and polling are metadata-driven. AppStore reads their metadata functions during registration.
-- Mail relay is relay-driven at runtime. TypeScript `0.17.0` requires a standalone full-name Function plus explicit registration because `mailRelay` is not accepted by `@Extension`.
+- Mail relay is relay-driven at runtime. TypeScript `0.17.2` requires a standalone full-name Function plus explicit registration because `mailRelay` is not accepted by `@Extension`.
 - OAuth is an auth extension. API key is legacy/deprecated for new apps; prefer Config for setup UI, stored credentials, validation, and app-specific configuration.
 - DataSource metadata is JSON-RPC; query execution is handled by the app server datasource gRPC endpoint. PostgreSQL, BigQuery, and Arrow packages are optional peer dependencies and are loaded only by the runner that uses them.
 - Messaging is partially supported by extension names and generic function routing, but the SDK does not yet provide a bundled helper or example for the full flow.

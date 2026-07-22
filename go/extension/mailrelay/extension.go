@@ -1,9 +1,9 @@
 package mailrelay
 
 import (
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
-	extensionkit "github.com/channel-io/cht-app-sdk/go/extension"
-	"github.com/channel-io/cht-app-sdk/go/extension/schemaregistry"
+	"github.com/channel-io/app-sdk/go/appsdk"
+	extensionkit "github.com/channel-io/app-sdk/go/extension"
+	"github.com/channel-io/app-sdk/go/extension/schemaregistry"
 )
 
 const (

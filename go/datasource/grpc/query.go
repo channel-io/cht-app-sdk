@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/channel-io/cht-app-sdk/go/datasource/arrowipc"
+	"github.com/channel-io/app-sdk/go/datasource/arrowipc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

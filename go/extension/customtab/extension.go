@@ -3,10 +3,10 @@ package customtab
 import (
 	"context"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
-	extensionkit "github.com/channel-io/cht-app-sdk/go/extension"
-	"github.com/channel-io/cht-app-sdk/go/extension/schemaregistry"
-	sdkv1 "github.com/channel-io/cht-app-sdk/go/internal/gen/channel/app/sdk/v1"
+	"github.com/channel-io/app-sdk/go/appsdk"
+	extensionkit "github.com/channel-io/app-sdk/go/extension"
+	"github.com/channel-io/app-sdk/go/extension/schemaregistry"
+	sdkv1 "github.com/channel-io/app-sdk/go/internal/gen/channel/app/sdk/v1"
 )
 
 const (

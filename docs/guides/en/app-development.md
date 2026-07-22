@@ -4,15 +4,15 @@ This guide describes the current SDK-first path for a Channel App Store app. It 
 
 Current versions verified on 2026-07-22:
 
-- TypeScript server/core/WAM: `0.17.0`
-- TypeScript WAM UI: `0.2.2`
-- Go: `v0.13.14`
+- TypeScript server/core/WAM: `0.17.2`
+- TypeScript WAM UI: `0.4.0`
+- Go: `v0.14.0`
 - Node.js: 20.11 or newer
 - Go: 1.25
 
 Do not copy a version from this page into automation without checking npm or Git tags first.
 
-The notable TypeScript `0.17.0` addition is `webhook.received` hook metadata for app-level public webhook ingress. Before adding an arbitrary webhook route, read the [Hook extension reference](../../reference/typescript/extensions/hook.md) for its `targetId`, `endpointToken`, and asynchronous-delivery constraints.
+The current TypeScript `0.17.2` line supports `webhook.received` hook metadata for app-level public webhook ingress. Before adding an arbitrary webhook route, read the [Hook extension reference](../../reference/typescript/extensions/hook.md) for its `targetId`, `endpointToken`, and asynchronous-delivery constraints.
 
 If these terms are new, read [Concepts](concepts.md) first for the Function, Extension, WAM, and authentication boundaries. For complete runnable apps, use the [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) and [Go tutorial](https://github.com/channel-io/app-tutorial). This guide and the public SDK exports define the contract; the tutorials show server, WAM, and configuration working together.
 
@@ -30,7 +30,7 @@ Follow this sequence whether a builder creates the project or you implement it d
 8. **Do not retain secrets or customer data as evidence.** Never copy passwords, cookies, tokens, API keys, real tenant/domain values, or customer records into source, fixtures, logs, documentation, or recording descriptions. Let the user complete login, OTP, and CAPTCHA steps.
 9. **Verify the complete flow with an installed private app.** Check function discovery, extension registration, auth/config injection, signatures, permission failures, WAM loading, and native calls.
 
-In a managed generation or deployment environment, honor the supplied `APP_STORE_URL` and registration settings. Standalone apps may use SDK defaults and auto-registration. In both cases, pin dependencies in a lockfile, register the `/functions` root as the Function Endpoint, and use the public `@channel.io/app-sdk-wam` hooks in Channel-client WAMs.
+If a hosting platform supplies `APP_STORE_URL` or registration settings, preserve those values. Standalone apps may use SDK defaults and auto-registration. In both cases, pin dependencies in a lockfile, register the `/functions` root as the Function Endpoint, and use the public `@channel.io/app-sdk-wam` hooks in Channel-client WAMs.
 
 ## Prepare A Private App Before Coding
 
@@ -43,7 +43,7 @@ Use the [public getting-started documentation](https://developers.channel.io/ko/
 5. Start or restart the app server after credentials, permissions, and endpoint roots are saved. Auto-registration runs at startup and may need a restart after portal settings change.
 6. Install the private app in a test channel, then verify discovery, command visibility, WAM loading, and both success and permission-failure paths.
 
-The tutorial READMEs apply this order to a complete TypeScript or Go project. A managed builder may provision credentials, endpoints, installation, and registration for you; keep its runtime-provided settings instead of replacing them with standalone defaults.
+The tutorial READMEs apply this order to a complete TypeScript or Go project. If a hosting platform provisions credentials, endpoints, installation, or registration, keep its supplied settings instead of replacing them with standalone defaults.
 
 ## 1. Mental model
 
@@ -92,7 +92,7 @@ An external service token from an OAuth Authorization Code connection is injecte
 Install the public packages:
 
 ```bash
-npm install @channel.io/app-sdk-server@0.17.0 @nestjs/common @nestjs/core @nestjs/platform-express reflect-metadata rxjs zod
+npm install @channel.io/app-sdk-server@0.17.2 @nestjs/common @nestjs/core @nestjs/platform-express reflect-metadata rxjs zod
 ```
 
 Declare extension metadata and typed functions. AppStore discovers commands by calling `extension.command.metadata.getCommands`; do not call the legacy `registerCommands` native function in new apps.
@@ -209,7 +209,7 @@ mapping and regression test.
 Install the current module:
 
 ```bash
-go get github.com/channel-io/cht-app-sdk/go@v0.13.14
+go get github.com/channel-io/app-sdk/go@v0.14.0
 ```
 
 Use builders for known extension families and generic typed registration for app functions:
@@ -270,8 +270,10 @@ TypeScript exposes `NativeFunctionClient.createProxyApi(accessToken)` for typed 
 Install and wrap the React app:
 
 ```bash
-npm install @channel.io/app-sdk-wam@0.17.0
+npm install @channel.io/app-sdk-wam@0.17.2 @channel.io/app-sdk-wam-ui@0.4.0 @channel.io/bezier-react@4.0.0-next.13 @channel.io/bezier-icons@0.60.0 styled-components@^6
 ```
+
+Use `@channel.io/app-sdk-wam-ui` for WAM-specific theme, header, state, dialog, bottom-sheet, and height synchronization behavior. Import general-purpose controls from `@channel.io/bezier-react/beta`; Bezier React 4 is still a prerelease, so pin the exact version used by the tutorial.
 
 ```tsx
 ReactDOM.createRoot(document.getElementById("root")!).render(

@@ -5,7 +5,7 @@ import (
 
 	_ "github.com/jackc/pgx/v5/stdlib"
 
-	"github.com/channel-io/cht-app-sdk/go/datasource/sqlrunner"
+	"github.com/channel-io/app-sdk/go/datasource/sqlrunner"
 )
 
 const DriverName = "pgx"

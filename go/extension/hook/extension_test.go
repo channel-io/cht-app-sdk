@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/channel-io/cht-app-sdk/go/appsdk"
+	"github.com/channel-io/app-sdk/go/appsdk"
 )
 
 func TestStaticWebhookHooks(t *testing.T) {
