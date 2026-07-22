@@ -1,0 +1,15 @@
+{
+  "name": "tutorial-example",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Tutorial Channel.io app — /tutorial command with WAM message sender",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "packageManager": "pnpm@9.15.4"
+}
