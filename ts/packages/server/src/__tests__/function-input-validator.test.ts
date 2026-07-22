@@ -31,6 +31,26 @@ describe("parseFunctionInputParams", () => {
     );
   });
 
+  it("converts Zod errors created by another module instance", () => {
+    const crossModuleError = Object.assign(new Error("Invalid input"), {
+      name: "ZodError",
+      issues: [{ code: "invalid_type", path: ["quantity"] }],
+    });
+    const schema = {
+      parse: () => {
+        throw crossModuleError;
+      },
+    } as unknown as z.ZodSchema;
+
+    expect(() => parseFunctionInputParams("extension.cafe.addCartItem", schema, {})).toThrowError(
+      expect.objectContaining({
+        name: "ValidationError",
+        code: "VALIDATION_ERROR",
+        details: crossModuleError.issues,
+      }) as ValidationError
+    );
+  });
+
   it("keeps messaging input key normalization", () => {
     const schema = z.object({ userId: z.string() });
 
