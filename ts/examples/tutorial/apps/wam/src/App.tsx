@@ -42,14 +42,18 @@ export default function App() {
     <div style={styles.container}>
       <header style={styles.header}>
         <h1 style={styles.title}>Tutorial</h1>
-        <button onClick={close} style={styles.closeButton}>✕</button>
+        <button onClick={close} style={styles.closeButton}>
+          ✕
+        </button>
       </header>
 
       <p style={styles.description}>현재 상담에 테스트 메시지를 전송합니다.</p>
 
       <div style={styles.buttons}>
         <button
-          onClick={() => { void handleSend("manager"); }}
+          onClick={() => {
+            void handleSend("manager");
+          }}
           disabled={isDisabled}
           style={{
             ...styles.button,
@@ -61,7 +65,9 @@ export default function App() {
         </button>
 
         <button
-          onClick={() => { void handleSend("bot"); }}
+          onClick={() => {
+            void handleSend("bot");
+          }}
           disabled={isDisabled}
           style={{
             ...styles.button,
