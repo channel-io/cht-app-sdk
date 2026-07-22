@@ -119,11 +119,13 @@ camelCase JSON.
 | Polling    | `extension/polling`    |
 | Store      | `extension/store`      |
 | DataSource | `extension/datasource` |
+| Commerce   | `extension/commerce`   |
 | Order      | `extension/order`      |
 | Messaging  | `extension/messaging`  |
 | ALF task   | `extension/alftask`    |
 | Notebook   | `extension/notebook`   |
 | WMS        | `extension/wms`        |
+| Mail relay | `extension/mailrelay`  |
 | Custom     | `extension`            |
 
 Server-side extension DTOs are defined in proto first. Go extension packages
@@ -150,9 +152,29 @@ For rollout or app-specific gaps, the messaging builder still supports
 `Function(...)` and `ExtensionFunction(...)` so SDK-based and existing handlers
 can be mixed in one app.
 
-## Order Extension
+## Commerce Extension
 
-Use `extension/order` for commerce order-management apps:
+Use `extension/commerce` for new commerce order-management apps:
+
+```go
+app.Use(commerce.Extension().
+  GetAppConfigs(handler.GetAppConfigs).
+  GetOrders(handler.GetOrders).
+  CancelRequestOrder(handler.CancelRequestOrder).
+  ReturnRequestOrder(handler.ReturnRequestOrder).
+  ReturnAcceptOrder(handler.ReturnAcceptOrder).
+  ExchangeRequestOrder(handler.ExchangeRequestOrder).
+  GetExchangeableItems(handler.GetExchangeableItems).
+  ChangeShippingAddress(handler.ChangeShippingAddress))
+```
+
+Commerce uses stable ID-based orders and structured action results. Validate current provider state
+and use an idempotency key before every mutation.
+
+## Order Extension (legacy)
+
+Use `extension/order` only to maintain or migrate existing timestamp-based order apps. New apps use
+`extension/commerce`.
 
 ```go
 app.Use(order.Extension().
@@ -311,3 +333,14 @@ executor, err := postgres.NewExecutor(ctx, postgres.Config{
 `datasource/bigquery.NewHandler(...)` and `datasource/postgresql.NewHandler(...)`
 remain available for custom row emitters or existing app-owned query paths, but
 new production data sources should prefer the executor helpers above.
+
+## Mail Relay Extension
+
+Use `extension/mailrelay` for normalized inbound mail delivery:
+
+```go
+app.Use(mailrelay.Extension().OnMailReceived(handler.OnMailReceived))
+```
+
+Deduplicate `sesMessageId` before side effects. Return `retryableFailure` only for temporary
+failures, and never log or return raw MIME, attachment data, relay tokens, or provider PII.

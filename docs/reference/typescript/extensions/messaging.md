@@ -6,6 +6,8 @@ Messaging is still more AppStore-driven than most SDK extensions.
 
 - The SDK ships messaging v1 schemas and interfaces from `@channel.io/app-sdk-core`
 - The SDK also exposes typed native-function contracts for the channel/Core API calls used by messaging integrations
+- The decorator accepts `messenger` and `messaging` registration names for compatibility, while the
+  typed Function prefix remains `extension.messaging.*`; never invent `extension.messenger.*`
 - AppStore still treats messaging as several legacy registrations:
   - inbox messaging
   - prebuilt messaging

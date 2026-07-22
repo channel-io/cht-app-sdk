@@ -14,8 +14,9 @@ For every Extension:
 5. keep App Secret, Signing Key, app/channel tokens, and provider credentials out of WAM code.
 
 TypeScript apps normally use `@Extension` and `@Func`. Go apps should prefer the typed
-`extension/{family}` builder. Follow the linked TypeScript reference for exact schemas and the
-[Go Extension reference](../../reference/go/EXTENSIONS.md) for builder behavior.
+`extension/{family}` builder. Each family recipe below covers both languages, authentication, WAM,
+reliability, and testing, then links the exact TypeScript schemas and
+[Go Extension reference](../../reference/go/EXTENSIONS.md).
 
 ## Config
 
@@ -24,7 +25,7 @@ Implement `extension.config.metadata.getConfigSchema`. Optional validation, save
 Functions may enforce provider rules. Mark secrets as credentials, localize labels rather than
 stable keys, and read injected values from Function context instead of sending them to a WAM.
 
-[TypeScript details](../../reference/typescript/extensions/config.md)
+[Config recipe](extensions/config.md)
 
 ## OAuth
 
@@ -33,7 +34,7 @@ Use `oauth` only for a provider's Authorization Code flow. Implement
 injects the connected provider token as `ctx.authToken`. Do not use this Extension for API keys or
 `client_credentials`; those belong in Config.
 
-[TypeScript details](../../reference/typescript/extensions/oauth.md)
+[OAuth recipe](extensions/oauth.md)
 
 ## API key (legacy)
 
@@ -41,7 +42,7 @@ injects the connected provider token as `ctx.authToken`. Do not use this Extensi
 It remains for compatibility, but new apps should use Config. Never return stored credentials from
 an app Function or place them in logs.
 
-[TypeScript details](../../reference/typescript/extensions/apikey.md)
+[API key migration recipe](extensions/apikey.md)
 
 ## Command
 
@@ -49,7 +50,7 @@ an app Function or place them in logs.
 exact full name of a standalone or Extension Function. Use a command to return text, perform an
 action, or open a WAM. Test command discovery separately from the referenced action handler.
 
-[TypeScript details](../../reference/typescript/extensions/command.md) ·
+[Command recipe](extensions/command.md) ·
 [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) ·
 [Go tutorial](https://github.com/channel-io/app-tutorial)
 
@@ -59,7 +60,7 @@ action, or open a WAM. Test command discovery separately from the referenced act
 surface and action Function; the action can return a WAM. Treat chat, user, and manager fields as
 surface-dependent optional context and verify permissions for every native action.
 
-[TypeScript details](../../reference/typescript/extensions/widget.md)
+[Widget recipe](extensions/widget.md)
 
 ## Custom tab
 
@@ -67,7 +68,7 @@ surface-dependent optional context and verify permissions for every native actio
 point actions to exact Function names, and use a WAM for interactive content. Do not place tokens or
 private records in tab metadata or `wamArgs`.
 
-[TypeScript details](../../reference/typescript/extensions/customtab.md)
+[Custom tab recipe](extensions/customtab.md)
 
 ## Hook
 
@@ -76,7 +77,7 @@ authenticate signed app Function calls, and return quickly when the event can be
 asynchronously. Public `webhook.received` targets require a public `targetId`, a high-entropy
 `endpointToken`, payload validation, replay protection, and secret rotation.
 
-[TypeScript details](../../reference/typescript/extensions/hook.md)
+[Hook recipe](extensions/hook.md)
 
 ## Polling
 
@@ -84,7 +85,7 @@ asynchronously. Public `webhook.received` targets require a public `targetId`, a
 `target.getChannels` pages through installed channels, and each poller names a full Function to
 invoke. Store cursors durably, make retries idempotent, bound each batch, and test partial failure.
 
-[TypeScript details](../../reference/typescript/extensions/polling.md)
+[Polling recipe](extensions/polling.md)
 
 ## Calendar
 
@@ -93,7 +94,7 @@ queries. Keep provider credentials server-side, normalize time zones explicitly,
 mutations idempotent. A WAM is appropriate for slot selection while server Functions own provider
 calls.
 
-[TypeScript details](../../reference/typescript/extensions/calendar.md)
+[Calendar recipe](extensions/calendar.md)
 
 ## Store
 
@@ -101,7 +102,7 @@ calls.
 AppStore reads the profile during registration or synchronization. Keep stable IDs separate from
 localized labels and do not include provider credentials in the profile.
 
-[TypeScript details](../../reference/typescript/extensions/store.md)
+[Store recipe](extensions/store.md)
 
 ## DataSource
 
@@ -110,7 +111,7 @@ the authenticated DataSource gRPC endpoint rather than the normal app Function r
 `x-access-token`, enforce catalog/table allowlists, parameterize SQL, cap rows and time, and stream
 Arrow-compatible results. The SDK includes PostgreSQL and BigQuery-oriented runners.
 
-[TypeScript details](../../reference/typescript/extensions/datasource.md) ·
+[DataSource recipe](extensions/datasource.md) ·
 [Go examples](../../reference/go-extensions.md#datasource-extension-and-query-server)
 
 ## Commerce
@@ -148,7 +149,7 @@ channel-scoped native Functions. Design the required native claims first, persis
 conversation/message mappings, make webhook or polling delivery idempotent, and never impersonate a
 user without the proper user/manager authorization.
 
-[TypeScript details](../../reference/typescript/extensions/messaging.md)
+[Messaging recipe](extensions/messaging.md)
 
 ## ALF task
 
@@ -156,7 +157,7 @@ user without the proper user/manager authorization.
 steps: `registerExtension("alfTask", "v1")` and `registerAlfTasks`. Keep task keys stable, increment
 versions for behavior changes, and verify the synchronized versions.
 
-[TypeScript details](../../reference/typescript/extensions/alf-task.md)
+[ALF task recipe](extensions/alf-task.md)
 
 ## Notebook
 
@@ -164,7 +165,7 @@ versions for behavior changes, and verify the synchronized versions.
 requires `registerAppNotebooks`. Keep notebook and cell keys stable, increment versions for
 definition changes, and treat rendered content as untrusted when it includes external data.
 
-[TypeScript details](../../reference/typescript/extensions/notebook.md)
+[Notebook recipe](extensions/notebook.md)
 
 ## Mail relay
 
@@ -174,7 +175,7 @@ as a standalone `@Func` and calls `registerExtension("mailRelay", "v1")` explici
 typed builder. Validate relay tokens, bound attachments and body size, deduplicate message IDs, and
 avoid logging raw mail content.
 
-[TypeScript details](../../reference/typescript/extensions/mail-relay.md)
+[Mail relay recipe](extensions/mail-relay.md)
 
 ## Verification checklist
 
