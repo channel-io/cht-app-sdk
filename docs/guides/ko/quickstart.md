@@ -112,6 +112,20 @@ set +a
 | TypeScript | `3000`    |
 | Go         | `3022`    |
 
+[ngrok](https://ngrok.com/) 같은 HTTPS tunnel 도구를 자유롭게 선택할 수 있습니다. 예를 들어
+ngrok을 설치하고 인증한 뒤 선택한 튜토리얼의 로컬 port를 공개합니다.
+
+```bash
+# TypeScript 튜토리얼
+ngrok http 3000
+
+# Go 튜토리얼
+ngrok http 3022
+```
+
+ngrok이 표시한 `Forwarding` HTTPS origin을 `YOUR_HOST`로 사용합니다. Tunnel 주소가 바뀌면
+개발자 포털의 endpoint를 갱신하고 서버를 재시작하세요.
+
 공개 주소가 `https://YOUR_HOST`라면 개발자 포털 Server Settings에 다음 root를 저장합니다.
 
 | 설정              | 값                               |
