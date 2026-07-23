@@ -9,7 +9,7 @@
 3. [앱 개발 전체 가이드](app-development.md): 앱을 설계하고 보호하며 배포·운영하는 방법을 확인합니다.
 4. [Function 등록](functions.md): standalone typed app Function을 정의합니다.
 5. [Extension 전체 가이드와 16개 TypeScript/Go 상세 문서](extensions.md): 필요한 기능과 구현 계약을 선택합니다.
-6. 언어별 API는 [TypeScript 레퍼런스](../../reference/typescript/ARCHITECTURE.md) 또는
+6. 언어별 API는 [TypeScript 레퍼런스](../../reference/typescript/README.md) 또는
    [Go 레퍼런스](../../reference/go/README.md)에서 확인합니다.
 7. 구현 중에는 완성된 [TypeScript 앱 튜토리얼](https://github.com/channel-io/app-tutorial-ts) 또는
    [Go 앱 튜토리얼](https://github.com/channel-io/app-tutorial)을 함께 봅니다.
@@ -29,5 +29,5 @@ function, native client, extension helper를 사용할 때 적합합니다.
 
 ## 언어별 레퍼런스
 
-- [TypeScript 아키텍처](../../reference/typescript/ARCHITECTURE.md), [인증과 토큰](../../reference/typescript/AUTH-AND-TOKENS.md), [Extension](../../reference/typescript/EXTENSIONS.md), [WAM](../../reference/typescript/WAM.md)
+- [TypeScript 레퍼런스 맵](../../reference/typescript/README.md)
 - [Go 레퍼런스](../../reference/go/README.md): Function, 서버, 인증과 토큰, Extension, native Function, WAM 연동

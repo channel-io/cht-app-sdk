@@ -9,7 +9,7 @@
 3. [アプリ開発完全ガイド](app-development.md): app の設計、security、deployment、operation を確認します。
 4. [Function 登録](functions.md): standalone typed app Function を定義します。
 5. [Extension 完全ガイドと 16 の TypeScript/Go recipe](extensions.md): 必要な capability と implementation contract を選択します。
-6. 言語別 API は [TypeScript reference](../../reference/typescript/ARCHITECTURE.md) または
+6. 言語別 API は [TypeScript reference](../../reference/typescript/README.md) または
    [Go reference](../../reference/go/README.md) で確認します。
 7. 実装中は完全な [TypeScript app tutorial](https://github.com/channel-io/app-tutorial-ts) または
    [Go app tutorial](https://github.com/channel-io/app-tutorial) を参照します。
@@ -29,5 +29,5 @@ runnable implementation を提供します。
 
 ## 言語別リファレンス
 
-- [TypeScript architecture](../../reference/typescript/ARCHITECTURE.md)、[authentication と token](../../reference/typescript/AUTH-AND-TOKENS.md)、[Extension](../../reference/typescript/EXTENSIONS.md)、[WAM](../../reference/typescript/WAM.md)
+- [TypeScript reference map](../../reference/typescript/README.md)
 - [Go reference](../../reference/go/README.md): Function、server、authentication と token、Extension、native Function、WAM integration

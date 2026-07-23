@@ -10,14 +10,14 @@ Official TypeScript and Go SDKs, developer guides, and runnable examples for bui
 
 ## Choose Your Path
 
-| Goal | Start here |
-| --- | --- |
-| Build and run a first app | [First-app Quickstart](docs/guides/en/quickstart.md) |
-| Understand Channel app concepts | [Guide index](docs/guides/en/README.md) and [Concepts](docs/guides/en/concepts.md) |
-| Build with TypeScript | [TypeScript SDK](ts/README.md) and [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) |
-| Build with Go | [Go SDK reference](docs/reference/go/README.md) and [Go tutorial](https://github.com/channel-io/app-tutorial) |
-| Use a coding agent | [Build Channel App skill](skills/build-channel-app/SKILL.md) |
-| Contribute to this SDK | [SDK contributor workflow](#contributing-to-the-sdk) |
+| Goal                            | Start here                                                                                                                           |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Build and run a first app       | [First-app Quickstart](docs/guides/en/quickstart.md)                                                                                 |
+| Understand Channel app concepts | [Guide index](docs/guides/en/README.md) and [Concepts](docs/guides/en/concepts.md)                                                   |
+| Build with TypeScript           | [TypeScript reference](docs/reference/typescript/README.md) and [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) |
+| Build with Go                   | [Go SDK reference](docs/reference/go/README.md) and [Go tutorial](https://github.com/channel-io/app-tutorial)                        |
+| Use a coding agent              | [Build Channel App skill](skills/build-channel-app/SKILL.md)                                                                         |
+| Contribute to this SDK          | [SDK contributor workflow](#contributing-to-the-sdk)                                                                                 |
 
 The localized guide indexes provide the same map in
 [Korean](docs/guides/ko/README.md), [English](docs/guides/en/README.md), and
@@ -43,8 +43,8 @@ to customize or ship the app:
    [Korean](docs/guides/ko/extensions.md), [English](docs/guides/en/extensions.md), or
    [Japanese](docs/guides/ja/extensions.md)
 6. **Use the language-specific API reference:**
-   [TypeScript architecture](docs/reference/typescript/ARCHITECTURE.md) and
-   [TypeScript references](#reference-index), or [Go reference](docs/reference/go/README.md)
+   [TypeScript reference](docs/reference/typescript/README.md), or
+   [Go reference](docs/reference/go/README.md)
 7. **Keep a complete implementation open while coding:**
    [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) or
    [Go tutorial](https://github.com/channel-io/app-tutorial)
@@ -60,7 +60,7 @@ Use the TypeScript packages for a NestJS app server, typed Functions, Extension 
 signature handling, React WAM hooks, and WAM UI components.
 
 - [TypeScript SDK overview](ts/README.md)
-- [TypeScript architecture](docs/reference/typescript/ARCHITECTURE.md)
+- [TypeScript reference](docs/reference/typescript/README.md)
 - [Runnable TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts)
 
 ### Go
@@ -136,13 +136,8 @@ Gitleaks. Report suspected vulnerabilities privately as described in [SECURITY.m
   [Japanese](docs/guides/ja/README.md)
 - [Agent guide](AGENT.md)
 - [Build Channel App skill](skills/build-channel-app/SKILL.md)
-- TypeScript: [overview](ts/README.md),
-  [architecture](docs/reference/typescript/ARCHITECTURE.md),
-  [authentication and tokens](docs/reference/typescript/AUTH-AND-TOKENS.md),
-  [Extensions](docs/reference/typescript/EXTENSIONS.md),
-  [WAM SDK](docs/reference/typescript/WAM.md),
-  [WAM UI](docs/reference/typescript/WAM-UI.md), and
-  [CLI](docs/reference/typescript/CLI.md)
+- TypeScript: [reference map](docs/reference/typescript/README.md) and
+  [package overview](ts/README.md)
 - Go: [overview](docs/reference/go/README.md),
   [Functions and schemas](docs/reference/go/FUNCTIONS.md),
   [server and routing](docs/reference/go/SERVER.md),
@@ -150,6 +145,7 @@ Gitleaks. Report suspected vulnerabilities privately as described in [SECURITY.m
   [Extensions](docs/reference/go/EXTENSIONS.md),
   [native Functions](docs/reference/go/NATIVE.md), and
   [WAM integration](docs/reference/go/WAM.md)
+- Shared wire contract: [cross-language protocol](docs/reference/protocol.md)
 
 ## License
 

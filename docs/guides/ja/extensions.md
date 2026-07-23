@@ -106,7 +106,7 @@ Arrow-compatible result を stream してください。SDK は PostgreSQL と B
 提供します。
 
 [DataSource 詳細](extensions/datasource.md) ·
-[Go example](../../reference/go-extensions.md#datasource-extension-and-query-server)
+[Go example](../../reference/go/EXTENSIONS.md#datasource-extension-and-query-server)
 
 ## Commerce
 

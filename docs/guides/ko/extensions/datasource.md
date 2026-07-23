@@ -39,7 +39,7 @@ err := app.Use(datasource.Extension().
   DescribeTable(handler.DescribeTable))
 ```
 
-[Go DataSource 예제](../../../reference/go-extensions.md#datasource-extension-and-query-server)의 gRPC
+[Go DataSource 예제](../../../reference/go/EXTENSIONS.md#datasource-extension-and-query-server)의 gRPC
 server와 Arrow executor를 사용합니다.
 
 ## 보안·신뢰성

@@ -30,7 +30,7 @@ recipe when the task uses only one Extension.
 
 For TypeScript, also read `docs/reference/typescript/EXTENSIONS.md` and the family reference under
 `docs/reference/typescript/extensions/`. For Go, read `docs/reference/go/EXTENSIONS.md` and
-`docs/reference/go-extensions.md`.
+`docs/reference/go/EXTENSIONS.md`.
 
 Treat the recipe's support note as a constraint. Do not invent a typed wrapper when the selected SDK
 does not expose one; isolate a documented protocol fallback and report it explicitly.

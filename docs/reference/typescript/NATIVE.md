@@ -3,8 +3,6 @@
 Native Functions are Channel-provided Functions.
 A regular Function is an RPC exposed by an app server, while a Native Function is an RPC an app calls through AppStore to read or mutate Channel resources.
 
-Official documentation: https://developers.channel.io/ko/articles/Function-77250b17
-
 ## Calling Native Functions
 
 Native Functions are called through `PUT /general/v1/native/functions`.
@@ -55,9 +53,28 @@ import { getNativeFunctionSchemas } from "@channel.io/app-sdk-server";
 const schemas = getNativeFunctionSchemas();
 ```
 
-## Updating Native Function Types
+## Typed Channel operations
 
-Treat the [official Native Functions documentation](https://developers.channel.io/ko/articles/Function-77250b17)
-as the public source of truth. Keep request and response models limited to the
-documented public contract, model proto `snake_case` fields as `camelCase` JSON
-fields, and use `NativeOpaqueModel` when a result shape is intentionally open.
+For server-side Channel operations, obtain a channel token and create the typed proxy:
+
+```ts
+const token = await tokenManager.getChannelToken({ channelId });
+const api = nativeClient.createProxyApi(token.accessToken);
+
+await api.writeGroupMessage({
+  channelId,
+  groupId,
+  dto: { plainText: "Hello", botName: "ExampleBot" },
+});
+```
+
+Prefer a typed proxy method when one exists. Use `callNativeFunctionWithToken()` only for a public
+Native Function already represented by your app's reviewed contract.
+
+## Contract source
+
+The public SDK exports are the source of truth for supported TypeScript calls. Check
+`NativeFunctionTypeMap`, `NativeFunctionClient`, and `ProxyApi` through the installed package's
+types. Keep request and response models limited to that public surface, use camelCase JSON fields,
+and treat intentionally open result models as opaque. The shared envelope is summarized in the
+[cross-language protocol](../protocol.md).

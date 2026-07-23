@@ -166,12 +166,12 @@ make run
 
 튜토리얼이 제공하는 주소는 다음과 같습니다.
 
-| 경로              | TypeScript                                      | Go                                              |
-| ----------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Function Endpoint | `https://YOUR_HOST/functions`                   | `https://YOUR_HOST/functions`                   |
-| WAM Endpoint      | `https://YOUR_HOST/resource/wam`                | `https://YOUR_HOST/resource/wam`                |
-| Local WAM         | `http://localhost:3000/resource/wam/tutorial`   | `http://localhost:3022/resource/wam/tutorial`   |
-| Health check      | 서버 listener                                   | `http://localhost:3022/ping`                    |
+| 경로              | TypeScript                                    | Go                                            |
+| ----------------- | --------------------------------------------- | --------------------------------------------- |
+| Function Endpoint | `https://YOUR_HOST/functions`                 | `https://YOUR_HOST/functions`                 |
+| WAM Endpoint      | `https://YOUR_HOST/resource/wam`              | `https://YOUR_HOST/resource/wam`              |
+| Local WAM         | `http://localhost:3000/resource/wam/tutorial` | `http://localhost:3022/resource/wam/tutorial` |
+| Health check      | 서버 listener                                 | `http://localhost:3022/ping`                  |
 
 ## 7. 테스트 채널에서 실행하기
 
@@ -207,14 +207,14 @@ TypeScript와 Go 구현 파일의 위치는 각 튜토리얼 README의 project m
 
 ## 9. 문제 해결
 
-| 증상                           | 확인할 것                                                                 |
-| ------------------------------ | -------------------------------------------------------------------------- |
-| Extension 등록 실패            | App ID/Secret, app token, public AppStore URL, 서버 재시작                 |
-| `401` 또는 signature 오류      | hex Signing Key, raw body 보존, `x-signature` 검증                         |
-| `/functions/v1`이 `404`        | 포털에는 `/functions` root를 입력했는지, 같은 SDK handler로 연결되는지     |
-| WAM이 열리지 않음              | WAM Endpoint가 `/resource/wam` root인지, WAM build가 성공했는지            |
-| Manager 전송 실패              | `writeGroupMessageAsManager`, group chat surface, 현재 manager authorization |
-| Bot 전송 실패                  | `writeGroupMessage`, 설치 channel, channel token cache                     |
+| 증상                      | 확인할 것                                                                    |
+| ------------------------- | ---------------------------------------------------------------------------- |
+| Extension 등록 실패       | App ID/Secret, app token, public AppStore URL, 서버 재시작                   |
+| `401` 또는 signature 오류 | hex Signing Key, raw body 보존, `x-signature` 검증                           |
+| `/functions/v1`이 `404`   | 포털에는 `/functions` root를 입력했는지, 같은 SDK handler로 연결되는지       |
+| WAM이 열리지 않음         | WAM Endpoint가 `/resource/wam` root인지, WAM build가 성공했는지              |
+| Manager 전송 실패         | `writeGroupMessageAsManager`, group chat surface, 현재 manager authorization |
+| Bot 전송 실패             | `writeGroupMessage`, 설치 channel, channel token cache                       |
 
 `SKIP_SIGNATURE_VERIFICATION=true`는 격리된 local debugging 외에는 사용하지 마세요. App Secret,
 Signing Key, access/refresh token, provider credential을 issue나 log에 붙이지 마세요.
@@ -225,7 +225,7 @@ Signing Key, access/refresh token, provider credential을 issue나 log에 붙이
 2. [앱 개발 전체 가이드](app-development.md)에서 설계, 보안, 배포, 운영 방법을 확인합니다.
 3. [Function 등록](functions.md)에서 standalone typed app Function을 정의합니다.
 4. [Extension 전체 가이드](extensions.md)에서 필요한 기능을 선택하고 상세 recipe를 따릅니다.
-5. 언어별 API는 [TypeScript 아키텍처와 레퍼런스](../../reference/typescript/ARCHITECTURE.md) 또는
+5. 언어별 API는 [TypeScript 레퍼런스 맵](../../reference/typescript/README.md) 또는
    [Go 레퍼런스](../../reference/go/README.md)에서 확인합니다.
 6. 구현 중에는 완성된 [TypeScript 튜토리얼](https://github.com/channel-io/app-tutorial-ts) 또는
    [Go 튜토리얼](https://github.com/channel-io/app-tutorial)을 함께 봅니다.
