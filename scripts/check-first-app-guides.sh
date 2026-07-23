@@ -13,6 +13,9 @@ required_text=(
   'https://YOUR_HOST/resource/wam'
   '/tutorial'
   'registerExtension(appId, extensionName, systemVersion)'
+  'functions.md'
+  '../../reference/typescript/ARCHITECTURE.md'
+  '../../reference/go/README.md'
 )
 assets=(
   app-store-entry.png
@@ -50,7 +53,18 @@ for locale in "${locales[@]}"; do
     printf 'Found retired implementation guidance in %s\n' "$guide" >&2
     failed=1
   fi
+
+  index="docs/guides/${locale}/README.md"
+  if ! grep -Eq '^1\. .*\(quickstart\.md\)' "$index"; then
+    printf 'Quickstart must be the first document in %s\n' "$index" >&2
+    failed=1
+  fi
 done
+
+if ! grep -Fq '## Start Here: Documentation Order' README.md; then
+  printf 'Root README must publish the documentation reading order\n' >&2
+  failed=1
+fi
 
 for asset in "${assets[@]}"; do
   path="docs/assets/first-app/${asset}"

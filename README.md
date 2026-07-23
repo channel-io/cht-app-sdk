@@ -2,23 +2,35 @@
 
 Monorepo for Channel App SDKs.
 
-## Build A Channel App
+## Start Here: Documentation Order
 
-If this is your first Channel app, follow the first-app guide from private-app creation through a
-running Command and WAM, then use the deeper references as needed:
+If this is your first Channel app, start with the Quickstart before reading package references.
+Continue in this order when you need to customize or ship the app:
 
-1. First app: [Korean](docs/guides/ko/quickstart.md),
+1. **Build and run the first app:** [Korean](docs/guides/ko/quickstart.md),
    [English](docs/guides/en/quickstart.md), or [Japanese](docs/guides/ja/quickstart.md)
-2. Concepts: [Korean](docs/guides/ko/concepts.md),
-   [English](docs/guides/en/concepts.md), or [Japanese](docs/guides/ja/concepts.md)
-3. Architecture and deployment: [Korean](docs/guides/ko/app-development.md),
+2. **Learn Function, Extension, WAM, and authentication boundaries:**
+   [Korean](docs/guides/ko/concepts.md), [English](docs/guides/en/concepts.md), or
+   [Japanese](docs/guides/ja/concepts.md)
+3. **Design, secure, deploy, and operate the app:**
+   [Korean](docs/guides/ko/app-development.md),
    [English](docs/guides/en/app-development.md), or
    [Japanese](docs/guides/ja/app-development.md)
-4. Runnable code: [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) or
+4. **Define typed app Functions:** [Korean](docs/guides/ko/functions.md),
+   [English](docs/guides/en/functions.md), or [Japanese](docs/guides/ja/functions.md)
+5. **Choose an Extension family and follow its recipe:**
+   [Korean](docs/guides/ko/extensions.md), [English](docs/guides/en/extensions.md), or
+   [Japanese](docs/guides/ja/extensions.md)
+6. **Use the language-specific API reference:**
+   [TypeScript architecture](docs/reference/typescript/ARCHITECTURE.md) and
+   [TypeScript references](#documentation), or [Go reference](docs/reference/go/README.md)
+7. **Keep a complete implementation open while coding:**
+   [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) or
    [Go tutorial](https://github.com/channel-io/app-tutorial)
 
-The guides define the current contract. The tutorial repositories show the same contract as a
-complete server-and-WAM app.
+The Quickstart ends with this same reading map, so it remains the primary entry point. The guides
+and public SDK exports define the current contract; the tutorials show it as complete server-and-WAM
+apps.
 
 ## Layout
 

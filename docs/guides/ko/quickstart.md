@@ -219,10 +219,13 @@ TypeScript와 Go 구현 파일의 위치는 각 튜토리얼 README의 project m
 `SKIP_SIGNATURE_VERIFICATION=true`는 격리된 local debugging 외에는 사용하지 마세요. App Secret,
 Signing Key, access/refresh token, provider credential을 issue나 log에 붙이지 마세요.
 
-## 다음 단계
+## 다음 문서는 이 순서로 확인하세요
 
-- 전체 설계와 배포: [앱 개발 전체 가이드](app-development.md)
-- Function, Extension, WAM, 인증: [핵심 개념](concepts.md)
-- 기능별 계약: [Extension 전체 가이드](extensions.md)
-- 실행 코드: [TypeScript 튜토리얼](https://github.com/channel-io/app-tutorial-ts),
-  [Go 튜토리얼](https://github.com/channel-io/app-tutorial)
+1. [핵심 개념](concepts.md)에서 Function, Extension, WAM, 인증, token의 경계를 이해합니다.
+2. [앱 개발 전체 가이드](app-development.md)에서 설계, 보안, 배포, 운영 방법을 확인합니다.
+3. [Function 등록](functions.md)에서 standalone typed app Function을 정의합니다.
+4. [Extension 전체 가이드](extensions.md)에서 필요한 기능을 선택하고 상세 recipe를 따릅니다.
+5. 언어별 API는 [TypeScript 아키텍처와 레퍼런스](../../reference/typescript/ARCHITECTURE.md) 또는
+   [Go 레퍼런스](../../reference/go/README.md)에서 확인합니다.
+6. 구현 중에는 완성된 [TypeScript 튜토리얼](https://github.com/channel-io/app-tutorial-ts) 또는
+   [Go 튜토리얼](https://github.com/channel-io/app-tutorial)을 함께 봅니다.
