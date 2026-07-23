@@ -15,7 +15,9 @@ Current contract areas:
 - `error.proto`: function error envelope
 - `native.proto`: AppStore native function request and response contracts
 - `common.proto`: shared SDK/domain models such as channel messages, users, user chats, WAM results, and availability reasons
-- `extension.proto`: server-side extension DTOs and function input/output envelopes across extension families, including API key, config, OAuth, calendar, command, widget, custom tab, hook, polling, store, notebook, order, WMS, messaging, and ALF task
+- `extension.proto`: server-side Extension DTOs and Function input/output envelopes across current
+  Extension families, including config, OAuth, calendar, command, widget, custom tab, hook,
+  polling, store, notebook, commerce, WMS, messaging, and ALF task
 
 Generated code is an implementation detail. App developers should normally use
 the ergonomic TypeScript and Go SDK APIs instead of generated proto structs
@@ -35,11 +37,8 @@ SDK-specific validation such as defaults, discriminated unions, refinements, and
 passthrough behavior.
 
 In Go, generated extension DTOs are made available from their family package.
-Proto-native packages such as `extension/order`, `extension/wms`, and
-`extension/messaging` expose generated DTOs under ergonomic names. Packages that
-already had hand-written structs expose generated DTOs with `Proto*` aliases so
-existing callers can keep compiling while new apps can opt into proto-backed
-types.
+Proto-native packages such as `extension/wms` and `extension/messaging` expose generated DTOs under
+ergonomic names. Packages with hand-written structs expose generated DTOs through `Proto*` aliases.
 
 See [Go feature parity](go-feature-parity.md) for the current Go SDK coverage
 against the TypeScript SDK surface.

@@ -13,7 +13,7 @@ Go apps use the same trust model as TypeScript apps. Keep inbound request authen
 | Channel access/refresh token | Server-side operations in one installed Channel             | Per-channel server token cache                                                   |
 | Manager/User authorization   | Current user acting through a Channel client                | Managed by the WAM host runtime                                                  |
 | Provider OAuth token         | Connected external provider                                 | Injected into `appsdk.Context.AuthToken` when needed                             |
-| Config credential            | API keys, `client_credentials`, and per-shop secrets        | Stored by AppStore and injected through `Context.Config` or compatibility fields |
+| Config credential            | API keys, `client_credentials`, and per-shop secrets        | Stored by AppStore and injected through `Context.Config`                         |
 
 ## Incoming Function Requests
 
@@ -87,6 +87,7 @@ The Go server does not issue manager/user tokens. A WAM calls the Channel host t
 ## External Provider Authentication
 
 - OAuth Authorization Code connections provide the external provider token through `fnCtx.AuthToken` or `fnCtx.GetAuthToken()`.
-- API keys, `client_credentials`, and per-shop secrets belong in Config Extension storage and arrive through `fnCtx.Config` or compatibility fields.
+- API keys, `client_credentials`, and per-shop secrets belong in Config Extension storage and
+  arrive through `fnCtx.Config`.
 
 These are provider credentials, not Channel app/channel tokens. Read them only in the handler that needs them and never place them in WAM data, Function errors, or logs.

@@ -63,8 +63,7 @@ import {
 ```
 
 Provider and stable token APIs that are not exported by the beta subpath remain available from
-`@channel.io/bezier-react`. Do not use legacy root UI components or deprecated `useBetaTokens`
-APIs.
+`@channel.io/bezier-react`. Import UI components from `/beta` and use the current token APIs.
 
 ## Components
 
@@ -139,22 +138,6 @@ A compact confirmation preset over Bezier beta `ConfirmModal`.
 WAM-oriented loading placeholders and compact overlay layouts that do not have a direct Bezier
 beta equivalent. Give every `BottomSheet` an `ariaLabel`; it manages focus, Escape, and scroll
 locking while open.
-
-## Migrating from 0.3
-
-Version 0.4 removes general-purpose wrappers that duplicate redesigned Bezier components.
-
-| Removed WAM UI export | Use instead                                                     |
-| --------------------- | --------------------------------------------------------------- |
-| `FormSection`         | Bezier beta `Form`, `Settings`, or `Section`                    |
-| `FormRow`             | Bezier beta `FormField` or `SettingsField`                      |
-| `InputRow`            | Bezier beta `TextInput` inside `FormField`                      |
-| `SelectRow`           | Bezier beta `Select` inside `FormField`                         |
-| `ToggleRow`           | Bezier beta `SettingsField` with `Switch`                       |
-| `SearchInput`         | Bezier beta `Search`; debounce in application state when needed |
-
-Bezier beta buttons use `label`, `variant`, and `semantic` instead of the legacy `text`,
-`styleVariant`, and `colorVariant` props.
 
 ## Examples
 

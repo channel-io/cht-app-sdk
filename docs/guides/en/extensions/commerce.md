@@ -2,8 +2,6 @@
 
 The Commerce extension registers commerce order lookups and claim actions through a helper. The read model is the `id`-based `CommerceOrder` (with `CommerceOrderItem`), and actions wrap their result in an `ActionResult`.
 
-> **Migration (legacy to be removed)**: `commerce` is the redesigned replacement for the legacy `order` extension (`extension.order.*`). The two coexist during migration; once every app has moved to `commerce`, the `order` extension is removed.
-
 ## Go
 
 ```go
@@ -31,7 +29,7 @@ Supported methods:
 - `extension.commerce.order.getExchangeableItems`
 - `extension.commerce.order.changeShippingAddress`
 
-Value types such as address, payment, fulfillment, and claim reuse the `order` extension schemas.
+Reuse the SDK-exported value types for addresses, payments, fulfillment, and claims.
 
 ## TypeScript
 
@@ -39,7 +37,7 @@ Use `@Extension({ name: "commerce", systemVersion: "v1" })` and the canonical sc
 `@channel.io/app-sdk-server`: `CommerceGetAppConfigsOutputSchema`,
 `CommerceGetOrdersInputSchema`/`CommerceGetOrdersOutputSchema`, the action input schemas, and
 `CommerceResultSchema`. Use the exact relative names listed above and add the class to the NestJS
-providers. Do not reuse the legacy `Order` input/output schemas for Commerce Functions.
+providers.
 
 ## Authentication, reliability, and testing
 

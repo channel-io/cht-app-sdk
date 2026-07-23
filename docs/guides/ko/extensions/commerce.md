@@ -2,8 +2,6 @@
 
 Commerce 확장은 커머스 주문 조회와 클레임 액션을 helper로 등록합니다. 조회 모델은 `id` 기반 `CommerceOrder`(`CommerceOrderItem` 포함)이며, 액션은 결과를 `ActionResult`로 감쌉니다.
 
-> **마이그레이션 (레거시 제거 예정)**: `commerce`는 레거시 `order` extension(`extension.order.*`)을 재설계한 대체 확장입니다. 마이그레이션 기간에는 둘이 공존하고, 모든 앱이 `commerce`로 이전을 마치면 `order` extension은 제거됩니다.
-
 ## Go
 
 ```go
@@ -31,7 +29,7 @@ err := app.Use(commerce.Extension().
 - `extension.commerce.order.getExchangeableItems`
 - `extension.commerce.order.changeShippingAddress`
 
-주소·결제·이행·클레임 등 값 타입은 `order` 확장 스키마를 재사용합니다.
+주소·결제·이행·클레임에는 SDK가 export하는 값 타입을 재사용합니다.
 
 ## TypeScript
 
@@ -39,8 +37,7 @@ err := app.Use(commerce.Extension().
 `@channel.io/app-sdk-server`가 export하는 canonical schema를 사용합니다.
 `CommerceGetAppConfigsOutputSchema`, `CommerceGetOrdersInputSchema`/
 `CommerceGetOrdersOutputSchema`, action input schema, `CommerceResultSchema`를 사용하고 위 목록의
-정확한 relative name으로 Function을 등록합니다. Commerce Function에 legacy `Order` input/output
-schema를 사용하지 않습니다.
+정확한 relative name으로 Function을 등록합니다.
 
 ## 인증·신뢰성·테스트
 

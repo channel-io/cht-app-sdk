@@ -110,7 +110,6 @@ with a looser shape merely to make discovery pass.
 | Command          | [command.md](extensions/command.md)                       |
 | Config           | [config.md](extensions/config.md)                         |
 | OAuth            | [oauth.md](extensions/oauth.md)                           |
-| API key (legacy) | [apikey.md](extensions/apikey.md)                         |
 | Calendar         | [calendar.md](extensions/calendar.md)                     |
 | Widget           | [widget.md](extensions/widget.md)                         |
 | Custom tab       | [customtab.md](extensions/customtab.md)                   |
@@ -119,7 +118,6 @@ with a looser shape merely to make discovery pass.
 | Store            | [store.md](extensions/store.md)                           |
 | DataSource       | [datasource.md](extensions/datasource.md)                 |
 | Commerce         | [Commerce recipe](../../guides/en/extensions/commerce.md) |
-| Order (legacy)   | [Order migration](../../guides/en/extensions/order.md)    |
 | WMS              | [WMS recipe](../../guides/en/extensions/wms.md)           |
 | Messaging        | [messaging.md](extensions/messaging.md)                   |
 | ALF task         | [alf-task.md](extensions/alf-task.md)                     |
@@ -129,9 +127,7 @@ with a looser shape merely to make discovery pass.
 ## Choosing an API
 
 - Use decorators for known extension families and NestJS dependency injection.
-- Use standalone decorator providers for small app/core Functions. The legacy `ChannelApp` simple service is deprecated.
+- Use standalone decorator providers for small app/core Functions.
 - Use public extension schemas as `@InputSchema` and `@OutputSchema` values.
 - Use `NativeFunctionClient` only for AppStore/Channel operations, not to replace incoming function routing.
 - Use `@channel.io/app-sdk-wam` for frontend runtime calls.
-
-Do not use `createExtension()` or `defineFunction()` examples from older templates: those factories are not part of the current public package exports.

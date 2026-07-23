@@ -1,6 +1,6 @@
 # Complete App Development Guide
 
-This guide describes the current SDK-first path for a Channel App Store app. It replaces the main implementation path in the older App web articles, which show raw JSON-RPC, manual token caches, manual command registration, and direct `window.ChannelIOWam` calls.
+This guide describes the current SDK-first path for a Channel App Store app.
 
 Current versions verified on 2026-07-22:
 
@@ -95,7 +95,8 @@ Install the public packages:
 npm install @channel.io/app-sdk-server@0.17.2 @nestjs/common @nestjs/core @nestjs/platform-express reflect-metadata rxjs zod
 ```
 
-Declare extension metadata and typed functions. AppStore discovers commands by calling `extension.command.metadata.getCommands`; do not call the legacy `registerCommands` native function in new apps.
+Declare Extension metadata and typed Functions. AppStore discovers commands by calling
+`extension.command.metadata.getCommands`.
 
 ```ts
 import { z } from "zod";

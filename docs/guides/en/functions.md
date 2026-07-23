@@ -1,10 +1,13 @@
 # Function Registration
 
-The request `method` is the Function's full name. Register app-specific behavior as a standalone Function such as `orders.get`. Inside a standard Extension, combine `@Extension({ name: "order" })` with a relative name to produce `extension.order.{relativeName}`. See [Concepts](concepts.md) for the distinction.
+The request `method` is the Function's full name. Register app-specific behavior as a standalone
+Function such as `orders.get`. Inside a standard Extension, combine
+`@Extension({ name: "command" })` with a relative name such as `metadata.getCommands` to produce
+`extension.command.metadata.getCommands`. See [Concepts](concepts.md) for the distinction.
 
 ## TypeScript
 
-Use the decorator API for new TypeScript apps. A legacy simple API is still exported, but its service is deprecated and scheduled for removal.
+Use the decorator API for TypeScript apps.
 
 ```ts
 @Func("orders.get")
@@ -43,25 +46,23 @@ schema override.
 
 ## Extension Builders
 
-Common extensions can use dedicated builders. For API key authentication apps,
-`extension/apikey` owns extension declaration and function names.
+Common extensions can use dedicated builders. Config-based authentication apps use
+`extension/config` for their setup schema and validation Function names.
 
 ```go
-app.Use(apikey.Extension().
-  GetAuthConfig(apikey.StaticAuthConfig(&authConfig)).
-  ValidateCredentials(validateCredentials),
+app.Use(config.Extension().
+  GetConfigSchema(handler.GetConfigSchema).
+  ValidateStoredConfig(handler.ValidateStoredConfig),
 )
 ```
 
-WMS apps can mix the `extension/wms` builder with SDK function name constants,
-so teams can migrate only part of an app to the SDK style at a time.
+WMS apps use the `extension/wms` builder with SDK Function name constants and DTOs.
 
 Known server-side extension families have builder packages:
 `extension/config`, `extension/oauth`, `extension/calendar`,
 `extension/command`, `extension/widget`, `extension/customtab`,
 `extension/hook`, `extension/polling`, `extension/store`,
-`extension/messaging`, `extension/alftask`, `extension/apikey`, and
-`extension/wms`.
+`extension/messaging`, `extension/alftask`, and `extension/wms`.
 
 For custom extensions, use the generic builder:
 

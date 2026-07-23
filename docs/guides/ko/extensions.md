@@ -36,14 +36,6 @@ TypeScript는 일반적으로 `@Extension`과 `@Func`를 사용합니다. Go는
 
 [OAuth 상세](extensions/oauth.md)
 
-## API key (legacy)
-
-`apikey`는 `extension.apikey.metadata.getAuthConfig`와 legacy credential native Function을
-제공합니다. 호환성을 위해 남아 있지만 새 앱은 Config를 사용하세요. 저장된 credential을 app
-Function 응답이나 log에 노출하지 않습니다.
-
-[API key migration 상세](extensions/apikey.md)
-
 ## Command
 
 `extension.command.metadata.getCommands`가 Desk command를 공개합니다. 각 command는 standalone
@@ -123,18 +115,10 @@ unsupported 결과로 반환하세요.
 
 [Commerce 상세](extensions/commerce.md)
 
-## Order (legacy)
-
-`order`는 `createdAt` 기반 legacy commerce contract입니다. 새 개발에는 사용하지 마세요. 기존
-앱은 provider model을 Commerce에 mapping하고 handler를 이관한 뒤 legacy 등록을 제거합니다.
-
-[마이그레이션 상세](extensions/order.md)
-
 ## WMS
 
 `wms`는 warehouse/order-management provider를 연결합니다. Order 조회, cancel/return/exchange
-restore flow, 배송지 변경에는 ID 기반 `extension.wms.order.*` Function을 우선 사용합니다.
-기존 `core`, `cancel`, `return`, `exchange`, `edit` group은 migration 용도입니다. Shop 설정을
+restore flow, 배송지 변경에는 ID 기반 `extension.wms.order.*` Function을 사용합니다. Shop 설정을
 명시적으로 요구하고 변경 작업은 안전한 환경에서 복구 가능성까지 테스트하세요.
 
 [WMS 상세](extensions/wms.md)

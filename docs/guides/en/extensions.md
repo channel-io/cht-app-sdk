@@ -36,14 +36,6 @@ injects the connected provider token as `ctx.authToken`. Do not use this Extensi
 
 [OAuth recipe](extensions/oauth.md)
 
-## API key (legacy)
-
-`apikey` exposes `extension.apikey.metadata.getAuthConfig` and legacy credential native Functions.
-It remains for compatibility, but new apps should use Config. Never return stored credentials from
-an app Function or place them in logs.
-
-[API key migration recipe](extensions/apikey.md)
-
 ## Command
 
 `extension.command.metadata.getCommands` publishes Desk commands. Each command must reference the
@@ -123,21 +115,12 @@ and return explicit unsupported results when a provider lacks an operation.
 
 [Commerce details](extensions/commerce.md)
 
-## Order (legacy)
-
-`order` is the legacy `createdAt`-based commerce contract. Do not choose it for new development.
-Existing apps should map their provider model to Commerce and migrate handlers before removing
-legacy registration.
-
-[Migration details](extensions/order.md)
-
 ## WMS
 
-`wms` connects warehouse/order-management providers. Prefer the ID-based
+`wms` connects warehouse/order-management providers. Use the ID-based
 `extension.wms.order.*` Functions for order lookup, cancel/return/exchange restore flows, and
-shipping-address changes. The older `core`, `cancel`, `return`, `exchange`, and `edit` groups remain
-only for migration. Require explicit shop configuration and test reversible mutations in a safe
-environment.
+shipping-address changes. Require explicit shop configuration and test reversible mutations in a
+safe environment.
 
 [WMS details](extensions/wms.md)
 

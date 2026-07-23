@@ -2,8 +2,6 @@
 
 Commerce 拡張は、コマース注文の取得とクレームアクションを helper で登録します。取得モデルは `id` ベースの `CommerceOrder`（`CommerceOrderItem` を含む）で、アクションは結果を `ActionResult` でラップします。
 
-> **移行（レガシー削除予定）**: `commerce` はレガシー `order` extension（`extension.order.*`）を再設計した置き換え拡張です。移行期間中は両者が共存し、すべてのアプリが `commerce` へ移行を終えると `order` extension は削除されます。
-
 ## Go
 
 ```go
@@ -31,7 +29,7 @@ err := app.Use(commerce.Extension().
 - `extension.commerce.order.getExchangeableItems`
 - `extension.commerce.order.changeShippingAddress`
 
-住所・決済・履行・クレームなどの値型は `order` 拡張のスキーマを再利用します。
+住所・決済・履行・クレームには SDK が export する値型を再利用します。
 
 ## TypeScript
 
@@ -39,8 +37,7 @@ err := app.Use(commerce.Extension().
 `@channel.io/app-sdk-server` が export する canonical schema を使います。
 `CommerceGetAppConfigsOutputSchema`、`CommerceGetOrdersInputSchema`/
 `CommerceGetOrdersOutputSchema`、action input schema、`CommerceResultSchema` を使い、上の正確な
-relative name で Function を登録します。Commerce Function に legacy `Order` input/output schema
-を使いません。
+relative name で Function を登録します。
 
 ## 認証・信頼性・test
 

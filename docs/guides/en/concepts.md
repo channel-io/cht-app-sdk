@@ -61,7 +61,6 @@ Depending on the call surface, `context` can contain:
 - `user`, `userChat`, and `language`: user context when that flow provides it
 - `authToken`: a provider access token decrypted and injected for an OAuth connection
 - `config`: values and credentials stored through the config Extension for the current scope
-- `apiCredentials`: credentials for compatibility with legacy API-key flows
 
 Do not assume optional fields are always present. Validate them for the Function's execution surface. `ctx.authToken` is an external OAuth provider token, not a Channel App app or channel token.
 

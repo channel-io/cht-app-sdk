@@ -7,7 +7,7 @@ native claims before implementation.
 TypeScript accepts both `messenger` and `messaging` as registration names for compatibility, while
 the typed Function contract uses `extension.messaging.*`. Go declares `messaging:v1`. Do not treat
 `messenger` as a nineteenth schema family or rewrite Function names to `extension.messenger.*`;
-confirm the AppStore registration expected by the selected legacy/new rollout.
+confirm the AppStore registration required for the selected subfamily.
 
 ## Contract
 

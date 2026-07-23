@@ -13,7 +13,6 @@ recipe when the task uses only one Extension.
 | ---------- | --------------- | -------------------------------------------------------------------------------- |
 | Config     | `config.md`     | Preferred setup and credential surface                                           |
 | OAuth      | `oauth.md`      | Authorization Code only                                                          |
-| API key    | `apikey.md`     | Legacy; prefer Config for new apps                                               |
 | Command    | `command.md`    | Metadata plus referenced action Function                                         |
 | Widget     | `widget.md`     | Surface metadata plus optional WAM action                                        |
 | Custom tab | `customtab.md`  | Persistent Desk WAM surface                                                      |
@@ -23,7 +22,6 @@ recipe when the task uses only one Extension.
 | Store      | `store.md`      | App Store presentation metadata                                                  |
 | DataSource | `datasource.md` | JSON-RPC metadata plus authenticated gRPC queries                                |
 | Commerce   | `commerce.md`   | Current ID-based commerce contract                                               |
-| Order      | `order.md`      | Legacy; migrate to Commerce                                                      |
 | WMS        | `wms.md`        | Prefer the ID-based `order.*` group                                              |
 | Messaging  | `messaging.md`  | Advanced AppStore-driven family; registration alias differs from Function prefix |
 | ALF task   | `alf-task.md`   | Extension registration plus task sync                                            |

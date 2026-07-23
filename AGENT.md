@@ -55,8 +55,10 @@ When documentation and examples disagree, trust the code in this order:
 
 - `create --template` in the CLI currently accepts a template name, but the generated starter is effectively the same baseline app. If you need a real working reference, use the example apps first.
 - `add extension` scaffolding exists for several extensions, but some templates still lag the current exported API surface.
-- The SDK does not yet ship a first-class messaging helper package or example. For messaging-family extensions, use generic extension definitions and the app-store contracts documented in [docs/reference/typescript/extensions/messaging.md](./docs/reference/typescript/extensions/messaging.md).
-- OAuth, API key, and ALF task flows depend on native functions in addition to extension registration. Read the extension-specific docs before implementing them.
+- Messaging subfamilies require coordinated AppStore registration and native claims in addition to
+  their typed Functions. Follow [the messaging contract](./docs/reference/typescript/extensions/messaging.md).
+- OAuth and ALF task flows depend on native Functions in addition to Extension registration. Read
+  the Extension-specific docs before implementing them.
 
 ## Doc Map
 
@@ -64,7 +66,6 @@ When documentation and examples disagree, trust the code in this order:
 - Extension overview: [docs/reference/typescript/extensions/README.md](./docs/reference/typescript/extensions/README.md)
 - Command: [docs/reference/typescript/extensions/command.md](./docs/reference/typescript/extensions/command.md)
 - OAuth: [docs/reference/typescript/extensions/oauth.md](./docs/reference/typescript/extensions/oauth.md)
-- API Key: [docs/reference/typescript/extensions/apikey.md](./docs/reference/typescript/extensions/apikey.md)
 - Calendar: [docs/reference/typescript/extensions/calendar.md](./docs/reference/typescript/extensions/calendar.md)
 - Widget: [docs/reference/typescript/extensions/widget.md](./docs/reference/typescript/extensions/widget.md)
 - Custom tab: [docs/reference/typescript/extensions/customtab.md](./docs/reference/typescript/extensions/customtab.md)

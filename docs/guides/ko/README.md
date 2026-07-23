@@ -7,14 +7,13 @@
 - [핵심 개념](concepts.md)
 - [빠른 시작](quickstart.md)
 - [앱 개발 전체 가이드](app-development.md)
-- [기존 웹 문서 변경 사항](legacy-documentation-notes.md)
 - [함수 등록](functions.md)
-- [Extension 전체 가이드와 18개 TypeScript/Go 상세 문서](extensions.md)
-- [부분 마이그레이션](partial-migration.md)
+- [Extension 전체 가이드와 16개 TypeScript/Go 상세 문서](extensions.md)
 
 ## 선택 기준
 
-TypeScript SDK는 NestJS, Zod, WAM React 개발에 적합합니다. Go SDK는 기존 Go 서비스에서 typed function, native client, extension helper를 점진적으로 도입할 때 적합합니다.
+TypeScript SDK는 NestJS, Zod, WAM React 개발에 적합합니다. Go SDK는 Go 서비스에서 typed
+function, native client, extension helper를 사용할 때 적합합니다.
 
 웹 문서, 튜토리얼, SDK 예제가 서로 다르면 공개 SDK export를 먼저 따르고 SDK 레퍼런스와 최신 튜토리얼을 차례로 확인하세요.
 

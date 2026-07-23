@@ -7,7 +7,7 @@ Messaging は inbox/prebuilt message flow と関連する follow-up、medium-lin
 TypeScript は互換性のため registration name に `messenger` と `messaging` の両方を許可しますが、
 typed Function contract は `extension.messaging.*` を使います。Go は `messaging:v1` を宣言します。
 `messenger` を 19 番目の schema family と扱ったり Function name を `extension.messenger.*` に
-変えたりせず、選択した legacy/new rollout が要求する AppStore registration を確認します。
+変えたりせず、選択した subfamily に必要な AppStore registration を確認します。
 
 ## Contract
 
