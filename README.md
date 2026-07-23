@@ -126,8 +126,9 @@ The Go SDK is released separately with module tags such as `go/v0.1.0`. Keep the
 Because this repository is public, pull requests, commit messages, changelogs, fixtures,
 screenshots, and generated files must not include private service URLs, credentials, tokens,
 customer data, private repository names, internal task IDs, or organization-specific UUIDs.
-CI enforces this policy with `scripts/check-public-content.sh` and secret scanning. Report suspected
-vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
+Authors and reviewers are responsible for this full policy. CI detects known private identifiers
+and internal task IDs with `scripts/check-public-content.sh` and scans secret patterns with
+Gitleaks. Report suspected vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
 
 ## Reference Index
 
