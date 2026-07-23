@@ -219,10 +219,13 @@ See each tutorial README's project map for the TypeScript and Go source location
 Use `SKIP_SIGNATURE_VERIFICATION=true` only in isolated local debugging. Never paste the App
 Secret, Signing Key, access/refresh tokens, or provider credentials into an issue or log.
 
-## Next steps
+## Continue in this order
 
-- architecture and deployment: [Complete app development guide](app-development.md)
-- Function, Extension, WAM, and authentication: [Concepts](concepts.md)
-- capability contracts: [Extension guide](extensions.md)
-- runnable code: [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) and
-  [Go tutorial](https://github.com/channel-io/app-tutorial)
+1. Learn the Function, Extension, WAM, authentication, and token boundaries in [Concepts](concepts.md).
+2. Design, secure, deploy, and operate the app with the [complete app development guide](app-development.md).
+3. Define standalone typed app Functions with [Function registration](functions.md).
+4. Choose a capability and follow its recipe in the [Extension guide](extensions.md).
+5. Use the [TypeScript architecture and references](../../reference/typescript/ARCHITECTURE.md) or
+   [Go reference](../../reference/go/README.md) for language-specific APIs.
+6. Keep the [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) or
+   [Go tutorial](https://github.com/channel-io/app-tutorial) open as a complete implementation.
