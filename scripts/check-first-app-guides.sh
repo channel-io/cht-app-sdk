@@ -61,7 +61,21 @@ for locale in "${locales[@]}"; do
   fi
 done
 
-if ! grep -Fq '## Start Here: Documentation Order' README.md; then
+root_required_text=(
+  '> **Building your first Channel app?**'
+  '[Korean](docs/guides/ko/quickstart.md)'
+  '[English](docs/guides/en/quickstart.md)'
+  '[Japanese](docs/guides/ja/quickstart.md)'
+)
+
+for expected in "${root_required_text[@]}"; do
+  if ! grep -Fq "$expected" README.md; then
+    printf 'Root README is missing first-app callout content: %s\n' "$expected" >&2
+    failed=1
+  fi
+done
+
+if ! grep -Fq '## Recommended Documentation Order' README.md; then
   printf 'Root README must publish the documentation reading order\n' >&2
   failed=1
 fi
