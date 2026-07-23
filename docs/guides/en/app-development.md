@@ -34,7 +34,9 @@ If a hosting platform supplies `APP_STORE_URL` or registration settings, preserv
 
 ## Prepare A Private App Before Coding
 
-Use the [public getting-started documentation](https://developers.channel.io/ko/articles/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-516161ed) to enter the developer portal. Portal labels can change, but the required sequence is stable:
+If no app exists yet, complete the private-app, credential, permission, and endpoint steps in
+[Build your first Channel app](quickstart.md). Portal layouts can change, but the required sequence
+is stable:
 
 1. Create a private app for development and keep its App ID, App Secret, and Signing Key in a server-side secret store. Never put the two secrets in a WAM or commit them to Git.
 2. Enable only the Channel, Manager, and User permissions required by the Functions you will test.
@@ -340,10 +342,10 @@ Before production:
 
 ## Sources and examples
 
-- [Original getting-started article](https://developers.channel.io/ko/articles/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-516161ed)
-- [Authentication article](https://developers.channel.io/ko/articles/e7c2fb6f)
-- [Function article](https://developers.channel.io/ko/articles/77250b17)
-- [Command article](https://developers.channel.io/ko/articles/b3d200dc)
-- [WAM article](https://developers.channel.io/ko/articles/059680de)
+- [Build your first Channel app](quickstart.md)
+- [Concepts](concepts.md)
+- [Function registration](functions.md)
+- [Extension guide](extensions.md)
+- [WAM SDK](../../reference/typescript/WAM.md)
 - [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts)
 - [Go tutorial](https://github.com/channel-io/app-tutorial)

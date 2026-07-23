@@ -129,6 +129,7 @@ proto-ssot-check:
 .PHONY: docs-check
 docs-check:
 	./scripts/check-extension-guides.sh
+	./scripts/check-first-app-guides.sh
 
 .PHONY: verify
 verify: lint format-check proto-check build test

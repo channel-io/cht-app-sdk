@@ -34,7 +34,9 @@ Hosting platform が `APP_STORE_URL` または registration setting を提供す
 
 ## 実装前に private app を準備する
 
-[公開 Getting Started 文書](https://developers.channel.io/ko/articles/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-516161ed) から developer portal に入ってください。Portal の表示名が変わっても必要な順序は同じです。
+App がまだない場合は [最初の Channel アプリを作る](quickstart.md) の private app、credential、
+permission、endpoint の手順を先に完了してください。Portal の配置が変わっても必要な順序は
+同じです。
 
 1. 開発用 private app を作成し、App ID、App Secret、Signing Key を確認します。2 つの secret は server-side secret store だけに保存し、WAM や Git に入れません。
 2. Test する Function に必要な Channel、Manager、User permission だけを有効にします。
@@ -326,10 +328,10 @@ Production 前:
 
 ## 参考資料と例
 
-- [旧 Getting Started](https://developers.channel.io/ko/articles/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-516161ed)
-- [Authentication](https://developers.channel.io/ko/articles/e7c2fb6f)
-- [Function](https://developers.channel.io/ko/articles/77250b17)
-- [Command](https://developers.channel.io/ko/articles/b3d200dc)
-- [WAM](https://developers.channel.io/ko/articles/059680de)
+- [最初の Channel アプリを作る](quickstart.md)
+- [基本概念](concepts.md)
+- [Function 登録](functions.md)
+- [Extension 完全ガイド](extensions.md)
+- [WAM SDK](../../reference/typescript/WAM.md)
 - [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts)
 - [Go tutorial](https://github.com/channel-io/app-tutorial)
