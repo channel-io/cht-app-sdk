@@ -514,6 +514,7 @@ export {
   PrebuiltBuildMediumTopicsOutputSchema,
   PrebuiltGetDefaultOptionsInputSchema,
   PrebuiltGetDefaultOptionsOutputSchema,
+  createMessagingExtension,
   type MessagingAlfMessageType,
   type MessagingMeetMode,
   type MessagingMessageMeetState,
@@ -571,6 +572,10 @@ export {
   type PrebuiltBuildMediumTopicsOutput,
   type PrebuiltGetDefaultOptionsInput,
   type PrebuiltGetDefaultOptionsOutput,
+  type MessagingHandler,
+  type MessagingInboxProvider,
+  type MessagingPrebuiltProvider,
+  type MessagingExtensionProvider,
 } from "./messaging.js";
 
 // Canonical extension function schema registry

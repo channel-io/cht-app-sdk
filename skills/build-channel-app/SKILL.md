@@ -42,9 +42,9 @@ registration APIs.
 - Keep App Secret, Signing Key, access tokens, and refresh tokens on the server.
 - Treat `ctx.authToken` as an external OAuth provider token, not an app/channel token.
 - Use `TokenManager`; never issue a token for every request.
-- Use extension metadata plus `registerExtension`; do not introduce `registerCommands` in new apps.
+- Use Extension metadata and SDK auto-registration.
 - Preserve raw request bytes for HMAC verification.
-- Use WAM SDK hooks instead of a custom `window.ChannelIOWam` wrapper.
+- Use WAM SDK hooks for host data, sizing, navigation, and native calls.
 - Keep secrets and tokens out of WAM bundles, runtime data, and `wamArgs`. Use `useCallFunction` for app/bot work and `useNativeFunction` only for current manager/user work.
 - Never combine a client-selected resource ID with a server app/channel token without server-side authorization. Bind privileged targets to trusted Function context or a short-lived signed capability and validate them again in the server Function.
 - Allowlist the exact `wamArgs` keys sent to the browser. Handle unsupported chat/surface types explicitly, render safe error states, and disable duplicate submissions while a call is loading.

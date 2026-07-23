@@ -68,6 +68,7 @@ test: test-ts test-go
 
 test-ts: build-ts
 	cd $(TS_DIR) && $(PNPM) test
+	./scripts/smoke-test-cli-create.sh
 
 test-go:
 	cd $(GO_DIR) && $(GO) test $(GO_TEST_FLAGS) ./...

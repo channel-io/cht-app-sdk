@@ -1,57 +1,24 @@
 # Messaging Extension
 
-Messaging은 inbox와 prebuilt message flow 및 관련 follow-up, medium-link, CHX registration을
-포함합니다. AppStore contract 의존성이 높은 advanced family이므로 구현 전 subfamily contract와
-native claim을 확정합니다.
+Messaging은 외부 medium을 Channel inbox와 prebuilt message 흐름에 연결합니다. Extension Function,
+channel 권한, provider webhook, AppStore product 설정의 lifecycle이 서로 다르기 때문에 advanced
+integration으로 다룹니다.
 
-TypeScript는 호환성을 위해 registration name으로 `messenger`와 `messaging`을 모두 허용하지만 typed
-Function contract는 `extension.messaging.*`를 사용합니다. Go는 `messaging:v1`을 선언합니다.
-`messenger`를 19번째 schema family로 보거나 Function 이름을 `extension.messenger.*`로 바꾸지 말고,
-선택한 subfamily에 필요한 AppStore registration을 확인합니다.
+## 흐름부터 선택하기
 
-## 계약
+Inbox, prebuilt 또는 둘 다를 선택합니다. 선택한 흐름마다 다음을 정의하세요.
 
-공개 SDK는 typed `extension.messaging.inbox.*`와 `extension.messaging.prebuilt.*` Function을
-제공합니다. 선택한 subfamily만 `MessagingFunctionNames`의 정확한 이름으로 구현합니다. AppStore가
-여러 messaging registration을 별도로 관리하므로 generic `messaging:v1` 등록만으로 rollout이 끝나지
-않을 수 있습니다.
-
-Inbox Function:
-
-- `extension.messaging.inbox.onMediumMessageCreated`
-- `extension.messaging.inbox.onMediumUserChatClosed`
-- `extension.messaging.inbox.getWritingTypes`
-- `extension.messaging.inbox.getCustomEditorWam`
-- `extension.messaging.inbox.getMediumTopicSelectorWam`
-- `extension.messaging.inbox.getMediumMessageErrorReason`
-
-Prebuilt Function:
-
-- `extension.messaging.prebuilt.getWritingTypes`
-- `extension.messaging.prebuilt.validateEntity`
-- `extension.messaging.prebuilt.getCustomEditorWam`
-- `extension.messaging.prebuilt.getMediumTopicBuilderSelectorWam`
-- `extension.messaging.prebuilt.buildMediumTopics`
-- `extension.messaging.prebuilt.getDefaultOptions`
-
-## Registration·native claim
-
-AppStore는 inbox, prebuilt, follow-up, medium-link, CHX app-level registration을 별도로 제공합니다.
-현재 SDK는 generic `registerExtension`만 제공하므로 문서화되지 않은 method를 호출하지 말고 AppStore
-rollout과 subfamily registration을 조율합니다.
-
-Inbox runtime에는 channel-scoped `findOrCreateContactAndUser`,
-`findOrCreateUserChatByMedium`, `submitHandlingWorkflowButton`, `findContactsByUser`,
-`writeUserChatMessage`, `writeUserChatMessageAsUser`, `updateUserChatStateByUser`,
-`startUserChatFromUserByMedium`이 필요할 수 있습니다. 이들은 app default가 아니라 channel-role
-claim입니다. `submitHandlingWorkflowButton`은 공개 core DTO가 없어 request type이 의도적으로 열려
-있으므로 DTO를 만들지 말고 해당 호출을 격리해 테스트합니다.
+- provider identity와 Channel user/chat mapping
+- inbound/outbound message ownership
+- 지원할 writing type과 선택적 editor/selector WAM
+- 필요한 channel-scoped Native Function 권한
+- idempotency key, 순서, 재시도, close/reopen, partial failure 정책
 
 ## TypeScript
 
-Rollout에서 확인된 AppStore-compatible `messenger` 또는 `messaging` registration name과 공개
-`extension.messaging.*` schema를 사용합니다. WAM Function은 canonical WAM result를 반환하고
-channel/Core native call은 typed native contract를 사용합니다.
+`@Extension({ name: "messaging", systemVersion: "v1" })`을 선언하고
+`Messaging.inbox.*()` 또는 `Messaging.prebuilt.*()` decorator를 사용합니다. 이 decorator는 정확한
+relative Function 이름과 schema를 함께 적용합니다. Function group과 DTO는
 [TypeScript Messaging 레퍼런스](../../../reference/typescript/extensions/messaging.md)를 확인하세요.
 
 ## Go
@@ -63,14 +30,18 @@ err := app.Use(messaging.Extension().
   InboxGetCustomEditorWAM(handler.GetEditor))
 ```
 
-선택한 inbox 또는 prebuilt flow에 필요한 builder method만 추가합니다.
+선택한 흐름에 필요한 builder method만 추가합니다.
+[Go Extension 레퍼런스](../../../reference/go/EXTENSIONS.md#builder-packages)도 확인하세요.
 
-## 인증·WAM·신뢰성
+## 등록과 보안
 
-- Channel-scoped native claim을 먼저 설계합니다. App token으로 manager/user를 대신하지 않습니다.
-- 외부 conversation/message mapping을 저장하고 webhook·polling delivery를 idempotent하게 만듭니다.
-- WAM argument를 최소화하고 server mutation은 독립적으로 다시 인가합니다.
-- Writing type, editor/selector WAM, provider rejection mapping, duplicate message, closed chat,
-  missing native claim, partial delivery를 테스트합니다.
+SDK auto-registration은 `messaging:v1` Extension과 Function schema를 공개합니다. 추가 messaging
+product setup은 명시적인 AppStore 설정 단계이며, 일반 Extension 등록이 channel 권한을 자동으로
+부여하지는 않습니다.
 
-[Go builder package와 messaging 예제](../../../reference/go-extensions.md#builder-packages)도 확인하세요.
+- Server-side Channel operation에는 channel token을 사용합니다.
+- Provider credential과 token은 서버에만 둡니다.
+- WAM data를 검증하고 server mutation을 다시 인가합니다.
+- Side effect 전에 provider event를 deduplicate합니다.
+- Message/contact data를 로그로 남기지 말고 권한 누락, duplicate, provider rejection, retry,
+  closed chat, partial delivery를 테스트합니다.

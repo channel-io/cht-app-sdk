@@ -10,10 +10,10 @@ redesigned Bezier subpath.
 
 ```bash
 npm install @channel.io/app-sdk-wam-ui
-npm install react @channel.io/bezier-react@4.0.0-next.13 @channel.io/bezier-icons@0.60.0 styled-components@^6
+npm install react @channel.io/bezier-react@4.0.0-next.14 @channel.io/bezier-icons@0.60.0 styled-components@^6
 ```
 
-Bezier React 4 is still a prerelease. Pin `4.0.0-next.13` in application lockfiles and review its
+Bezier React 4 is still a prerelease. Pin `4.0.0-next.14` in application lockfiles and review its
 release notes before upgrading.
 
 ## Quick start
@@ -80,7 +80,7 @@ dark appearance from the WAM runtime, or accepts an explicit override.
 
 ### `HeightSynchronizer`
 
-Observes content changes and calls `window.ChannelIOWam.setSize()` with the current iframe height.
+Observes content changes and synchronizes the current iframe height through the host bridge.
 
 ```tsx
 <HeightSynchronizer maxHeight={600}>
@@ -92,8 +92,8 @@ Use `excludePaths` with `pathname` when a route manages its own size.
 
 ### `WamHeader`
 
-Provides WAM back and close behavior with Bezier beta icon buttons. `onBack` defaults to
-`history.back()` and `onClose` defaults to `window.ChannelIOWam.close()`.
+Provides WAM back and close behavior with Bezier beta icon buttons. Pass WAM SDK navigation and
+close callbacks when the surrounding app controls those actions.
 
 ```tsx
 <WamHeader title="Settings" showBackButton />
@@ -152,7 +152,7 @@ language-specific app server.
 | Package                    | Version                |
 | -------------------------- | ---------------------- |
 | `react`                    | >=17.0.0               |
-| `@channel.io/bezier-react` | >=4.0.0-next.13 <5.0.0 |
+| `@channel.io/bezier-react` | >=4.0.0-next.14 <5.0.0 |
 | `@channel.io/bezier-icons` | >=0.60.0 <1.0.0        |
 | `styled-components`        | >=6.0.0                |
 

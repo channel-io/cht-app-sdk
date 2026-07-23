@@ -14,7 +14,7 @@ required_text=(
   '/tutorial'
   'registerExtension(appId, extensionName, systemVersion)'
   'functions.md'
-  '../../reference/typescript/ARCHITECTURE.md'
+  '../../reference/typescript/README.md'
   '../../reference/go/README.md'
 )
 assets=(

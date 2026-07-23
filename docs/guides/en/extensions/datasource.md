@@ -42,7 +42,7 @@ err := app.Use(datasource.Extension().
 ```
 
 Use the Go gRPC DataSource server and Arrow executor described in the
-[Go DataSource example](../../../reference/go-extensions.md#datasource-extension-and-query-server).
+[Go DataSource example](../../../reference/go/EXTENSIONS.md#datasource-extension-and-query-server).
 
 ## Security and reliability
 

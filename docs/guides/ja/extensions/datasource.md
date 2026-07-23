@@ -40,7 +40,7 @@ err := app.Use(datasource.Extension().
   DescribeTable(handler.DescribeTable))
 ```
 
-[Go DataSource example](../../../reference/go-extensions.md#datasource-extension-and-query-server) の
+[Go DataSource example](../../../reference/go/EXTENSIONS.md#datasource-extension-and-query-server) の
 gRPC server と Arrow executor を使います。
 
 ## Security・信頼性

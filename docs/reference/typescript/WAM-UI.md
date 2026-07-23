@@ -24,7 +24,7 @@ The current verified baseline is:
 | Package                      | Version         |
 | ---------------------------- | --------------- |
 | `@channel.io/app-sdk-wam-ui` | `0.4.0`         |
-| `@channel.io/bezier-react`   | `4.0.0-next.13` |
+| `@channel.io/bezier-react`   | `4.0.0-next.14` |
 | `@channel.io/bezier-icons`   | `0.60.0`        |
 | `styled-components`          | `6.x`           |
 
@@ -64,7 +64,7 @@ at the root. Import UI components from the `/beta` subpath and use the current t
 ## WAM-specific exports
 
 - `WamThemeProvider`: detects light/dark appearance and installs Bezier providers
-- `HeightSynchronizer`: observes content and calls `window.ChannelIOWam.setSize()`
+- `HeightSynchronizer`: observes content and synchronizes height through the host bridge
 - `WamHeader`: standard back and close behavior
 - `LoadingPage`, `ErrorPage`, `EmptyState`: compact WAM state presets
 - `InlineBanner`: semantic preset over Bezier beta `Banner`

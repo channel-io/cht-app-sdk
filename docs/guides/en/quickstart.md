@@ -207,14 +207,14 @@ See each tutorial README's project map for the TypeScript and Go source location
 
 ## 9. Troubleshooting
 
-| Symptom                        | Check                                                                    |
-| ------------------------------ | ------------------------------------------------------------------------ |
-| Extension registration fails   | App ID/Secret, app token, public AppStore URL, server restart            |
-| `401` or signature failure     | hex Signing Key, raw-body preservation, `x-signature` verification      |
-| `/functions/v1` returns `404`  | portal uses `/functions` root and ingress reaches the same SDK handler   |
-| WAM does not open              | WAM Endpoint is `/resource/wam` root and the WAM build passed            |
-| Manager action fails           | `writeGroupMessageAsManager`, group surface, current manager authorization |
-| Bot action fails               | `writeGroupMessage`, installed Channel, channel-token cache              |
+| Symptom                       | Check                                                                      |
+| ----------------------------- | -------------------------------------------------------------------------- |
+| Extension registration fails  | App ID/Secret, app token, public AppStore URL, server restart              |
+| `401` or signature failure    | hex Signing Key, raw-body preservation, `x-signature` verification         |
+| `/functions/v1` returns `404` | portal uses `/functions` root and ingress reaches the same SDK handler     |
+| WAM does not open             | WAM Endpoint is `/resource/wam` root and the WAM build passed              |
+| Manager action fails          | `writeGroupMessageAsManager`, group surface, current manager authorization |
+| Bot action fails              | `writeGroupMessage`, installed Channel, channel-token cache                |
 
 Use `SKIP_SIGNATURE_VERIFICATION=true` only in isolated local debugging. Never paste the App
 Secret, Signing Key, access/refresh tokens, or provider credentials into an issue or log.
@@ -225,7 +225,7 @@ Secret, Signing Key, access/refresh tokens, or provider credentials into an issu
 2. Design, secure, deploy, and operate the app with the [complete app development guide](app-development.md).
 3. Define standalone typed app Functions with [Function registration](functions.md).
 4. Choose a capability and follow its recipe in the [Extension guide](extensions.md).
-5. Use the [TypeScript architecture and references](../../reference/typescript/ARCHITECTURE.md) or
+5. Use the [TypeScript reference map](../../reference/typescript/README.md) or
    [Go reference](../../reference/go/README.md) for language-specific APIs.
 6. Keep the [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) or
    [Go tutorial](https://github.com/channel-io/app-tutorial) open as a complete implementation.

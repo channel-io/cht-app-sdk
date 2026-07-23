@@ -11,12 +11,9 @@ If you are building or reviewing a Channel.io app, start from the files below in
 4. [docs/guides/en/app-development.md](./docs/guides/en/app-development.md)
 5. [docs/guides/en/extensions.md](./docs/guides/en/extensions.md)
 6. Language reference:
-   - TypeScript: [docs/reference/typescript/ARCHITECTURE.md](./docs/reference/typescript/ARCHITECTURE.md)
+   - TypeScript: [docs/reference/typescript/README.md](./docs/reference/typescript/README.md)
    - Go: [docs/reference/go/README.md](./docs/reference/go/README.md)
-7. [docs/reference/typescript/AUTH-AND-TOKENS.md](./docs/reference/typescript/AUTH-AND-TOKENS.md)
-8. [docs/reference/typescript/extensions/README.md](./docs/reference/typescript/extensions/README.md)
-9. [docs/reference/typescript/WAM.md](./docs/reference/typescript/WAM.md)
-10. Examples:
+7. Examples:
    - [ts/examples/basic/README.md](./ts/examples/basic/README.md)
    - [ts/examples/calendar/README.md](./ts/examples/calendar/README.md)
    - [TypeScript app tutorial](https://github.com/channel-io/app-tutorial-ts)
@@ -54,8 +51,9 @@ When documentation and examples disagree, trust the code in this order:
 
 ## Important Current Caveats
 
-- `create --template` in the CLI currently accepts a template name, but the generated starter is effectively the same baseline app. If you need a real working reference, use the example apps first.
-- `add extension` scaffolding exists for several extensions, but some templates still lag the current exported API surface.
+- `create` generates the maintained TypeScript starter. Treat the language reference and public
+  package exports as the contract when extending it.
+- `add extension` snippets are conveniences; cross-check the selected Extension family reference.
 - Messaging subfamilies require coordinated AppStore registration and native claims in addition to
   their typed Functions. Follow [the messaging contract](./docs/reference/typescript/extensions/messaging.md).
 - OAuth and ALF task flows depend on native Functions in addition to Extension registration. Read
@@ -63,6 +61,7 @@ When documentation and examples disagree, trust the code in this order:
 
 ## Doc Map
 
+- TypeScript reference map: [docs/reference/typescript/README.md](./docs/reference/typescript/README.md)
 - Auth and token flow: [docs/reference/typescript/AUTH-AND-TOKENS.md](./docs/reference/typescript/AUTH-AND-TOKENS.md)
 - Extension overview: [docs/reference/typescript/extensions/README.md](./docs/reference/typescript/extensions/README.md)
 - Command: [docs/reference/typescript/extensions/command.md](./docs/reference/typescript/extensions/command.md)

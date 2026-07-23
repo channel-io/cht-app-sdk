@@ -62,6 +62,5 @@ Check registries before pinning versions. Values verified on 2026-07-22:
 - Prefer a named TypeScript family schema. When a family has no named Function-level schema export,
   resolve the full canonical Function name from `extensionFunctionSchemaDefinitions` and pass its
   Zod `input`/`output` to the decorators; do not hand-wave discovery schemas.
-- Messaging Function names remain `extension.messaging.*`. TypeScript accepts `messenger` and
-  `messaging` registration names for compatibility, while Go declares `messaging`; confirm the
-  AppStore subfamily rollout instead of inventing `extension.messenger.*` Functions.
+- Messaging uses `messaging:v1`; use the TypeScript `Messaging` decorators or Go messaging builder
+  and complete any additional product setup explicitly in AppStore.

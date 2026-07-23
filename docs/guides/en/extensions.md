@@ -104,7 +104,7 @@ the authenticated DataSource gRPC endpoint rather than the normal app Function r
 Arrow-compatible results. The SDK includes PostgreSQL and BigQuery-oriented runners.
 
 [DataSource recipe](extensions/datasource.md) ·
-[Go examples](../../reference/go-extensions.md#datasource-extension-and-query-server)
+[Go examples](../../reference/go/EXTENSIONS.md#datasource-extension-and-query-server)
 
 ## Commerce
 
