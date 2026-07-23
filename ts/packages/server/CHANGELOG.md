@@ -1,5 +1,14 @@
 # @channel.io/app-sdk-server
 
+## 0.17.3
+
+### Patch Changes
+
+- 6dfd90d: Generate a current secure TypeScript starter, add first-class Messaging helpers, and verify WAM UI
+  against Bezier React 4.0.0-next.14.
+- Updated dependencies [6dfd90d]
+  - @channel.io/app-sdk-core@0.17.3
+
 ## 0.17.2
 
 ### Patch Changes
