@@ -34,7 +34,8 @@
 
 ## 구현 전에 private app 준비하기
 
-[공개 시작하기 문서](https://developers.channel.io/ko/articles/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-516161ed)를 통해 개발자 포털에 들어가세요. 포털의 화면 이름은 바뀔 수 있지만 필요한 순서는 같습니다.
+앱이 아직 없다면 [첫 Channel 앱 만들기](quickstart.md)의 private app, credential, permission,
+endpoint 단계를 먼저 완료하세요. 포털의 화면 배치는 바뀔 수 있지만 필요한 순서는 같습니다.
 
 1. 개발용 private app을 만들고 App ID, App Secret, Signing Key를 확인합니다. 두 secret은 server secret store에만 보관하고 WAM이나 Git에 넣지 않습니다.
 2. 테스트할 Function에 필요한 Channel, Manager, User 권한만 활성화합니다.
@@ -327,10 +328,10 @@ Production 전:
 
 ## 참고 자료와 예제
 
-- [기존 시작하기 문서](https://developers.channel.io/ko/articles/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-516161ed)
-- [인증 및 권한](https://developers.channel.io/ko/articles/e7c2fb6f)
-- [Function](https://developers.channel.io/ko/articles/77250b17)
-- [Command](https://developers.channel.io/ko/articles/b3d200dc)
-- [WAM](https://developers.channel.io/ko/articles/059680de)
+- [첫 Channel 앱 만들기](quickstart.md)
+- [핵심 개념](concepts.md)
+- [Function 등록](functions.md)
+- [Extension 전체 가이드](extensions.md)
+- [WAM SDK](../../reference/typescript/WAM.md)
 - [TypeScript 튜토리얼](https://github.com/channel-io/app-tutorial-ts)
 - [Go 튜토리얼](https://github.com/channel-io/app-tutorial)

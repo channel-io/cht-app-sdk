@@ -4,15 +4,17 @@ Monorepo for Channel App SDKs.
 
 ## Build A Channel App
 
-If this is your first Channel app, start with a concept guide, prepare a private app and its
-credentials, and then run the tutorial for your server language:
+If this is your first Channel app, follow the first-app guide from private-app creation through a
+running Command and WAM, then use the deeper references as needed:
 
-1. Concepts: [Korean](docs/guides/ko/concepts.md),
+1. First app: [Korean](docs/guides/ko/quickstart.md),
+   [English](docs/guides/en/quickstart.md), or [Japanese](docs/guides/ja/quickstart.md)
+2. Concepts: [Korean](docs/guides/ko/concepts.md),
    [English](docs/guides/en/concepts.md), or [Japanese](docs/guides/ja/concepts.md)
-2. End-to-end setup: [Korean](docs/guides/ko/app-development.md),
+3. Architecture and deployment: [Korean](docs/guides/ko/app-development.md),
    [English](docs/guides/en/app-development.md), or
    [Japanese](docs/guides/ja/app-development.md)
-3. Runnable app: [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) or
+4. Runnable code: [TypeScript tutorial](https://github.com/channel-io/app-tutorial-ts) or
    [Go tutorial](https://github.com/channel-io/app-tutorial)
 
 The guides define the current contract. The tutorial repositories show the same contract as a
@@ -120,6 +122,7 @@ runnable server-and-WAM examples:
 ## Documentation
 
 - [Agent Guide](AGENT.md) - Best entry point for humans and coding agents
+- First app: [Korean](docs/guides/ko/quickstart.md), [English](docs/guides/en/quickstart.md), [Japanese](docs/guides/ja/quickstart.md)
 - [Korean Concepts](docs/guides/ko/concepts.md), [English Concepts](docs/guides/en/concepts.md), [Japanese Concepts](docs/guides/ja/concepts.md)
 - Extension guides: [Korean](docs/guides/ko/extensions.md), [English](docs/guides/en/extensions.md), [Japanese](docs/guides/ja/extensions.md)
 - [TypeScript README](ts/README.md) - TypeScript SDK usage
