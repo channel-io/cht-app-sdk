@@ -61,7 +61,12 @@ for locale in "${locales[@]}"; do
   fi
 done
 
-if ! grep -Fq '## Start Here: Documentation Order' README.md; then
+if ! grep -Fq '> **Building your first Channel app?**' README.md; then
+  printf 'Root README must point first-time developers to Quickstart\n' >&2
+  failed=1
+fi
+
+if ! grep -Fq '## Recommended Documentation Order' README.md; then
   printf 'Root README must publish the documentation reading order\n' >&2
   failed=1
 fi
