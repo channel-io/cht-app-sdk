@@ -36,19 +36,19 @@ for locale in "${locales[@]}"; do
       continue
     fi
 
-    if ! rg --quiet '^## TypeScript' "$guide"; then
+    if ! grep -q '^## TypeScript' "$guide"; then
       printf 'Missing TypeScript section: %s\n' "$guide" >&2
       failed=1
     fi
-    if ! rg --quiet '^## Go' "$guide"; then
+    if ! grep -q '^## Go' "$guide"; then
       printf 'Missing Go section: %s\n' "$guide" >&2
       failed=1
     fi
-    if ! rg --quiet --ignore-case 'test|verification|검증|테스트|検証' "$guide"; then
+    if ! grep -Eiq 'test|verification|검증|테스트|検証' "$guide"; then
       printf 'Missing verification guidance: %s\n' "$guide" >&2
       failed=1
     fi
-    if ! rg --quiet --fixed-strings "](extensions/${recipe}.md)" "$overview"; then
+    if ! grep -Fq "](extensions/${recipe}.md)" "$overview"; then
       printf 'Missing overview link for %s: %s\n' "$recipe" "$overview" >&2
       failed=1
     fi
