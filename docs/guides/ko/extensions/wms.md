@@ -2,6 +2,8 @@
 
 Go SDK는 WMS method를 helper로 등록할 수 있습니다.
 
+## Go
+
 ```go
 app := appsdk.New(appsdk.Options{AppID: appID})
 err := app.Use(wms.Extension().
@@ -59,3 +61,22 @@ app.Use(wms.Extension().
 - `extension.wms.order.exchangeRequestOrder`
 - `extension.wms.order.exchangeRestoreOrder`
 - `extension.wms.order.changeShippingAddress`
+
+## TypeScript
+
+`@Extension({ name: "wms", systemVersion: "v1" })`과 공개 WMS schema를 사용합니다. 신규 코드는
+`extension.wms.order.*` 그룹의 `WmsGetAppConfigs*`, `WmsOrderGetOrders*`, `WmsOrderAction*`,
+`WmsOrderChangeShippingAddress*` schema를 사용합니다. 설치 앱 migration 동안에만 legacy schema
+handler를 유지합니다.
+
+## 인증·신뢰성·테스트
+
+- 신뢰할 수 있는 Config context에서 shop 설정을 찾고 모든 request에서 order/shop ownership을
+  검증합니다. WAM이 전달한 shop/order ID만 신뢰하지 않습니다.
+- 취소·반품·교환 restore와 배송지 변경 전에 provider 상태를 다시 조회합니다.
+- 모든 mutation을 idempotent하게 만들고 retry에 필요한 provider request/result mapping을 보존합니다.
+- Capability discovery, shop 설정 누락, pagination, legacy/new 혼합 등록, duplicate mutation,
+  restore race, permission denial, rollback을 테스트합니다.
+
+[TypeScript Extension 레퍼런스](../../../reference/typescript/EXTENSIONS.md)와
+[Go Extension 레퍼런스](../../../reference/go/EXTENSIONS.md)를 확인하세요.

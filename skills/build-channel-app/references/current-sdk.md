@@ -60,3 +60,9 @@ Check registries before pinning versions. Values verified on 2026-07-22:
 - TypeScript: use `ChannelAppModule`, decorators or the simple API, `TokenManager`, `NativeFunctionClient`, and WAM hooks.
 - Go: use `appsdk.App`, extension builders, `server` or `server/gin`, and `native.TokenManager`.
 - Check `docs/reference/go-feature-parity.md` before using a TypeScript native convenience API in Go.
+- Prefer a named TypeScript family schema. When a family has no named Function-level schema export,
+  resolve the full canonical Function name from `extensionFunctionSchemaDefinitions` and pass its
+  Zod `input`/`output` to the decorators; do not hand-wave discovery schemas.
+- Messaging Function names remain `extension.messaging.*`. TypeScript accepts `messenger` and
+  `messaging` registration names for compatibility, while Go declares `messaging`; confirm the
+  AppStore subfamily rollout instead of inventing `extension.messenger.*` Functions.

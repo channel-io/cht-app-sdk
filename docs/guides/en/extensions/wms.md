@@ -2,6 +2,8 @@
 
 The Go SDK can register WMS methods through a helper.
 
+## Go
+
 ```go
 app := appsdk.New(appsdk.Options{AppID: appID})
 err := app.Use(wms.Extension().
@@ -59,3 +61,22 @@ Additional methods:
 - `extension.wms.order.exchangeRequestOrder`
 - `extension.wms.order.exchangeRestoreOrder`
 - `extension.wms.order.changeShippingAddress`
+
+## TypeScript
+
+Use `@Extension({ name: "wms", systemVersion: "v1" })` with the exported WMS schemas. New code should
+use `WmsGetAppConfigs*`, `WmsOrderGetOrders*`, `WmsOrderAction*`, and
+`WmsOrderChangeShippingAddress*` schemas for the `extension.wms.order.*` group. Keep legacy schema
+handlers only while installed apps are migrating.
+
+## Authentication, reliability, and testing
+
+- Resolve shop configuration from trusted Config context and verify order/shop ownership on every
+  request. Never trust a shop or order ID solely because a WAM supplied it.
+- Re-read provider state before cancel/return/exchange restore and shipping-address changes.
+- Make every mutation idempotent and preserve the provider request/result mapping needed for retry.
+- Test capability discovery, missing shop configuration, pagination, mixed legacy/new registrations,
+  duplicate mutation delivery, restore races, permission denial, and rollback.
+
+See the [TypeScript Extension reference](../../../reference/typescript/EXTENSIONS.md) and
+[Go Extension reference](../../../reference/go/EXTENSIONS.md).

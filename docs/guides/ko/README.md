@@ -9,11 +9,8 @@
 - [앱 개발 전체 가이드](app-development.md)
 - [기존 웹 문서 변경 사항](legacy-documentation-notes.md)
 - [함수 등록](functions.md)
-- [Extension 전체 가이드](extensions.md)
+- [Extension 전체 가이드와 18개 TypeScript/Go 상세 문서](extensions.md)
 - [부분 마이그레이션](partial-migration.md)
-- [WMS 확장](extensions/wms.md)
-- [Order 확장 (레거시)](extensions/order.md)
-- [Commerce 확장](extensions/commerce.md)
 
 ## 선택 기준
 

@@ -2,6 +2,8 @@
 
 Go SDK は WMS method を helper で登録できます。
 
+## Go
+
 ```go
 app := appsdk.New(appsdk.Options{AppID: appID})
 err := app.Use(wms.Extension().
@@ -59,3 +61,22 @@ app.Use(wms.Extension().
 - `extension.wms.order.exchangeRequestOrder`
 - `extension.wms.order.exchangeRestoreOrder`
 - `extension.wms.order.changeShippingAddress`
+
+## TypeScript
+
+`@Extension({ name: "wms", systemVersion: "v1" })` と公開 WMS schema を使います。新規コードは
+`extension.wms.order.*` group の `WmsGetAppConfigs*`、`WmsOrderGetOrders*`、`WmsOrderAction*`、
+`WmsOrderChangeShippingAddress*` schema を使います。Installation の移行中だけ legacy schema
+handler を維持します。
+
+## 認証・信頼性・test
+
+- 信頼済み Config context から shop configuration を解決し、request ごとに order/shop ownership
+  を検証します。WAM が渡した shop/order ID だけを信用しません。
+- Cancel/return/exchange restore と shipping-address change 前に provider state を再取得します。
+- 全 mutation を idempotent にし、retry に必要な provider request/result mapping を保存します。
+- Capability discovery、shop config 不足、pagination、legacy/new 混在 registration、duplicate
+  mutation、restore race、permission denial、rollback を test します。
+
+[TypeScript Extension reference](../../../reference/typescript/EXTENSIONS.md) と
+[Go Extension reference](../../../reference/go/EXTENSIONS.md) を参照してください。
