@@ -460,6 +460,72 @@ describe("NativeFunctionClient", () => {
       });
       expect(result).toEqual(expected);
     });
+
+    it("should type and call mailRelay.getRawMime with token", async () => {
+      const expected = {
+        sesMessageId: "ses-message-1",
+        contentType: "message/rfc822",
+        encoding: "utf8" as const,
+        rawMime: "From: buyer@example.com\n\nHello",
+        size: 31,
+      };
+      mockFetch.mockResolvedValueOnce(mockFetchResponse({ result: expected }));
+
+      const result = await client.callNativeFunctionWithToken(
+        "mailRelay.getRawMime",
+        {
+          recipient:
+            "amazon+c_channel.i_installation.m_marketplace.r_token@amazon.app.mail.channel.io",
+          sesMessageId: "ses-message-1",
+          bucketName: "channel-inbound-mail",
+          objectKey: "app-mail/ses-message-1",
+        },
+        "app-token"
+      );
+
+      expectTypeOf(result.encoding).toEqualTypeOf<"utf8" | "base64">();
+      const body = parseFetchBody(mockFetch);
+      expect(body.method).toBe("mailRelay.getRawMime");
+      expect(body.params).toEqual({
+        recipient:
+          "amazon+c_channel.i_installation.m_marketplace.r_token@amazon.app.mail.channel.io",
+        sesMessageId: "ses-message-1",
+        bucketName: "channel-inbound-mail",
+        objectKey: "app-mail/ses-message-1",
+      });
+      expect(result).toEqual(expected);
+    });
+
+    it("should type and call mailRelay.sendRawEmail with token", async () => {
+      const expected = {
+        providerMessageId: "010201902a",
+        idempotencyStatus: "sent" as const,
+        sentAt: "2026-07-15T13:24:09.000Z",
+      };
+      mockFetch.mockResolvedValueOnce(mockFetchResponse({ result: expected }));
+
+      const result = await client.callNativeFunctionWithToken(
+        "mailRelay.sendRawEmail",
+        {
+          sender: "amazon-buyer-reply@app.mail.channel.io",
+          recipients: ["buyer-alias@marketplace.amazon.com"],
+          rawMime: "From: amazon-buyer-reply@app.mail.channel.io\n\nHello",
+          idempotencyKey: "channel-message-1",
+          metadata: {
+            channelId: "channel-1",
+            appId: "amazon",
+            userChatId: "user-chat-1",
+          },
+        },
+        "app-token"
+      );
+
+      expectTypeOf(result.idempotencyStatus).toEqualTypeOf<"sent" | "duplicate">();
+      const body = parseFetchBody(mockFetch);
+      expect(body.method).toBe("mailRelay.sendRawEmail");
+      expect(body.params["recipients"]).toEqual(["buyer-alias@marketplace.amazon.com"]);
+      expect(result).toEqual(expected);
+    });
   });
 
   // ============================================

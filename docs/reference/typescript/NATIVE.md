@@ -49,6 +49,11 @@ RBAC scope requirement for these functions. The SDK only accepts logical `appId`
 `channelId`, `tableName`, schema columns, and rows; BigQuery project/dataset
 names stay an AppStore/Core concern.
 
+Mail relay functions are modeled for app-owned email relay providers. Use an
+app-scoped token. `mailRelay.getRawMime` fetches a validated SES raw MIME object
+through AppStore, and `mailRelay.sendRawEmail` asks AppStore to validate sender,
+recipient, and idempotency before sending a raw email reply.
+
 ```ts
 import { getNativeFunctionSchemas } from "@channel.io/app-sdk-server";
 

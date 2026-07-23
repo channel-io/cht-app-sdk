@@ -786,6 +786,39 @@ export interface NativeGetAppNotebookVersionsResult {
   notebooks: NativeAppNotebookVersion[];
 }
 
+export interface NativeMailRelayGetRawMimeParams {
+  recipient: string;
+  sesMessageId: string;
+  bucketName: string;
+  objectKey: string;
+}
+
+export type NativeMailRelayRawMimeEncoding = "utf8" | "base64";
+
+export interface NativeMailRelayGetRawMimeResult {
+  sesMessageId: string;
+  contentType?: string;
+  encoding: NativeMailRelayRawMimeEncoding;
+  rawMime: string;
+  size?: number;
+}
+
+export interface NativeMailRelaySendRawEmailParams {
+  sender: string;
+  recipients: readonly string[];
+  rawMime: string;
+  idempotencyKey: string;
+  metadata?: Record<string, string>;
+}
+
+export type NativeMailRelaySendRawEmailIdempotencyStatus = "sent" | "duplicate";
+
+export interface NativeMailRelaySendRawEmailResult {
+  providerMessageId?: string;
+  idempotencyStatus: NativeMailRelaySendRawEmailIdempotencyStatus;
+  sentAt?: string;
+}
+
 export interface NativeIssueEntityTokenParams {
   channelId: string;
   entityType: string;
@@ -1007,6 +1040,14 @@ export interface NativeFunctionTypeMap {
   getAppNotebookVersions: {
     params: NativeGetAppNotebookVersionsParams;
     result: NativeGetAppNotebookVersionsResult;
+  };
+  "mailRelay.getRawMime": {
+    params: NativeMailRelayGetRawMimeParams;
+    result: NativeMailRelayGetRawMimeResult;
+  };
+  "mailRelay.sendRawEmail": {
+    params: NativeMailRelaySendRawEmailParams;
+    result: NativeMailRelaySendRawEmailResult;
   };
   issueEntityToken: {
     params: NativeIssueEntityTokenParams;
