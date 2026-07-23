@@ -111,6 +111,20 @@ Server を起動する前に安定した HTTPS tunnel を用意します。
 | TypeScript | `3000`     |
 | Go         | `3022`     |
 
+[ngrok](https://ngrok.com/) など、任意の HTTPS tunnel tool を利用できます。Ngrok を install・
+authenticate した後、選択した tutorial の local port を公開します。
+
+```bash
+# TypeScript tutorial
+ngrok http 3000
+
+# Go tutorial
+ngrok http 3022
+```
+
+Ngrok が表示する `Forwarding` HTTPS origin を `YOUR_HOST` として使用します。Tunnel address が
+変わった場合は developer portal の endpoint を更新し、server を再起動してください。
+
 Public address が `https://YOUR_HOST` の場合、Server Settings に次の root を保存します。
 
 | Setting           | Value                            |

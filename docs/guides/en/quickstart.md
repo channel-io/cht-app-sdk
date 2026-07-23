@@ -112,6 +112,20 @@ Prepare a stable HTTPS tunnel before starting the server.
 | TypeScript | `3000`     |
 | Go         | `3022`     |
 
+You may use any HTTPS tunnel tool, such as [ngrok](https://ngrok.com/). After installing and
+authenticating ngrok, expose the local port for the tutorial you selected:
+
+```bash
+# TypeScript tutorial
+ngrok http 3000
+
+# Go tutorial
+ngrok http 3022
+```
+
+Use the `Forwarding` HTTPS origin shown by ngrok as `YOUR_HOST`. If the tunnel address changes,
+update the endpoints in the developer portal and restart the server.
+
 If the public address is `https://YOUR_HOST`, save these roots in Server Settings:
 
 | Setting           | Value                            |
