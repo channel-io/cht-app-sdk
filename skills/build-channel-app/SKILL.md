@@ -1,6 +1,6 @@
 ---
 name: build-channel-app
-description: Build, migrate, review, or troubleshoot Channel App Store server and WAM projects with the official TypeScript or Go SDK. Use for new apps, command/widget/custom-tab WAM flows, extension registration, function handlers, tokens and permissions, endpoint setup, legacy app-tutorial migrations, and pre-release verification.
+description: Build, review, or troubleshoot Channel App Store server and WAM projects with the official TypeScript or Go SDK. Use for new apps, command/widget/custom-tab WAM flows, extension registration, function handlers, tokens and permissions, endpoint setup, and pre-release verification.
 ---
 
 # Build Channel App
@@ -61,8 +61,6 @@ registration APIs.
 ## Validation
 
 For TypeScript, run the package manager's lockfile-respecting install, typecheck, test, and build commands for both server and WAM. For Go, run `gofmt`, `go mod tidy`, `go test ./...`, a binary build, and the WAM build when present.
-
-Compare migrations with the locale's `legacy-documentation-notes.md` before declaring an older tutorial current.
 
 For a new Extension implementation, finish the family recipe's TypeScript or Go path, authentication
 and permission analysis, registration or secondary-sync step, WAM decision, retry/idempotency

@@ -1,8 +1,7 @@
 # Config Extension
 
 Use Config for channel- or manager-scoped settings, API keys, `client_credentials`, shop IDs, and
-other credentials. It is the preferred setup surface for new apps; do not create a new API key
-Extension.
+other credentials. It is the standard setup surface for new apps.
 
 ## Contract
 

@@ -26,7 +26,6 @@ responsibilities should be available at the same abstraction level.
 | Generated proto DTOs         | Available     | Extension packages re-export generated DTOs directly or with `Proto*` aliases       |
 | DataSource query server      | Available     | `io.channel.datasource.v1` gRPC plus BigQuery Storage/PostgreSQL Arrow executors    |
 | DataSource metadata DTOs     | Available     | JSON-RPC DTOs plus `Proto*` aliases for common extension proto types                |
-| Legacy migration             | Available     | `compat/legacy.Composite`                                                           |
 
 ## Not Yet Covered
 
@@ -55,7 +54,6 @@ for Go apps:
 - signature verification middleware for common routers
 - test helpers
 - extension helper packages
-- mixed legacy and SDK registry migration
 
 TypeScript-only frontend features such as WAM React hooks remain in the
 TypeScript SDK.

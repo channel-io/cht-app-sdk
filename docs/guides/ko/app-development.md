@@ -1,6 +1,6 @@
 # 앱 개발 전체 가이드
 
-이 문서는 Channel App Store 앱을 만드는 현재의 SDK 우선 경로를 설명합니다. 기존 App 웹 문서에 있는 raw JSON-RPC, 수동 토큰 캐시, 수동 커맨드 등록, `window.ChannelIOWam` 직접 호출은 프로토콜 이해용으로만 보고 신규 구현은 SDK를 사용하세요.
+이 문서는 Channel App Store 앱을 만드는 현재의 SDK 우선 경로를 설명합니다.
 
 2026-07-22에 확인한 공개 버전은 다음과 같습니다.
 

@@ -36,7 +36,6 @@ Use an Extension Function only when it is part of the registered standard contra
 | --------------------- | -------------------------------------------------------- |
 | Config                | `extension/config`                                       |
 | OAuth                 | `extension/oauth`                                        |
-| API key compatibility | `extension/apikey`                                       |
 | Command               | `extension/command`                                      |
 | Widget                | `extension/widget`                                       |
 | Custom tab            | `extension/customtab`                                    |
@@ -45,7 +44,7 @@ Use an Extension Function only when it is part of the registered standard contra
 | Calendar              | `extension/calendar`                                     |
 | Store                 | `extension/store`                                        |
 | DataSource            | `extension/datasource`                                   |
-| Commerce/Order/WMS    | `extension/commerce`, `extension/order`, `extension/wms` |
+| Commerce/WMS          | `extension/commerce`, `extension/wms`                    |
 | Messaging             | `extension/messaging`                                    |
 | ALF task              | `extension/alftask`                                      |
 | Notebook              | `extension/notebook`                                     |
@@ -56,7 +55,7 @@ Use the family builder and exported DTOs before the generic builder. The family 
 
 ## Generic Builder
 
-Use `extension.New` when no typed family helper exists or when migrating an existing contract:
+Use `extension.New` when no typed family helper exists:
 
 ```go
 custom := extension.New("custom", extension.SystemVersion("v1")).

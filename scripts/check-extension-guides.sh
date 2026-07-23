@@ -7,7 +7,6 @@ locales=(en ko ja)
 recipes=(
   config
   oauth
-  apikey
   command
   widget
   customtab
@@ -17,13 +16,13 @@ recipes=(
   store
   datasource
   commerce
-  order
   wms
   messaging
   alf-task
   notebook
   mail-relay
 )
+excluded_recipes=(apikey order)
 
 failed=0
 for locale in "${locales[@]}"; do
@@ -50,6 +49,14 @@ for locale in "${locales[@]}"; do
     fi
     if ! grep -Fq "](extensions/${recipe}.md)" "$overview"; then
       printf 'Missing overview link for %s: %s\n' "$recipe" "$overview" >&2
+      failed=1
+    fi
+  done
+
+  for recipe in "${excluded_recipes[@]}"; do
+    guide="docs/guides/${locale}/extensions/${recipe}.md"
+    if [[ -e "$guide" ]]; then
+      printf 'Unexpected retired Extension recipe: %s\n' "$guide" >&2
       failed=1
     fi
   done

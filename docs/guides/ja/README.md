@@ -7,14 +7,13 @@
 - [基本概念](concepts.md)
 - [クイックスタート](quickstart.md)
 - [アプリ開発完全ガイド](app-development.md)
-- [旧 Web ドキュメントとの差分](legacy-documentation-notes.md)
 - [Function 登録](functions.md)
-- [Extension 完全ガイドと 18 の TypeScript/Go recipe](extensions.md)
-- [部分移行](partial-migration.md)
+- [Extension 完全ガイドと 16 の TypeScript/Go recipe](extensions.md)
 
 ## SDK の選び方
 
-NestJS、Zod、WAM React 開発には TypeScript SDK が向いています。既存の Go サービスに typed function、native client、extension helper を段階的に入れる場合は Go SDK が向いています。
+NestJS、Zod、WAM React 開発には TypeScript SDK が向いています。Go サービスで typed
+function、native client、extension helper を使う場合は Go SDK が向いています。
 
 Web 記事、チュートリアル、SDK 例が一致しない場合は、公開 SDK export、SDK reference、最新 tutorial の順で確認してください。
 

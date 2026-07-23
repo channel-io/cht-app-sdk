@@ -1,7 +1,7 @@
 # Config Extension
 
 Channel/manager 単位の設定、API key、`client_credentials`、shop ID、credential には Config を
-使用します。新規アプリで推奨される設定 surface であり、新しい API key Extension は作りません。
+使います。Config は新規アプリの標準 setup surface です。
 
 ## Contract
 

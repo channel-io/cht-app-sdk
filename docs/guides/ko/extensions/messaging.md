@@ -7,7 +7,7 @@ native claim을 확정합니다.
 TypeScript는 호환성을 위해 registration name으로 `messenger`와 `messaging`을 모두 허용하지만 typed
 Function contract는 `extension.messaging.*`를 사용합니다. Go는 `messaging:v1`을 선언합니다.
 `messenger`를 19번째 schema family로 보거나 Function 이름을 `extension.messenger.*`로 바꾸지 말고,
-선택한 legacy/new rollout이 요구하는 AppStore registration을 확인합니다.
+선택한 subfamily에 필요한 AppStore registration을 확인합니다.
 
 ## 계약
 

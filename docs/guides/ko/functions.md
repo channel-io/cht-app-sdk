@@ -1,10 +1,13 @@
 # 함수 등록
 
-Function 요청의 `method`가 Function의 전체 이름입니다. 앱 고유 Function은 `orders.get`처럼 standalone으로 등록하고, 표준 Extension 안에서는 `@Extension({ name: "order" })`와 relative name을 조합해 `extension.order.{relativeName}`을 만듭니다. 자세한 구분은 [핵심 개념](concepts.md)을 참고하세요.
+Function 요청의 `method`가 Function의 전체 이름입니다. 앱 고유 Function은 `orders.get`처럼
+standalone으로 등록합니다. 표준 Extension 안에서는 `@Extension({ name: "command" })`와
+`metadata.getCommands` 같은 relative name을 조합해 `extension.command.metadata.getCommands`를
+만듭니다. 자세한 구분은 [핵심 개념](concepts.md)을 참고하세요.
 
 ## TypeScript
 
-신규 TypeScript 앱은 decorator API를 사용하세요. Legacy simple API도 export되지만 그 service는 deprecated 상태이며 제거될 예정입니다.
+TypeScript 앱은 decorator API를 사용하세요.
 
 ```ts
 @Func("orders.get")
@@ -43,25 +46,23 @@ appsdk.MustRegister(
 
 ## 확장 빌더
 
-공통 확장은 전용 builder를 사용할 수 있습니다. 예를 들어 API key 인증 앱은
-`extension/apikey`가 확장 선언과 함수명을 대신 관리합니다.
+공통 확장은 전용 builder를 사용할 수 있습니다. Config 기반 인증 앱은 `extension/config`로
+설정 schema와 validation Function 이름을 관리합니다.
 
 ```go
-app.Use(apikey.Extension().
-  GetAuthConfig(apikey.StaticAuthConfig(&authConfig)).
-  ValidateCredentials(validateCredentials),
+app.Use(config.Extension().
+  GetConfigSchema(handler.GetConfigSchema).
+  ValidateStoredConfig(handler.ValidateStoredConfig),
 )
 ```
 
-WMS 앱은 `extension/wms` builder와 함수명 상수를 함께 사용할 수 있어, 일부
-함수만 SDK 방식으로 옮기는 점진적 전환도 가능합니다.
+WMS 앱은 `extension/wms` builder와 SDK Function 이름 상수, DTO를 함께 사용합니다.
 
 서버 사이드 주요 extension은 전용 builder 패키지를 제공합니다:
 `extension/config`, `extension/oauth`, `extension/calendar`,
 `extension/command`, `extension/widget`, `extension/customtab`,
 `extension/hook`, `extension/polling`, `extension/store`,
-`extension/messaging`, `extension/alftask`, `extension/apikey`,
-`extension/wms`.
+`extension/messaging`, `extension/alftask`, `extension/wms`.
 
 커스텀 extension은 generic builder를 사용할 수 있습니다.
 

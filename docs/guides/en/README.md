@@ -7,14 +7,13 @@ These guides give Channel app developers one shared model for the TypeScript and
 - [Concepts](concepts.md)
 - [Quickstart](quickstart.md)
 - [Complete app development guide](app-development.md)
-- [Legacy web documentation notes](legacy-documentation-notes.md)
 - [Function registration](functions.md)
-- [Extension guide and 18 TypeScript/Go family recipes](extensions.md)
-- [Partial migration](partial-migration.md)
+- [Extension guide and 16 TypeScript/Go family recipes](extensions.md)
 
 ## Choosing a SDK
 
-Use the TypeScript SDK for NestJS, Zod, and WAM React development. Use the Go SDK when an existing Go service wants typed functions, native calls, and extension helpers without migrating everything at once.
+Use the TypeScript SDK for NestJS, Zod, and WAM React development. Use the Go SDK for typed
+functions, native calls, and extension helpers in a Go service.
 
 When a web article, tutorial, and SDK example disagree, use the public SDK exports first, then the SDK reference and current tutorial repositories.
 

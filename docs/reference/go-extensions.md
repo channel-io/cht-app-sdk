@@ -100,15 +100,13 @@ wms.FunctionOptions(
 
 The path syntax uses `.` for object properties and `[]` for array items.
 
-Family builders such as `wms.Extension()` and `order.Extension()` use proto JSON
-handling internally, so app handlers receive SDK DTOs while the wire format stays
-camelCase JSON.
+Family builders such as `commerce.Extension()` and `wms.Extension()` use proto JSON handling
+internally, so app handlers receive SDK DTOs while the wire format stays camelCase JSON.
 
 ## Builder Packages
 
 | Extension  | Go package             |
 | ---------- | ---------------------- |
-| API key    | `extension/apikey`     |
 | Config     | `extension/config`     |
 | OAuth      | `extension/oauth`      |
 | Calendar   | `extension/calendar`   |
@@ -120,7 +118,6 @@ camelCase JSON.
 | Store      | `extension/store`      |
 | DataSource | `extension/datasource` |
 | Commerce   | `extension/commerce`   |
-| Order      | `extension/order`      |
 | Messaging  | `extension/messaging`  |
 | ALF task   | `extension/alftask`    |
 | Notebook   | `extension/notebook`   |
@@ -129,7 +126,7 @@ camelCase JSON.
 | Custom     | `extension`            |
 
 Server-side extension DTOs are defined in proto first. Go extension packages
-either expose generated DTOs directly, as `extension/order`, `extension/wms`, and
+either expose generated DTOs directly, as `extension/wms` and
 `extension/messaging` do, or expose `Proto*` aliases alongside existing
 hand-written ergonomic structs. App code should import the family package rather
 than the generated internal package.
@@ -171,22 +168,6 @@ app.Use(commerce.Extension().
 Commerce uses stable ID-based orders and structured action results. Validate current provider state
 and use an idempotency key before every mutation.
 
-## Order Extension (legacy)
-
-Use `extension/order` only to maintain or migrate existing timestamp-based order apps. New apps use
-`extension/commerce`.
-
-```go
-app.Use(order.Extension().
-  GetOrders(func(ctx context.Context, fnCtx appsdk.Context, input *order.GetOrdersInput) (*order.GetOrdersOutput, error) {
-    return &order.GetOrdersOutput{
-      Orders: []*order.Order{{Id: input.GetIdentifierValue()}},
-    }, nil
-  }).
-  GetAppConfigs(order.StaticAppConfigs(&order.AppCapabilities{})),
-)
-```
-
 ## WMS Extension
 
 Use `extension/wms` for warehouse-management apps. WMS request and response DTOs
@@ -194,11 +175,8 @@ are generated from `extension.proto` and handled with proto JSON.
 
 ```go
 app.Use(wms.Extension().
-  GetOrders(func(ctx context.Context, fnCtx appsdk.Context, input *wms.GetOrdersRequest) (*wms.GetOrdersResponse, error) {
-    if err := wms.ValidateGetOrdersRequest(input); err != nil {
-      return nil, appsdk.NewError(appsdk.CodeBadRequest, "invalidParams", err.Error())
-    }
-    return &wms.GetOrdersResponse{Orders: []*wms.Order{}}, nil
+  OrderGetOrders(func(ctx context.Context, fnCtx appsdk.Context, input *wms.OrderGetOrdersRequest) (*wms.OrderGetOrdersResponse, error) {
+    return &wms.OrderGetOrdersResponse{Orders: []*wms.OrderV2{}}, nil
   }),
 )
 ```

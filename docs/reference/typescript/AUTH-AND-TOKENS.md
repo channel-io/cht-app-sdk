@@ -13,7 +13,7 @@ Channel app authentication has separate inbound, server-outbound, WAM, and exter
 | Channel access/refresh token | Server-side native operations in one installed Channel                   | Per-channel server token cache                                               |
 | Manager/User authorization   | Current user acting through a Channel client surface                     | Managed by the Channel WAM host; not issued by `TokenManager`                |
 | Provider OAuth token         | Connected external provider account                                      | Decrypted and injected into `ctx.authToken` when the Function needs it       |
-| Config credential            | API keys, `client_credentials`, per-shop credentials, and similar values | Stored by AppStore and injected through `ctx.config` or compatibility fields |
+| Config credential            | API keys, `client_credentials`, per-shop credentials, and similar values | Stored by AppStore and injected through `ctx.config`                         |
 
 Never put App Secret, Signing Key, access/refresh tokens, provider tokens, or config credentials in WAM bundles, `wamArgs`, source control, fixtures, logs, or error responses.
 
@@ -108,7 +108,8 @@ Use `useCallFunction()` for business logic and work performed as the app or bot;
 Do not confuse external-service credentials with Channel App tokens.
 
 - **OAuth Authorization Code**: declare the OAuth Extension. After connection and token exchange, AppStore injects the decrypted provider token into `ctx.authToken` for the relevant Function call.
-- **Config/API key**: use the Config Extension for API keys, `client_credentials`, per-shop secrets, and non-redirect authentication. AppStore resolves values into `ctx.config`; compatibility flows may also populate `ctx.apiCredentials`.
+- **Config credential**: use the Config Extension for API keys, `client_credentials`, per-shop
+  secrets, and non-redirect authentication. AppStore resolves values into `ctx.config`.
 
 Read provider credentials only inside the server Function that needs them, minimize logging around outbound provider calls, and handle absent or revoked credentials explicitly.
 

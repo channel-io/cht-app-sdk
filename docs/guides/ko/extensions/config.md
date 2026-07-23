@@ -1,7 +1,7 @@
 # Config Extension
 
 채널·매니저 단위 설정, API key, `client_credentials`, shop ID와 credential은 Config로
-관리합니다. 신규 앱의 표준 설정 화면이므로 새 API key Extension을 만들지 않습니다.
+관리합니다. Config는 신규 앱의 표준 설정 화면입니다.
 
 ## 계약
 

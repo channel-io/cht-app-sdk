@@ -16,7 +16,6 @@ Use [AGENT.md](../../../AGENT.md), the extension guides, and the example apps fi
 npx @channel.io/app-sdk create my-app
 npx @channel.io/app-sdk add extension config
 npx @channel.io/app-sdk add extension oauth
-npx @channel.io/app-sdk add extension apikey # legacy/deprecated for new apps
 npx @channel.io/app-sdk add extension calendar
 npx @channel.io/app-sdk add extension command
 npx @channel.io/app-sdk add extension widget

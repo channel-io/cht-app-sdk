@@ -1,6 +1,6 @@
 # アプリ開発完全ガイド
 
-この文書は、Channel App Store アプリを作る現在の SDK-first の手順を説明します。旧 App Web 記事にある raw JSON-RPC、手動 token cache、手動 command 登録、`window.ChannelIOWam` の直接呼び出しは protocol 理解用とし、新規実装では SDK を使用してください。
+この文書は、Channel App Store アプリを作る現在の SDK-first の手順を説明します。
 
 2026-07-22 に確認した公開バージョン:
 
